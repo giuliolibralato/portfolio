@@ -34,7 +34,7 @@ button, select { font: inherit; color: inherit; }
 .mono { font-family: var(--font-dm-mono), ui-monospace, monospace; }
 .muted { color: var(--muted-foreground); }
 .small { font-size: 13px; line-height: 18px; }
-.h2 { font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: -0.01em; }
+.h2 { font-size: 20px; line-height: 28px; font-weight: 600; letter-spacing: -0.01em; }
 
 /* Selection follows the cursor color */
 ::selection { background: color-mix(in srgb, var(--cursor) 28%, transparent); }
@@ -134,21 +134,15 @@ button, select { font: inherit; color: inherit; }
 @media (hover: none) { .vc { display: none; } .has-cursor, .has-cursor * { cursor: auto !important; } }
 
 /* Entrance: Billy cover + Darina cascade */
-.spl { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; padding: 0 40px; background: var(--background); transition: transform 1500ms var(--ease-sheet); }
+.spl { will-change: transform; position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; padding: 0 40px; background: var(--background); transition: transform 1500ms var(--ease-sheet); }
 .spl.out { transform: translateY(-100vh); }
-.spl h2 { font-size: clamp(40px, 7vw, 96px); line-height: 1; font-weight: 500; letter-spacing: -0.035em; animation: blk 700ms var(--ease-out) both; }
-.spl h2 span { display: block; color: var(--muted-foreground); animation: blk 700ms var(--ease-out) 120ms both; }
-.pre .ii, .pre .avi img { opacity: 0; }
-.go .ii { animation: blk 380ms var(--ease-drawer) backwards; animation-delay: var(--d, 0ms); }
-.go .avi img { animation: avi 900ms var(--ease-drawer) backwards; animation-delay: var(--d, 0ms); }
-.rf { transition: opacity 1000ms var(--ease-sheet) 750ms; }
-.rf.pre { opacity: 0; }
+.spl h2 { font-size: clamp(40px, 7vw, 96px); line-height: 1; font-weight: 500; letter-spacing: -0.035em; }
+.spl h2 span { display: block; color: var(--muted-foreground); }
 @keyframes blk { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 @keyframes avi { 0% { opacity: 0; filter: blur(5px); transform: scale(0.6); } 60% { opacity: 1; filter: blur(0); } 100% { opacity: 1; transform: none; } }
 
 @media (prefers-reduced-motion: reduce) {
   .spl { display: none; }
-  .go .ii, .go .avi img { animation: blk 200ms ease backwards; transform: none; }
   .cv, .stk { transition: none; }
   .cd:hover .cv { transform: none !important; }
   .pop, .mm, .ti { transition: opacity 150ms ease; }

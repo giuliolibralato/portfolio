@@ -14,6 +14,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geist.variable} ${mono.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t;var c=localStorage.getItem("cursor");if(c)document.documentElement.style.setProperty("--cursor",c)}catch(e){}`,
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

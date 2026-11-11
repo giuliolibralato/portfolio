@@ -67,8 +67,7 @@ export default function Home() {
 
   // theme follows the system first, then the toggle
   useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    setDark(saved ? saved === "dark" : matchMedia("(prefers-color-scheme: dark)").matches);
+    setDark(document.documentElement.dataset.theme === "dark");
     const l = localStorage.getItem("lang");
     if (l === "es" || l === "en") setLang(l);
     else if (navigator.language?.toLowerCase().startsWith("es")) setLang("es");
@@ -76,7 +75,9 @@ export default function Home() {
     if (c) setCursor(c);
     setTime(new Date().toLocaleTimeString("en-US", { timeZone: "America/Lima", hour: "numeric", minute: "2-digit" }).toLowerCase());
   }, []);
+  const themeReady = useRef(false);
   useEffect(() => {
+    if (!themeReady.current) { themeReady.current = true; return; } // the head script already set it
     document.documentElement.dataset.theme = dark ? "dark" : "light";
   }, [dark]);
   useEffect(() => {
@@ -114,7 +115,7 @@ export default function Home() {
 
   return (
     <div className="has-cursor" onPointerMove={onMove} onPointerLeave={() => setCursorOn(false)}>
-      <Cursor ref={cur} color={cursor} label={label} mode={mode} visible={cursorOn} />
+      <Cursor ref={cur} color={cursor} label={label} mode={mode} visible={cursorOn && phase !== "in"} />
 
       {/* cover */}
       {phase !== "done" && (
@@ -227,7 +228,7 @@ export default function Home() {
             {/* intro */}
             <motion.section id="intro" style={{ maxWidth: 600 }} initial="hidden" animate={show} transition={{ staggerChildren: 0.09, delayChildren: 0.4 }}>
               <motion.div className="avw" style={{ width: 76, height: 76, margin: "28px 0 40px 8px" }}
-                variants={{ hidden: { opacity: 0, scale: 0.6, filter: "blur(5px)" }, show: { opacity: 1, scale: 1, filter: "blur(0px)", transition: { duration: 0.9, ease: DRAWER } } }}>
+                variants={{ hidden: { opacity: 0, scale: 0.8 }, show: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: DRAWER } } }}>
                 <img src={`${BASE}/giulio.jpg`} alt="" width={76} height={76} style={{ display: "block", width: 76, height: 76, borderRadius: 12, objectFit: "cover", objectPosition: "50% 20%", background: "var(--muted)" }} />
                 <Sel label="img" badge="76 × 76" style={{ inset: -8 }} />
               </motion.div>
@@ -244,7 +245,7 @@ export default function Home() {
                   ))}
                 </div>
                 <AnimatePresence mode="wait">
-                  <motion.div key={aud + lang} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
+                  <motion.div key={aud} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
                     style={{ display: "flex", flexDirection: "column", gap: 8, lineHeight: "24px", minHeight: 80 }}>
                     <p>{t.intro[aud][0]}</p>
                     <p>{t.intro[aud][1]}</p>
@@ -298,7 +299,7 @@ export default function Home() {
               </motion.div>
 
               {tab !== "visual" ? (
-                <motion.div key={tab} className="grid" initial="hidden" animate="show" transition={{ staggerChildren: 0.09 }}>
+                <motion.div key={tab} className="grid" initial="hidden" animate={show} transition={{ staggerChildren: 0.09 }}>
                   {cards.map((c) => (
                     <motion.a key={c.key} variants={block} href={c.href || "#work"} target={c.href ? "_blank" : undefined} rel="noopener" className="cd"
                       onMouseEnter={() => setHoverLabel(c.href ? "visit" : "view")} onMouseLeave={() => setHoverLabel(null)}>

@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>giulio libralato · home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.pg{--background:#FFFFFF;--foreground:#0F172A;--card:#F8FAFC;--muted:#F1F5F9;--muted-foreground:#475569;--border:#E2E8F0;--primary:#0F172A;--primary-foreground:#F8FAFC;--brand:#007AFF;--brand-text:#0064D2;--status-done:#248A3D;--aurora-1:#9CCBFF;--aurora-2:#64D2FF;--aurora-3:#99F6E4;--shadow:rgba(15,23,42,.14);container-type:inline-size;font-family:Geist,system-ui,sans-serif;font-size:15px;line-height:22px;-webkit-font-smoothing:antialiased;transition:background 200ms cubic-bezier(0.23,1,0.32,1),color 200ms cubic-bezier(0.23,1,0.32,1)}
+.pg[data-theme=dark]{--background:#020617;--foreground:#F1F5F9;--card:#0F172A;--muted:#1E293B;--muted-foreground:#94A3B8;--border:#1E293B;--primary:#F1F5F9;--primary-foreground:#0F172A;--brand:#0A84FF;--brand-text:#409CFF;--status-done:#30D158;--aurora-1:#0A84FF;--aurora-2:#64D2FF;--aurora-3:#2DD4BF;--shadow:rgba(0,0,0,.5)}
+.pg *{box-sizing:border-box}
+.pg h1,.pg h2,.pg h3,.pg p,.pg blockquote,.pg figure{margin:0}
+.pg a{color:inherit;text-decoration:none}
+.pg button,.pg select{font:inherit;color:inherit}
+.pg :focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
+.nl{color:var(--muted-foreground);transition:color .15s}.nl:hover{color:var(--foreground)}
+.tb{transition:color .2s,background .25s}.tb:hover{color:var(--foreground);background:color-mix(in srgb,var(--foreground) 8%,transparent)!important}
+.bp,.bs,.cr,.sb,.crow,.sw{transition:background .2s,filter .2s,transform 160ms ease-out}.bp:active,.bs:active,.sb:active,.crow:active,.sw:active{transform:scale(.97)}.pop{transition:opacity 150ms ease,transform 150ms cubic-bezier(0.23,1,0.32,1)}@starting-style{.pop{opacity:0;transform:scale(.97)}}.mm{transition:opacity 200ms ease,transform 200ms cubic-bezier(0.23,1,0.32,1)}@starting-style{.mm{opacity:0;transform:translateY(8px)}}.ti{transition:opacity 150ms ease,transform 150ms cubic-bezier(0.23,1,0.32,1)}@starting-style{.ti{opacity:0;transform:scale(.9)}}.bp:hover{filter:brightness(.8)}.bs:hover{background:color-mix(in srgb,var(--foreground) 14%,var(--muted))!important}.sb:hover{background:color-mix(in srgb,var(--foreground) 12%,var(--muted))!important}
+.spl{position:fixed;inset:0;z-index:90;display:flex;align-items:center;padding:0 40px;background:var(--background);transition:transform 1500ms cubic-bezier(0.33,0,0.2,1)}.spl.out{transform:translateY(-100vh)}.spl h2{font-size:clamp(40px,7vw,96px);line-height:1;font-weight:500;letter-spacing:-0.035em;animation:splin 700ms cubic-bezier(0.23,1,0.32,1) both}.spl h2 span{display:block;color:var(--muted-foreground);animation:splin 700ms cubic-bezier(0.23,1,0.32,1) 120ms both}@keyframes splin{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}.rv.pre .ii{opacity:0}.rv.go .ii{animation:blk 380ms cubic-bezier(0.32,0.72,0,1) backwards;animation-delay:var(--d,0ms)}@keyframes blk{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.rv.go .avi img{animation:avi 900ms cubic-bezier(0.32,0.72,0,1) backwards;animation-delay:var(--d,0ms)}@keyframes avi{0%{opacity:0;filter:blur(5px);transform:scale(.6)}60%{opacity:1;filter:blur(0)}100%{opacity:1;transform:none}}.rf{transition:opacity 1000ms cubic-bezier(0.33,0,0.2,1) 750ms}.rf.pre{opacity:0}@media (prefers-reduced-motion:reduce){.rv.go .ii,.rv.go .avi img{animation:blk 200ms ease backwards}.spl{display:none}.rv,.rf{transition:opacity 200ms ease!important;transform:none!important}}.pg.cc,.pg.cc *{cursor:none!important}.pg[data-cur=blue] ::selection{background:rgba(0,122,255,.28);color:inherit}.pg[data-cur=blue] ::-moz-selection{background:rgba(0,122,255,.28)}.pg[data-cur=purple] ::selection{background:rgba(124,58,237,.28);color:inherit}.pg[data-cur=purple] ::-moz-selection{background:rgba(124,58,237,.28)}.pg[data-cur=pink] ::selection{background:rgba(219,39,119,.28);color:inherit}.pg[data-cur=pink] ::-moz-selection{background:rgba(219,39,119,.28)}.pg[data-cur=orange] ::selection{background:rgba(234,88,12,.28);color:inherit}.pg[data-cur=orange] ::-moz-selection{background:rgba(234,88,12,.28)}.pg[data-cur=green] ::selection{background:rgba(22,163,74,.28);color:inherit}.pg[data-cur=green] ::-moz-selection{background:rgba(22,163,74,.28)}.pg[data-cur=graphite] ::selection{background:rgba(51,65,85,.28);color:inherit}.pg[data-cur=graphite] ::-moz-selection{background:rgba(51,65,85,.28)}.vc{position:fixed;left:0;top:0;z-index:100;pointer-events:none}.vc svg{shape-rendering:geometricPrecision}@media (hover:none){.vc{display:none!important}.pg.cc,.pg.cc *{cursor:auto!important}}.sw{width:28px;height:28px;border-radius:999px;border:0;cursor:pointer;padding:0}.cv{transition:transform 300ms cubic-bezier(0.23,1,0.32,1);transform-origin:50% 100%}@media (hover:hover) and (pointer:fine){.cd:hover .cv{transform:scale(1.035)}}.at{transition:color .15s}.at:hover{color:var(--foreground)!important}.sel{position:absolute;inset:-6px;border:1.5px solid var(--brand);border-radius:12px;opacity:0;transition:opacity .2s;pointer-events:none}.cd:hover .sel,.cd:focus-visible .sel,.avw:hover .sel,.crow:hover .sel,.crow:focus-visible .sel,.lnk:hover .sel,.lnk:focus-visible .sel{opacity:1}.lnk{position:relative}.pg .bl{color:var(--brand-text);transition:color .15s}.pg .bl:hover{color:color-mix(in srgb,var(--brand-text) 75%,var(--foreground))}.sel{border-radius:0!important}.sel i{border-radius:0!important}.sel u{border-radius:0!important}.sel.selq{inset:-8px;border-radius:0;border:1px solid #94A3B8}.sel.selq i{width:7px;height:7px;border:1px solid #94A3B8;border-radius:0;background:var(--background)}.sel.selq i:nth-child(1){left:-4px;top:-4px}.sel.selq i:nth-child(2){right:-4px;top:-4px}.sel.selq i:nth-child(3){left:-4px;bottom:-4px}.sel.selq i:nth-child(4){right:-4px;bottom:-4px}.pg[data-theme=dark] .sel.selq,.pg[data-theme=dark] .sel.selq i{border-color:#475569}.sel i{position:absolute;width:9px;height:9px;background:var(--background);border:1.5px solid var(--brand);border-radius:2px}.sel i:nth-child(1){left:-5px;top:-5px}.sel i:nth-child(2){right:-5px;top:-5px}.sel i:nth-child(3){left:-5px;bottom:-5px}.sel i:nth-child(4){right:-5px;bottom:-5px}.sel b{position:absolute;left:0;top:-22px;font-weight:500;font-size:13px;line-height:18px;color:var(--brand)}.sel u{position:absolute;left:50%;bottom:-13px;transform:translateX(-50%);text-decoration:none;white-space:nowrap;padding:3px 8px;border-radius:6px;background:var(--brand);color:#FFFFFF;font-family:"DM Mono",ui-monospace,monospace;font-size:12px;line-height:16px}@media (hover:none){.sel{display:none}}
+.lk{color:var(--muted-foreground)}.lk:hover{color:var(--foreground)}.cr:hover{background:color-mix(in srgb,var(--foreground) 6%,transparent)!important}
+.au{position:absolute;left:0;right:0;top:0;height:340px;overflow:hidden;pointer-events:none;opacity:.75;-webkit-mask-image:radial-gradient(ellipse 70% 100% at 50% 0%,#000 45%,transparent 100%);mask-image:radial-gradient(ellipse 70% 100% at 50% 0%,#000 45%,transparent 100%)}
+.au i{position:absolute;top:-180px;width:46%;height:340px;border-radius:50%;filter:blur(70px);animation:fl 14s ease-in-out infinite alternate}
+.au i:nth-child(1){left:-4%;background:var(--aurora-1)}.au i:nth-child(2){left:28%;background:var(--aurora-2);animation-delay:-5s}.au i:nth-child(3){left:60%;background:var(--aurora-3);animation-delay:-9s}
+@keyframes fl{to{transform:translate(4%,26px) scale(1.08)}}
+.tabs{overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.mtop{display:none}
+@container (max-width:1023px){.rail{display:none!important}.mtop{display:flex!important}.inner{padding:64px 16px 48px!important}}
+@container (max-width:767px){.grid{grid-template-columns:minmax(0,1fr)!important;row-gap:40px!important}.refs{grid-template-columns:minmax(0,1fr)!important}.xrow{grid-template-columns:minmax(0,1fr)!important}.lrow .dot{display:none}.lrow{width:auto!important;white-space:normal!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:0!important;border-top:1px solid var(--border)}.lrow>*{display:flex!important;align-items:center;min-height:44px;border-bottom:1px solid var(--border)}.lrow>:last-child{grid-column:1/-1;justify-content:space-between}.stackrow{flex-direction:column;align-items:flex-start!important}}
+@media (prefers-reduced-motion:reduce){.au i{animation:none}.cv{transition:none}.cd:hover .cv{transform:none!important}.stk{transition:none!important}.pop,.mm,.ti{transition:opacity 150ms ease!important}.bp:active,.bs:active,.sb:active,.crow:active,.sw:active,.lnk:active{transform:none!important}@starting-style{.pop,.mm,.ti{transform:none!important}}}
+</style>
+</helmet>
+<div class="pg cc" data-theme="{{theme}}" data-cur="{{curName}}" onMouseMove="{{moveCur}}" onMouseLeave="{{hideCur}}" style="background: var(--background); color: var(--foreground); min-height: 100%;">
+<div class="vc" ref="{{setCur}}" aria-hidden="true" style="opacity: {{curOpacity}}; transition: opacity .15s;"><sc-if value="{{curArrow}}" hint-placeholder-val="{{ true }}"><svg width="16" height="18" viewBox="0 0 20 22" style="display: block; filter: drop-shadow(0 1.5px 2px rgba(15,23,42,.35));"><path d="M3.4 2.4 Q2.2 1.9 2.5 3.2 L7.3 18.6 Q7.7 19.8 8.4 18.7 L11.1 13.2 Q11.4 12.6 12 12.4 L18.4 10.5 Q19.6 10.1 18.5 9.4 Z" fill="{{curColor}}" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"></path></svg></sc-if><sc-if value="{{curPoint}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" style="display: block; transform: translate(-6px,-1.5px); filter: drop-shadow(0 1.5px 2px rgba(15,23,42,.35));"><path d="M6 14V4a2 2 0 0 1 4 0v5a2 2 0 0 1 4 0v1a2 2 0 0 1 4 0v1a2 2 0 0 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L6 14z" fill="{{curColor}}" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"></path><path d="M10 9.5v3M14 10.5v2M18 11.5v1" fill="none" stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="round"></path></svg></sc-if><sc-if value="{{curText}}" hint-placeholder-val="{{ false }}"><svg width="15" height="17" viewBox="0 0 20 22" style="display: block; transform: translate(-7.5px,-8.5px); filter: drop-shadow(0 1.5px 2px rgba(15,23,42,.35));"><path d="M6 3h2.5a2 2 0 0 1 1.5.7A2 2 0 0 1 11.5 3H14M10 3.8v14.4M6 19h2.5a2 2 0 0 0 1.5-.7 2 2 0 0 0 1.5.7H14" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round"></path><path d="M6 3h2.5a2 2 0 0 1 1.5.7A2 2 0 0 1 11.5 3H14M10 3.8v14.4M6 19h2.5a2 2 0 0 0 1.5-.7 2 2 0 0 0 1.5.7H14" fill="none" stroke="{{curColor}}" stroke-width="1.6" stroke-linecap="round"></path></svg></sc-if><sc-if value="{{curGrab}}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" style="display: block; transform: translate(-9px,-4.5px); filter: drop-shadow(0 1.5px 2px rgba(15,23,42,.35));"><path d="M6 14V6a2 2 0 0 1 4 0V4a2 2 0 0 1 4 0v2a2 2 0 0 1 4 0v2a2 2 0 0 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L6 14z" fill="{{curColor}}" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"></path><path d="M10 6v5M14 6v5M18 8v3" fill="none" stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="round"></path></svg></sc-if><span style="position: absolute; left: 15px; top: 18px; padding: 2px 7px; border-radius: 4px; background: {{curColor}}; color: #FFFFFF; font-size: 12px; line-height: 16px; font-weight: 500; white-space: nowrap; box-shadow: 0 3px 8px -2px rgba(15,23,42,.35), 0 1px 2px rgba(15,23,42,.2);">{{curLabel}}</span></div>
+<sc-if value="{{splashOn}}" hint-placeholder-val="{{ false }}"><div class="spl {{splashCls}}" aria-hidden="true"><h2>giulio libralato<span>—product designer</span></h2></div></sc-if>
+<div style="display: flex; flex-wrap: wrap; align-items: stretch;">
+
+<aside class="rail rf {{revealCls}}" style="flex: 0 0 200px; display: flex; flex-direction: column; padding: 32px 24px; min-height: 860px;">
+<a href="#intro" style="font-weight: 500;">giulio libralato</a>
+<nav aria-label="sections" style="display: grid; gap: 6px; margin-top: 48px;">
+<sc-for list="{{nav}}" as="n" hint-placeholder-count="6">
+<a href="{{n.href}}" class="nl" style="{{n.style}}">{{n.label}}</a>
+</sc-for>
+</nav>
+<div style="margin-top: auto; position: relative; display: flex; flex-direction: column; gap: 8px; align-items: flex-start;">
+<sc-if value="{{pickerOpen}}" hint-placeholder-val="{{ false }}"><div role="dialog" class="pop" aria-label="{{pickerTitle}}" style="transform-origin: bottom left; position: absolute; left: 56px; bottom: 0; z-index: 30; width: 304px; padding: 16px; display: flex; flex-direction: column; gap: 16px; border: 1px solid var(--border); border-radius: 16px; background: var(--background); box-shadow: 0 16px 40px -16px var(--shadow), 0 2px 6px -2px var(--shadow);"><div style="position: relative; padding-right: 32px;"><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-weight: 500;">{{pickerTitle}}</span><span style="font-size: 13px; line-height: 18px; color: var(--muted-foreground); white-space: nowrap;">{{pickerHint}}</span></div><button type="button" aria-label="close" onClick="{{togglePicker}}" style="position: absolute; top: -6px; right: -6px; width: 28px; height: 28px; display: grid; place-items: center; border: 0; border-radius: 8px; background: none; color: var(--muted-foreground); cursor: pointer;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button></div><div style="position: relative; height: 72px; border-radius: 12px; background: var(--muted); overflow: hidden;"><svg width="22" height="24" viewBox="0 0 20 22" aria-hidden="true" style="position: absolute; left: 28px; top: 14px; filter: drop-shadow(0 2px 3px rgba(15,23,42,.35));"><path d="M3.4 2.4 Q2.2 1.9 2.5 3.2 L7.3 18.6 Q7.7 19.8 8.4 18.7 L11.1 13.2 Q11.4 12.6 12 12.4 L18.4 10.5 Q19.6 10.1 18.5 9.4 Z" fill="{{curColor}}" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"></path></svg><span style="position: absolute; left: 50px; top: 40px; padding: 4px 10px; border-radius: 5px; background: {{curColor}}; color: #FFFFFF; font-size: 14px; line-height: 20px; font-weight: 500; white-space: nowrap; box-shadow: 0 4px 12px -2px rgba(15,23,42,.35);">{{visitorWord}}</span></div><div style="display: flex; justify-content: space-between;"><sc-for list="{{swatches}}" as="w" hint-placeholder-count="6"><button type="button" class="sw" aria-label="{{w.name}}" aria-pressed="{{w.on}}" title="{{w.name}}" onClick="{{w.pick}}" style="width: 30px; height: 30px; background: {{w.hex}}; box-shadow: {{w.ring}};"></button></sc-for></div></div></sc-if>
+<button type="button" class="sb" aria-label="{{pickerTitle}}" aria-expanded="{{pickerAria}}" title="{{pickerTitle}}" onClick="{{togglePicker}}" style="width: 40px; height: 40px; display: grid; place-items: center; border: 0; border-radius: 999px; background: var(--muted); color: var(--foreground); cursor: pointer;"><svg width="18" height="20" viewBox="0 0 20 22" aria-hidden="true" style="filter: drop-shadow(0 1.5px 2px rgba(15,23,42,.35)); transform: translate(1px,1px);"><path d="M3.4 2.4 Q2.2 1.9 2.5 3.2 L7.3 18.6 Q7.7 19.8 8.4 18.7 L11.1 13.2 Q11.4 12.6 12 12.4 L18.4 10.5 Q19.6 10.1 18.5 9.4 Z" fill="{{curColor}}" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"></path></svg></button>
+<button type="button" class="sb" aria-label="{{themeAria}}" title="{{themeAria}}" onClick="{{toggleDark}}" style="width: 40px; height: 40px; display: grid; place-items: center; border: 0; border-radius: 999px; background: var(--muted); color: var(--foreground); cursor: pointer;"><sc-if value="{{isLight}}" hint-placeholder-val="{{ true }}"><svg class="ti" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></sc-if><sc-if value="{{isDark}}" hint-placeholder-val="{{ false }}"><svg class="ti" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg></sc-if></button>
+<button type="button" class="sb" aria-label="{{langAria}}" title="{{langAria}}" onClick="{{toggleLang}}" style="width: 40px; height: 40px; display: grid; place-items: center; border: 0; border-radius: 999px; background: var(--muted); color: var(--foreground); cursor: pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"></path></svg></button>
+</div>
+</aside>
+
+<div style="flex: 999 1 560px; min-width: 0; position: relative;">
+<sc-if value="{{aurora}}" hint-placeholder-val="{{ false }}"><div class="au" aria-hidden="true"><i></i><i></i><i></i></div></sc-if>
+
+<header class="mtop rf {{revealCls}}" style="position: relative; justify-content: space-between; align-items: center; height: 56px; padding: 0 16px;">
+<a href="#intro" style="font-weight: 500;">giulio libralato</a>
+<button type="button" aria-label="menu" aria-expanded="{{menuAria}}" onClick="{{toggleMenu}}" style="width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: none; cursor: pointer; border-radius: 8px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+</header>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<div role="dialog" class="mm" aria-modal="true" aria-label="menu" style="position: fixed; inset: 0; z-index: 50; display: flex; flex-direction: column; padding: 0 16px 32px; background: var(--background); color: var(--foreground); overflow-y: auto;">
+<div style="display: flex; justify-content: space-between; align-items: center; height: 56px; flex: none;">
+<a href="#intro" onClick="{{toggleMenu}}" style="font-weight: 500;">giulio libralato</a>
+<button type="button" aria-label="close menu" onClick="{{toggleMenu}}" style="width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: none; color: var(--foreground); cursor: pointer; border-radius: 8px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+<nav aria-label="sections" style="display: flex; flex-direction: column; margin-top: 32px;">
+<sc-for list="{{nav}}" as="n" hint-placeholder-count="6">
+<a href="{{n.href}}" onClick="{{closeMenu}}" style="padding: 10px 0; font-size: 28px; line-height: 36px; font-weight: 500; letter-spacing: -0.01em; {{n.style}}" class="nl">{{n.label}}</a>
+</sc-for>
+</nav>
+<div style="margin-top: auto; padding-top: 32px; display: flex; gap: 8px;">
+<button type="button" class="sb" aria-label="{{themeAria}}" onClick="{{toggleDark}}" style="width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 999px; background: var(--muted); color: var(--foreground); cursor: pointer;"><sc-if value="{{isLight}}" hint-placeholder-val="{{ true }}"><svg class="ti" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></sc-if><sc-if value="{{isDark}}" hint-placeholder-val="{{ false }}"><svg class="ti" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg></sc-if></button>
+<button type="button" class="sb" aria-label="{{langAria}}" onClick="{{toggleLang}}" style="width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 999px; background: var(--muted); color: var(--foreground); cursor: pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"></path></svg></button>
+</div>
+</div>
+</sc-if>
+
+<main class="inner rv {{revealCls}}" style="position: relative; max-width: 880px; margin: 0 auto; padding: 160px 32px 64px;">
+
+<section id="intro" style="max-width: 600px;">
+<div class="avw avi" style="--d: 400ms; position: relative; width: 76px; height: 76px; margin: 28px 0 40px 8px;"><img src="/_blob/bdb8d16183f8e5e12d9733288c33687b" alt="" style="display: block; width: 76px; height: 76px; border-radius: 12px; object-fit: cover; object-position: 50% 20%; background: var(--muted);"><span class="sel" aria-hidden="true" style="inset: -8px;"><i></i><i></i><i></i><i></i><b style="top: -21px; left: 2px; font-size: 12px; line-height: 16px;">img</b><u style="bottom: auto; top: calc(100% + 6px); padding: 2px 7px; font-family: inherit; font-size: 12px; line-height: 16px; border-radius: 4px;">76 × 76</u></span></div>
+<h1 class="hname ii" style="--d: 550ms; font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: -0.01em;">giulio libralato</h1>
+<p class="ii" style="--d: 600ms; color: var(--muted-foreground); margin: 2px 0 20px; font-size: 16px; line-height: 24px;">product designer · lima, peru</p>
+<span class="ii" style="--d: 640ms; display: inline-flex; align-items: center; gap: 8px; color: var(--muted-foreground); font-size: 13px; line-height: 18px"><i style="width: 8px; height: 8px; border-radius: 999px; background: var(--status-done); box-shadow: 0 0 0 3px color-mix(in srgb, var(--status-done) 20%, transparent);"></i>open to full-time roles and freelance projects</span>
+<div class="ii" style="--d: 730ms; display: flex; flex-direction: column; gap: 12px; margin-top: 24px;">
+<div role="tablist" aria-label="portfolio for" style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px;">
+<sc-for list="{{auds}}" as="a" hint-placeholder-count="3">
+<button type="button" role="tab" class="at" aria-selected="{{a.sel}}" onClick="{{a.pick}}" style="padding: 4px 0; border: 0; background: none; cursor: pointer; color: {{a.fg}};">{{a.label}}</button>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; line-height: 24px;">
+<p>{{intro}}</p>
+<p>{{intro2}}</p>
+</div>
+</div>
+<div class="lrow ii" style="--d: 820ms; display: flex; flex-wrap: nowrap; align-items: center; gap: 8px 10px; margin-top: 28px; width: max-content; white-space: nowrap;">
+<a class="lk lnk" href="https://www.linkedin.com/in/giuliolibralato/" target="_blank" rel="noopener" style="color: var(--muted-foreground, #475569)">linkedin<span class="sel" aria-hidden="true" style="border-radius: 8px;"><i></i><i></i><i></i><i></i><b>linkedin</b></span></a>
+<span class="dot" aria-hidden="true" style="color: var(--muted-foreground);">·</span>
+<a class="lk lnk" href="https://github.com/" style="color: var(--muted-foreground, #475569)">github<span class="sel" aria-hidden="true" style="border-radius: 8px;"><i></i><i></i><i></i><i></i><b>github</b></span></a>
+<span class="dot" aria-hidden="true" style="color: var(--muted-foreground);">·</span>
+<span style="position: relative; display: inline-flex;" onMouseLeave="{{closeResume}}"><button type="button" class="lk lnk" aria-haspopup="menu" aria-expanded="{{resumeAria}}" onClick="{{toggleResume}}" style="display: inline-flex; align-items: center; gap: 4px; padding: 0; border: 0; background: none; cursor: pointer; color: {{resumeColor}};">resume<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg><span class="sel" aria-hidden="true" style="border-radius: 8px;"><i></i><i></i><i></i><i></i><b>resume</b></span></button><sc-if value="{{resumeOpen}}" hint-placeholder-val="{{ false }}"><div style="position: absolute; top: 100%; left: -12px; z-index: 20; padding-top: 10px;"><div role="menu" class="pop" aria-label="download resume" style="transform-origin: top left; width: 248px; padding: 6px; display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--border); border-radius: 14px; background: var(--background); box-shadow: 0 16px 40px -16px var(--shadow), 0 2px 6px -2px var(--shadow);"><span style="padding: 8px 10px 6px; font-size: 12px; line-height: 16px; color: var(--muted-foreground);">download resume</span><a class="cr" href="#resume" onClick="{{closeResume}}" role="menuitem" style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 10px; color: var(--foreground);"><span style="width: 32px; height: 32px; flex: none; display: grid; place-items: center; border-radius: 8px; background: var(--muted); font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted-foreground);">EN</span><span style="flex: 1; display: flex; flex-direction: column;"><span style="font-weight: 500;">English</span><span style="font-size: 12px; line-height: 16px; color: var(--muted-foreground);">PDF · 2026</span></span><span style="display: inline-flex; color: var(--muted-foreground);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"></path></svg></span></a><a class="cr" href="#resume" onClick="{{closeResume}}" role="menuitem" style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 10px; color: var(--foreground);"><span style="width: 32px; height: 32px; flex: none; display: grid; place-items: center; border-radius: 8px; background: var(--muted); font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted-foreground);">ES</span><span style="flex: 1; display: flex; flex-direction: column;"><span style="font-weight: 500;">Español</span><span style="font-size: 12px; line-height: 16px; color: var(--muted-foreground);">PDF · 2026</span></span><span style="display: inline-flex; color: var(--muted-foreground);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"></path></svg></span></a></div></div></sc-if></span>
+<span class="dot" aria-hidden="true" style="color: var(--muted-foreground);">·</span>
+<a class="lk lnk" href="https://www.behance.net/giuliolibralatooliva" target="_blank" rel="noopener" style="color: var(--muted-foreground, #475569)">behance<span class="sel" aria-hidden="true" style="border-radius: 8px;"><i></i><i></i><i></i><i></i><b>behance</b></span></a>
+<span class="dot" aria-hidden="true" style="color: var(--muted-foreground);">·</span>
+<a class="lk lnk" href="https://wa.me/51983203160" target="_blank" rel="noopener" style="color: var(--muted-foreground, #475569)">whatsapp<span class="sel" aria-hidden="true" style="border-radius: 8px;"><i></i><i></i><i></i><i></i><b>whatsapp</b></span></a>
+<span class="dot" aria-hidden="true" style="color: var(--muted-foreground);">·</span>
+<button type="button" class="lk lnk" onClick="{{copyEmail}}" aria-label="copy email" style="display: inline-flex; align-items: center; gap: 6px; padding: 0; border: 0; background: none; cursor: pointer; color: var(--muted-foreground, #475569);">{{copyLabel}}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg><span class="sel" aria-hidden="true" style="border-radius: 8px;"><i></i><i></i><i></i><i></i><b>email</b></span></button>
+</div>
+</section>
+
+<section id="work" style="margin-top: 56px;">
+<div class="tabs ii" style="--d: 910ms; max-width: 100%;">
+<div role="tablist" aria-label="work type" style="display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: var(--muted); white-space: nowrap;">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="7">
+<button type="button" role="tab" class="tb" aria-selected="{{t.sel}}" onClick="{{t.pick}}" style="height: 30px; padding: 0 14px; border: 0; border-radius: 999px; cursor: pointer; background: {{t.bg}}; color: {{t.fg}}; box-shadow: {{t.sh}};">{{t.label}}<span style="margin-left: 6px; font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted-foreground);">{{t.count}}</span></button>
+</sc-for>
+</div>
+</div>
+
+<sc-if value="{{showCards}}" hint-placeholder-val="{{ true }}">
+<div class="grid" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 32px; margin-top: 24px;">
+<sc-for list="{{cards}}" as="c" hint-placeholder-count="4">
+<a href="{{c.href}}" target="{{c.tgt}}" rel="noopener" class="cd ii" onMouseEnter="{{c.enter}}" onMouseLeave="{{leaveCard}}" style="--d: {{c.d}}; display: block;">
+<div style="position: relative;">
+<div style="aspect-ratio: 16 / 10; border-radius: 12px; background: var(--card); overflow: hidden; display: grid; place-items: end center; padding: 28px 40px 0;">
+<sc-if value="{{c.phone}}" hint-placeholder-val="{{ false }}">
+<div class="cv" style="width: 38%; height: 88%; border-radius: 18px 18px 0 0; background: var(--background); box-shadow: 0 6px 24px -8px var(--shadow); padding: 16px 12px; display: flex; flex-direction: column; gap: 8px;"><i style="height: 8px; width: 50%; border-radius: 4px; background: var(--muted);"></i><i style="height: 44px; border-radius: 8px; background: var(--muted);"></i><i style="height: 8px; border-radius: 4px; background: var(--muted);"></i><i style="height: 8px; width: 70%; border-radius: 4px; background: var(--muted);"></i><i style="height: 44px; border-radius: 8px; background: var(--muted);"></i></div>
+</sc-if>
+<sc-if value="{{c.win}}" hint-placeholder-val="{{ true }}">
+<div class="cv" style="width: 100%; height: 88%; border-radius: 10px 10px 0 0; background: var(--background); box-shadow: 0 6px 24px -8px var(--shadow); display: flex; overflow: hidden;"><div style="width: 30%; background: var(--card); padding: 14px 10px; display: flex; flex-direction: column; gap: 7px;"><i style="height: 6px; border-radius: 3px; background: var(--muted);"></i><i style="height: 6px; border-radius: 3px; background: var(--muted); box-shadow: 0 0 0 1.5px var(--brand);"></i><i style="height: 6px; border-radius: 3px; background: var(--muted);"></i><i style="height: 6px; width: 70%; border-radius: 3px; background: var(--muted);"></i></div><div style="flex: 1; padding: 14px; display: flex; flex-direction: column; gap: 9px;"><i style="height: 9px; width: 45%; border-radius: 4px; background: var(--muted);"></i><div style="display: flex; gap: 7px;"><i style="flex: 1; height: 40px; border-radius: 6px; background: var(--muted);"></i><i style="flex: 1; height: 40px; border-radius: 6px; background: var(--muted);"></i><i style="flex: 1; height: 40px; border-radius: 6px; background: var(--muted);"></i></div><i style="height: 6px; border-radius: 3px; background: var(--muted);"></i><i style="height: 6px; width: 80%; border-radius: 3px; background: var(--muted);"></i></div></div>
+</sc-if>
+</div>
+<span class="sel selq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+</div>
+<h3 style="margin-top: 16px; font-size: 15px; line-height: 22px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{c.title}}</h3>
+<p style="color: var(--muted-foreground); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{c.desc}}</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 12px; font-size: 12px; line-height: 16px; color: var(--muted-foreground);">
+<span style="display: inline-flex; align-items: center; height: 24px; padding: 0 8px; border-radius: 6px; background: var(--muted);">{{c.type}}</span>
+<span style="margin-left: auto; font-family: 'DM Mono', ui-monospace, monospace;">{{c.year}}</span>
+</div>
+</a>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{showStack}}" hint-placeholder-val="{{ false }}">
+<div class="grid" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 32px; margin-top: 24px; align-items: center;">
+<div style="position: relative; width: 100%; aspect-ratio: 9 / 8;">
+<sc-for list="{{stack}}" as="s" hint-placeholder-count="3">
+<button type="button" class="stk" data-cursor="grab" onClick="{{nextPiece}}" aria-label="next piece" style="position: absolute; left: 4%; bottom: 0; width: 92%; aspect-ratio: 4 / 3; padding: 0; border: 0; border-radius: 12px; background: var(--card); overflow: hidden; cursor: pointer; display: grid; grid-template-rows: 1fr auto; text-align: left; color: var(--foreground); transform: {{s.tf}}; transform-origin: 50% 0%; z-index: {{s.z}}; box-shadow: 0 12px 32px -14px var(--shadow); transition: transform 400ms cubic-bezier(0.23,1,0.32,1);">
+<span style="display: grid; place-items: center; color: var(--muted-foreground); font-size: 13px;">{{s.art}}</span>
+<span style="display: flex; justify-content: space-between; padding: 12px 16px; background: var(--background);"><span style="font-weight: 500;">{{s.name}}</span><span style="font-size: 13px; color: var(--muted-foreground);">{{s.year}}</span></span>
+<span aria-hidden="true" style="position: absolute; inset: 0; background: #0F172A; opacity: {{s.dim}}; transition: opacity 300ms ease; pointer-events: none;"></span></button>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<p style="color: var(--muted-foreground);">{{stackIntro}}</p>
+<div style="display: grid;">
+<sc-for list="{{stack}}" as="s" hint-placeholder-count="3">
+<a class="cr" href="{{s.href}}" target="_blank" rel="noopener" onMouseEnter="{{s.pick}}" onMouseLeave="{{leaveCard}}" onFocus="{{s.pick}}" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 14px 0; border-top: 1px solid var(--border); color: {{s.fg}};"><span style="font-weight: 500;">{{s.name}}</span><span style="display: inline-flex; align-items: center; gap: 12px; color: var(--muted-foreground);"><span style="font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px;">{{s.year}}</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg></span></a>
+</sc-for>
+</div>
+<a class="bl lnk" href="https://www.behance.net/giuliolibralatooliva" target="_blank" rel="noopener" style="align-self: flex-end; display: inline-flex; align-items: center; gap: 4px; font-size: 13px; line-height: 18px;">see all on behance<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg><span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>link</b></span></a>
+</div>
+</div>
+</sc-if>
+</section>
+
+<section id="experience" style="margin-top: 96px; width: 100%;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 24px;"><h2 style="font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: -0.01em;">experience</h2><a class="bl lnk" href="https://www.linkedin.com/in/giuliolibralato/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; font-size: 13px; line-height: 18px;">full history on linkedin<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg><span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>link</b></span></a></div>
+<div style="display: grid; gap: 0;">
+<sc-for list="{{exp}}" as="e" hint-placeholder-count="4">
+<div class="xrow" style="display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 4px 32px; padding: 20px 0; border-top: 1px solid var(--border);">
+<span style="font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px; line-height: 22px; color: var(--muted-foreground); white-space: nowrap;">{{e.y}}</span>
+<div style="display: flex; flex-direction: column; gap: 4px; max-width: 600px;">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;"><b style="font-weight: 500;">{{e.co}}</b><span style="font-size: 13px; line-height: 18px; color: var(--muted-foreground);">{{e.role}}</span></div>
+<p style="color: var(--muted-foreground);">{{e.p}}</p>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section id="resume" style="margin-top: 96px; width: 100%;">
+<h2 style="font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 24px;">resume</h2>
+<div style="display: grid; border-bottom: 1px solid var(--border);">
+<div class="xrow" style="display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 4px 32px; padding: 20px 0; border-top: 1px solid var(--border);">
+<span style="font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px; line-height: 22px; color: var(--muted-foreground);">summary</span>
+<p style="max-width: 600px;">5 years designing web and mobile products for U.S. and Latin American clients, from discovery workshops to prototypes and design systems.</p>
+</div>
+<div class="xrow" style="display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 4px 32px; padding: 20px 0; border-top: 1px solid var(--border);">
+<span style="font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px; line-height: 22px; color: var(--muted-foreground);">education</span>
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;"><b style="font-weight: 500;">UPC</b><span style="color: var(--muted-foreground);">Bachelor in Communication and Advertising · 2025</span></div>
+</div>
+<div class="xrow" style="display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 4px 32px; padding: 20px 0; border-top: 1px solid var(--border);">
+<span style="font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px; line-height: 22px; color: var(--muted-foreground);">languages</span>
+<p>Spanish native · English C1</p>
+</div>
+<div class="xrow" style="display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 4px 32px; padding: 20px 0; border-top: 1px solid var(--border);">
+<span style="font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px; line-height: 22px; color: var(--muted-foreground);">download</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; max-width: 480px;"><a class="bs" href="#resume" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-radius: 10px; background: var(--muted);"><span style="display: flex; flex-direction: column;"><span style="font-weight: 500;">resume · english</span><span style="font-size: 13px; line-height: 18px; color: var(--muted-foreground);">PDF</span></span><span style="display: inline-flex; color: var(--muted-foreground);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"></path></svg></span></a><a class="bs" href="#resume" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-radius: 10px; background: var(--muted);"><span style="display: flex; flex-direction: column;"><span style="font-weight: 500;">resume · español</span><span style="font-size: 13px; line-height: 18px; color: var(--muted-foreground);">PDF</span></span><span style="display: inline-flex; color: var(--muted-foreground);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"></path></svg></span></a></div>
+</div>
+</div>
+</section>
+
+<section id="references" style="margin-top: 96px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 24px;"><h2 style="font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: -0.01em;">references</h2><a class="bl lnk" href="https://www.linkedin.com/in/giuliolibralato/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; font-size: 13px; line-height: 18px;">read all on linkedin<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg><span class="sel" aria-hidden="true"><i></i><i></i><i></i><i></i><b>link</b></span></a></div>
+<div class="refs" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px;">
+<figure>
+<blockquote style="margin-bottom: 12px;">“He’s the kind of teammate who makes the whole design team better. (…) He was great at turning messy requirements into clean, usable flows and handled client feedback with patience and clarity.”</blockquote>
+<figcaption style="display: flex; flex-direction: column; gap: 2px;"><a class="lk" href="https://www.linkedin.com/in/iliana-marticorena/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; font-weight: 500; color: var(--foreground);">Iliana Marticorena<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg></a><span style="font-size: 13px; line-height: 18px; color: var(--muted-foreground);">UX/UI Designer</span></figcaption>
+</figure>
+<figure>
+<blockquote style="margin-bottom: 12px;">“In my experience working together with him in software development he has demonstrated not only extensive technical and creative knowledge but also amazing interpersonal and social skills.”</blockquote>
+<figcaption style="display: flex; flex-direction: column; gap: 2px;"><a class="lk" href="https://www.linkedin.com/in/jos%C3%A9-guill%C3%A9n/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; font-weight: 500; color: var(--foreground);">José Guillén<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg></a><span style="font-size: 13px; line-height: 18px; color: var(--muted-foreground);">Technical Lead @ Designli</span></figcaption>
+</figure>
+</div>
+</section>
+
+<section id="contact" style="margin-top: 96px; width: 100%;">
+<div class="grid" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; align-items: stretch;">
+<div style="display: flex; flex-direction: column; justify-content: space-between; gap: 32px;">
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<span style="display: inline-flex; align-items: center; gap: 8px; color: var(--muted-foreground); font-size: 13px; line-height: 18px;"><i style="width: 8px; height: 8px; border-radius: 999px; background: var(--status-done); box-shadow: 0 0 0 3px color-mix(in srgb, var(--status-done) 20%, transparent);"></i>open to full-time roles and freelance projects</span>
+<h2 style="font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: -0.01em; max-width: 360px;">Have a role or a freelance project in mind? Let’s talk.</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px;">
+<a class="crow" href="https://wa.me/51983203160" target="_blank" rel="noopener" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; position: relative; width: calc(100% + 24px); margin: 0 -12px; padding: 12px; border: 0; border-radius: 8px; background: none; cursor: pointer; text-align: left; color: var(--foreground);"><span style="display: flex; align-items: center; gap: 16px;"><span style="font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted-foreground); width: 90px; flex: none;">whatsapp</span><span>+51 983 203 160</span></span><span style="display: inline-flex; color: var(--muted-foreground);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg></span><span class="sel" aria-hidden="true" style="border-radius: 12px;"><i></i><i></i><i></i><i></i><b>link</b></span></a>
+<button type="button" class="crow" onClick="{{copyEmail}}" aria-label="copy email" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; position: relative; width: calc(100% + 24px); margin: 0 -12px; padding: 12px; border: 0; border-radius: 8px; background: none; cursor: pointer; text-align: left; color: var(--foreground);"><span style="display: flex; align-items: center; gap: 16px;"><span style="font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted-foreground); width: 90px; flex: none;">email</span><span>{{copyLabel}}</span></span><span style="display: inline-flex; color: var(--muted-foreground);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg></span><span class="sel" aria-hidden="true" style="border-radius: 12px;"><i></i><i></i><i></i><i></i><b>button</b></span></button>
+<a class="crow" href="https://www.linkedin.com/in/giuliolibralato/" target="_blank" rel="noopener" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; position: relative; width: calc(100% + 24px); margin: 0 -12px; padding: 12px; border: 0; border-radius: 8px; background: none; cursor: pointer; text-align: left; color: var(--foreground);"><span style="display: flex; align-items: center; gap: 16px;"><span style="font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted-foreground); width: 90px; flex: none;">linkedin</span><span>giulio libralato</span></span><span style="display: inline-flex; color: var(--muted-foreground);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg></span><span class="sel" aria-hidden="true" style="border-radius: 12px;"><i></i><i></i><i></i><i></i><b>link</b></span></a>
+</div>
+</div>
+<div class="avw" style="position: relative; align-self: start;"><img src="/_blob/bdb8d16183f8e5e12d9733288c33687b" alt="Giulio Libralato" style="display: block; width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; object-fit: cover; object-position: 50% 0%; background: var(--muted);"><span class="sel" aria-hidden="true" style="inset: -8px; border-radius: 18px;"><i></i><i></i><i></i><i></i><b style="white-space: nowrap;">Giulio Libralato</b></span></div>
+</div>
+</section>
+
+<footer style="margin-top: 96px; padding: 24px 0 8px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; color: var(--muted-foreground); font-size: 13px; line-height: 18px;">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px;">
+<span style="color: var(--foreground); font-weight: 500;">giulio libralato</span>
+<span style="display: inline-flex; align-items: center; gap: 6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>lima, peru · <span style="font-family: 'DM Mono', ui-monospace, monospace; font-size: 12px;">{{time}}</span></span>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px;">
+<span>last updated nov 2026</span>
+<a class="lk" href="#intro" style="display: inline-flex; align-items: center; gap: 4px;">back to top<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5m0 0-6 6m6-6 6 6"></path></svg></a>
+</div>
+</footer>
+<p style="margin-top: 12px; padding-bottom: 8px; max-width: 600px; font-size: 12px; line-height: 18px; color: var(--muted-foreground);">{{legal}}</p>
+</main>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;dark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false},&quot;splash&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true},&quot;aurora&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false},&quot;startTab&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;selected&quot;,&quot;cases&quot;,&quot;websites&quot;,&quot;apps&quot;,&quot;passion projects&quot;,&quot;visual&quot;],&quot;default&quot;:&quot;selected&quot;},&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:2900}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { phase: props.splash === false ? 'done' : 'in', dark: null, tab: null, aud: 'anyone', lang: 'en', menu: false, copied: false, front: 0, cur: '#007AFF', curOn: false, hover: null, picker: false };
+    this.curEl = null;
+  }
+  componentDidMount() {
+    var self = this, rm = false;
+    try { rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+    if (rm || this.state.phase === 'done') { if (this.state.phase !== 'done') this.setState({ phase: 'done' }); return; }
+    this.t1 = setTimeout(function () { self.setState({ phase: 'out' }); }, 1100);
+    this.t2 = setTimeout(function () { self.setState({ phase: 'done' }); }, 2650);
+  }
+  componentWillUnmount() { clearTimeout(this.t1); clearTimeout(this.t2); }
+  renderVals() {
+    var self = this, s = this.state, p = this.props;
+    var dark = s.dark === null ? !!p.dark : s.dark;
+    var tab = s.tab || p.startTab || 'selected'; if (tab === 'work') tab = 'selected'; if (tab === 'logos' || tab === 'design') tab = 'visual';
+    var TABS = ['selected', 'cases', 'websites', 'apps', 'passion projects', 'visual'];
+    var C = {
+      beacon: { title: 'one sidebar for 60 destinations', desc: 'B2B prospecting platform · 5-day sprint', type: 'case study', year: '2026' },
+      keyway: { title: '332 legal fields in 4 steps', desc: 'Listing flow for a home-selling product', type: 'case study', year: '2026' },
+      cdv: { title: '11 mixed items into 12 clear sections', desc: 'Information architecture for cdv.pe', type: 'case study', year: '2026' },
+      digito: { title: 'gamified timesheets for a PM platform', desc: 'SaaS redesign for Dígito · Product Design course', type: 'case study', year: '2025', href: 'https://www.figma.com/proto/sBBTvq1mUKGzu4n07rMyiH?node-id=72247-64147&t=8lnjHKkBJD2JNIop-6' },
+      cinepolis: { title: 'Cinépolis UX research', desc: 'UX research and UI case · UX/UI course', type: 'case study', year: '2023', href: 'https://www.figma.com/proto/PxyIyigICANcLSaEwWBZf8/Cin%C3%A9polis-%7C-Proyecto-UX---UI?node-id=1-3&p=f&viewport=51%2C498%2C0.03&t=xiiHET5U60ie4GY2-1&scaling=contain&content-scaling=fixed&starting-point-node-id=1%3A3&page-id=1%3A2' },
+      brightpath: { title: 'BrightPath', desc: 'Technical test for UX/UI Designer position at Designli', type: 'design challenge', year: '2025', href: 'https://www.figma.com/design/hDQVOnULGRqM5pmxR0A6io/Design-Test---Giulio-Libralato?node-id=2946-1483' },
+      cdvweb: { title: 'Camino de Vida', desc: 'Church website · cdv.pe', type: 'website', year: '2026', href: 'https://cdv.pe' },
+      cdvmusica: { title: 'CDV Música', desc: 'Music ministry website · cdvmusica.com', type: 'website', year: '2025', href: 'https://cdvmusica.com' },
+      nexo: { title: 'Nexo Summit', desc: 'Event site, from design system to SEO', type: 'website', year: '2026', href: 'https://nexosummit.pe' },
+      lessin: { title: 'Lessin', desc: 'Ed-tech website and design system · in Figma', type: 'website', year: '2023', href: 'https://www.figma.com/design/aMI8KBC7X9fAnlAEOBCdHL/Lessin---Plataforma-Web?node-id=121-2&p=f' },
+      wedding: { title: 'Our wedding', desc: 'Wedding website, designed and coded', type: 'website', year: '2026', href: 'https://gyfwedding.vercel.app/' },
+      firstlancer: { title: 'Firstlancer', desc: 'iOS app design · case on Behance', type: 'app', year: '2022', phone: true, href: 'https://www.behance.net/gallery/156666141/Firstlancer-App' },
+      budgy: { title: 'Budgy', desc: 'Personal finance app I use every day', type: 'passion project', year: '2026', phone: true },
+      monthly: { title: 'Monthly Budget', desc: 'Household budget and grocery-planning website', type: 'passion project', year: '2026' }
+    };
+    var BY = { selected: ['beacon', 'keyway', 'cdv', 'nexo'], cases: ['beacon', 'keyway', 'cdv', 'digito', 'brightpath', 'cinepolis'], websites: ['cdvweb', 'cdvmusica', 'nexo', 'lessin', 'wedding'], apps: ['firstlancer', 'budgy'], 'passion projects': ['budgy', 'monthly'] };
+    var cards = (BY[tab] || []).map(function (k) { var c = C[k]; return Object.assign({}, c, { win: !c.phone, phone: !!c.phone, href: c.href || '#work', tgt: c.href ? '_blank' : '_self', dims: c.phone ? '390 × 844' : '1440 × 900', enter: function () { self.setState({ hover: c.href ? 'visit' : 'view' }); } });
+    cards.forEach(function (c, i) { c.d = (1000 + i * 90) + 'ms'; }); });
+    var BE = 'https://www.behance.net/giuliolibralatooliva';
+    var PIECES = [
+      { name: 'Avanza Internacional', year: '2022', art: 'Avanza · logo', href: 'https://www.behance.net/gallery/147727383/AVANZA-Internacional' },
+      { name: 'DL Group', year: '2022', art: 'DL Group · branding', href: 'https://www.behance.net/gallery/149637333/BRANDING-DL-GROUP' },
+      { name: 'Fotomontaje Publicitario II', year: '2025', art: 'Fotomontaje Publicitario II', href: 'https://www.behance.net/gallery/226440389/Fotomontaje-Publicitario-II' },
+      { name: 'VOLT x Real Madrid', year: '2025', art: 'VOLT x Real Madrid', href: 'https://www.behance.net/gallery/226440183/VOLT-Fotomontaje-Publicitario' }
+    ];
+    var pieces = PIECES;
+    var n = pieces.length;
+    var POS = [{ tf: 'translateY(0) scale(1)', z: 4, dim: '0' }, { tf: 'translateY(-14px) scale(.94)', z: 3, dim: '.04' }, { tf: 'translateY(-28px) scale(.88)', z: 2, dim: '.08' }, { tf: 'translateY(-42px) scale(.82)', z: 1, dim: '.12' }];
+    var stack = pieces.map(function (x, i) { var pos = POS[(i - s.front + n) % n]; var on = i === s.front; return Object.assign({}, x, pos, { on: on ? 'true' : 'false', fg: on ? 'var(--foreground)' : 'var(--muted-foreground)', pick: function () { self.setState({ front: i, hover: 'visit' }); } }); });
+    var INTRO = {
+      anyone: ['I design B2B tools and AI workflows for web and mobile. Lately: turning a platform with 60 destinations into one sidebar, and a 332-field legal form into four steps.', 'I work from research to shipped UI, and I prototype in code when a picture is not enough.'],
+      recruiters: ['Product designer with 5 years designing web and mobile products for U.S. and Latin American clients in healthcare, real estate, telecom, insurance and SaaS.', 'Available now and open to relocation. English C1, Spanish native.'],
+      leads: ['I lead work from discovery workshops to user flows, prototypes and design system contributions, and I present the why behind each decision to clients.', 'I build AI-assisted workflows (Claude Code, Figma Make, Mobbin MCP) to get from research to a testable prototype faster.']
+    };
+    var NAV = ['intro', 'work', 'experience', 'references', 'resume', 'contact'];
+    var timeStr = '';
+    try { timeStr = new Date().toLocaleTimeString('en-US', { timeZone: 'America/Lima', hour: 'numeric', minute: '2-digit' }).toLowerCase(); } catch (e) { timeStr = '3:42 pm'; }
+    return {
+      aurora: !!p.aurora,
+      theme: dark ? 'dark' : 'light',
+      darkAria: dark ? 'true' : 'false',
+      trackBg: dark ? 'var(--brand)' : 'var(--border)',
+      thumbTop: dark ? '23px' : '3px',
+      themeLabel: dark ? 'light mode' : 'dark mode',
+      toggleDark: function () { self.setState({ dark: !dark }); },
+      legal: s.lang === 'es' ? 'Los proyectos de cliente se muestran con fines de portafolio. Todos los derechos pertenecen a Designli, Konecta y sus clientes. Nombres, marcas, colores y datos se cambiaron o eliminaron para proteger información confidencial.' : 'Client work is shown for portfolio purposes only. All rights belong to Designli, Konecta and their respective clients. Names, brands, colors and data have been changed or removed to protect confidential information.',
+      splashOn: s.phase !== 'done', splashCls: s.phase === 'out' ? 'out' : '', revealCls: s.phase === 'in' ? 'pre' : 'go',
+      setCur: function (el) { self.curEl = el; },
+      moveCur: function (e) {
+        if (self.curEl) self.curEl.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px)';
+        var t = e.target, mode = 'arrow';
+        if (t && t.closest) {
+          var d = t.closest('[data-cursor]');
+          if (d) mode = d.getAttribute('data-cursor');
+          else if (t.closest('a,button,select,label')) mode = 'point';
+          else if (t.closest('p,h1,h2,h3,blockquote,figcaption,li') || [].some.call(t.childNodes || [], function (n) { return n.nodeType === 3 && n.textContent.trim(); })) mode = 'text';
+        }
+        var st = self.state;
+        if (!st.curOn || st.mode !== mode) self.setState({ curOn: true, mode: mode });
+      },
+      hideCur: function () { self.setState({ curOn: false }); },
+      leaveCard: function () { self.setState({ hover: null }); },
+      curOpacity: s.curOn ? '1' : '0', curColor: s.cur, curArrow: (s.mode || 'arrow') === 'arrow', curText: s.mode === 'text', curPoint: s.mode === 'point', curGrab: s.mode === 'grab',
+      curName: ({ '#007AFF': 'blue', '#7C3AED': 'purple', '#DB2777': 'pink', '#EA580C': 'orange', '#16A34A': 'green', '#334155': 'graphite' })[s.cur] || 'blue',
+      curLabel: s.hover === 'view' ? (s.lang === 'es' ? 'ver caso' : 'view case') : s.hover === 'visit' ? (s.lang === 'es' ? 'visitar ↗' : 'visit ↗') : (s.lang === 'es' ? 'visitante' : 'visitor'),
+      visitorWord: s.lang === 'es' ? 'visitante' : 'visitor',
+      pickerOpen: s.picker, pickerAria: s.picker ? 'true' : 'false', pickerTitle: s.lang === 'es' ? 'color del cursor' : 'cursor color', pickerHint: s.lang === 'es' ? 'así te ves mientras navegas' : 'how you show up while browsing',
+      togglePicker: function () { self.setState({ picker: !s.picker }); },
+      swatches: [['blue', '#007AFF'], ['purple', '#7C3AED'], ['pink', '#DB2777'], ['orange', '#EA580C'], ['green', '#16A34A'], ['graphite', '#334155']].map(function (w) {
+        var on = s.cur === w[1];
+        return { name: w[0], hex: w[1], on: on ? 'true' : 'false', ring: on ? '0 0 0 2px var(--background), 0 0 0 4px ' + w[1] : 'none', pick: function () { self.setState({ cur: w[1] }); } };
+      }),
+      resumeOpen: !!s.resumeOpen, resumeAria: s.resumeOpen ? 'true' : 'false', resumeColor: s.resumeOpen ? 'var(--foreground)' : 'var(--muted-foreground)',
+      toggleResume: function () { self.setState({ resumeOpen: !s.resumeOpen }); }, closeResume: function () { self.setState({ resumeOpen: false }); },
+      isLight: !dark, isDark: dark, themeAria: dark ? 'switch to light mode' : 'switch to dark mode',
+      toggleLang: function () { self.setState({ lang: s.lang === 'es' ? 'en' : 'es' }); }, langAria: s.lang === 'es' ? 'idioma: español · switch to english' : 'language: english · cambiar a español', pickLight: function () { self.setState({ dark: false }); }, pickDark: function () { self.setState({ dark: true }); }, lightOn: dark ? 'false' : 'true', themeShift: dark ? 'translateY(28px)' : 'translateY(0)', sunColor: dark ? 'var(--muted-foreground)' : 'var(--foreground)', moonColor: dark ? 'var(--foreground)' : 'var(--muted-foreground)',
+      enOn: s.lang === 'en' ? 'true' : 'false', esOn: s.lang === 'es' ? 'true' : 'false',
+      enColor: s.lang === 'en' ? 'var(--foreground)' : 'var(--muted-foreground)',
+      esColor: s.lang === 'es' ? 'var(--foreground)' : 'var(--muted-foreground)',
+      langShift: s.lang === 'es' ? 'translateY(28px)' : 'translateY(0)',
+      pickEn: function () { self.setState({ lang: 'en' }); },
+      pickEs: function () { self.setState({ lang: 'es' }); },
+      menuOpen: s.menu, menuAria: s.menu ? 'true' : 'false',
+      toggleMenu: function () { self.setState({ menu: !s.menu }); }, closeMenu: function () { self.setState({ menu: false }); },
+      nav: NAV.map(function (x, i) { return { label: x, href: '#' + x, style: i === 0 ? 'color: var(--foreground);' : '' }; }),
+      auds: [['anyone', 'for anyone'], ['recruiters', 'recruiters'], ['leads', 'design leads']].map(function (x) {
+        var on = s.aud === x[0];
+        return { label: x[1], sel: on ? 'true' : 'false', fg: on ? 'var(--foreground)' : 'var(--muted-foreground)', ul: on ? 'underline' : 'none', pick: function () { self.setState({ aud: x[0] }); } };
+      }),
+      intro: INTRO[s.aud][0], intro2: INTRO[s.aud][1],
+      copyLabel: s.copied ? 'copied to clipboard' : 'giuliolibralatooliva@gmail.com',
+      copyEmail: function () {
+        try { navigator.clipboard.writeText('giuliolibralatooliva@gmail.com'); } catch (e) {}
+        self.setState({ copied: true });
+        setTimeout(function () { self.setState({ copied: false }); }, 1600);
+      },
+      tabs: TABS.map(function (t) { return { t: t, n: t === 'visual' ? PIECES.length : (BY[t] || []).length }; }).filter(function (x) { return x.n > 0; }).map(function (x) {
+        var t = x.t, on = t === tab;
+        return { label: t, count: String(x.n), sel: on ? 'true' : 'false', bg: on ? 'var(--background)' : 'transparent', fg: on ? 'var(--foreground)' : 'var(--muted-foreground)', sh: on ? '0 1px 2px var(--shadow)' : 'none', pick: function () { self.setState({ tab: t, front: 0 }); } };
+      }),
+      showCards: cards.length > 0, cards: cards,
+      showStack: tab === 'visual', stack: stack, stackIntro: 'Logos, branding and advertising photomontages. Each one opens on Behance.',
+      nextPiece: function () { self.setState({ front: (s.front + 1) % n }); },
+      exp: [
+        { co: 'Designli', role: 'ux/ui & product designer', y: 'sep 2025 – oct 2026', p: 'Designed 16+ web and mobile products across 6+ industries. Led design in 2-week Solution Labs and 5-day Impact Weeks.' },
+        { co: 'freelance', role: 'ux/ui designer', y: '2021 – now', p: 'Designed and built the Nexo Summit website, from design system to SEO, with custom ticketing plugins.' },
+        { co: 'Konecta', role: 'ui designer', y: 'oct 2022 – dec 2024', p: 'Visual identities, campaign systems and responsive landing pages for telecom and insurance brands.' },
+        { co: 'minegocioendigital.pe', role: 'digital consultant · product developer', y: '2021 – 2022', p: 'Designed and built responsive WordPress sites; led a team of 3 across 30–40 clients.' }
+      ],
+      time: timeStr
+    };
+  }
+}
+</script>
+</body>
+</html>

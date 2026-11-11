@@ -1,0 +1,15 @@
+# Notas privadas: nombran clientes, personas y datos de trabajo. Se quedan solo en local.
+EVIDENCIA.md
+INVENTARIO.md
+RECORRIDO.md
+ANALISIS-CASOS.md
+LENGUAJE-SENIOR.md
+ROADMAP.md
+anon/
+*.docx
+*.bak
+analisis-portafolios.html
+.DS_Store
+node_modules/
+.env*
+.vercel/

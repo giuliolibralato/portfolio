@@ -6,8 +6,9 @@ import { CardSwap } from "./CardSwap";
 import { Cursor, CursorMode, modeFor } from "./Cursor";
 import { Arrow, Chevron, Close, Copy, Download, Globe, Menu, Moon, Pin, PointerIcon, Sel, Sun, Up } from "./Icons";
 import { RubberTabs } from "./RubberTabs";
+import { T } from "@/lib/i18n";
 import {
-  AUDIENCES, Audience, BEHANCE, CURSOR_COLORS, EMAIL, EXPERIENCE, GITHUB, INTRO, LEGAL, LINKEDIN, Lang, NAV,
+  AUDIENCES, Audience, BEHANCE, CURSOR_COLORS, EMAIL, EXPERIENCE, GITHUB, LINKEDIN, Lang, NAV,
   PIECES, PROJECTS, REFERENCES, TABS, WHATSAPP,
 } from "@/lib/data";
 
@@ -68,6 +69,9 @@ export default function Home() {
   useEffect(() => {
     const saved = localStorage.getItem("theme");
     setDark(saved ? saved === "dark" : matchMedia("(prefers-color-scheme: dark)").matches);
+    const l = localStorage.getItem("lang");
+    if (l === "es" || l === "en") setLang(l);
+    else if (navigator.language?.toLowerCase().startsWith("es")) setLang("es");
     const c = localStorage.getItem("cursor");
     if (c) setCursor(c);
     setTime(new Date().toLocaleTimeString("en-US", { timeZone: "America/Lima", hour: "numeric", minute: "2-digit" }).toLowerCase());
@@ -76,9 +80,13 @@ export default function Home() {
     document.documentElement.dataset.theme = dark ? "dark" : "light";
   }, [dark]);
   useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+  useEffect(() => {
     document.documentElement.style.setProperty("--cursor", cursor);
   }, [cursor]);
 
+  const toggleLang = () => setLang((l) => { const n = l === "es" ? "en" : "es"; localStorage.setItem("lang", n); return n; });
   const toggleDark = () => setDark((d) => { localStorage.setItem("theme", d ? "light" : "dark"); return !d; });
   const pickCursor = (c: string) => { setCursor(c); localStorage.setItem("cursor", c); };
   const copyEmail = () => {
@@ -96,12 +104,12 @@ export default function Home() {
   };
 
   const es = lang === "es";
-  const visitor = es ? "visitante" : "visitor";
-  const label =
-    hoverLabel === "view" ? (es ? "ver caso" : "view case") : hoverLabel === "visit" ? (es ? "visitar ↗" : "visit ↗") : visitor;
+  const t = T[lang];
+  const visitor = t.visitor;
+  const label = hoverLabel === "view" ? t.view : hoverLabel === "visit" ? t.visit : visitor;
   const show = phase === "in" ? "hidden" : "show";
   const tabs = ALL_TABS.filter((t) => t === "visual" || (TABS.find((x) => x[0] === t)?.[1].length ?? 0) > 0);
-  const cards = (TABS.find((t) => t[0] === tab)?.[1] ?? []).map((k) => ({ key: k, ...PROJECTS[k] }));
+  const cards = (TABS.find((x) => x[0] === tab)?.[1] ?? []).map((k) => ({ key: k, ...PROJECTS[k], ...(es ? T.es.projects[k] : {}) }));
   const count = (t: string) => (t === "visual" ? PIECES.length : TABS.find((x) => x[0] === t)?.[1].length ?? 0);
 
   return (
@@ -137,7 +145,7 @@ export default function Home() {
                   <motion.i layoutId="nav-dot" aria-hidden="true" transition={{ type: "spring", stiffness: 520, damping: 38 }}
                     style={{ position: "absolute", left: 0, top: "50%", width: 6, height: 6, marginTop: -3, borderRadius: 999, background: "var(--brand)" }} />
                 )}
-                <motion.span animate={{ x: active === n ? 2 : 0 }} transition={{ type: "spring", stiffness: 520, damping: 38 }} style={{ display: "inline-block" }}>{n}</motion.span>
+                <motion.span animate={{ x: active === n ? 2 : 0 }} transition={{ type: "spring", stiffness: 520, damping: 38 }} style={{ display: "inline-block" }}>{t.nav[n]}</motion.span>
               </a>
             ))}
           </nav>
@@ -146,7 +154,7 @@ export default function Home() {
               {picker && (
                 <motion.div
                   role="dialog"
-                  aria-label={es ? "color del cursor" : "cursor color"}
+                  aria-label={t.cursorTitle}
                   initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.97 }}
@@ -154,8 +162,8 @@ export default function Home() {
                   style={{ transformOrigin: "bottom left", position: "absolute", left: 56, bottom: 0, zIndex: 30, width: 304, padding: 16, display: "flex", flexDirection: "column", gap: 16, border: "1px solid var(--border)", borderRadius: 16, background: "var(--background)", boxShadow: "0 16px 40px -16px var(--shadow), 0 2px 6px -2px var(--shadow)" }}
                 >
                   <div style={{ position: "relative", paddingRight: 32 }}>
-                    <div style={{ fontWeight: 500 }}>{es ? "color del cursor" : "cursor color"}</div>
-                    <div className="small muted" style={{ whiteSpace: "nowrap" }}>{es ? "así te ves mientras navegas" : "how you show up while browsing"}</div>
+                    <div style={{ fontWeight: 500 }}>{t.cursorTitle}</div>
+                    <div className="small muted" style={{ whiteSpace: "nowrap" }}>{t.cursorHint}</div>
                     <button type="button" aria-label="close" onClick={() => setPicker(false)} className="lk" style={{ position: "absolute", top: -6, right: -6, width: 28, height: 28, display: "grid", placeItems: "center" }}>
                       <Close size={14} />
                     </button>
@@ -173,13 +181,13 @@ export default function Home() {
                 </motion.div>
               )}
             </AnimatePresence>
-            <IconButton label={es ? "color del cursor" : "cursor color"} onClick={() => setPicker((p) => !p)}>
+            <IconButton label={t.cursorTitle} onClick={() => setPicker((p) => !p)}>
               <PointerIcon color={cursor} />
             </IconButton>
-            <IconButton label={dark ? "switch to light mode" : "switch to dark mode"} onClick={toggleDark}>
+            <IconButton label={dark ? t.themeToLight : t.themeToDark} onClick={toggleDark}>
               {dark ? <Moon key="m" /> : <Sun key="s" />}
             </IconButton>
-            <IconButton label={es ? "idioma: español · switch to english" : "language: english · cambiar a español"} onClick={() => setLang(es ? "en" : "es")}>
+            <IconButton label={t.langLabel} onClick={toggleLang}>
               <Globe />
             </IconButton>
           </div>
@@ -188,7 +196,7 @@ export default function Home() {
         <div className="content">
           <motion.header className="mtop" initial={{ opacity: 0 }} animate={{ opacity: phase === "in" ? 0 : 1 }} transition={{ duration: 1, ease: SHEET, delay: 0.75 }}>
             <a href="#intro" style={{ fontWeight: 500 }}>giulio libralato</a>
-            <button type="button" aria-label="menu" aria-expanded={menu} onClick={() => setMenu(true)} className="lk" style={{ width: 44, height: 44, display: "grid", placeItems: "center", color: "var(--foreground)" }}>
+            <button type="button" aria-label={t.menu} aria-expanded={menu} onClick={() => setMenu(true)} className="lk" style={{ width: 44, height: 44, display: "grid", placeItems: "center", color: "var(--foreground)" }}>
               <Menu />
             </button>
           </motion.header>
@@ -204,12 +212,12 @@ export default function Home() {
                 </div>
                 <motion.nav aria-label="sections" style={{ display: "flex", flexDirection: "column", marginTop: 32 }} initial="hidden" animate="show" transition={{ staggerChildren: 0.05 }}>
                   {NAV.map((n) => (
-                    <motion.a key={n} href={`#${n}`} onClick={() => setMenu(false)} variants={block} className="nl" style={{ padding: "10px 0", fontSize: 28, lineHeight: "36px", fontWeight: 500 }}>{n}</motion.a>
+                    <motion.a key={n} href={`#${n}`} onClick={() => setMenu(false)} variants={block} className="nl" style={{ padding: "10px 0", fontSize: 28, lineHeight: "36px", fontWeight: 500 }}>{t.nav[n]}</motion.a>
                   ))}
                 </motion.nav>
                 <div style={{ marginTop: "auto", display: "flex", gap: 8 }}>
                   <IconButton label="theme" onClick={toggleDark} size={44}>{dark ? <Moon key="m" /> : <Sun key="s" />}</IconButton>
-                  <IconButton label="language" onClick={() => setLang(es ? "en" : "es")} size={44}><Globe /></IconButton>
+                  <IconButton label={t.langLabel} onClick={toggleLang} size={44}><Globe /></IconButton>
                 </div>
               </motion.div>
             )}
@@ -224,22 +232,22 @@ export default function Home() {
                 <Sel label="img" badge="76 × 76" style={{ inset: -8 }} />
               </motion.div>
               <motion.h1 variants={block} style={{ fontSize: 20, lineHeight: "28px", fontWeight: 500, letterSpacing: "-0.01em" }}>giulio libralato</motion.h1>
-              <motion.p variants={block} className="muted" style={{ margin: "2px 0 20px", fontSize: 16, lineHeight: "24px" }}>product designer · lima, peru</motion.p>
+              <motion.p variants={block} className="muted" style={{ margin: "2px 0 20px", fontSize: 16, lineHeight: "24px" }}>{t.role}</motion.p>
               <motion.span variants={block} className="small muted" style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
                 <i style={{ width: 8, height: 8, borderRadius: 999, background: "var(--status-done)", boxShadow: "0 0 0 3px color-mix(in srgb, var(--status-done) 20%, transparent)" }} />
-                open to full-time roles and freelance projects
+                {t.status}
               </motion.span>
               <motion.div variants={block} style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 24 }}>
                 <div role="tablist" aria-label="portfolio for" style={{ display: "flex", flexWrap: "wrap", gap: "4px 20px" }}>
-                  {AUDIENCES.map(([k, l]) => (
-                    <button key={k} type="button" role="tab" className="at" aria-selected={aud === k} onClick={() => setAud(k)}>{l}</button>
+                  {AUDIENCES.map(([k]) => (
+                    <button key={k} type="button" role="tab" className="at" aria-selected={aud === k} onClick={() => setAud(k)}>{t.audiences[k]}</button>
                   ))}
                 </div>
                 <AnimatePresence mode="wait">
-                  <motion.div key={aud} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
+                  <motion.div key={aud + lang} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
                     style={{ display: "flex", flexDirection: "column", gap: 8, lineHeight: "24px", minHeight: 80 }}>
-                    <p>{INTRO[aud][0]}</p>
-                    <p>{INTRO[aud][1]}</p>
+                    <p>{t.intro[aud][0]}</p>
+                    <p>{t.intro[aud][1]}</p>
                   </motion.div>
                 </AnimatePresence>
               </motion.div>
@@ -250,7 +258,7 @@ export default function Home() {
                 <span className="dot muted" aria-hidden="true">·</span>
                 <span style={{ position: "relative", display: "inline-flex" }} onMouseLeave={() => setResume(false)}>
                   <button type="button" className="lk lnk" aria-haspopup="menu" aria-expanded={resume} onClick={() => setResume((r) => !r)} style={{ display: "inline-flex", alignItems: "center", gap: 4, color: resume ? "var(--foreground)" : undefined }}>
-                    resume<Chevron /><Sel label="resume" />
+                    {t.nav.resume}<Chevron /><Sel label={t.nav.resume} />
                   </button>
                   <AnimatePresence>
                     {resume && (
@@ -258,8 +266,8 @@ export default function Home() {
                         <motion.div role="menu" aria-label="download resume"
                           initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.97 }} transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
                           style={{ transformOrigin: "top left", width: 248, padding: 6, display: "flex", flexDirection: "column", gap: 2, border: "1px solid var(--border)", borderRadius: 14, background: "var(--background)", boxShadow: "0 16px 40px -16px var(--shadow), 0 2px 6px -2px var(--shadow)" }}>
-                          <span className="muted" style={{ padding: "8px 10px 6px", fontSize: 12, lineHeight: "16px" }}>download resume</span>
-                          {[["English", "EN"], ["Español", "ES"]].map(([l, c]) => (
+                          <span className="muted" style={{ padding: "8px 10px 6px", fontSize: 12, lineHeight: "16px" }}>{t.downloadCv}</span>
+                          {t.cvMenu.map(([l, c]) => (
                             <a key={c} className="cr" href="#resume" role="menuitem" onClick={() => setResume(false)} style={{ display: "flex", alignItems: "center", gap: 12, padding: 10, borderRadius: 10 }}>
                               <span className="mono muted" style={{ width: 32, height: 32, display: "grid", placeItems: "center", borderRadius: 8, background: "var(--muted)", fontSize: 11 }}>{c}</span>
                               <span style={{ flex: 1, display: "flex", flexDirection: "column" }}><span style={{ fontWeight: 500 }}>{l}</span><span className="muted" style={{ fontSize: 12, lineHeight: "16px" }}>PDF · 2026</span></span>
@@ -277,7 +285,7 @@ export default function Home() {
                 <LinkItem href={WHATSAPP} label="whatsapp" />
                 <span className="dot muted" aria-hidden="true">·</span>
                 <button type="button" className="lk lnk" onClick={copyEmail} aria-label="copy email" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-                  {copied ? "copied to clipboard" : EMAIL}<Copy /><Sel label="email" />
+                  {copied ? t.copied : EMAIL}<Copy /><Sel label="email" />
                 </button>
               </motion.div>
             </motion.section>
@@ -286,7 +294,7 @@ export default function Home() {
             <motion.section id="work" style={{ marginTop: 56 }} initial="hidden" animate={show} transition={{ staggerChildren: 0.09, delayChildren: 0.9 }}>
               <motion.div variants={block}>
                 <RubberTabs items={tabs} value={tab} onChange={(t) => { setTab(t); setFront(0); }} label="work type"
-                  render={(t) => <>{t}<span className="count mono">{count(t)}</span></>} />
+                  render={(x) => <>{t.tabs[x] ?? x}<span className="count mono">{count(x)}</span></>} />
               </motion.div>
 
               {tab !== "visual" ? (
@@ -310,7 +318,7 @@ export default function Home() {
                       <h3 className="one" style={{ marginTop: 16, fontSize: 15, lineHeight: "22px", fontWeight: 500 }}>{c.title}</h3>
                       <p className="one muted">{c.desc}</p>
                       <div className="muted" style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 12, fontSize: 12, lineHeight: "16px" }}>
-                        <span className="tag">{c.type}</span>
+                        <span className="tag">{t.types[c.type] ?? c.type}</span>
                         <span className="mono" style={{ marginLeft: "auto" }}>{c.year}</span>
                       </div>
                     </motion.a>
@@ -320,7 +328,7 @@ export default function Home() {
                 <motion.div className="grid" style={{ alignItems: "center" }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
                   <CardSwap pieces={PIECES} front={front} onFront={setFront} />
                   <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                    <p className="muted">Logos, branding and advertising photomontages. Each one opens on Behance.</p>
+                    <p className="muted">{t.visualIntro}</p>
                     <div style={{ display: "grid" }}>
                       {PIECES.map((p, i) => (
                         <a key={p.name} className="cr" href={p.href} target="_blank" rel="noopener"
@@ -332,7 +340,7 @@ export default function Home() {
                       ))}
                     </div>
                     <a className="bl lnk small" href={BEHANCE} target="_blank" rel="noopener" style={{ alignSelf: "flex-end", display: "inline-flex", alignItems: "center", gap: 4 }}>
-                      see all on behance<Arrow size={14} /><Sel label="link" />
+                      {t.seeBehance}<Arrow size={14} /><Sel label="link" />
                     </a>
                   </div>
                 </motion.div>
@@ -341,8 +349,8 @@ export default function Home() {
 
             {/* experience */}
             <section id="experience" style={{ marginTop: 96 }}>
-              <SectionHead title="experience" link="full history on linkedin" href={LINKEDIN} />
-              {EXPERIENCE.map((e) => (
+              <SectionHead title={t.experience} link={t.fullHistory} href={LINKEDIN} />
+              {EXPERIENCE.map((e0, i) => ({ ...e0, ...t.exp[i] })).map((e) => (
                 <div key={e.co} className="xrow">
                   <span className="mono muted" style={{ fontSize: 12, lineHeight: "22px", whiteSpace: "nowrap" }}>{e.y}</span>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4, maxWidth: 600 }}>
@@ -355,16 +363,16 @@ export default function Home() {
 
             {/* resume */}
             <section id="resume" style={{ marginTop: 96 }}>
-              <h2 className="h2" style={{ marginBottom: 24 }}>resume</h2>
+              <h2 className="h2" style={{ marginBottom: 24 }}>{t.resume}</h2>
               <div style={{ borderBottom: "1px solid var(--border)" }}>
-                <Row label="summary"><p style={{ maxWidth: 600 }}>5 years designing web and mobile products for U.S. and Latin American clients, from discovery workshops to prototypes and design systems.</p></Row>
-                <Row label="education"><div style={{ display: "flex", flexWrap: "wrap", gap: "4px 10px", alignItems: "baseline" }}><b style={{ fontWeight: 500 }}>UPC</b><span className="muted">Bachelor in Communication and Advertising · 2025</span></div></Row>
-                <Row label="languages"><p>Spanish native · English C1</p></Row>
-                <Row label="download">
+                <Row label={t.rows.summary}><p style={{ maxWidth: 600 }}>{t.summary}</p></Row>
+                <Row label={t.rows.education}><div style={{ display: "flex", flexWrap: "wrap", gap: "4px 10px", alignItems: "baseline" }}><b style={{ fontWeight: 500 }}>UPC</b><span className="muted">{t.degree}</span></div></Row>
+                <Row label={t.rows.languages}><p>{t.langs}</p></Row>
+                <Row label={t.rows.download}>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 8, maxWidth: 480 }}>
-                    {["english", "español"].map((l) => (
+                    {t.cvLangs.map((l) => (
                       <a key={l} className="bs" href="#resume">
-                        <span style={{ display: "flex", flexDirection: "column" }}><span style={{ fontWeight: 500 }}>resume · {l}</span><span className="small muted">PDF</span></span>
+                        <span style={{ display: "flex", flexDirection: "column" }}><span style={{ fontWeight: 500 }}>{t.resume} · {l}</span><span className="small muted">PDF</span></span>
                         <span className="muted"><Download size={16} /></span>
                       </a>
                     ))}
@@ -375,7 +383,7 @@ export default function Home() {
 
             {/* references */}
             <section id="references" style={{ marginTop: 96 }}>
-              <SectionHead title="references" link="read all on linkedin" href={LINKEDIN} />
+              <SectionHead title={t.references} link={t.readAll} href={LINKEDIN} />
               <div className="refs" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 32 }}>
                 {REFERENCES.map((r) => (
                   <figure key={r.name}>
@@ -397,14 +405,14 @@ export default function Home() {
                 <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 32 }}>
                   <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                     <span className="small muted" style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                      <i style={{ width: 8, height: 8, borderRadius: 999, background: "var(--status-done)" }} />open to full-time roles and freelance projects
+                      <i style={{ width: 8, height: 8, borderRadius: 999, background: "var(--status-done)" }} />{t.status}
                     </span>
-                    <h2 className="h2" style={{ maxWidth: 360 }}>Have a role or a freelance project in mind? Let’s talk.</h2>
+                    <h2 className="h2" style={{ maxWidth: 360 }}>{t.contactTitle}</h2>
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     <ContactRow k="whatsapp" v="+51 983 203 160" href={WHATSAPP} />
                     <button type="button" className="crow" onClick={copyEmail} aria-label="copy email">
-                      <span style={{ display: "flex", alignItems: "center", gap: 16 }}><span className="mono muted" style={{ fontSize: 12, width: 90 }}>email</span><span>{copied ? "copied to clipboard" : EMAIL}</span></span>
+                      <span style={{ display: "flex", alignItems: "center", gap: 16 }}><span className="mono muted" style={{ fontSize: 12, width: 90 }}>email</span><span>{copied ? t.copied : EMAIL}</span></span>
                       <span className="muted"><Copy /></span><Sel label="button" />
                     </button>
                     <ContactRow k="linkedin" v="giulio libralato" href={LINKEDIN} />
@@ -420,14 +428,13 @@ export default function Home() {
             <footer style={{ marginTop: 96, padding: "24px 0 8px", borderTop: "1px solid var(--border)", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "12px 24px" }} className="small muted">
               <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "4px 16px" }}>
                 <span style={{ color: "var(--foreground)", fontWeight: 500 }}>giulio libralato</span>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}><Pin />lima, peru · <span className="mono" style={{ fontSize: 12 }}>{time}</span></span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}><Pin />{t.city} · <span className="mono" style={{ fontSize: 12 }}>{time}</span></span>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "4px 16px" }}>
-                <span>last updated nov 2026</span>
-                <a className="lk" href="#intro" style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>back to top<Up /></a>
+                <span>{t.updated}</span>
+                <a className="lk" href="#intro" style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>{t.top}<Up /></a>
               </div>
             </footer>
-            <p className="muted" style={{ marginTop: 12, paddingBottom: 8, maxWidth: 600, fontSize: 12, lineHeight: "18px" }}>{LEGAL[lang]}</p>
           </main>
         </div>
       </div>

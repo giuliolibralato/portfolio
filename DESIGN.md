@@ -140,7 +140,8 @@ El contenido se centra en el espacio que queda a la derecha de la barra. La bio 
 - **Intro tipo Darina:** foto 76 × 76 (marco "img" y badge de medida afuera), nombre 20/28 500, rol 16/24 muted, bio 15/24 con 8 px entre párrafos, links en una fila separados por " · ".
 - **Títulos de sección** 20/28 500, con el link de la sección alineado a la derecha en `brand-text`.
 - **Movimiento (review-animations):** hover de tarjetas 300 ms y solo con mouse; pila de visual 400 ms sin rebote, oscurecida con capa de opacidad; popovers con `@starting-style` (150 ms, escala 0.97 desde su botón); botones con `:active` 0.97; tema 200 ms; reduced-motion mantiene fundidos.
-- **Aviso legal** debajo del footer (EN/ES): trabajo de cliente con fines de portafolio, derechos de Designli, Konecta y sus clientes, datos cambiados.
+- **Aviso legal** solo en los casos con trabajo de cliente (al final de cada caso), no en todo el sitio.
+- **Bilingüe:** todo el texto vive en `lib/i18n.ts` (en · es). El idioma se elige con el globo, se recuerda, y la primera visita sigue el idioma del navegador.
 - Copia de trabajo del canvas: `design-canvas/Main.dc.html`. Cursores en SVG: `assets/cursors/`.
 
 ## 5. Movimiento

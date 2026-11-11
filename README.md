@@ -3,6 +3,8 @@
   <img alt="giulio libralato — product designer" src="assets/readme/cover-light.svg">
 </picture>
 
+**→ [preview: giuliolibralato.github.io/portfolio](https://giuliolibralato.github.io/portfolio/)**
+
 personal portfolio · bilingual (en · es) · built text first, with one accent and quiet motion.
 
 ## what's here
@@ -11,6 +13,7 @@ personal portfolio · bilingual (en · es) · built text first, with one accent 
 |---|---|
 | [`PRD.md`](PRD.md) | what the site is: pages, sections, seo |
 | [`DESIGN.md`](DESIGN.md) | the design system: tokens, type, 12-column grid, components, motion |
+| [`app/`](app/) · [`components/`](components/) | the site in react (next.js) |
 | [`design-canvas/`](design-canvas/Main.dc.html) | the home, designed in claude design |
 | [`assets/cursors/`](assets/cursors/README.md) | multiplayer-style cursors, svg |
 | [`cases/`](cases/) | case studies, one markdown file per language |
@@ -25,13 +28,21 @@ personal portfolio · bilingual (en · es) · built text first, with one accent 
 
 ## stack
 
-next.js · tailwind v4 · shadcn/ui · mdx · static export on github pages
+react 19 · next.js 15 (static export) · motion · gsap · github pages
+
+motion follows the references: react bits rubber segment (tabs), card swap (gsap), warm tooltip, plus billy sweeney's cover and darina usanova's cascade.
+
+```bash
+npm install
+npm run dev
+```
 
 ## status
 
 - [x] plan, design system, home design
 - [ ] case studies · beacon (draft), keyway, camino de vida
-- [ ] code, covers, seo, launch
+- [x] home in react, deployed on github pages
+- [ ] covers, case pages, seo, custom domain
 
 ## confidentiality
 

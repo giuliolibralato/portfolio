@@ -39,6 +39,7 @@ export default function Home() {
   const [hoverLabel, setHoverLabel] = useState<string | null>(null);
   const [cursorOn, setCursorOn] = useState(false);
   const [time, setTime] = useState("");
+  const [active, setActive] = useState<string>("intro");
   const cur = useRef<HTMLDivElement>(null);
 
   // entrance (Billy): cover holds, then slides up as the content cascades in
@@ -48,6 +49,20 @@ export default function Home() {
     const b = setTimeout(() => setPhase("done"), 2650);
     return () => { clearTimeout(a); clearTimeout(b); };
   }, [reduce]);
+
+  // scroll spy: the rail marks the section in view
+  useEffect(() => {
+    const els = NAV.map((n) => document.getElementById(n)).filter(Boolean) as HTMLElement[];
+    const io = new IntersectionObserver(
+      (entries) => {
+        const vis = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (vis[0]) setActive(vis[0].target.id);
+      },
+      { rootMargin: "-35% 0px -55% 0px" },
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [phase]);
 
   // theme follows the system first, then the toggle
   useEffect(() => {
@@ -116,8 +131,14 @@ export default function Home() {
         <motion.aside className="rail" initial={{ opacity: 0 }} animate={{ opacity: phase === "in" ? 0 : 1 }} transition={{ duration: 1, ease: SHEET, delay: 0.75 }}>
           <a href="#intro" style={{ fontWeight: 500 }}>giulio libralato</a>
           <nav aria-label="sections">
-            {NAV.map((n, i) => (
-              <a key={n} href={`#${n}`} className="nl" aria-current={i === 0 ? "true" : undefined}>{n}</a>
+            {NAV.map((n) => (
+              <a key={n} href={`#${n}`} className="nl" aria-current={active === n ? "true" : undefined} style={{ position: "relative", paddingLeft: 14 }}>
+                {active === n && (
+                  <motion.i layoutId="nav-dot" aria-hidden="true" transition={{ type: "spring", stiffness: 520, damping: 38 }}
+                    style={{ position: "absolute", left: 0, top: "50%", width: 6, height: 6, marginTop: -3, borderRadius: 999, background: "var(--brand)" }} />
+                )}
+                <motion.span animate={{ x: active === n ? 2 : 0 }} transition={{ type: "spring", stiffness: 520, damping: 38 }} style={{ display: "inline-block" }}>{n}</motion.span>
+              </a>
             ))}
           </nav>
           <div style={{ marginTop: "auto", position: "relative", display: "flex", flexDirection: "column", gap: 8, alignItems: "flex-start" }}>

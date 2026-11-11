@@ -20,16 +20,16 @@ export const NAV = ["intro", "work", "experience", "references", "resume", "cont
 
 export const INTRO: Record<Audience, [string, string]> = {
   anyone: [
-    "I design B2B tools and AI workflows for web and mobile. Lately: turning a platform with 60 destinations into one sidebar, and a 332-field legal form into four steps.",
-    "I work from research to shipped UI, and I prototype in code when a picture is not enough.",
+    "I design B2B tools and AI workflows for web and mobile. Lately I've been exploring ways to simplify the small details that make platforms and apps hard to use.",
+    "I love taking on new challenges, and I prototype in code when a picture isn't enough.",
   ],
   recruiters: [
     "Product designer with 5 years designing web and mobile products for U.S. and Latin American clients in healthcare, real estate, telecom, insurance and SaaS.",
-    "Available now and open to relocation. English C1, Spanish native.",
+    "Available now and open to relocation. Fluent in English (C1), native in Spanish.",
   ],
   leads: [
-    "I lead work from discovery workshops to user flows, prototypes and design system contributions, and I present the why behind each decision to clients.",
-    "I build AI-assisted workflows (Claude Code, Figma Make, Mobbin MCP) to get from research to a testable prototype faster.",
+    "I lead work from discovery workshops to user flows, prototypes and design system contributions, and I present the why behind each decision directly to clients.",
+    "I use AI (Claude Code, Figma Make, Mobbin MCP) to reach a testable prototype faster.",
   ],
 };
 

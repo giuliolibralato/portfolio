@@ -216,7 +216,7 @@ export default function Home() {
                 </div>
                 <AnimatePresence mode="wait">
                   <motion.div key={aud} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
-                    style={{ display: "flex", flexDirection: "column", gap: 8, lineHeight: "24px" }}>
+                    style={{ display: "flex", flexDirection: "column", gap: 8, lineHeight: "24px", minHeight: 80 }}>
                     <p>{INTRO[aud][0]}</p>
                     <p>{INTRO[aud][1]}</p>
                   </motion.div>

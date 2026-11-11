@@ -1,19 +1,38 @@
-# portfolio
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/cover-dark.svg">
+  <img alt="giulio libralato — product designer" src="assets/readme/cover-light.svg">
+</picture>
 
-Personal product-design portfolio of Giulio Libralato. Bilingual (EN/ES).
+personal portfolio · bilingual (en · es) · built text first, with one accent and quiet motion.
 
-## What's here
-| Path | What |
+## what's here
+
+| | |
 |---|---|
-| `PRD.md` | What the site is, its pages, sections and SEO |
-| `DESIGN.md` | Design system: tokens, type, layout grid, components, motion |
-| `design-canvas/Main.dc.html` | Working copy of the home designed in Claude Design |
-| `assets/cursors/` | Multiplayer-style cursors (SVG) |
-| `cases/` | Case studies (Markdown, one file per language) |
-| `metricas-*.sql` | Queries used to pull real usage numbers for personal projects |
+| [`PRD.md`](PRD.md) | what the site is: pages, sections, seo |
+| [`DESIGN.md`](DESIGN.md) | the design system: tokens, type, 12-column grid, components, motion |
+| [`design-canvas/`](design-canvas/Main.dc.html) | the home, designed in claude design |
+| [`assets/cursors/`](assets/cursors/README.md) | multiplayer-style cursors, svg |
+| [`cases/`](cases/) | case studies, one markdown file per language |
+| `metricas-*.sql` | queries behind the real usage numbers of personal projects |
 
-## Stack (planned)
-Next.js + Tailwind v4 + shadcn/ui + MDX, deployed on GitHub Pages (static export).
+## system at a glance
 
-## Confidentiality
-Client work is shown for portfolio purposes only. All rights belong to Designli, Konecta and their respective clients. Names, brands, colors and data have been changed or removed. Private planning notes are not part of this repository.
+- **type** · geist · 20/28 for names and titles, 15/24 for reading · lowercase titles
+- **color** · slate neutrals + one ios blue `#007AFF` (`#0064D2` for text)
+- **layout** · side rail + centered content, 880 px on 12 columns, 32 px gutter
+- **motion** · under 300 ms for ui, ease-out, gated hover, reduced-motion respected
+
+## stack
+
+next.js · tailwind v4 · shadcn/ui · mdx · static export on github pages
+
+## status
+
+- [x] plan, design system, home design
+- [ ] case studies · beacon (draft), keyway, camino de vida
+- [ ] code, covers, seo, launch
+
+## confidentiality
+
+client work is shown for portfolio purposes only. all rights belong to designli, konecta and their clients. names, brands, colors and data were changed or removed. private planning notes are not part of this repository.

@@ -62,9 +62,9 @@ function content(lang: Lang): CaseContent {
   );
 
   const type = (
-    <Frame className="cols-wide" caption={es ? "Inter para leer, Lora itálica para la voz. Un solo sistema para la web, las campañas y cada ministerio." : "Inter to read, Lora italic for the voice. One system for the site, the campaigns and every ministry."}>
-      <Pane label={es ? "exploración tipográfica" : "type exploration"}><Img src="type.webp" alt={es ? "Pruebas de bienvenido a casa, servolución y un nuevo tú en Inter y Lora itálica" : "Tests of bienvenido a casa, servolución and un nuevo tú in Inter and Lora italic"} /></Pane>
-      <Pane label={es ? "en el teléfono" : "on the phone"}><Img src="home-mobile.webp" alt={es ? "La home en un teléfono" : "The home on a phone"} /></Pane>
+    <Frame className="cols-wide" caption={es ? "El moodboard probó Inter con Lora itálica y colores por ministerio. Se quedó solo Inter, sobre un fondo cálido." : "The moodboard tried Inter with Lora italic and a color per ministry. Only Inter stayed, on a warm ground."}>
+      <Pane label={es ? "moodboard · descartado" : "moodboard · ruled out"}><Img src="type.webp" alt={es ? "Moodboard: bienvenido a casa, servolución y un nuevo tú en Inter y Lora itálica, en varios colores" : "Moodboard: bienvenido a casa, servolución and un nuevo tú in Inter and Lora italic, in several colors"} /></Pane>
+      <Pane accent label={es ? "final · solo Inter" : "final · Inter only"}><Img src="home-mobile.webp" alt={es ? "La home en un teléfono" : "The home on a phone"} /></Pane>
     </Frame>
   );
 
@@ -86,7 +86,7 @@ function content(lang: Lang): CaseContent {
       ["role", "Volunteer product designer: information architecture, home and new pages"],
       ["team", "The church's communications team and me"],
       ["timeline", "2025–2026"],
-      ["scope", "Sitemap, home, five page wireframes and a type system"],
+      ["scope", "Sitemap, home and five page wireframes"],
       ["status", "The new home is live; the new main menu is designed and on hold"],
     ],
     chips: ["case study", "volunteer", "home live"], okChip: 2,
@@ -96,7 +96,7 @@ function content(lang: Lang): CaseContent {
       list: ["ministries for kids, teens and young adults sat inside About → Leadership → Ministries", "they were listed by internal names (GetUp cdv, Punto cdv) that only regulars know", "an annual report sat in the main menu as “2024”, and campuses and times had no entry at all"],
       end: "Most people arrive with one question: {{where and when can I go, and is there something for me or my kids?}}",
     },
-    role: "{{I led the information architecture and designed the home and the new pages}}: the map of the current site, the proposal, the tree test, the wireframes and the type system. The communications team decided what mattered most and reviewed every version.",
+    role: "{{I led the information architecture and designed the home and the new pages}}: the map of the current site, the proposal, the tree test and the wireframes. The communications team decided what mattered most and reviewed every version.",
     research: {
       items: ["A map of the current site, item by item, to see where things really lived.", "Hotjar heatmaps and session recordings: what people scrolled to and clicked under the banner.", "Conversations with the communications team and the church about what matters most to someone new.", "A tree test of the new menu on UXtweak."],
       extraTitle: "the order of the work",
@@ -106,7 +106,7 @@ function content(lang: Lang): CaseContent {
       { t: "what people look for goes right under the banner", because: "Hotjar showed people hunting below the banner, and the church named the same things: campuses and times, growing, small groups and baptism. They became four doors.", fig: doors },
       { t: "ministries by who they're for, then by name", because: "“Teens | GetUp” tells a parent what it is; “GetUp cdv” only tells a regular. Ministries moved out of Leadership into Conoce CDV, one level down.", ruled: "keeping the internal names alone. They are the church's identity, so they stayed, after the audience.", fig: sitemap },
       { t: "from twelve sections to six", because: "my first proposal had twelve top-level sections with clean URLs and redirects. After the tree test and the team's review, six were enough, and a phone menu can show six.", ruled: "the twelve-section proposal. Every section was justified, but together they were too many doors." },
-      { t: "one type system for every voice", because: "each ministry had its own look. Inter carries the reading and Lora italic the voice, so a campaign can feel its own and still belong.", fig: type },
+      { t: "one typeface, so the content does the talking", because: "each ministry already brings its own logo and campaign art. A single sans, Inter, keeps the site calm around them and reads well on a phone.", ruled: "pairing Inter with a serif italic and a color per ministry. It looked lively in the moodboard, but it competed with the ministries' own art.", fig: type },
     ],
     decisionsTail: wires,
     validation: {
@@ -125,7 +125,7 @@ function content(lang: Lang): CaseContent {
       ["rol", "Diseñador de producto voluntario: arquitectura de información, home y páginas nuevas"],
       ["equipo", "El equipo de comunicaciones de la iglesia y yo"],
       ["duración", "2025–2026"],
-      ["alcance", "Sitemap, home, wireframes de cinco páginas y un sistema tipográfico"],
+      ["alcance", "Sitemap, home y wireframes de cinco páginas"],
       ["estado", "La home nueva está en vivo; el menú principal nuevo está diseñado y en pausa"],
     ],
     chips: ["caso de estudio", "voluntariado", "home en vivo"], okChip: 2,
@@ -135,7 +135,7 @@ function content(lang: Lang): CaseContent {
       list: ["los ministerios de niños, adolescentes y jóvenes estaban en Acerca de → Liderazgo → Ministerios", "aparecían con nombres internos (GetUp cdv, Punto cdv) que solo conoce quien ya va", "un informe anual estaba en el menú principal como “2024”, y los campus y horarios no tenían entrada"],
       end: "La mayoría llega con una pregunta: {{¿dónde y cuándo puedo ir, y hay algo para mí o para mis hijos?}}",
     },
-    role: "{{Lideré la arquitectura de información y diseñé la home y las páginas nuevas}}: el mapa del sitio actual, la propuesta, el tree test, los wireframes y el sistema tipográfico. El equipo de comunicaciones decidió qué era lo más importante y revisó cada versión.",
+    role: "{{Lideré la arquitectura de información y diseñé la home y las páginas nuevas}}: el mapa del sitio actual, la propuesta, el tree test y los wireframes. El equipo de comunicaciones decidió qué era lo más importante y revisó cada versión.",
     research: {
       items: ["Un mapa del sitio actual, ítem por ítem, para ver dónde vivía cada cosa.", "Mapas de calor y grabaciones de Hotjar: hasta dónde bajaba la gente y qué tocaba debajo del banner.", "Conversaciones con el equipo de comunicaciones y la iglesia sobre qué es lo más importante para alguien nuevo.", "Un tree test del menú nuevo en UXtweak."],
       extraTitle: "el orden del trabajo",
@@ -145,7 +145,7 @@ function content(lang: Lang): CaseContent {
       { t: "lo que la gente busca va justo debajo del banner", because: "Hotjar mostró a la gente buscando debajo del banner, y la iglesia nombró lo mismo: campus y horarios, crecer, grupos pequeños y bautismo. Se volvieron cuatro accesos.", fig: doors },
       { t: "ministerios por para quién son, y luego por nombre", because: "“Adolescentes | GetUp” le dice a un papá qué es; “GetUp cdv” solo se lo dice a quien ya va. Los ministerios salieron de Liderazgo a Conoce CDV, un nivel abajo.", ruled: "dejar solo los nombres internos. Son la identidad de la iglesia, así que se quedaron, después de la audiencia.", fig: sitemap },
       { t: "de doce secciones a seis", because: "mi primera propuesta tenía doce secciones con URLs limpias y redirecciones. Tras el tree test y la revisión del equipo, seis alcanzaban, y un menú de teléfono puede mostrar seis.", ruled: "la propuesta de doce secciones. Cada una estaba justificada, pero juntas eran demasiadas puertas." },
-      { t: "un sistema tipográfico para todas las voces", because: "cada ministerio tenía su propio look. Inter lleva la lectura y Lora itálica la voz, así una campaña se siente propia y sigue siendo parte de la casa.", fig: type },
+      { t: "una sola tipografía, para que hable el contenido", because: "cada ministerio ya trae su propio logo y arte de campaña. Una sola sans, Inter, deja la web tranquila alrededor y se lee bien en el teléfono.", ruled: "combinar Inter con una serif itálica y un color por ministerio. Se veía vivo en el moodboard, pero competía con el arte de cada ministerio.", fig: type },
     ],
     decisionsTail: wires,
     validation: {

@@ -4,7 +4,7 @@ import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { RubberTabs } from "./RubberTabs";
 import { Shell, useSite } from "./Shell";
-import { CallLoop, NavSprawl, OneBrain, OneScore, Timeline, Tests, Trust } from "./BeaconFigures";
+import { CallLoop, NavSprawl, OneBrain, OneScore, Phones, Timeline, Tests, Trust } from "./BeaconFigures";
 import { CoverVideo } from "./CoverVideo";
 import { Cursor } from "./Cursor";
 import { T } from "@/lib/i18n";
@@ -148,15 +148,6 @@ function rich(s: string) {
 }
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
-function Shot({ src, alt, caption, phone }: { src: string; alt: string; caption?: string; phone?: boolean }) {
-  return (
-    <figure className={`shot${phone ? " phone" : ""}`}>
-      <img src={`${IMG}/${src}`} alt={alt} loading="lazy" decoding="async" />
-      {caption && <figcaption className="small muted">{caption}</figcaption>}
-    </figure>
-  );
-}
-
 export default function CaseBeacon() {
   const site = useSite();
   const { lang } = site;
@@ -257,11 +248,7 @@ export default function CaseBeacon() {
                   <div className="decision-group">
                     <h3 className="sub">{c.mobileH}</h3>
                     <p>{c.mobile}</p>
-                    <div className="phones">
-                      <Shot phone src="app-today.webp" alt="Today" caption="today" />
-                      <Shot phone src="app-near.webp" alt={es ? "Cerca de mí" : "Near me"} caption={es ? "cerca de mí" : "near me"} />
-                      <Shot phone src="app-contact.webp" alt={es ? "Ficha" : "Case file"} caption={es ? "ficha" : "case file"} />
-                    </div>
+                    <Phones lang={lang} />
                   </div>
                 )}
               </section>

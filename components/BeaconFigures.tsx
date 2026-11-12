@@ -161,3 +161,20 @@ export function Timeline({ lang }: { lang: Lang }) {
     </motion.ol>
   );
 }
+
+/* 8 · the phone app as field mode: three screens, label above each */
+export function Phones({ lang }: { lang: Lang }) {
+  const es = lang === "es";
+  const screens: [string, string, string][] = [
+    ["app-today.webp", "today", es ? "Today en el teléfono" : "Today on the phone"],
+    ["app-near.webp", es ? "cerca de mí" : "near me", es ? "Dueños cerca, el más cercano primero" : "Owners nearby, closest first"],
+    ["app-contact.webp", es ? "ficha" : "case file", es ? "Ficha de Daniel Marchetti con su why now" : "Daniel Marchetti's case file with its why now"],
+  ];
+  return (
+    <Frame className="cols-phones" caption={es ? "Lo mismo que en la web, recortado a lo que sirve caminando: a quién llamar, quién está cerca y por qué ahora." : "The same as the web, cut down to what helps on foot: who to call, who is nearby and why now."}>
+      {screens.map(([src, label, alt]) => (
+        <Pane key={src} label={label}><img className="crop phone" src={`${IMG}/${src}`} alt={alt} loading="lazy" decoding="async" /></Pane>
+      ))}
+    </Frame>
+  );
+}

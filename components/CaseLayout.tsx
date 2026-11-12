@@ -27,6 +27,8 @@ export type CaseContent = {
   cover: React.ReactNode; coverFilm?: boolean;
   /** a live site to visit, shown as a button under the meta */
   site?: { href: string; label: string };
+  /** tools used, shown as a meta row; the slug names an svg in /public/tools (omit when there is none) */
+  tools?: [string, string?][];
   challenge: { intro: string; list?: string[]; end?: string; fig?: React.ReactNode };
   role: string;
   research: { items: string[]; extraTitle?: string; extra?: React.ReactNode };
@@ -102,9 +104,16 @@ export function CaseLayout({ content }: { content: (lang: Lang) => CaseContent }
                 {c.meta.map(([k, v, note]) => (
                   <div key={k} className="xrow"><span className="label">{k}</span><span>{v}{note && <sup className="fn"><a href="#legal" aria-label={lang === "es" ? "ver nota" : "see note"}>1</a></sup>}</span></div>
                 ))}
+                {c.tools && (
+                  <div className="xrow"><span className="label">{lang === "es" ? "herramientas" : "tools"}</span>
+                    <span className="tools">{c.tools.map(([name, slug]) => (
+                      <span key={name} className="tool">{slug && <i aria-hidden="true" style={{ ["--ico" as string]: `url(${BASE}/tools/${slug}.svg)` }} />}{name}</span>
+                    ))}</span>
+                  </div>
+                )}
               </motion.div>
               {c.site && (
-                <motion.div variants={rise}>
+                <motion.div variants={rise} className="site-row">
                   <a className="site-btn" href={c.site.href} target="_blank" rel="noopener" data-label="visit">{c.site.label}<Arrow size={12} /></a>
                 </motion.div>
               )}

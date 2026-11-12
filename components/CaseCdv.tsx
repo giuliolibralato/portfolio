@@ -94,6 +94,7 @@ function content(lang: Lang): CaseContent {
     chips: ["case study", "website", "volunteer", "home live"], okChip: 3,
     site: { href: "https://caminodevida.com/", label: "visit the website" },
     cover, coverFilm: true,
+      tools: [["Figma", "figma"], ["Google Analytics", "googleanalytics"], ["Hotjar", "hotjar"], ["UXtweak"]],
     challenge: {
       intro: "The site answered the church's org chart, not a visitor's questions:",
       list: ["ministries for kids, teens and young adults sat inside About → Leadership → Ministries", "they were listed by internal names (GetUp cdv, Punto cdv) that only regulars know", "an annual report sat in the main menu as “2024”, and campuses and times had no entry at all"],
@@ -134,6 +135,7 @@ function content(lang: Lang): CaseContent {
     chips: ["caso de estudio", "sitio web", "voluntariado", "home en vivo"], okChip: 3,
     site: { href: "https://caminodevida.com/", label: "ver la web" },
     cover, coverFilm: true,
+      tools: [["Figma", "figma"], ["Google Analytics", "googleanalytics"], ["Hotjar", "hotjar"], ["UXtweak"]],
     challenge: {
       intro: "La web respondía al organigrama de la iglesia, no a las preguntas de quien llega:",
       list: ["los ministerios de niños, adolescentes y jóvenes estaban en Acerca de → Liderazgo → Ministerios", "aparecían con nombres internos (GetUp cdv, Punto cdv) que solo conoce quien ya va", "un informe anual estaba en el menú principal como “2024”, y los campus y horarios no tenían entrada"],

@@ -77,6 +77,7 @@ function content(lang: Lang): CaseContent {
     ],
     chips: ["case study", "delivery", "prototype approved"], okChip: 2,
     cover, coverFilm: true,
+      tools: [["Figma", "figma"], ["Claude Code", "claude"], ["Mobbin"], ["Jira", "jira"]],
     challenge: {
       intro: "Owners list their own home and save the agent's commission. To publish, they answer a questionnaire that prints onto Tennessee's property condition disclosure and listing forms:",
       list: ["332 fields, 193 of them gated by an earlier answer", "12 steps in a long list, with no sense of how far along you are", "money questions mixed with legal ones, with no reason given for either"],
@@ -119,6 +120,7 @@ function content(lang: Lang): CaseContent {
     ],
     chips: ["caso de estudio", "delivery", "prototipo aprobado"], okChip: 2,
     cover, coverFilm: true,
+      tools: [["Figma", "figma"], ["Claude Code", "claude"], ["Mobbin"], ["Jira", "jira"]],
     challenge: {
       intro: "Los dueños publican su casa y se ahorran la comisión del agente. Para publicar responden un cuestionario que se imprime en la declaración del estado de la propiedad y en los formularios de Tennessee:",
       list: ["332 campos, 193 de ellos condicionados a una respuesta anterior", "12 pasos en una lista larga, sin idea de cuánto falta", "preguntas de dinero mezcladas con las legales, sin decir el porqué de ninguna"],

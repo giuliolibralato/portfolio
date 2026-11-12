@@ -92,7 +92,7 @@ export const T = {
       cinepolis: { title: "UX research para Cinépolis", desc: "Caso de UX research y UI · curso de UX/UI" },
       brightpath: { title: "BrightPath", desc: "Prueba técnica para Diseñador UX/UI en Designli" },
       cdvweb: { title: "Camino de Vida", desc: "Sitio web de la iglesia · cdv.pe" },
-      cdvmusica: { title: "CDV Música", desc: "Sitio del ministerio de música · cdvmusica.com" },
+      cdvmusica: { title: "un solo lugar para la música y sus equipos", desc: "Web del ministerio de música: catálogo, canciones con acordes y recursos" },
       nexo: { title: "de ENASEI a un nombre nuevo", desc: "Sitio de conferencia, del design system a la venta de entradas" },
       lessin: { title: "Lessin", desc: "Sitio y design system ed-tech · en Figma" },
       wedding: { title: "Nuestra boda", desc: "Sitio de nuestra boda, diseñado y programado" },

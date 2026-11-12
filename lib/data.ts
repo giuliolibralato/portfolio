@@ -51,7 +51,7 @@ export const PROJECTS: Record<string, Project> = {
   cinepolis: { title: "Cinépolis UX research", desc: "UX research and UI case · UX/UI course", type: "case study", year: "2023", href: "https://www.figma.com/proto/PxyIyigICANcLSaEwWBZf8/Cin%C3%A9polis-%7C-Proyecto-UX---UI?node-id=1-3&p=f&starting-point-node-id=1%3A3" },
   brightpath: { title: "BrightPath", desc: "Technical test for UX/UI Designer position at Designli", type: "design challenge", year: "2025", href: "https://www.figma.com/design/hDQVOnULGRqM5pmxR0A6io/Design-Test---Giulio-Libralato?node-id=2946-1483" },
   cdvweb: { title: "Camino de Vida", desc: "Church website · cdv.pe", type: "website", year: "2026", href: "https://cdv.pe" },
-  cdvmusica: { title: "CDV Música", desc: "Music ministry website · cdvmusica.com", type: "website", year: "2025", href: "https://cdvmusica.com" },
+  cdvmusica: { client: "CDV Música", tags: ["website"], title: "one home for the music and its teams", desc: "Music ministry site: catalog, songs with chords and resources", type: "case study", year: "2026", href: "/work/cdvmusica/", image: "/cases/cdvmusica/cover.webp" },
   nexo: { client: "Nexo Summit", tags: ["website"], title: "from ENASEI to a new name", desc: "Conference site, from design system to ticket sales", type: "case study", year: "2026", href: "/work/nexo/", image: "/cases/nexo/hero.webp" },
   lessin: { title: "Lessin", desc: "Ed-tech website and design system · in Figma", type: "website", year: "2023", href: "https://www.figma.com/design/aMI8KBC7X9fAnlAEOBCdHL/Lessin---Plataforma-Web?node-id=121-2&p=f" },
   wedding: { title: "Our wedding", desc: "Wedding website, designed and coded", type: "website", year: "2026", href: "https://gyfwedding.vercel.app/" },
@@ -62,7 +62,7 @@ export const PROJECTS: Record<string, Project> = {
 
 export const TABS: [string, string[]][] = [
   ["selected", ["beacon", "keyway", "cdv", "nexo", "budgy"]],
-  ["cases", ["beacon", "keyway", "cdv", "nexo", "budgy", "monthly", "digito", "brightpath", "cinepolis"]],
+  ["cases", ["beacon", "keyway", "cdv", "nexo", "budgy", "monthly", "cdvmusica", "digito", "brightpath", "cinepolis"]],
   ["websites", ["cdv", "nexo", "monthly", "cdvmusica", "lessin", "wedding"]],
   ["apps", ["budgy", "firstlancer"]],
   ["passion projects", ["budgy", "monthly"]],

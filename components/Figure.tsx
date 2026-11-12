@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { CoverVideo } from "./CoverVideo";
 
 // The figure pattern every case uses (DESIGN.md "Imagen con caption"):
 // a --card frame, real crops inside, a mono label above each pane and a plain caption below.
@@ -64,6 +65,16 @@ export function Metrics({ label, items, caption }: { label: string; items: [stri
           ))}
         </div>
       </motion.div>
+      <figcaption className="small muted">{caption}</figcaption>
+    </figure>
+  );
+}
+
+/* A looping film inside the case, same frame as the cover */
+export function FilmFig({ src, caption }: { src: string; caption: string }) {
+  return (
+    <figure className="frame-fig tour-fig">
+      <div className="cover film-cover"><CoverVideo src={src} poster={`${src}-poster.webp`} label={caption} /></div>
       <figcaption className="small muted">{caption}</figcaption>
     </figure>
   );

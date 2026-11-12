@@ -2,7 +2,8 @@
 
 import { motion } from "motion/react";
 import { CaseLayout, type CaseContent } from "./CaseLayout";
-import { Crop, Frame, Pane, Steps, imgBase, rise } from "./Figure";
+import { CoverVideo } from "./CoverVideo";
+import { Crop, FilmFig, Frame, Pane, Steps, imgBase, rise } from "./Figure";
 import type { Lang } from "@/lib/data";
 
 const IMG = imgBase("cdv");
@@ -46,7 +47,8 @@ const AFTER: Node[] = [
 
 function content(lang: Lang): CaseContent {
   const es = lang === "es";
-  const cover = <img className="cover-shot" src={`${IMG}/home.webp`} alt={es ? "La home: bienvenido a casa, y debajo del banner cuatro accesos" : "The home: bienvenido a casa, with four doors under the banner"} />;
+  const cover = <CoverVideo src={`${IMG}/cover`} poster={`${IMG}/cover-poster.webp`} label={es ? "Una primera visita: bienvenido a casa, los cuatro accesos debajo del banner, y Bautismo se abre en su página" : "A first visit: bienvenido a casa, the four doors under the banner, and Bautismo opens into its page"} />;
+  const menuFilm = <FilmFig src={`${IMG}/menu`} caption={es ? "El menú viejo, tres niveles abajo, se reordena: cada etiqueta va a donde la buscaría alguien nuevo y dice primero para quién es." : "The old menu, three levels deep, reorders: each label goes where someone new would look for it, and says first who it is for."} />;
 
   const sitemap = (
     <Frame className="cols-nav" caption={es ? "Antes, los ministerios estaban tres niveles abajo, dentro de Liderazgo, y con nombres que solo conoce quien ya va. Después, cada uno dice primero para quién es." : "Before, ministries sat three levels down inside Leadership, under names only regulars know. After, each one says first who it is for."}>
@@ -90,7 +92,7 @@ function content(lang: Lang): CaseContent {
       ["status", "The new home is live; the new main menu is designed and on hold"],
     ],
     chips: ["case study", "volunteer", "home live"], okChip: 2,
-    cover,
+    cover, coverFilm: true,
     challenge: {
       intro: "The site answered the church's org chart, not a visitor's questions:",
       list: ["ministries for kids, teens and young adults sat inside About → Leadership → Ministries", "they were listed by internal names (GetUp cdv, Punto cdv) that only regulars know", "an annual report sat in the main menu as “2024”, and campuses and times had no entry at all"],
@@ -104,7 +106,7 @@ function content(lang: Lang): CaseContent {
     },
     decisions: [
       { t: "what people look for goes right under the banner", because: "Google Analytics and Hotjar showed people hunting below the banner, and the church named the same things: campuses and times, growing, small groups and baptism. They became four doors.", fig: doors },
-      { t: "ministries by who they're for, then by name", because: "“Teens | GetUp” tells a parent what it is; “GetUp cdv” only tells a regular. Ministries moved out of Leadership into Conoce CDV, one level down.", ruled: "keeping the internal names alone. They are the church's identity, so they stayed, after the audience.", fig: sitemap },
+      { t: "ministries by who they're for, then by name", because: "“Teens | GetUp” tells a parent what it is; “GetUp cdv” only tells a regular. Ministries moved out of Leadership into Conoce CDV, one level down.", ruled: "keeping the internal names alone. They are the church's identity, so they stayed, after the audience.", fig: <>{menuFilm}{sitemap}</> },
       { t: "from twelve sections to six", because: "my first proposal had twelve top-level sections with clean URLs and redirects. After the tree test and the team's review, six were enough, and a phone menu can show six.", ruled: "the twelve-section proposal. Every section was justified, but together they were too many doors." },
       { t: "one typeface, so the content does the talking", because: "each ministry already brings its own logo and campaign art. A single sans, Inter, keeps the site calm around them and reads well on a phone.", ruled: "pairing Inter with a serif italic and a color per ministry. It looked lively in the moodboard, but it competed with the ministries' own art.", fig: type },
     ],
@@ -129,7 +131,7 @@ function content(lang: Lang): CaseContent {
       ["estado", "La home nueva está en vivo; el menú principal nuevo está diseñado y en pausa"],
     ],
     chips: ["caso de estudio", "voluntariado", "home en vivo"], okChip: 2,
-    cover,
+    cover, coverFilm: true,
     challenge: {
       intro: "La web respondía al organigrama de la iglesia, no a las preguntas de quien llega:",
       list: ["los ministerios de niños, adolescentes y jóvenes estaban en Acerca de → Liderazgo → Ministerios", "aparecían con nombres internos (GetUp cdv, Punto cdv) que solo conoce quien ya va", "un informe anual estaba en el menú principal como “2024”, y los campus y horarios no tenían entrada"],
@@ -143,7 +145,7 @@ function content(lang: Lang): CaseContent {
     },
     decisions: [
       { t: "lo que la gente busca va justo debajo del banner", because: "Google Analytics y Hotjar mostraron a la gente buscando debajo del banner, y la iglesia nombró lo mismo: campus y horarios, crecer, grupos pequeños y bautismo. Se volvieron cuatro accesos.", fig: doors },
-      { t: "ministerios por para quién son, y luego por nombre", because: "“Adolescentes | GetUp” le dice a un papá qué es; “GetUp cdv” solo se lo dice a quien ya va. Los ministerios salieron de Liderazgo a Conoce CDV, un nivel abajo.", ruled: "dejar solo los nombres internos. Son la identidad de la iglesia, así que se quedaron, después de la audiencia.", fig: sitemap },
+      { t: "ministerios por para quién son, y luego por nombre", because: "“Adolescentes | GetUp” le dice a un papá qué es; “GetUp cdv” solo se lo dice a quien ya va. Los ministerios salieron de Liderazgo a Conoce CDV, un nivel abajo.", ruled: "dejar solo los nombres internos. Son la identidad de la iglesia, así que se quedaron, después de la audiencia.", fig: <>{menuFilm}{sitemap}</> },
       { t: "de doce secciones a seis", because: "mi primera propuesta tenía doce secciones con URLs limpias y redirecciones. Tras el tree test y la revisión del equipo, seis alcanzaban, y un menú de teléfono puede mostrar seis.", ruled: "la propuesta de doce secciones. Cada una estaba justificada, pero juntas eran demasiadas puertas." },
       { t: "una sola tipografía, para que hable el contenido", because: "cada ministerio ya trae su propio logo y arte de campaña. Una sola sans, Inter, deja la web tranquila alrededor y se lee bien en el teléfono.", ruled: "combinar Inter con una serif itálica y un color por ministerio. Se veía vivo en el moodboard, pero competía con el arte de cada ministerio.", fig: type },
     ],

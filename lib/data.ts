@@ -44,8 +44,8 @@ export const AUDIENCES: [Audience, string][] = [
 
 export const PROJECTS: Record<string, Project> = {
   beacon: { client: "Beacon", title: "one sidebar for 60 destinations", desc: "B2B prospecting platform · 5-day sprint", type: "case study", year: "2026", href: "/work/beacon/", cover: { video: "/cases/beacon/cover", poster: "/cases/beacon/cover-poster.webp" } },
-  keyway: { client: "Keyway", title: "332 legal fields in 4 acts", desc: "Listing flow for a home-selling product", type: "case study", year: "2026", href: "/work/keyway/", image: "/cases/keyway/card.webp" },
-  cdv: { client: "Camino de Vida", title: "a site for the first visit", desc: "Information architecture and home for Camino de Vida", type: "case study", year: "2026", href: "/work/cdv/", image: "/cases/cdv/card.webp" },
+  keyway: { client: "Keyway", title: "332 legal fields in 4 acts", desc: "Listing flow for a home-selling product", type: "case study", year: "2026", href: "/work/keyway/", cover: { video: "/cases/keyway/cover", poster: "/cases/keyway/cover-poster.webp" } },
+  cdv: { client: "Camino de Vida", title: "a site for the first visit", desc: "Information architecture and home for Camino de Vida", type: "case study", year: "2026", href: "/work/cdv/", cover: { video: "/cases/cdv/cover", poster: "/cases/cdv/cover-poster.webp" } },
   digito: { client: "Dígito", title: "gamified timesheets", desc: "SaaS redesign for Dígito · Product Design course", type: "case study", year: "2025", href: "https://www.figma.com/proto/sBBTvq1mUKGzu4n07rMyiH?node-id=72247-64147&t=8lnjHKkBJD2JNIop-6" },
   cinepolis: { title: "Cinépolis UX research", desc: "UX research and UI case · UX/UI course", type: "case study", year: "2023", href: "https://www.figma.com/proto/PxyIyigICANcLSaEwWBZf8/Cin%C3%A9polis-%7C-Proyecto-UX---UI?node-id=1-3&p=f&starting-point-node-id=1%3A3" },
   brightpath: { title: "BrightPath", desc: "Technical test for UX/UI Designer position at Designli", type: "design challenge", year: "2025", href: "https://www.figma.com/design/hDQVOnULGRqM5pmxR0A6io/Design-Test---Giulio-Libralato?node-id=2946-1483" },

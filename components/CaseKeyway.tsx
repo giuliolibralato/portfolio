@@ -1,7 +1,8 @@
 "use client";
 
 import { CaseLayout, type CaseContent } from "./CaseLayout";
-import { Crop, Frame, Metrics, Pane, Steps, imgBase } from "./Figure";
+import { CoverVideo } from "./CoverVideo";
+import { Crop, FilmFig, Frame, Metrics, Pane, Steps, imgBase } from "./Figure";
 import type { Lang } from "@/lib/data";
 
 const IMG = imgBase("keyway");
@@ -9,7 +10,8 @@ const Img = ({ src, alt, className }: { src: string; alt: string; className?: st
 
 function content(lang: Lang): CaseContent {
   const es = lang === "es";
-  const cover = <img className="cover-shot" src={`${IMG}/acts.webp`} alt={es ? "La pantalla que explica el flujo: cuatro partes, a tu ritmo" : "The screen that explains the flow: four parts, at your pace"} />;
+  const cover = <CoverVideo src={`${IMG}/cover`} poster={`${IMG}/cover-poster.webp`} label={es ? "La tarjeta del aviso se arma con cada respuesta: la dirección, los datos públicos y la primera foto" : "The listing card assembles from each answer: the address, public records and the first photo"} />;
+  const actsFilm = <FilmFig src={`${IMG}/acts`} caption={es ? "El cuestionario tal como era, una columna de 332 campos, se parte en los cuatro actos." : "The questionnaire as it was, one column of 332 fields, breaks into the four acts."} />;
 
   const questionnaire = (
     <Metrics
@@ -74,12 +76,12 @@ function content(lang: Lang): CaseContent {
       ["status", "Prototype approved; not launched while I was at Designli"],
     ],
     chips: ["case study", "delivery", "prototype approved"], okChip: 2,
-    cover,
+    cover, coverFilm: true,
     challenge: {
       intro: "Owners list their own home and save the agent's commission. To publish, they answer a questionnaire that prints onto Tennessee's property condition disclosure and listing forms:",
       list: ["332 fields, 193 of them gated by an earlier answer", "12 steps in a long list, with no sense of how far along you are", "money questions mixed with legal ones, with no reason given for either"],
       end: "Sellers aren't real-estate people. The flow had to {{feel shorter without asking less}}: the law decides the questions, design only decides how they arrive.",
-      fig: questionnaire,
+      fig: <>{actsFilm}{questionnaire}</>,
     },
     role: "{{I owned the redesign of the listing flow and the audit of its questions.}} I mapped the current flow, studied references, wrote the build spec, made the clickable prototype with Claude Code and the Figma MCP on top of the product's design system, and wrote the briefs the Figma agent used to update the frames. The PM brought the client's feedback and the development team the tickets.",
     research: {
@@ -116,12 +118,12 @@ function content(lang: Lang): CaseContent {
       ["estado", "Prototipo aprobado; no se lanzó mientras estuve en Designli"],
     ],
     chips: ["caso de estudio", "delivery", "prototipo aprobado"], okChip: 2,
-    cover,
+    cover, coverFilm: true,
     challenge: {
       intro: "Los dueños publican su casa y se ahorran la comisión del agente. Para publicar responden un cuestionario que se imprime en la declaración del estado de la propiedad y en los formularios de Tennessee:",
       list: ["332 campos, 193 de ellos condicionados a una respuesta anterior", "12 pasos en una lista larga, sin idea de cuánto falta", "preguntas de dinero mezcladas con las legales, sin decir el porqué de ninguna"],
       end: "Los vendedores no son del rubro. El flujo tenía que {{sentirse más corto sin preguntar menos}}: la ley decide las preguntas; el diseño solo decide cómo llegan.",
-      fig: questionnaire,
+      fig: <>{actsFilm}{questionnaire}</>,
     },
     role: "{{Fui dueño del rediseño del flujo de publicación y de la auditoría de sus preguntas.}} Mapeé el flujo actual, estudié referentes, escribí el spec, hice el prototipo clicable con Claude Code y el MCP de Figma sobre el design system del producto, y escribí los briefs con los que el agente de Figma actualizó los frames. El PM trajo el feedback del cliente y el equipo de desarrollo, los tickets.",
     research: {

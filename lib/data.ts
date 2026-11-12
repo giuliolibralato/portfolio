@@ -63,7 +63,7 @@ export const PROJECTS: Record<string, Project> = {
 export const TABS: [string, string[]][] = [
   ["selected", ["beacon", "keyway", "cdv", "nexo"]],
   ["cases", ["beacon", "keyway", "cdv", "digito", "brightpath", "cinepolis"]],
-  ["websites", ["cdvweb", "cdvmusica", "nexo", "lessin", "wedding"]],
+  ["websites", ["cdv", "cdvmusica", "nexo", "lessin", "wedding"]],
   ["apps", ["firstlancer", "budgy"]],
   ["passion projects", ["budgy", "monthly"]],
 ];

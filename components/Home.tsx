@@ -183,7 +183,7 @@ export default function Home() {
                         </div>
                         <Sel quiet />
                       </div>
-                      <h3 className="one" style={{ marginTop: 16, fontSize: 15, lineHeight: "22px", fontWeight: 500 }}>{c.title}</h3>
+                      <h3 className="one" style={{ marginTop: 16, fontSize: 15, lineHeight: "22px", fontWeight: 500 }} title={c.client ? `${c.client} — ${c.title}` : c.title}>{c.client ? `${c.client} — ${c.title}` : c.title}</h3>
                       <p className="one muted">{c.desc}</p>
                       <div className="muted" style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 12, fontSize: 12, lineHeight: "16px" }}>
                         <span className="tag">{t.types[c.type] ?? c.type}</span>

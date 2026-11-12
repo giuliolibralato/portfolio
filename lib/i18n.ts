@@ -86,8 +86,8 @@ export const T = {
     projects: {
       beacon: { title: "un sidebar para 60 destinos", desc: "Plataforma B2B de prospección · sprint de 5 días" },
       keyway: { title: "332 campos legales en 4 actos", desc: "Flujo de publicación para un producto de venta de casas" },
-      cdv: { title: "una web ordenada para quien llega por primera vez", desc: "Arquitectura de información y home de Camino de Vida" },
-      digito: { title: "timesheets gamificados para una plataforma de proyectos", desc: "Rediseño de un SaaS para Dígito · curso de Product Design" },
+      cdv: { title: "una web para la primera visita", desc: "Arquitectura de información y home de Camino de Vida" },
+      digito: { title: "timesheets gamificados", desc: "Rediseño de un SaaS para Dígito · curso de Product Design" },
       cinepolis: { title: "UX research para Cinépolis", desc: "Caso de UX research y UI · curso de UX/UI" },
       brightpath: { title: "BrightPath", desc: "Prueba técnica para Diseñador UX/UI en Designli" },
       cdvweb: { title: "Camino de Vida", desc: "Sitio web de la iglesia · cdv.pe" },

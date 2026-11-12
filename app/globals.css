@@ -242,12 +242,12 @@ button, select { font: inherit; color: inherit; }
 .frame.cols-trust { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: start; }
 .frame.rows { grid-template-columns: minmax(0, 1fr); }
 .frame.cols-phones { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 32px; }
-.crop.phone { border-radius: 28px; }
+.crop.phone { border-radius: 28px; padding: 0; }
 .pane { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 .pane-l { font-size: 13px; line-height: 20px; font-weight: 500; letter-spacing: 0.01em; color: var(--label); }
 .pane > .pane-l { font-family: inherit; font-size: 15px; line-height: 22px; font-weight: 500; color: var(--foreground); text-align: center; }
 .pane > .pane-l.on { color: var(--foreground); }
-.crop { display: block; width: 100%; height: auto; border-radius: 8px; background: var(--background); box-shadow: 0 6px 24px -8px var(--shadow), 0 1px 3px var(--shadow); }
+.crop { display: block; width: 100%; height: auto; box-sizing: border-box; padding: clamp(6px, 2.2%, 16px); border-radius: 12px; background: var(--background); box-shadow: 0 6px 24px -8px var(--shadow), 0 1px 3px var(--shadow); }
 .roles { list-style: none; margin: 0; padding: 0; }
 .roles { display: flex; flex-direction: column; gap: 8px; }
 .roles li { padding: 8px 12px; border-radius: 8px; background: var(--background); color: var(--muted-foreground); box-shadow: 0 1px 3px var(--shadow); }

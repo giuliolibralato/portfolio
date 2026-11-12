@@ -80,9 +80,15 @@ function content(lang: Lang): CaseContent {
     </Frame>
   );
 
+  const system = (
+    <Frame className="rows" caption={es ? "El sistema salió del manual de marca y de los referentes: color por proporción de superficie, Bebas Neue solo para titulares y DM Sans para todo lo demás, en tokens para shadcn." : "The system came from the brand manual and the references: color by share of surface, Bebas Neue only for headlines and DM Sans for everything else, as tokens for shadcn."}>
+      <Pane label={es ? "design system" : "design system"}><Img src="system.webp" alt={es ? "Colores por superficie (60% cream y blanco, 20% coral, 12% navy, 8% secundarios) y la escala tipográfica" : "Color by surface (60% cream and white, 20% coral, 12% navy, 8% secondary) and the type scale"} /></Pane>
+    </Frame>
+  );
+
   const order = <Steps items={es
-    ? [["Antes", "la landing de ENASEI 2025"], ["Transición", "rediseño en la línea de ENASEI"], ["Referentes", "3 opciones, se combinaron 2"], ["Sistema", "tokens y tipografías"], ["Wireframes", "5 páginas, PRD + Figma Make"], ["Build", "WordPress y plugins propios"]]
-    : [["Before", "the ENASEI 2025 landing"], ["Transition", "redesign in ENASEI's look"], ["References", "3 options, 2 combined"], ["System", "tokens and type"], ["Wireframes", "5 pages, PRD + Figma Make"], ["Build", "WordPress and my own plugins"]]} />;
+    ? [["Antes", "la landing de ENASEI 2025"], ["Copy", "texto y PRD de la transición"], ["Transición", "rediseño en la línea de ENASEI"], ["Referentes", "3 opciones, se combinaron 2"], ["Sistema", "tokens desde el manual"], ["Wireframes", "5 páginas, PRD + Figma Make"], ["Build", "WordPress y plugins propios"]]
+    : [["Before", "the ENASEI 2025 landing"], ["Copy", "text and PRD for the transition"], ["Transition", "redesign in ENASEI's look"], ["References", "3 options, 2 combined"], ["System", "tokens from the manual"], ["Wireframes", "5 pages, PRD + Figma Make"], ["Build", "WordPress and my own plugins"]]} />;
 
   const tools: [string, string?][] = [["Figma", "figma"], ["Figma Make", "figma"], ["WordPress", "wordpress"], ["Elementor", "elementor"], ["WooCommerce", "woocommerce"], ["Mercado Pago", "mercadopago"], ["Claude Code", "claude"], ["Claude", "claude"]];
 
@@ -115,8 +121,9 @@ function content(lang: Lang): CaseContent {
       extra: <>{order}{boards}</>,
     },
     decisions: [
-      { t: "tell the change before showing the new site", because: "people knew ENASEI, not Nexo Summit. A transition landing in the old palette said it plainly: the same excellence, more impact, and the date.", fig: transition },
+      { t: "tell the change before showing the new site", because: "people knew ENASEI, not Nexo Summit. I wrote the copy first, section by section, with notes on tone, then a PRD that Figma Make turned into a first layout. After CODIP approved the texts, the landing said it plainly: the same excellence, more impact, and the date.", fig: transition },
       { t: "the hero answers the five questions", because: "the review asked for what, when, where and how much without scrolling. Date, venue, format and the starting price sit in the hero; the ticker repeats the theme.", ruled: "a city photo as the hero. It looked like every other conference and said nothing about this one.", fig: hero },
+      { t: "one system, written down before the pages", because: "the brand manual set the colors and the references set the feel. I turned both into tokens: how much of each color a page can use, which typeface does what, spacing for sections, so every page and plugin looked like one event.", ruled: "styling page by page in Elementor. It would have drifted between the five pages and the four plugins.", fig: system },
       { t: "subpages instead of one endless home", because: "speakers, agenda, venue and sponsors each need room. The home previews each one with a button; the subpage carries the detail and a ticket button.", fig: pages },
       { t: "VIP in the middle, associates to a conversation", because: "the client wanted VIP to stand out and Executive to stay visible. The associate rate depends on membership, so that card asks for contact instead of a price.", fig: tickets },
       { t: "a three-step purchase inside the site", because: "companies often buy for a team, so one purchase can mix Executive and VIP and list each attendee in a panel that folds away. Billing asks for a tax ID only when the buyer wants an invoice, the summary shows tax before paying, and Mercado Pago takes the payment, so the modal never handles card data.", ruled: "sending people straight to the default WooCommerce checkout. It asks for one buyer, not for each attendee.", fig: buy },
@@ -161,8 +168,9 @@ function content(lang: Lang): CaseContent {
       extra: <>{order}{boards}</>,
     },
     decisions: [
-      { t: "contar el cambio antes de mostrar el sitio nuevo", because: "la gente conocía ENASEI, no Nexo Summit. Una landing de transición con la paleta anterior lo dijo claro: la misma excelencia, mayor impacto, y la fecha.", fig: transition },
+      { t: "contar el cambio antes de mostrar el sitio nuevo", because: "la gente conocía ENASEI, no Nexo Summit. Primero escribí el copy, sección por sección y con notas de tono; luego un PRD que Figma Make convirtió en un primer layout. Con los textos aprobados por CODIP, la landing lo dijo claro: la misma excelencia, mayor impacto, y la fecha.", fig: transition },
       { t: "el hero responde las cinco preguntas", because: "la revisión pidió qué, cuándo, dónde y cuánto sin hacer scroll. Fecha, sede, modalidad y precio desde están en el hero; el ticker repite el tema.", ruled: "una foto de la ciudad como hero. Se parecía a cualquier conferencia y no decía nada de esta.", fig: hero },
+      { t: "un sistema escrito antes de las páginas", because: "el manual de marca fijó los colores y los referentes, la sensación. Llevé ambos a tokens: cuánto de cada color puede usar una página, qué hace cada tipografía y el espaciado de secciones, para que cada página y cada plugin se vieran como un mismo evento.", ruled: "diseñar página por página en Elementor. Se habría desviado entre las cinco páginas y los cuatro plugins.", fig: system },
       { t: "subpáginas en lugar de una home infinita", because: "speakers, agenda, sede y sponsors necesitan espacio. La home adelanta cada uno con un botón; la subpágina lleva el detalle y un botón de entradas.", fig: pages },
       { t: "VIP al centro, asociados a una conversación", because: "el cliente quería destacar VIP sin esconder Ejecutiva. La tarifa de asociados depende de la membresía, así que esa tarjeta pide contacto en vez de mostrar un precio.", fig: tickets },
       { t: "una compra de tres pasos dentro del sitio", because: "las empresas suelen comprar para un equipo, así que una sola compra puede mezclar Ejecutiva y VIP y registrar a cada asistente en un panel plegable. La facturación pide RUC solo si se quiere factura, el resumen muestra el IGV antes de pagar y Mercado Pago cobra, así el modal nunca toca datos de tarjeta.", ruled: "mandar directo al checkout estándar de WooCommerce. Pide un solo comprador, no a cada asistente.", fig: buy },

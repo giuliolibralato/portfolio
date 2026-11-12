@@ -243,6 +243,8 @@ button, select { font: inherit; color: inherit; }
 .frame.rows { grid-template-columns: minmax(0, 1fr); }
 .frame.cols-phones { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 32px; }
 .crop.phone { border-radius: 28px; }
+.frame.cols-phones.two { grid-template-columns: repeat(2, minmax(0, 240px)); justify-content: center; }
+.frame.cols-phones.one { grid-template-columns: minmax(0, 240px); justify-content: center; }
 .pane { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 .pane-l { font-size: 13px; line-height: 20px; font-weight: 500; letter-spacing: 0.01em; color: var(--label); }
 .pane > .pane-l { font-family: inherit; font-size: 15px; line-height: 22px; font-weight: 500; color: var(--foreground); text-align: center; }

@@ -97,7 +97,7 @@ export const T = {
       lessin: { title: "Lessin", desc: "Sitio y design system ed-tech · en Figma" },
       wedding: { title: "Nuestra boda", desc: "Sitio de nuestra boda, diseñado y programado" },
       firstlancer: { title: "Firstlancer", desc: "Diseño de app iOS · caso en Behance" },
-      budgy: { title: "Budgy", desc: "App de finanzas personales, diseñada y construida" },
+      budgy: { title: "un presupuesto que responde una pregunta", desc: "App de finanzas personales para iOS, diseñada y construida" },
       monthly: { title: "Monthly Budget", desc: "Presupuesto del hogar y planificación de compras" },
     } as Record<string, Item>,
     visualIntro: "Logos, branding y fotomontajes publicitarios. Cada uno se abre en Behance.",

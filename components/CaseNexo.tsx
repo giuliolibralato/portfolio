@@ -68,7 +68,7 @@ function content(lang: Lang): CaseContent {
     ? [["ENASEI", "rediseño en su dirección"], ["Transición", "ENASEI ahora es Nexo"], ["Referentes", "3 opciones, se combinaron 2"], ["Sistema", "tokens y tipografías"], ["Wireframes", "5 páginas, PRD + Figma Make"], ["Build", "WordPress y plugins propios"]]
     : [["ENASEI", "redesign in its direction"], ["Transition", "ENASEI is now Nexo"], ["References", "3 options, 2 combined"], ["System", "tokens and type"], ["Wireframes", "5 pages, PRD + Figma Make"], ["Build", "WordPress and my own plugins"]]} />;
 
-  const tools: [string, string?][] = [["Figma", "figma"], ["Figma Make", "figma"], ["WordPress", "wordpress"], ["Elementor", "elementor"], ["WooCommerce", "woocommerce"], ["Mercado Pago", "mercadopago"]];
+  const tools: [string, string?][] = [["Figma", "figma"], ["Figma Make", "figma"], ["WordPress", "wordpress"], ["Elementor", "elementor"], ["WooCommerce", "woocommerce"], ["Mercado Pago", "mercadopago"], ["Claude Code", "claude"], ["Claude", "claude"]];
 
   if (!es) return {
     project: "Nexo Summit — case study",
@@ -78,7 +78,7 @@ function content(lang: Lang): CaseContent {
       ["client", "CODIP · Confederation of Real Estate Developers of Peru"],
       ["role", "Freelance product designer and developer: design system, UX/UI, WordPress build, SEO and plugins"],
       ["team", "CODIP's marketing and communications team, their tech provider for the domain, and me"],
-      ["timeline", "2025–2026 · launched ahead of the event on 9–10 September 2026"],
+      ["timeline", "2026 · launched on 6 July, ahead of the event on 9–10 September"],
       ["scope", "Five pages, a transition landing and four plugins (speakers, agenda, FAQ, tickets)"],
       ["status", "Live at nexosummit.pe"],
     ],
@@ -92,7 +92,7 @@ function content(lang: Lang): CaseContent {
       end: "And there was a {{fixed launch date}}, with a domain migration in the middle.",
       fig: enasei,
     },
-    role: "{{I designed and built it end to end}}: references, design system, wireframes, the high-fidelity concept, the WordPress build with Elementor, SEO, and four plugins of my own. CODIP's team owned the content, the brand manual and the approvals; their tech provider handled the domain.",
+    role: "{{I designed and built it end to end}}: references, design system, wireframes, the high-fidelity concept, the WordPress build with Elementor, SEO, and four plugins of my own, coded with Claude Code and refined in conversation with Claude. CODIP's team owned the content, the brand manual and the approvals; their tech provider handled the domain.",
     research: {
       items: ["A review of the previous edition's site with the client: what was too dense, what had no impact, and where people got lost.", "Three reference sites. The team ruled out the first as too flat and asked to combine the other two: wide spacing, big type, organised and modern.", "A review meeting that set the landing's job: answer what it is, what it's for, where, when and how much.", "The brand manual and the updated logos, all signed “by CODIP”."],
       extraTitle: "the order of the work",
@@ -110,7 +110,7 @@ function content(lang: Lang): CaseContent {
     validation: {
       items: ["Review meetings with CODIP's team on the references, the structure and the ticket offer.", "A text-approval round for the transition landing before it went live.", "A high-fidelity concept approved before the build, so development didn't redo design."],
     },
-    results: [["observed", "{{The site is live at nexosummit.pe}}: five pages, the transition story and ticket sales through Mercado Pago, ahead of the event."], ["measured", "I don't have traffic or sales numbers I can share."]],
+    results: [["observed", "{{It launched on the agreed date, 6 July}}, and the old ENASEI domain now redirects to nexosummit.pe: five pages, the transition story and ticket sales through Mercado Pago, ahead of the event."], ["measured", "I don't have traffic or sales numbers I can share."]],
     learn: ["{{Ask for photo standards before the photos arrive.}} Agreeing on background, framing and quality for speakers saved rounds of retouching.", "Writing the wireframes as a PRD let Figma Make draft five pages fast, so my time went to the decisions, not the boxes."],
     legal: "Freelance work for CODIP. Nexo Summit, ENASEI and their brands belong to CODIP.",
   };
@@ -123,7 +123,7 @@ function content(lang: Lang): CaseContent {
       ["cliente", "CODIP · Confederación de Desarrolladores Inmobiliarios del Perú"],
       ["rol", "Diseñador de producto y desarrollador freelance: design system, UX/UI, desarrollo en WordPress, SEO y plugins"],
       ["equipo", "El equipo de marketing y comunicaciones de CODIP, su proveedor técnico para el dominio y yo"],
-      ["duración", "2025–2026 · lanzado antes del evento del 9 y 10 de septiembre de 2026"],
+      ["duración", "2026 · lanzado el 6 de julio, antes del evento del 9 y 10 de septiembre"],
       ["alcance", "Cinco páginas, una landing de transición y cuatro plugins (speakers, agenda, preguntas frecuentes, entradas)"],
       ["estado", "En vivo en nexosummit.pe"],
     ],
@@ -137,7 +137,7 @@ function content(lang: Lang): CaseContent {
       end: "Y había una {{fecha de lanzamiento fija}}, con una migración de dominio en el medio.",
       fig: enasei,
     },
-    role: "{{Lo diseñé y construí de punta a punta}}: referentes, design system, wireframes, el concepto en alta fidelidad, el desarrollo en WordPress con Elementor, SEO y cuatro plugins propios. El equipo de CODIP se encargó del contenido, el manual de marca y las aprobaciones; su proveedor técnico, del dominio.",
+    role: "{{Lo diseñé y construí de punta a punta}}: referentes, design system, wireframes, el concepto en alta fidelidad, el desarrollo en WordPress con Elementor, SEO y cuatro plugins propios, programados con Claude Code y ajustados conversando con Claude. El equipo de CODIP se encargó del contenido, el manual de marca y las aprobaciones; su proveedor técnico, del dominio.",
     research: {
       items: ["Una revisión del sitio de la edición anterior con el cliente: qué era muy denso, qué no tenía impacto y dónde se perdía la gente.", "Tres sitios de referencia. El equipo descartó el primero por plano y pidió combinar los otros dos: espacios amplios, tipografía grande, ordenado y moderno.", "Una reunión de revisión que definió el trabajo de la landing: responder qué es, para qué sirve, dónde, cuándo y cuánto cuesta.", "El manual de marca y los logos actualizados, todos con la firma “por CODIP”."],
       extraTitle: "el orden del trabajo",
@@ -155,7 +155,7 @@ function content(lang: Lang): CaseContent {
     validation: {
       items: ["Reuniones de revisión con el equipo de CODIP sobre los referentes, la estructura y la oferta de entradas.", "Una ronda de aprobación de textos para la landing de transición antes de publicarla.", "Un concepto en alta fidelidad aprobado antes del desarrollo, para que construir no significara rediseñar."],
     },
-    results: [["observado", "{{El sitio está en vivo en nexosummit.pe}}: cinco páginas, la historia de la transición y la venta de entradas con Mercado Pago, antes del evento."], ["medido", "No tengo números de tráfico o ventas que pueda compartir."]],
+    results: [["observado", "{{Se lanzó en la fecha acordada, el 6 de julio}}, y el dominio de ENASEI ahora redirige a nexosummit.pe: cinco páginas, la historia de la transición y la venta de entradas con Mercado Pago, antes del evento."], ["medido", "No tengo números de tráfico o ventas que pueda compartir."]],
     learn: ["{{Pedir el estándar de fotos antes de que lleguen las fotos.}} Acordar fondo, encuadre y calidad para los speakers ahorró rondas de retoque.", "Escribir los wireframes como PRD dejó que Figma Make armara cinco páginas rápido, y mi tiempo fue a las decisiones, no a las cajas."],
     legal: "Trabajo freelance para CODIP. Nexo Summit, ENASEI y sus marcas pertenecen a CODIP.",
   };

@@ -91,7 +91,8 @@ function content(lang: Lang): CaseContent {
       ["scope", "Sitemap, home and five page wireframes"],
       ["status", "The new home is live; the new main menu is designed and on hold"],
     ],
-    chips: ["case study", "volunteer", "home live"], okChip: 2,
+    chips: ["case study", "website", "volunteer", "home live"], okChip: 3,
+    site: { href: "https://caminodevida.com/", label: "visit the website" },
     cover, coverFilm: true,
     challenge: {
       intro: "The site answered the church's org chart, not a visitor's questions:",
@@ -130,7 +131,8 @@ function content(lang: Lang): CaseContent {
       ["alcance", "Sitemap, home y wireframes de cinco páginas"],
       ["estado", "La home nueva está en vivo; el menú principal nuevo está diseñado y en pausa"],
     ],
-    chips: ["caso de estudio", "voluntariado", "home en vivo"], okChip: 2,
+    chips: ["caso de estudio", "sitio web", "voluntariado", "home en vivo"], okChip: 3,
+    site: { href: "https://caminodevida.com/", label: "ver la web" },
     cover, coverFilm: true,
     challenge: {
       intro: "La web respondía al organigrama de la iglesia, no a las preguntas de quien llega:",

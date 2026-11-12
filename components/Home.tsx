@@ -187,6 +187,7 @@ export default function Home() {
                       <p className="one muted">{c.desc}</p>
                       <div className="muted" style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 12, fontSize: 12, lineHeight: "16px" }}>
                         <span className="tag">{t.types[c.type] ?? c.type}</span>
+                        {c.tags?.map((g) => <span key={g} className="tag">{t.types[g] ?? g}</span>)}
                         <span className="mono" style={{ marginLeft: "auto" }}>{c.year}</span>
                       </div>
                     </motion.a>
@@ -231,7 +232,7 @@ export default function Home() {
 
             {/* resume */}
             <section id="resume" style={{ marginTop: 96 }}>
-              <h2 className="h2" style={{ marginBottom: 24 }}>{t.resume}</h2>
+              <h2 className="h2" style={{ marginBottom: 24 }}>{t.resumeH}</h2>
               <div style={{ borderBottom: "1px solid var(--border)" }}>
                 <Row label={t.rows.summary}><p style={{ maxWidth: 600 }}>{t.summary}</p></Row>
                 <Row label={t.rows.education}><div style={{ display: "flex", flexWrap: "wrap", gap: "4px 10px", alignItems: "baseline" }}><b style={{ fontWeight: 500 }}>UPC</b><span className="muted">{t.degree}</span></div></Row>

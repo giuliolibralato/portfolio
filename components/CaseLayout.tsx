@@ -6,6 +6,7 @@ import { RubberTabs } from "./RubberTabs";
 import { Shell, useSite } from "./Shell";
 import { Cursor } from "./Cursor";
 import { rise } from "./Figure";
+import { Arrow } from "./Icons";
 import { T } from "@/lib/i18n";
 import type { Lang } from "@/lib/data";
 
@@ -24,6 +25,8 @@ export type CaseContent = {
   meta: [string, string, boolean?][];
   chips: string[]; okChip?: number;
   cover: React.ReactNode; coverFilm?: boolean;
+  /** a live site to visit, shown as a button under the meta */
+  site?: { href: string; label: string };
   challenge: { intro: string; list?: string[]; end?: string; fig?: React.ReactNode };
   role: string;
   research: { items: string[]; extraTitle?: string; extra?: React.ReactNode };
@@ -100,6 +103,11 @@ export function CaseLayout({ content }: { content: (lang: Lang) => CaseContent }
                   <div key={k} className="xrow"><span className="label">{k}</span><span>{v}{note && <sup className="fn"><a href="#legal" aria-label={lang === "es" ? "ver nota" : "see note"}>1</a></sup>}</span></div>
                 ))}
               </motion.div>
+              {c.site && (
+                <motion.div variants={rise}>
+                  <a className="site-btn" href={c.site.href} target="_blank" rel="noopener" data-label="visit">{c.site.label}<Arrow size={12} /></a>
+                </motion.div>
+              )}
               <motion.div variants={rise} className={`cover hero-cover${c.coverFilm ? " film-cover" : ""}`}>{c.cover}</motion.div>
             </motion.header>
 

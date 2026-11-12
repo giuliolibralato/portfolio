@@ -109,7 +109,7 @@ function content(lang: Lang): CaseContent {
     chips: ["case study", "website", "freelance", "live"], okChip: 3,
     cover,
     challenge: {
-      intro: "The event was taking a new name, and the old site wasn't ready to carry it:",
+      intro: "For its sixth edition, ENASEI was taking a new name, and the old site wasn't ready to carry it:",
       list: ["dense text and little visual impact, with a stock skyline as the hero", "dozens of sponsor logos of every shape in one long grid", "speaker photos with different backgrounds, crops and quality", "a lot of information to read fast: two days of agenda, dozens of speakers, three ticket types", "tickets had to sell online, with VIP, Executive and a CODIP affiliate rate that needs a conversation"],
       end: "And there was a {{fixed launch date, 6 July}}, with a domain move in the middle.",
       fig: enasei,
@@ -158,7 +158,7 @@ function content(lang: Lang): CaseContent {
     chips: ["caso de estudio", "sitio web", "freelance", "en vivo"], okChip: 3,
     cover,
     challenge: {
-      intro: "El evento cambiaba de nombre y el sitio anterior no estaba listo para cargarlo:",
+      intro: "En su sexta edición, ENASEI cambiaba de nombre y el sitio anterior no estaba listo para cargarlo:",
       list: ["mucho texto y poco impacto visual, con una foto genérica de la ciudad como hero", "decenas de logos de sponsors de todos los formatos en una sola grilla larga", "fotos de speakers con fondos, encuadres y calidades distintas", "mucha información para leer rápido: dos días de agenda, decenas de speakers, tres tipos de entrada", "las entradas tenían que venderse online: VIP, Ejecutiva y una tarifa de afiliados CODIP que requiere conversar"],
       end: "Y había una {{fecha de lanzamiento fija, el 6 de julio}}, con un cambio de dominio en el medio.",
       fig: enasei,

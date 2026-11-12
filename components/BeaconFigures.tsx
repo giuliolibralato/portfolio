@@ -2,36 +2,13 @@
 
 import { motion } from "motion/react";
 import type { Lang } from "@/lib/data";
+import { Crop as Img, Frame, Metrics, Pane, Steps, imgBase, rise, view } from "./Figure";
 
 // Figures for the Beacon case. One pattern for all of them (DESIGN.md "Imagen con caption"):
 // a --card frame, real crops of the prototype inside, a mono label per side and a plain caption.
 
-const IMG = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/cases/beacon`;
-const rise = {
-  hidden: { opacity: 0, y: 8 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.38, ease: [0.32, 0.72, 0, 1] as const } },
-};
-const view = { initial: "hidden", whileInView: "show", viewport: { once: true, amount: 0.3 } } as const;
-
-function Frame({ caption, children, className = "" }: { caption: string; children: React.ReactNode; className?: string }) {
-  return (
-    <figure className="frame-fig">
-      <motion.div className={`frame ${className}`} {...view} transition={{ staggerChildren: 0.08 }}>{children}</motion.div>
-      <figcaption className="small muted">{caption}</figcaption>
-    </figure>
-  );
-}
-
-function Pane({ label, children, accent }: { label: string; children: React.ReactNode; accent?: boolean }) {
-  return (
-    <motion.div variants={rise} className="pane">
-      <span className={`mono pane-l${accent ? " on" : ""}`}>{label}</span>
-      {children}
-    </motion.div>
-  );
-}
-
-const Crop = ({ src, alt }: { src: string; alt: string }) => <img className="crop" src={`${IMG}/${src}`} alt={alt} loading="lazy" decoding="async" />;
+const IMG = imgBase("beacon");
+const Crop = ({ src, alt }: { src: string; alt: string }) => <Img src={`${IMG}/${src}`} alt={alt} />;
 
 /* 1 · ~60 destinations → one sidebar in five groups */
 export function NavSprawl({ lang }: { lang: Lang }) {
@@ -74,12 +51,12 @@ export function OneBrain({ lang }: { lang: Lang }) {
   const es = lang === "es";
   const roles = ["Assistant", "Data Scientist", "Marketing Coordinator", "Investigative Reporter", "Cartographer", "Contact Intelligence", "AI review"];
   return (
-    <Frame className="cols-brain" caption={es ? "Un solo asistente con un historial. Los nombres de rol del cliente quedan como etiqueta de contexto." : "One assistant with one history. The client's role names stay as a context label."}>
+    <Frame className="cols-brain" caption={es ? "Un solo asistente con un historial. Los roles del cliente pasan a ser un selector en el chat: en Auto, cada página elige el suyo." : "One assistant with one history. The client's roles become a picker in the chat: on Auto, each page picks its own."}>
       <Pane label={es ? "antes · 7 asistentes" : "before · 7 assistants"}>
         <ul className="roles">{roles.map((r) => <li key={r}>{r}</li>)}</ul>
       </Pane>
-      <Pane accent label={es ? "después · uno, con fuentes" : "after · one, with sources"}>
-        <Crop src="brain-answer.webp" alt={es ? "Brain responde con 12 dueños, los criterios y sus fuentes" : "Brain answers with 12 owners, the criteria and its sources"} />
+      <Pane accent label={es ? "después · uno, con el rol como contexto" : "after · one, with the role as context"}>
+        <Crop src="brain-roles.webp" alt={es ? "El selector de rol en el chat de Brain: Auto, Assistant, Data Scientist, Cartographer, Marketing Coordinator e Investigative Reporter" : "The role picker in Brain's chat: Auto, Assistant, Data Scientist, Cartographer, Marketing Coordinator and Investigative Reporter"} />
       </Pane>
     </Frame>
   );
@@ -127,39 +104,16 @@ export function Trust({ lang }: { lang: Lang }) {
 
 /* 6 · the success tests, as metrics (DESIGN.md "Métrica") */
 export function Tests({ lang }: { lang: Lang }) {
-  const es = lang === "es";
-  const t: [string, string][] = es
-    ? [["1 clic", "para llegar al primer dueño, en menos de 10 s"], ["2 clics", "para registrar una llamada sin respuesta"], ["1er intento", "para encontrar cualquier área desde el sidebar"]]
-    : [["1 click", "to reach the first owner, in under 10 s"], ["2 clicks", "to log an unanswered call"], ["1st try", "to find any area from the sidebar"]];
-  return (
-    <motion.div className="metrics" {...view} transition={{ staggerChildren: 0.08 }}>
-      {t.map(([a, b]) => (
-        <motion.div key={a} variants={rise}>
-          <span className="metric">{a}</span>
-          <span className="small muted">{b}</span>
-        </motion.div>
-      ))}
-      <span className="mono pane-l metrics-note">{es ? "objetivos · pantalla 1440 × 900, sin guía · aún no medidos" : "targets · 1440 × 900 screen, no guidance · not yet measured"}</span>
-    </motion.div>
-  );
+  return lang === "es"
+    ? <Metrics label="objetivos · pantalla 1440 × 900, sin guía" items={[["1 clic", "para llegar al primer dueño, en menos de 10\u00a0s"], ["2 clics", "para registrar una llamada sin respuesta"], ["1er intento", "para encontrar cualquier área desde el sidebar"]]} caption="Los tests de éxito que escribí el primer día. Son objetivos: todavía no se midieron con usuarios." />
+    : <Metrics label="targets · 1440 × 900 screen, no guidance" items={[["1 click", "to reach the first owner, in under 10\u00a0s"], ["2 clicks", "to log an unanswered call"], ["1st try", "to find any area from the sidebar"]]} caption="The success tests I wrote on day one. They are targets: not yet measured with users." />;
 }
 
 /* 7 · the order the work went in */
 export function Timeline({ lang }: { lang: Lang }) {
-  const es = lang === "es";
-  const t: [string, string][] = es
+  return <Steps items={lang === "es"
     ? [["Rediseño", "la dirección visual y el shell"], ["Reorden", "60 destinos en un sidebar"], ["Today", "donde empieza el día"], ["Approvals", "nada sale sin su clic"], ["Database", "contactos, propiedades y limpieza"], ["Email y texting", "los canales"]]
-    : [["Redesign", "the visual direction and shell"], ["Reorder", "60 destinations into one sidebar"], ["Today", "where the day starts"], ["Approvals", "nothing goes out without a click"], ["Database", "contacts, properties and cleaning"], ["Email and texting", "the channels"]];
-  return (
-    <motion.ol className="steps tl" {...view} transition={{ staggerChildren: 0.08 }}>
-      {t.map(([a, b]) => (
-        <motion.li key={a} variants={rise}>
-          <b>{a}</b>
-          <span className="small muted">{b}</span>
-        </motion.li>
-      ))}
-    </motion.ol>
-  );
+    : [["Redesign", "the visual direction and shell"], ["Reorder", "60 destinations into one sidebar"], ["Today", "where the day starts"], ["Approvals", "nothing goes out without a click"], ["Database", "contacts, properties and cleaning"], ["Email and texting", "the channels"]]} />;
 }
 
 /* 8 · the phone app as field mode: three screens, label above each */

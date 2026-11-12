@@ -170,6 +170,8 @@ export default function Home() {
                         <div className={c.cover ? "cover film-cover" : "cover"}>
                           {c.cover ? (
                             <CoverVideo src={`${BASE}${c.cover.video}`} poster={`${BASE}${c.cover.poster}`} label={c.title} />
+                          ) : c.image ? (
+                            <img className="cover-shot" src={`${BASE}${c.image}`} alt="" loading="lazy" decoding="async" />
                           ) : c.phone ? (
                             <div className="cv phone"><i className="bar" style={{ width: "50%", height: 8 }} /><i className="bar" style={{ height: 44, borderRadius: 8 }} /><i className="bar" /><i className="bar" style={{ width: "70%" }} /><i className="bar" style={{ height: 44, borderRadius: 8 }} /></div>
                           ) : (

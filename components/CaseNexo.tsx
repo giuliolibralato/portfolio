@@ -64,6 +64,22 @@ function content(lang: Lang): CaseContent {
     </Frame>
   );
 
+  const boards = (
+    <Frame className="cols-2" caption={es ? "El tablero de trabajo, con marca, piezas de redes, fotos de speakers y logos ordenados antes de las páginas, y el moodboard de sitios de conferencias que se presentó al cliente." : "The working board, with brand, social pieces, speaker photos and logos sorted before the pages, and the moodboard of conference sites shown to the client."}>
+      <Pane label={es ? "wip · el tablero" : "wip · the board"}><Img src="wip.webp" alt={es ? "Tablero de trabajo en Figma con exploraciones, piezas y pantallas" : "Figma working board with explorations, pieces and screens"} /></Pane>
+      <Pane label="moodboard"><Img src="mood.webp" alt={es ? "Moodboard de sitios de conferencias: hero, speakers, agenda, entradas, sponsors y sede" : "Moodboard of conference sites: hero, speakers, agenda, tickets, sponsors and venue"} /></Pane>
+    </Frame>
+  );
+
+  const buy = (
+    <Frame className="cols-2" caption={es ? "El modal de compra del plugin, con datos ficticios: entradas y asistentes, facturación, resumen con IGV y paso a Mercado Pago." : "The plugin's purchase modal, with fictional data: tickets and attendees, billing, a summary with tax, and the hand-off to Mercado Pago."}>
+      <Pane accent label={es ? "1 · entradas y asistentes" : "1 · tickets and attendees"}><Img src="buy-1.webp" alt={es ? "Paso 1: Ejecutiva y VIP en la misma compra, cada asistente en un panel plegable" : "Step 1: Executive and VIP in one purchase, each attendee in a collapsible panel"} /></Pane>
+      <Pane label={es ? "2 · facturación" : "2 · billing"}><Img src="buy-2.webp" alt={es ? "Paso 2: datos del comprador, boleta o factura, RUC y razón social solo con factura" : "Step 2: buyer details, receipt or invoice, tax ID only for invoices"} /></Pane>
+      <Pane label={es ? "3 · pago" : "3 · payment"}><Img src="buy-3.webp" alt={es ? "Paso 3: resumen con subtotal, IGV y total, Mercado Pago y términos" : "Step 3: summary with subtotal, tax and total, Mercado Pago and terms"} /></Pane>
+      <Pane label={es ? "listo · al checkout" : "done · to checkout"}><Img src="buy-4.webp" alt={es ? "Confirmación: las entradas están en el carrito, sigue el pago con Mercado Pago" : "Confirmation: tickets are in the cart, payment continues with Mercado Pago"} /></Pane>
+    </Frame>
+  );
+
   const order = <Steps items={es
     ? [["Antes", "la landing de ENASEI 2025"], ["Transición", "rediseño en la línea de ENASEI"], ["Referentes", "3 opciones, se combinaron 2"], ["Sistema", "tokens y tipografías"], ["Wireframes", "5 páginas, PRD + Figma Make"], ["Build", "WordPress y plugins propios"]]
     : [["Before", "the ENASEI 2025 landing"], ["Transition", "redesign in ENASEI's look"], ["References", "3 options, 2 combined"], ["System", "tokens and type"], ["Wireframes", "5 pages, PRD + Figma Make"], ["Build", "WordPress and my own plugins"]]} />;
@@ -94,17 +110,18 @@ function content(lang: Lang): CaseContent {
     },
     role: "{{I designed and built it end to end}}: references, design system, wireframes, the high-fidelity concept, the WordPress build with Elementor, SEO, and four plugins of my own, coded with Claude Code and refined in conversation with Claude. CODIP's team owned the content, the brand manual and the approvals; their tech provider handled the domain.",
     research: {
-      items: ["A review of the previous edition's site with the client: what was too dense, what had no impact, and where people got lost.", "Three reference sites. The team ruled out the first as too flat and asked to combine the other two: wide spacing, big type, organised and modern.", "A review meeting that set the landing's job: answer what it is, what it's for, where, when and how much.", "The brand manual and the updated logos, all signed “by CODIP”."],
+      items: ["A review of the previous edition's site with the client: what was too dense, what had no impact, and where people got lost.", "Three reference sites. The team ruled out the first as too flat and asked to combine the other two: wide spacing, big type, organised and modern.", "A review meeting that set the landing's job: answer what it is, what it's for, where, when and how much.", "The brand manual and the updated logos, all signed “by CODIP”.", "A moodboard of conference sites and a working board in Figma, where the brand, social pieces, speaker photos and sponsor logos were sorted before any page was drawn."],
       extraTitle: "the order of the work",
-      extra: order,
+      extra: <>{order}{boards}</>,
     },
     decisions: [
       { t: "tell the change before showing the new site", because: "people knew ENASEI, not Nexo Summit. A transition landing in the old palette said it plainly: the same excellence, more impact, and the date.", fig: transition },
       { t: "the hero answers the five questions", because: "the review asked for what, when, where and how much without scrolling. Date, venue, format and the starting price sit in the hero; the ticker repeats the theme.", ruled: "a city photo as the hero. It looked like every other conference and said nothing about this one.", fig: hero },
       { t: "subpages instead of one endless home", because: "speakers, agenda, venue and sponsors each need room. The home previews each one with a button; the subpage carries the detail and a ticket button.", fig: pages },
       { t: "VIP in the middle, associates to a conversation", because: "the client wanted VIP to stand out and Executive to stay visible. The associate rate depends on membership, so that card asks for contact instead of a price.", fig: tickets },
+      { t: "a three-step purchase inside the site", because: "companies often buy for a team, so one purchase can mix Executive and VIP and list each attendee in a panel that folds away. Billing asks for a tax ID only when the buyer wants an invoice, the summary shows tax before paying, and Mercado Pago takes the payment, so the modal never handles card data.", ruled: "sending people straight to the default WooCommerce checkout. It asks for one buyer, not for each attendee.", fig: buy },
       { t: "sponsors by tier, in carousels", because: "a single grid gave every logo the same weight and broke with odd shapes. Each tier got its own block, so the main partners lead.", fig: sponsors },
-      { t: "my own plugins, so the client can edit", because: "speakers and the agenda change until the last week. The plugins keep the design fixed while CODIP edits the content; the tickets plugin sells several ticket types in one Mercado Pago payment, shows tax and collects every attendee's details.", fig: plugins },
+      { t: "my own plugins, so the client can edit", because: "speakers and the agenda change until the last week. The plugins keep the design fixed while CODIP edits the content.", fig: plugins },
     ],
     decisionsTail: wires,
     validation: {
@@ -139,17 +156,18 @@ function content(lang: Lang): CaseContent {
     },
     role: "{{Lo diseñé y construí de punta a punta}}: referentes, design system, wireframes, el concepto en alta fidelidad, el desarrollo en WordPress con Elementor, SEO y cuatro plugins propios, programados con Claude Code y ajustados conversando con Claude. El equipo de CODIP se encargó del contenido, el manual de marca y las aprobaciones; su proveedor técnico, del dominio.",
     research: {
-      items: ["Una revisión del sitio de la edición anterior con el cliente: qué era muy denso, qué no tenía impacto y dónde se perdía la gente.", "Tres sitios de referencia. El equipo descartó el primero por plano y pidió combinar los otros dos: espacios amplios, tipografía grande, ordenado y moderno.", "Una reunión de revisión que definió el trabajo de la landing: responder qué es, para qué sirve, dónde, cuándo y cuánto cuesta.", "El manual de marca y los logos actualizados, todos con la firma “por CODIP”."],
+      items: ["Una revisión del sitio de la edición anterior con el cliente: qué era muy denso, qué no tenía impacto y dónde se perdía la gente.", "Tres sitios de referencia. El equipo descartó el primero por plano y pidió combinar los otros dos: espacios amplios, tipografía grande, ordenado y moderno.", "Una reunión de revisión que definió el trabajo de la landing: responder qué es, para qué sirve, dónde, cuándo y cuánto cuesta.", "El manual de marca y los logos actualizados, todos con la firma “por CODIP”.", "Un moodboard de sitios de conferencias y un tablero de trabajo en Figma, donde se ordenaron la marca, las piezas de redes, las fotos de speakers y los logos de sponsors antes de dibujar cualquier página."],
       extraTitle: "el orden del trabajo",
-      extra: order,
+      extra: <>{order}{boards}</>,
     },
     decisions: [
       { t: "contar el cambio antes de mostrar el sitio nuevo", because: "la gente conocía ENASEI, no Nexo Summit. Una landing de transición con la paleta anterior lo dijo claro: la misma excelencia, mayor impacto, y la fecha.", fig: transition },
       { t: "el hero responde las cinco preguntas", because: "la revisión pidió qué, cuándo, dónde y cuánto sin hacer scroll. Fecha, sede, modalidad y precio desde están en el hero; el ticker repite el tema.", ruled: "una foto de la ciudad como hero. Se parecía a cualquier conferencia y no decía nada de esta.", fig: hero },
       { t: "subpáginas en lugar de una home infinita", because: "speakers, agenda, sede y sponsors necesitan espacio. La home adelanta cada uno con un botón; la subpágina lleva el detalle y un botón de entradas.", fig: pages },
       { t: "VIP al centro, asociados a una conversación", because: "el cliente quería destacar VIP sin esconder Ejecutiva. La tarifa de asociados depende de la membresía, así que esa tarjeta pide contacto en vez de mostrar un precio.", fig: tickets },
+      { t: "una compra de tres pasos dentro del sitio", because: "las empresas suelen comprar para un equipo, así que una sola compra puede mezclar Ejecutiva y VIP y registrar a cada asistente en un panel plegable. La facturación pide RUC solo si se quiere factura, el resumen muestra el IGV antes de pagar y Mercado Pago cobra, así el modal nunca toca datos de tarjeta.", ruled: "mandar directo al checkout estándar de WooCommerce. Pide un solo comprador, no a cada asistente.", fig: buy },
       { t: "sponsors por categoría, en carrusel", because: "una sola grilla le daba el mismo peso a todos los logos y se rompía con los formatos raros. Cada categoría tiene su bloque y los main partners van primero.", fig: sponsors },
-      { t: "plugins propios, para que el cliente edite", because: "los speakers y la agenda cambian hasta la última semana. Los plugins mantienen el diseño fijo mientras CODIP edita el contenido; el de entradas vende varios tipos en un solo pago con Mercado Pago, muestra el IGV y pide los datos de cada asistente.", fig: plugins },
+      { t: "plugins propios, para que el cliente edite", because: "los speakers y la agenda cambian hasta la última semana. Los plugins mantienen el diseño fijo mientras CODIP edita el contenido.", fig: plugins },
     ],
     decisionsTail: wires,
     validation: {

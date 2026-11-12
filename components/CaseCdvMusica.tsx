@@ -123,7 +123,7 @@ function content(lang: Lang): CaseContent {
       end: "La música necesitaba {{un lugar donde quien escucha encuentra el álbum y quien toca encuentra qué tocar}}.",
       fig: beforeAfter,
     },
-    role: "{{Todos los layouts y el diseño son míos, y construí la web}} en WordPress con Elementor. En el equipo web de comunicaciones somos dos: mi compañero ve otros detalles de caminodevida.com, y cdvmusica.com estuvo a mi cargo. También gestioné el plugin con el que otra persona sube y acomoda el contenido, para que los lanzamientos no dependan de mí.",
+    role: "{{Todos los layouts y el diseño son míos, y construí la web}} en WordPress con Elementor. En el equipo web de comunicaciones somos dos: la otra persona del equipo ve otros detalles de caminodevida.com, y cdvmusica.com estuvo a mi cargo. También gestioné el plugin con el que otra persona sube y acomoda el contenido, para que los lanzamientos no dependan de mí.",
     research: {
       items: ["La web anterior, sección por sección, para ver qué cambiaba con cada campaña y qué se mantenía.", "El design system de caminodevida.com, que también diseñé: la base que esta web tenía que compartir.", "Lo que piden los equipos de alabanza antes de un domingo: tonalidad, BPM, acordes, secuencias e instrumentales de cada canción."],
       extraTitle: "el orden del trabajo",

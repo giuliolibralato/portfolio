@@ -292,3 +292,40 @@ button, select { font: inherit; color: inherit; }
   .steps.tl li:last-child { padding-bottom: 0; } .steps.tl li:last-child::after { display: none; }
   .steps.tl b { flex: none; min-width: 104px; }
 }
+
+/* Budgy: a live split in the app's own dark look, and its design system */
+.budgy-demo { display: block; }
+.bd-card { margin-top: 12px; background: #050B16; color: #fff; border-radius: 20px; padding: 20px; display: grid; gap: 12px; font-variant-numeric: tabular-nums; }
+.bd-total { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.bd-total span { color: #88C1ED; font-size: 14px; }
+.bd-total b { font-size: clamp(20px, 5cqi, 28px); color: #88C1ED; }
+.bd-bar { display: flex; gap: 3px; height: 10px; border-radius: 99px; overflow: hidden; background: #0D1626; }
+.bd-bar i { display: block; height: 100%; border-radius: 99px; transition: width 160ms cubic-bezier(.32,.72,0,1); }
+.bd-chip { justify-self: start; font-size: 13px; padding: 4px 10px; border-radius: 99px; }
+.bd-chip.ok { color: #4ADE80; background: rgba(74,222,128,.12); }
+.bd-chip.under { color: #FBBF24; background: rgba(251,191,36,.12); }
+.bd-chip.over { color: #F87171; background: rgba(248,113,113,.14); }
+.bd-row { display: grid; grid-template-columns: 96px minmax(0,1fr) 44px 104px; align-items: center; gap: 12px; background: #0D1626; padding: 10px 14px; border-radius: 14px; font-size: 14px; }
+.bd-name { display: flex; align-items: center; gap: 8px; } .bd-name i { width: 8px; height: 8px; border-radius: 50%; }
+.bd-row input { width: 100%; }
+.bd-pct { text-align: right; font-weight: 600; } .bd-amt { text-align: right; color: rgba(255,255,255,.7); }
+@container (max-width: 520px) { .bd-row { grid-template-columns: 1fr auto; } .bd-row input { grid-column: 1 / -1; order: 3; } .bd-pct { display: none; } }
+.frame.budgy-ds { grid-template-columns: 1.3fr 1fr 1fr; align-items: start; }
+.ds-sw { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-top: 10px; }
+.ds-sw div { display: grid; grid-template-columns: 22px 1fr; column-gap: 8px; align-items: center; }
+.ds-sw i { grid-row: span 2; width: 22px; height: 22px; border-radius: 6px; box-shadow: inset 0 0 0 1px rgba(127,127,127,.3); }
+.ds-sw b { font-size: 12px; }
+.ds-layers { display: grid; gap: 8px; margin-top: 10px; background: radial-gradient(120% 90% at 50% 0%, #15486e, #050B16 70%); padding: 14px; border-radius: 16px; color: #fff; }
+.ds-layers div { border-radius: 14px; padding: 12px; display: grid; gap: 2px; font-size: 13px; } .ds-layers span { color: rgba(255,255,255,.62); }
+.ds-layers .glass { background: rgba(255,255,255,.10); backdrop-filter: blur(10px); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }
+.ds-layers .solid { background: #0D1626; }
+.ds-comps { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 8px; } .ds-comps li { display: grid; } .ds-comps b { font-size: 12px; }
+@media (max-width: 760px) { .frame.budgy-ds { grid-template-columns: minmax(0,1fr); } }
+.budgy-arch, .budgy-feat { display: block; }
+.arch { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 6px; }
+.arch li { display: grid; grid-template-columns: 120px minmax(0, 1.1fr) minmax(0, 2fr); gap: 12px; align-items: baseline; padding: 12px 14px; border-radius: 12px; background: var(--background); box-shadow: inset 0 0 0 1px var(--border, rgba(127,127,127,.18)); }
+.arch li > .mono { font-size: 12px; opacity: .7; }
+.arch-native { margin-top: 14px; } .arch-native > div { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.budgy-feat ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 20px; }
+.budgy-feat li { display: grid; gap: 2px; }
+@container (max-width: 640px) { .arch li { grid-template-columns: minmax(0, 1fr); gap: 2px; } .budgy-feat ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

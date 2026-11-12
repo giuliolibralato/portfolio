@@ -57,13 +57,13 @@ export const PROJECTS: Record<string, Project> = {
   wedding: { title: "Our wedding", desc: "Wedding website, designed and coded", type: "website", year: "2026", href: "https://gyfwedding.vercel.app/" },
   firstlancer: { title: "Firstlancer", desc: "iOS app design · case on Behance", type: "app", year: "2022", phone: true, href: "https://www.behance.net/gallery/156666141/Firstlancer-App" },
   budgy: { client: "Budgy", tags: ["app", "passion project"], title: "a budget that answers one question", desc: "Personal finance app for iOS, designed and built", type: "case study", year: "2026", href: "/work/budgy/", image: "/cases/budgy/cover.webp" },
-  monthly: { title: "Monthly Budget", desc: "Household budget and grocery-planning website", type: "passion project", year: "2026" },
+  monthly: { client: "Monthly Budget", tags: ["website", "passion project"], title: "a household budget for two", desc: "Shared budget, meal plan and grocery prices, designed and built", type: "case study", year: "2026", href: "/work/monthly/", image: "/cases/monthly/budget.webp" },
 };
 
 export const TABS: [string, string[]][] = [
   ["selected", ["beacon", "keyway", "cdv", "nexo", "budgy"]],
-  ["cases", ["beacon", "keyway", "cdv", "nexo", "budgy", "digito", "brightpath", "cinepolis"]],
-  ["websites", ["cdv", "cdvmusica", "nexo", "lessin", "wedding"]],
+  ["cases", ["beacon", "keyway", "cdv", "nexo", "budgy", "monthly", "digito", "brightpath", "cinepolis"]],
+  ["websites", ["cdv", "nexo", "monthly", "cdvmusica", "lessin", "wedding"]],
   ["apps", ["budgy", "firstlancer"]],
   ["passion projects", ["budgy", "monthly"]],
 ];

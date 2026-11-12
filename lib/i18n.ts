@@ -98,7 +98,7 @@ export const T = {
       wedding: { title: "Nuestra boda", desc: "Sitio de nuestra boda, diseñado y programado" },
       firstlancer: { title: "Firstlancer", desc: "Diseño de app iOS · caso en Behance" },
       budgy: { title: "un presupuesto que responde una pregunta", desc: "App de finanzas personales para iOS, diseñada y construida" },
-      monthly: { title: "Monthly Budget", desc: "Presupuesto del hogar y planificación de compras" },
+      monthly: { title: "un presupuesto del hogar para dos", desc: "Presupuesto compartido, plan de comidas y precios del súper, diseñado y construido" },
     } as Record<string, Item>,
     visualIntro: "Logos, branding y fotomontajes publicitarios. Cada uno se abre en Behance.",
     seeBehance: "ver todo en behance",

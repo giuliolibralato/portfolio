@@ -65,7 +65,7 @@ function content(lang: Lang): CaseContent {
     meta: [
       ["company", "Camino de Vida"],
       ["role", "Designer and builder: layouts, design and the WordPress build"],
-      ["team", "The music ministry, a content editor and me"],
+      ["team", "The web team within communications: two of us; I led cdvmusica.com"],
       ["timeline", "2025–2026"],
       ["scope", "Website: home, catalog, album, song and devotional templates"],
       ["status", "Live at cdvmusica.com"],
@@ -80,9 +80,9 @@ function content(lang: Lang): CaseContent {
       end: "The music needed {{one place where a listener finds the album and a musician finds what to play}}.",
       fig: beforeAfter,
     },
-    role: "{{All the layouts and design are mine, and I built the site}} in WordPress with Elementor. I also managed the plugin that lets another person upload and arrange the content, so releases don't depend on me.",
+    role: "{{All the layouts and design are mine, and I built the site}} in WordPress with Elementor. We are two on the web team inside communications: my teammate handles other parts of caminodevida.com, and cdvmusica.com was mine. I also managed the plugin that lets another person upload and arrange the content, so releases don't depend on me.",
     research: {
-      items: ["The previous site, section by section, to see what changed with each campaign and what stayed.", "caminodevida.com's design system, which I had already designed: the base this site had to share.", "What worship teams ask for before a Sunday: key, BPM, chords, sequences and instrumentals for each song."],
+      items: ["The previous site, section by section, to see what changed with each campaign and what stayed.", "caminodevida.com's design system, which I also designed: the base this site had to share.", "What worship teams ask for before a Sunday: key, BPM, chords, sequences and instrumentals for each song."],
       extraTitle: "the order of the work",
       extra: order,
     },
@@ -94,7 +94,7 @@ function content(lang: Lang): CaseContent {
       { t: "templates fixed, content free", because: "another person uploads every release through a plugin I set up. The layout can't drift, and a new album is content, not a design job.", fig: roles },
     ],
     validation: {
-      items: ["The concept reviewed in Figma before building, screen by screen.", "Every release from 2024 to 2026 uploaded through the same templates, without layout changes.", "The live site checked against the concept: the album panel became a page, the rest kept its structure."],
+      items: ["A full concept in Figma before building: home, catalog, album, song and devotionals.", "Releases from 2024 to 2026 published on the same templates.", "The live site checked against the concept: the album panel became a page, the rest kept its structure."],
     },
     results: [["observed", "{{The site is live and the team publishes on its own.}} Live in Vol. II went up on 27 March 2026 using the same templates as every release before it."], ["measured", "No traffic or download numbers to share yet."]],
     learn: ["{{A system shared with the main site paid off twice}}: the music looks like the church, and I didn't have to design a second visual language.", "Designing the template for the person who uploads matters as much as for the person who visits. If adding an album needs me, the site will fall behind."],
@@ -108,7 +108,7 @@ function content(lang: Lang): CaseContent {
     meta: [
       ["empresa", "Camino de Vida"],
       ["rol", "Diseño y construcción: layouts, diseño y la web en WordPress"],
-      ["equipo", "El ministerio de música, una persona de contenido y yo"],
+      ["equipo", "El equipo web de comunicaciones: somos dos; yo vi cdvmusica.com"],
       ["duración", "2025–2026"],
       ["alcance", "Sitio web: home, catálogo y plantillas de álbum, canción y devocional"],
       ["estado", "En vivo en cdvmusica.com"],
@@ -123,9 +123,9 @@ function content(lang: Lang): CaseContent {
       end: "La música necesitaba {{un lugar donde quien escucha encuentra el álbum y quien toca encuentra qué tocar}}.",
       fig: beforeAfter,
     },
-    role: "{{Todos los layouts y el diseño son míos, y construí la web}} en WordPress con Elementor. También gestioné el plugin con el que otra persona sube y acomoda el contenido, para que los lanzamientos no dependan de mí.",
+    role: "{{Todos los layouts y el diseño son míos, y construí la web}} en WordPress con Elementor. En el equipo web de comunicaciones somos dos: mi compañero ve otros detalles de caminodevida.com, y cdvmusica.com estuvo a mi cargo. También gestioné el plugin con el que otra persona sube y acomoda el contenido, para que los lanzamientos no dependan de mí.",
     research: {
-      items: ["La web anterior, sección por sección, para ver qué cambiaba con cada campaña y qué se mantenía.", "El design system de caminodevida.com, que yo ya había diseñado: la base que esta web tenía que compartir.", "Lo que piden los equipos de alabanza antes de un domingo: tonalidad, BPM, acordes, secuencias e instrumentales de cada canción."],
+      items: ["La web anterior, sección por sección, para ver qué cambiaba con cada campaña y qué se mantenía.", "El design system de caminodevida.com, que también diseñé: la base que esta web tenía que compartir.", "Lo que piden los equipos de alabanza antes de un domingo: tonalidad, BPM, acordes, secuencias e instrumentales de cada canción."],
       extraTitle: "el orden del trabajo",
       extra: order,
     },
@@ -137,7 +137,7 @@ function content(lang: Lang): CaseContent {
       { t: "plantillas fijas, contenido libre", because: "otra persona sube cada lanzamiento con un plugin que dejé configurado. El layout no se desordena, y un álbum nuevo es contenido, no un trabajo de diseño.", fig: roles },
     ],
     validation: {
-      items: ["El concepto revisado en Figma antes de construir, pantalla por pantalla.", "Cada lanzamiento de 2024 a 2026 subido con las mismas plantillas, sin cambios de layout.", "La web en vivo contrastada con el concepto: el panel del álbum pasó a ser una página; lo demás mantuvo su estructura."],
+      items: ["Un concepto completo en Figma antes de construir: home, catálogo, álbum, canción y devocionales.", "Lanzamientos de 2024 a 2026 publicados sobre las mismas plantillas.", "La web en vivo contrastada con el concepto: el panel del álbum pasó a ser una página; lo demás mantuvo su estructura."],
     },
     results: [["observado", "{{La web está en vivo y el equipo publica por su cuenta.}} Live in Vol. II se subió el 27 de marzo de 2026 con las mismas plantillas que todos los lanzamientos anteriores."], ["medido", "Aún no tengo números de visitas o descargas para compartir."]],
     learn: ["{{Un sistema compartido con la web principal rindió dos veces}}: la música se parece a la iglesia, y no tuve que diseñar un segundo lenguaje visual.", "Diseñar la plantilla para quien sube el contenido importa tanto como para quien visita. Si agregar un álbum me necesita, la web se queda atrás."],

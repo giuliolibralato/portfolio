@@ -10,39 +10,68 @@ const TOTAL = 11522.4;
 const LINES = [
   { id: "hogar", es: "Hogar", en: "Home", c: "#5AC8FA", p: 32 },
   { id: "comida", es: "Comida", en: "Food", c: "#FF9F0A", p: 18 },
-  { id: "ocio", es: "Ocio", en: "Fun", c: "#FF375F", p: 12 },
+  { id: "transporte", es: "Transporte", en: "Transport", c: "#30D158", p: 5 },
+  { id: "suscripciones", es: "Suscripciones", en: "Subscriptions", c: "#BF5AF2", p: 3 },
+  { id: "ocio", es: "Ocio", en: "Fun", c: "#FF375F", p: 7 },
+  { id: "salud", es: "Salud", en: "Health", c: "#FF6961", p: 5 },
   { id: "ahorro", es: "Ahorro", en: "Savings", c: "#64D2FF", p: 30 },
 ];
 const money = (n: number) => "S/." + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const pctTxt = (n: number) => `${+n.toFixed(2)}%`;
+
+/* A number that reads as plain text and becomes editable on focus; it commits while you type */
+function Num({ shown, raw, onValue, label, className }: { shown: string; raw: string; onValue: (n: number) => void; label: string; className: string }) {
+  const [draft, setDraft] = useState<string | null>(null);
+  return (
+    <input
+      className={`bd-num ${className}`} inputMode="decimal" aria-label={label}
+      value={draft ?? shown}
+      onFocus={(e) => { setDraft(raw); requestAnimationFrame(() => e.target.select()); }}
+      onChange={(e) => { setDraft(e.target.value); const n = parseFloat(e.target.value.replace(/[^0-9.]/g, "")); if (!isNaN(n)) onValue(n); }}
+      onBlur={() => setDraft(null)}
+      onKeyDown={(e) => { if (e.key === "Enter") (e.target as HTMLInputElement).blur(); }}
+    />
+  );
+}
 
 export function SplitDemo({ es }: { es: boolean }) {
   const [pct, setPct] = useState<Record<string, number>>(Object.fromEntries(LINES.map((l) => [l.id, l.p])));
   const sum = LINES.reduce((a, l) => a + pct[l.id], 0);
-  const left = TOTAL * (1 - sum / 100);
   const state = Math.abs(sum - 100) < 0.005 ? "ok" : sum > 100 ? "over" : "under";
-  const chip = state === "ok" ? (es ? "100% asignado" : "100% assigned") : state === "over" ? `${es ? "Excedido" : "Over by"} ${money(-left)}` : `${es ? "Por asignar" : "Left to assign"} ${money(left)}`;
+  const left = TOTAL * (1 - sum / 100);
+  const set = (id: string, p: number) => setPct({ ...pct, [id]: Math.max(0, Math.min(100, p)) });
 
   return (
     <figure className="frame-fig">
       <motion.div className="frame budgy-demo" {...view} variants={rise}>
-        <span className="mono pane-l">{es ? "pruébalo · mueve el porcentaje o escribe el monto" : "try it · move the percentage or type the amount"}</span>
-        <div className="bd-card">
+        <span className="mono pane-l">{es ? "pruébalo · toca un porcentaje o un monto y cámbialo" : "try it · tap a percentage or an amount and change it"}</span>
+        <div className="bd-stage">
           <div className="bd-total"><span>{es ? "Total distribuible" : "Total to split"}</span><b>{money(TOTAL)}</b></div>
-          <div className="bd-bar" aria-hidden>
-            {LINES.map((l) => <i key={l.id} style={{ width: `${(pct[l.id] / Math.max(sum, 100)) * 100}%`, background: l.c }} />)}
+          <div className="bd-card">
+            <div className="bd-bar" aria-hidden>
+              {LINES.filter((l) => pct[l.id] > 0).map((l) => <i key={l.id} style={{ flexGrow: pct[l.id], background: l.c }} />)}
+              {state === "under" && <i className="gap" style={{ flexGrow: 100 - sum }} />}
+            </div>
+            <div className="bd-rows">
+              {LINES.map((l) => {
+                const name = es ? l.es : l.en;
+                return (
+                  <div key={l.id} className="bd-row">
+                    <span className="bd-name"><i style={{ background: l.c }} />{name}</span>
+                    <Num className="p" label={`${name} %`} shown={pctTxt(pct[l.id])} raw={String(+pct[l.id].toFixed(4))} onValue={(n) => set(l.id, n)} />
+                    <Num className="a" label={`${name} ${es ? "monto" : "amount"}`} shown={money((TOTAL * pct[l.id]) / 100)} raw={String(Math.round(TOTAL * pct[l.id]) / 100)} onValue={(n) => set(l.id, (n / TOTAL) * 100)} />
+                  </div>
+                );
+              })}
+            </div>
+            <div className="bd-foot">
+              <span>{es ? "Total asignado" : "Total assigned"}</span>
+              <span className={`bd-sum ${state}`}>{state === "ok" ? "100%" : state === "over" ? `${pctTxt(sum)} · ${es ? "excedido" : "over"} ${money(-left)}` : `${pctTxt(sum)} · ${es ? "faltan" : "left"} ${money(left)}`}</span>
+            </div>
           </div>
-          <span className={`bd-chip ${state}`}>{chip}</span>
-          {LINES.map((l) => (
-            <label key={l.id} className="bd-row">
-              <span className="bd-name"><i style={{ background: l.c }} />{es ? l.es : l.en}</span>
-              <input type="range" min={0} max={60} step={0.5} value={pct[l.id]} onChange={(e) => setPct({ ...pct, [l.id]: +e.target.value })} style={{ accentColor: l.c }} aria-label={`${es ? l.es : l.en} %`} />
-              <span className="bd-pct">{+pct[l.id].toFixed(2)}%</span>
-              <span className="bd-amt">S/.<input type="number" inputMode="decimal" min={0} step={10} value={Math.round(TOTAL * pct[l.id]) / 100} onChange={(e) => setPct({ ...pct, [l.id]: Math.max(0, (+e.target.value / TOTAL) * 100) })} aria-label={`${es ? l.es : l.en} ${es ? "monto" : "amount"}`} /></span>
-            </label>
-          ))}
         </div>
       </motion.div>
-      <figcaption className="small muted">{es ? "La misma lógica que la app, con datos ficticios: si cambias el porcentaje se actualiza el monto, y al revés. El total avisa si te pasas." : "The same logic as the app, with fictional data: change the percentage and the amount follows, or the other way round. The total warns you if you go over."}</figcaption>
+      <figcaption className="small muted">{es ? "La tarjeta de Distribución de la app, con datos ficticios: cambia un porcentaje y el monto se actualiza, o escribe un monto y se recalcula el porcentaje. El total avisa si te pasas." : "The app's Split card, with fictional data: change a percentage and the amount updates, or type an amount and the percentage is worked out. The total warns you if you go over."}</figcaption>
     </figure>
   );
 }

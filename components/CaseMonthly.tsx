@@ -106,11 +106,11 @@ function content(lang: Lang): CaseContent {
       { t: "an assistant that works through copy and paste", because: "a Claude assistant on claude.ai builds lists, plans lunches within the budget and reads receipt photos. Those pages can't reach the internet, so data moves by copy and paste: an honest limit, written in the app instead of hidden." },
     ],
     validation: {
-      items: ["Two people using it with real data, on different devices, every month.", "Prices checked against each store's own product page, linked from every result.", "Nutrition per portion traced to USDA values per 100 g."],
+      items: ["Two months of real use: 58 items, 11 accounts and 4 goals; the payday checklist done 5 of 6 times.", "Prices checked against each store's own product page, linked from every result.", "Nutrition per portion traced to USDA values per 100 g."],
       extra: size,
     },
     results: [["observed", "{{It's where our household budget lives now.}} It replaced Budgy and the sheet before it, and added the part neither had: groceries."], ["measured", "No savings numbers to show. It's our private finances, and I haven't tracked a before and after."]],
-    learn: ["{{The second user is the best review.}} Anything my partner asked about became a change; anything I had to explain was a design problem.", "Being honest about limits, an estimated price or a copy-and-paste step, earns more trust than hiding them behind a clean screen."],
+    learn: ["{{Shared doesn't mean symmetric.}} 8 of 9 documents were edited by one person: in practice there is an operator and a reader, and the next version should design for both roles.", "{{The second user is the best review.}} Anything my partner asked about became a change; anything I had to explain was a design problem.", "Being honest about limits, an estimated price or a copy-and-paste step, earns more trust than hiding them behind a clean screen."],
     legal,
   };
 
@@ -153,11 +153,11 @@ function content(lang: Lang): CaseContent {
       { t: "un asistente que funciona copiando y pegando", because: "un asistente de Claude en claude.ai arma listas, planifica almuerzos dentro del presupuesto y lee fotos de boletas. Esas páginas no pueden conectarse a internet, así que los datos pasan copiando y pegando: un límite honesto, escrito en la app en vez de escondido." },
     ],
     validation: {
-      items: ["Dos personas usándola con datos reales, en equipos distintos, cada mes.", "Precios contrastados con la página de cada producto en su tienda, enlazada desde cada resultado.", "Nutrición por porción rastreada hasta los valores de USDA por 100 g."],
+      items: ["Dos meses de uso real: 58 ítems, 11 cuentas y 4 metas; la lista del día de pago completada 5 de 6 veces.", "Precios contrastados con la página de cada producto en su tienda, enlazada desde cada resultado.", "Nutrición por porción rastreada hasta los valores de USDA por 100 g."],
       extra: size,
     },
     results: [["observado", "{{Es donde vive ahora el presupuesto de la casa.}} Reemplazó a Budgy y a la hoja de antes, y sumó lo que ninguna tenía: el supermercado."], ["medido", "No hay números de ahorro que mostrar. Son nuestras finanzas privadas y no medí un antes y un después."]],
-    learn: ["{{La segunda usuaria es la mejor revisión.}} Lo que mi pareja preguntaba se volvía un cambio; lo que yo tenía que explicar era un problema de diseño.", "Ser honesto con los límites, un precio estimado o un paso de copiar y pegar, da más confianza que esconderlos detrás de una pantalla limpia."],
+    learn: ["{{Compartido no significa simétrico.}} 8 de 9 documentos los editó una persona: en la práctica hay quien opera y quien lee, y la próxima versión debería diseñar para los dos roles.", "{{La segunda usuaria es la mejor revisión.}} Lo que mi pareja preguntaba se volvía un cambio; lo que yo tenía que explicar era un problema de diseño.", "Ser honesto con los límites, un precio estimado o un paso de copiar y pegar, da más confianza que esconderlos detrás de una pantalla limpia."],
     legal,
   };
 }

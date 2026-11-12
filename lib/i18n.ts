@@ -95,7 +95,7 @@ export const T = {
       cdvmusica: { title: "un solo lugar para la música y sus equipos", desc: "Web del ministerio de música: catálogo, canciones con acordes y recursos" },
       nexo: { title: "de ENASEI a un nombre nuevo", desc: "Sitio de conferencia, del design system a la venta de entradas" },
       lessin: { title: "Lessin", desc: "Sitio y design system ed-tech · en Figma" },
-      wedding: { title: "Nuestra boda", desc: "Sitio de nuestra boda, diseñado y programado" },
+      wedding: { title: "una invitación que se abre desde WhatsApp", desc: "Web de boda desde la invitación impresa: regalos, dos puertas y números reales" },
       firstlancer: { title: "Firstlancer", desc: "Diseño de app iOS · caso en Behance" },
       budgy: { title: "un presupuesto que responde una pregunta", desc: "App de finanzas personales para iOS, diseñada y construida" },
       monthly: { title: "un presupuesto del hogar para dos", desc: "Presupuesto compartido, plan de comidas y precios del súper, diseñado y construido" },

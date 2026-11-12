@@ -54,7 +54,7 @@ export const PROJECTS: Record<string, Project> = {
   cdvmusica: { client: "CDV Música", tags: ["website"], title: "one home for the music and its teams", desc: "Music ministry site: catalog, songs with chords and resources", type: "case study", year: "2026", href: "/work/cdvmusica/", image: "/cases/cdvmusica/cover.webp" },
   nexo: { client: "Nexo Summit", tags: ["website"], title: "from ENASEI to a new name", desc: "Conference site, from design system to ticket sales", type: "case study", year: "2026", href: "/work/nexo/", image: "/cases/nexo/hero.webp" },
   lessin: { title: "Lessin", desc: "Ed-tech website and design system · in Figma", type: "website", year: "2023", href: "https://www.figma.com/design/aMI8KBC7X9fAnlAEOBCdHL/Lessin---Plataforma-Web?node-id=121-2&p=f" },
-  wedding: { title: "Our wedding", desc: "Wedding website, designed and coded", type: "website", year: "2026", href: "https://gyfwedding.vercel.app/" },
+  wedding: { client: "Our wedding", tags: ["website", "passion project"], title: "an invitation you can open from WhatsApp", desc: "Wedding site from the printed invitation: gifts, two doors, real numbers", type: "case study", year: "2026", href: "/work/wedding/", image: "/cases/wedding/cover.webp" },
   firstlancer: { title: "Firstlancer", desc: "iOS app design · case on Behance", type: "app", year: "2022", phone: true, href: "https://www.behance.net/gallery/156666141/Firstlancer-App" },
   budgy: { client: "Budgy", tags: ["app", "passion project"], title: "a budget that answers one question", desc: "Personal finance app for iOS, designed and built", type: "case study", year: "2026", href: "/work/budgy/", image: "/cases/budgy/cover.webp" },
   monthly: { client: "Monthly Budget", tags: ["website", "passion project"], title: "a household budget for two", desc: "Shared budget, meal plan and grocery prices, designed and built", type: "case study", year: "2026", href: "/work/monthly/", image: "/cases/monthly/budget.webp" },
@@ -62,10 +62,10 @@ export const PROJECTS: Record<string, Project> = {
 
 export const TABS: [string, string[]][] = [
   ["selected", ["beacon", "keyway", "cdv", "nexo", "budgy"]],
-  ["cases", ["beacon", "keyway", "cdv", "nexo", "budgy", "monthly", "cdvmusica", "digito", "brightpath", "cinepolis"]],
+  ["cases", ["beacon", "keyway", "cdv", "nexo", "budgy", "monthly", "cdvmusica", "wedding", "digito", "brightpath", "cinepolis"]],
   ["websites", ["cdv", "nexo", "monthly", "cdvmusica", "lessin", "wedding"]],
   ["apps", ["budgy", "firstlancer"]],
-  ["passion projects", ["budgy", "monthly"]],
+  ["passion projects", ["budgy", "monthly", "wedding"]],
 ];
 
 export const PIECES = [

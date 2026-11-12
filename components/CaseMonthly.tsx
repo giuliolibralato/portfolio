@@ -2,6 +2,7 @@
 
 import { CaseLayout, type CaseContent } from "./CaseLayout";
 import { Crop, Frame, Metrics, Pane, Steps, imgBase } from "./Figure";
+import { MonthlyRefs, MonthlySystem } from "./MonthlyFigures";
 import type { Lang } from "@/lib/data";
 
 const IMG = imgBase("monthly");
@@ -47,6 +48,9 @@ function content(lang: Lang): CaseContent {
     </Frame>
   );
 
+  const refs = <MonthlyRefs es={es} />;
+  const sys = <MonthlySystem es={es} />;
+
   const order = <Steps items={es
     ? [["Budgy", "la app de uno, en iOS"], ["30 sep", "presupuesto del hogar, compartido"], ["4 nov", "supermercado: listas, precios y plan"], ["4 nov", "nutrición, gustos y asistente"], ["5 nov", "dónde comprar cada cosa y tarjetas"]]
     : [["Budgy", "the app for one, on iOS"], ["30 Sep", "household budget, shared"], ["4 Nov", "groceries: lists, prices and plan"], ["4 Nov", "nutrition, tastes and assistant"], ["5 Nov", "where to buy each item, and cards"]]} />;
@@ -77,7 +81,7 @@ function content(lang: Lang): CaseContent {
     ],
     chips: ["passion project", "in use", "web app"], okChip: 1,
     cover,
-    tools: [["Claude Code", "claude"], ["Supabase", "supabase"], ["Claude", "claude"]],
+    tools: [["Claude Code", "claude"], ["Claude", "claude"], ["Supabase", "supabase"], ["Mobbin"]],
     challenge: {
       intro: "A household budget isn't a personal one with a bigger number:",
       list: ["two incomes, one in dollars before tax and one in soles already net", "two people who need to see the same thing, on different phones, at the same time", "the biggest variable expense, groceries, was planned nowhere: no menu, no list, no idea which store was cheaper"],
@@ -86,12 +90,14 @@ function content(lang: Lang): CaseContent {
     },
     role: "{{I designed and built it end to end}}, with Claude Code: the data model, the budget and payday screens, the groceries section, the price and nutrition functions, and the sign-in. My partner was the second user and the first reviewer: if a screen needed explaining, it got redone.",
     research: {
-      items: ["Budgy's rules and my old sheet: the starting point for income, tax and splitting by category.", "How we actually paid each month: the order of steps on payday, which became the checklist.", "The public online catalogs of Plaza Vea, Wong, Tottus and Makro, to see what price each one publishes: in store, regular, web or with a store card."],
+      items: ["Budgy's rules and my old sheet: the starting point for income, tax and splitting by category.", "How we actually paid each month: the order of steps on payday, which became the checklist.", "The public online catalogs of Plaza Vea, Wong, Tottus and Makro, to see what price each one publishes: in store, regular, web or with a store card.", "References on Mobbin for dashboards, tables and boards, to borrow patterns we both already knew instead of inventing new ones."],
       extraTitle: "the order of the work",
       extra: order,
     },
     decisions: [
       { t: "a shared web app instead of extending Budgy", because: "Budgy was iOS only and for one person. A web app works on both our phones and the laptop, and added to the home screen it opens like an app. The data lives in one shared document per month, in real time.", ruled: "adding a second user to Budgy. It would have meant an Apple developer account, two devices to keep signed and still no laptop." },
+      { t: "the look of a work tool, borrowed on purpose", because: "a household budget is used every day, like a work tool, so it speaks that language: grouped rows with status like an issue tracker, a strip of figures on top like a finance dashboard, an always-visible \u201cunassigned\u201d like YNAB, columns per store like a board, and a month grid like a calendar. Each pattern was already familiar to both of us.", ruled: "a bespoke, playful look like Budgy's. It suited one person on a phone; two people on a laptop needed density and familiarity.", fig: refs },
+      { t: "a quiet system: one accent, color only for meaning", because: "Inter in five small sizes, neutral greys, one blue for actions, four state colors and eight soft category tags. Light and dark follow the system, and under 760 px the sidebar becomes a bottom bar.", fig: sys },
       { t: "a table, because we already think in sheets", because: "we came from spreadsheets, so the budget stays a table. What the app adds is what a sheet can't: tax and tithe calculated on their own, and a suggestion per row that says if the amount is healthy for our income.", ruled: "cards and rings like Budgy. They read well on a phone but hide the comparison between rows that a household budget needs.", fig: budget },
       { t: "payday as a checklist", because: "on payday the order matters: change the dollars, pay the tax, set the tithe aside and transfer the household money. Each step shows its amount and gets ticked off, so neither of us has to remember it.", fig: payday },
       { t: "groceries planned, not just paid", because: "the meal plan fills itself with recipes we both like, the shopping list comes out of the plan, and each item is priced across five stores. The list total is checked against the groceries line in the budget.", fig: <>{compare}{plan}</> },
@@ -122,7 +128,7 @@ function content(lang: Lang): CaseContent {
     ],
     chips: ["proyecto personal", "en uso", "app web"], okChip: 1,
     cover,
-    tools: [["Claude Code", "claude"], ["Supabase", "supabase"], ["Claude", "claude"]],
+    tools: [["Claude Code", "claude"], ["Claude", "claude"], ["Supabase", "supabase"], ["Mobbin"]],
     challenge: {
       intro: "Un presupuesto del hogar no es uno personal con un número más grande:",
       list: ["dos ingresos, uno en dólares antes de impuestos y otro en soles ya neto", "dos personas que necesitan ver lo mismo, en celulares distintos, al mismo tiempo", "el gasto variable más grande, el supermercado, no se planificaba en ningún lado: sin menú, sin lista y sin saber qué tienda salía más barata"],
@@ -131,12 +137,14 @@ function content(lang: Lang): CaseContent {
     },
     role: "{{Lo diseñé y construí de punta a punta}}, con Claude Code: el modelo de datos, las pantallas de presupuesto y día de pago, la sección de supermercado, las funciones de precios y nutrición, y el inicio de sesión. Mi pareja fue la segunda usuaria y la primera en revisar: si una pantalla necesitaba explicación, se rehacía.",
     research: {
-      items: ["Las reglas de Budgy y mi hoja de antes: el punto de partida para ingresos, impuesto y reparto por categoría.", "Cómo pagábamos de verdad cada mes: el orden de los pasos del día de pago, que se volvió la lista.", "Los catálogos públicos en línea de Plaza Vea, Wong, Tottus y Makro, para ver qué precio publica cada una: en tienda, regular, web o con tarjeta de la tienda."],
+      items: ["Las reglas de Budgy y mi hoja de antes: el punto de partida para ingresos, impuesto y reparto por categoría.", "Cómo pagábamos de verdad cada mes: el orden de los pasos del día de pago, que se volvió la lista.", "Los catálogos públicos en línea de Plaza Vea, Wong, Tottus y Makro, para ver qué precio publica cada una: en tienda, regular, web o con tarjeta de la tienda.", "Referentes en Mobbin de dashboards, tablas y tableros, para tomar patrones que los dos ya conocíamos en vez de inventar nuevos."],
       extraTitle: "el orden del trabajo",
       extra: order,
     },
     decisions: [
       { t: "una app web compartida en vez de ampliar Budgy", because: "Budgy era solo para iOS y para una persona. Una app web funciona en los dos celulares y en la laptop, y agregada a la pantalla de inicio se abre como una app. Los datos viven en un documento compartido por mes, en tiempo real.", ruled: "sumar una segunda persona a Budgy. Habría pedido una cuenta de desarrollador de Apple, dos equipos firmados y aun así nada en la laptop." },
+      { t: "el lenguaje de una herramienta de trabajo, a propósito", because: "un presupuesto del hogar se usa todos los días, como una herramienta de trabajo, así que habla ese idioma: filas agrupadas con estado como un gestor de tareas, una franja de cifras arriba como un tablero financiero, un \u201csin asignar\u201d siempre visible como en YNAB, columnas por tienda como un tablero y el mes en cuadrícula como un calendario. Cada patrón ya nos resultaba familiar a los dos.", ruled: "una estética propia y lúdica como la de Budgy. Servía para uno en el celular; dos personas en la laptop necesitaban densidad y familiaridad.", fig: refs },
+      { t: "un sistema callado: un acento y color solo con significado", because: "Inter en cinco tamaños chicos, grises neutros, un azul para las acciones, cuatro colores de estado y ocho etiquetas suaves de categoría. Claro y oscuro siguen al sistema, y bajo 760 px la barra lateral pasa a ser una barra inferior.", fig: sys },
       { t: "una tabla, porque ya pensamos en hojas de cálculo", because: "veníamos de hojas de cálculo, así que el presupuesto sigue siendo una tabla. Lo que suma la app es lo que una hoja no hace: el impuesto y el diezmo se calculan solos, y cada fila sugiere si el monto es sano para el ingreso.", ruled: "tarjetas y anillos como en Budgy. Se leen bien en el celular, pero esconden la comparación entre filas que necesita un presupuesto del hogar.", fig: budget },
       { t: "el día de pago como una lista", because: "el día de pago el orden importa: cambiar los dólares, pagar el impuesto, separar el diezmo y transferir lo del hogar. Cada paso muestra su monto y se marca, así ninguno de los dos tiene que acordarse.", fig: payday },
       { t: "el supermercado se planifica, no solo se paga", because: "el plan de comidas se llena con recetas que nos gustan a los dos, la lista de compras sale del plan y cada producto se compara en cinco tiendas. El total de la lista se contrasta con la partida de supermercado del presupuesto.", fig: <>{compare}{plan}</> },

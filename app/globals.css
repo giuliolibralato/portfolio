@@ -350,3 +350,17 @@ button, select { font: inherit; color: inherit; }
 .cs-hs { display: flex; align-items: baseline; gap: 14px; font-weight: 600; letter-spacing: -0.02em; }
 .cs-note { font-size: 12px; color: #6C6C6C; }
 @container (max-width: 760px) { .frame.cdv-sys { grid-template-columns: minmax(0, 1fr); } }
+
+/* Monthly Budget: references and its light tool system */
+.mb-refs { display: block; }
+.mb-refs ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 6px; }
+.mb-refs li { display: grid; grid-template-columns: 120px minmax(0, 1.3fr) 150px minmax(0, 1.4fr); gap: 12px; align-items: baseline; padding: 11px 14px; border-radius: 12px; background: var(--background); box-shadow: inset 0 0 0 1px rgba(127,127,127,.18); }
+.mb-where { font-size: 11px; opacity: .65; } .mb-like { font-weight: 600; }
+@container (max-width: 680px) { .mb-refs li { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
+.frame.mb-sys { background: #fff; color: #1f2024; grid-template-columns: 1fr 1fr 1fr; align-items: start; gap: 24px; font-family: Inter, var(--font-sans, sans-serif); }
+.mb-sys .pane-l { color: #7a7c85; }
+.mb-acc { display: flex; align-items: center; gap: 10px; font-size: 12.5px; color: #46484f; } .mb-acc i { width: 22px; height: 22px; border-radius: 6px; flex: none; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+.mb-pills, .mb-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.mb-pills span, .mb-tags span { font-size: 12px; padding: 3px 9px; border-radius: 6px; font-weight: 500; }
+.mb-type { display: grid; gap: 6px; } .mb-type div { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; } .mb-type .mono { font-size: 11px; color: #7a7c85; }
+@container (max-width: 760px) { .frame.mb-sys { grid-template-columns: minmax(0, 1fr); } }

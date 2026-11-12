@@ -18,8 +18,8 @@ function content(lang: Lang): CaseContent {
   );
 
   const transition = (
-    <Frame className="rows" caption={es ? "Antes del sitio nuevo, una landing que cuenta el cambio con la paleta de ENASEI: misma excelencia, mayor impacto." : "Before the new site, a landing that tells the change in ENASEI's palette: same excellence, more impact."}>
-      <Pane label={es ? "landing de transición · propuesta" : "transition landing · proposal"}><Img src="transition.webp" alt={es ? "ENASEI ahora es Nexo Summit: fecha, sede, video y la evolución" : "ENASEI is now Nexo Summit: date, venue, video and the evolution"} /></Pane>
+    <Frame className="rows" caption={es ? "Mi rediseño de la landing de ENASEI, en su línea como pidió el cliente, para contar el cambio antes del sitio nuevo: misma excelencia, mayor impacto." : "My redesign of the ENASEI landing, kept in its look as the client asked, to tell the change before the new site: same excellence, more impact."}>
+      <Pane label={es ? "después · landing de transición" : "after · transition landing"}><Img src="transition.webp" alt={es ? "ENASEI ahora es Nexo Summit: fecha, sede, video y la evolución" : "ENASEI is now Nexo Summit: date, venue, video and the evolution"} /></Pane>
     </Frame>
   );
 

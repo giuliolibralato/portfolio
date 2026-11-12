@@ -107,7 +107,7 @@ export default function Home() {
     document.startViewTransition(apply).ready.then(() => {
       document.documentElement.animate(
         { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] },
-        { duration: 500, easing: "cubic-bezier(0.33, 0, 0.2, 1)", pseudoElement: "::view-transition-new(root)" },
+        { duration: 800, easing: "cubic-bezier(0.45, 0, 0.25, 1)", pseudoElement: "::view-transition-new(root)" },
       );
     });
   };

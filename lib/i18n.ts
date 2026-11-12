@@ -93,7 +93,7 @@ export const T = {
       brightpath: { title: "BrightPath", desc: "Prueba técnica para Diseñador UX/UI en Designli" },
       cdvweb: { title: "Camino de Vida", desc: "Sitio web de la iglesia · cdv.pe" },
       cdvmusica: { title: "CDV Música", desc: "Sitio del ministerio de música · cdvmusica.com" },
-      nexo: { title: "Nexo Summit", desc: "Sitio de evento, del design system al SEO" },
+      nexo: { title: "de ENASEI a un nombre nuevo", desc: "Sitio de conferencia, del design system a la venta de entradas" },
       lessin: { title: "Lessin", desc: "Sitio y design system ed-tech · en Figma" },
       wedding: { title: "Nuestra boda", desc: "Sitio de nuestra boda, diseñado y programado" },
       firstlancer: { title: "Firstlancer", desc: "Diseño de app iOS · caso en Behance" },

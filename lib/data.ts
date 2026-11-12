@@ -52,7 +52,7 @@ export const PROJECTS: Record<string, Project> = {
   brightpath: { title: "BrightPath", desc: "Technical test for UX/UI Designer position at Designli", type: "design challenge", year: "2025", href: "https://www.figma.com/design/hDQVOnULGRqM5pmxR0A6io/Design-Test---Giulio-Libralato?node-id=2946-1483" },
   cdvweb: { title: "Camino de Vida", desc: "Church website · cdv.pe", type: "website", year: "2026", href: "https://cdv.pe" },
   cdvmusica: { title: "CDV Música", desc: "Music ministry website · cdvmusica.com", type: "website", year: "2025", href: "https://cdvmusica.com" },
-  nexo: { title: "Nexo Summit", desc: "Event site, from design system to SEO", type: "website", year: "2026", href: "https://nexosummit.pe" },
+  nexo: { client: "Nexo Summit", tags: ["website"], title: "from ENASEI to a new name", desc: "Conference site, from design system to ticket sales", type: "case study", year: "2026", href: "/work/nexo/", image: "/cases/nexo/hero.webp" },
   lessin: { title: "Lessin", desc: "Ed-tech website and design system · in Figma", type: "website", year: "2023", href: "https://www.figma.com/design/aMI8KBC7X9fAnlAEOBCdHL/Lessin---Plataforma-Web?node-id=121-2&p=f" },
   wedding: { title: "Our wedding", desc: "Wedding website, designed and coded", type: "website", year: "2026", href: "https://gyfwedding.vercel.app/" },
   firstlancer: { title: "Firstlancer", desc: "iOS app design · case on Behance", type: "app", year: "2022", phone: true, href: "https://www.behance.net/gallery/156666141/Firstlancer-App" },
@@ -62,7 +62,7 @@ export const PROJECTS: Record<string, Project> = {
 
 export const TABS: [string, string[]][] = [
   ["selected", ["beacon", "keyway", "cdv", "nexo"]],
-  ["cases", ["beacon", "keyway", "cdv", "digito", "brightpath", "cinepolis"]],
+  ["cases", ["beacon", "keyway", "cdv", "nexo", "digito", "brightpath", "cinepolis"]],
   ["websites", ["cdv", "cdvmusica", "nexo", "lessin", "wedding"]],
   ["apps", ["firstlancer", "budgy"]],
   ["passion projects", ["budgy", "monthly"]],

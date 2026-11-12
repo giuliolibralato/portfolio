@@ -57,6 +57,13 @@ function content(lang: Lang): CaseContent {
     </Frame>
   );
 
+  const beforeAfter = (
+    <Frame className="cols-2" caption={es ? "Antes, el primer bloque era una campaña de grupos pequeños y los accesos eran botones chicos bajo el banner. Ahora los cuatro accesos tienen el peso de lo que la gente busca." : "Before, the first block was a small-groups campaign and the doors were small buttons under the banner. Now the four doors weigh as much as what people come looking for."}>
+      <Pane label={es ? "antes" : "before"}><Img src="old.webp" alt={es ? "La home anterior: banner con palmera, botones pequeños y un bloque de grupos pequeños" : "The previous home: a palm-tree banner, small buttons and a small-groups block"} /></Pane>
+      <Pane accent label={es ? "después" : "after"}><Img src="new.webp" alt={es ? "La home nueva: bienvenido a casa, el banner y cuatro accesos" : "The new home: bienvenido a casa, the banner and four doors"} /></Pane>
+    </Frame>
+  );
+
   const doors = (
     <Frame className="rows" caption={es ? "Debajo del banner, lo que la gente buscaba: dónde y cuándo, cómo crecer, grupos pequeños y bautismo." : "Under the banner, what people were looking for: where and when, how to grow, small groups and baptism."}>
       <Pane label={es ? "home · en vivo" : "home · live"}><Img src="tiles.webp" alt={es ? "Cuatro accesos: Campus y horarios, Crecer, Grupos pequeños y Bautismo" : "Four doors: Campus y horarios, Crecer, Grupos pequeños and Bautismo"} /></Pane>
@@ -99,6 +106,7 @@ function content(lang: Lang): CaseContent {
       intro: "The site answered the church's org chart, not a visitor's questions:",
       list: ["ministries for kids, teens and young adults sat inside About → Leadership → Ministries", "they were listed by internal names (GetUp cdv, Punto cdv) that only regulars know", "an annual report sat in the main menu as “2024”, and campuses and times had no entry at all"],
       end: "Most people arrive with one question: {{where and when can I go, and is there something for me or my kids?}}",
+      fig: beforeAfter,
     },
     role: "{{I led the information architecture and designed the home and the new pages}}: the map of the current site, the proposal, the tree test and the wireframes. The communications team decided what mattered most and reviewed every version.",
     research: {
@@ -140,6 +148,7 @@ function content(lang: Lang): CaseContent {
       intro: "La web respondía al organigrama de la iglesia, no a las preguntas de quien llega:",
       list: ["los ministerios de niños, adolescentes y jóvenes estaban en Acerca de → Liderazgo → Ministerios", "aparecían con nombres internos (GetUp cdv, Punto cdv) que solo conoce quien ya va", "un informe anual estaba en el menú principal como “2024”, y los campus y horarios no tenían entrada"],
       end: "La mayoría llega con una pregunta: {{¿dónde y cuándo puedo ir, y hay algo para mí o para mis hijos?}}",
+      fig: beforeAfter,
     },
     role: "{{Lideré la arquitectura de información y diseñé la home y las páginas nuevas}}: el mapa del sitio actual, la propuesta, el tree test y los wireframes. El equipo de comunicaciones decidió qué era lo más importante y revisó cada versión.",
     research: {

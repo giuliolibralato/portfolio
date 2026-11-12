@@ -25,7 +25,6 @@ body {
   background: var(--background); color: var(--foreground);
   font-family: var(--font-geist), system-ui, sans-serif; font-size: 15px; line-height: 22px;
   -webkit-font-smoothing: antialiased;
-  transition: background 200ms var(--ease-out), color 200ms var(--ease-out);
 }
 h1, h2, h3, p, blockquote, figure { margin: 0; }
 a { color: inherit; text-decoration: none; }
@@ -105,8 +104,8 @@ button, select { font: inherit; color: inherit; }
 
 /* Visual stack */
 .stack { position: relative; width: 100%; aspect-ratio: 9 / 8; }
-.stk { position: absolute; left: 4%; bottom: 0; width: 92%; aspect-ratio: 4 / 3; padding: 0; border: 0; border-radius: 12px; background: var(--card); overflow: hidden; cursor: pointer; display: grid; grid-template-rows: 1fr auto; text-align: left; color: var(--foreground); transform-origin: 50% 0%; box-shadow: 0 12px 32px -14px var(--shadow); transition: transform 400ms var(--ease-out); }
-.stk .dim { position: absolute; inset: 0; background: #0f172a; pointer-events: none; transition: opacity 300ms ease; }
+.stk { position: absolute; left: 4%; bottom: 0; width: 92%; aspect-ratio: 4 / 3; padding: 0; border: 0; border-radius: 12px; background: var(--card); overflow: hidden; cursor: pointer; display: grid; grid-template-rows: 1fr auto; text-align: left; color: var(--foreground); transform-origin: 50% 0%; box-shadow: 0 12px 32px -14px var(--shadow); }
+.stk .dim { position: absolute; inset: 0; background: #0f172a; pointer-events: none; }
 .cr { transition: background 200ms; }
 .cr:hover { background: color-mix(in srgb, var(--foreground) 6%, transparent); }
 
@@ -128,22 +127,19 @@ button, select { font: inherit; color: inherit; }
 
 /* Custom cursor */
 .has-cursor, .has-cursor * { cursor: none !important; }
-.vc { position: fixed; left: 0; top: 0; z-index: 100; pointer-events: none; transition: opacity 150ms; }
+.vc { position: fixed; left: 0; top: 0; z-index: 100; pointer-events: none; will-change: transform; transition: opacity 150ms; }
 .vc svg { display: block; shape-rendering: geometricPrecision; filter: drop-shadow(0 1.5px 2px rgba(15, 23, 42, 0.35)); }
 .vc .tag-cur { position: absolute; left: 15px; top: 18px; padding: 2px 7px; border-radius: 4px; color: #fff; font-size: 12px; line-height: 16px; font-weight: 500; white-space: nowrap; box-shadow: 0 3px 8px -2px rgba(15, 23, 42, 0.35), 0 1px 2px rgba(15, 23, 42, 0.2); }
 @media (hover: none) { .vc { display: none; } .has-cursor, .has-cursor * { cursor: auto !important; } }
 
 /* Entrance: Billy cover + Darina cascade */
-.spl { will-change: transform; position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; padding: 0 40px; background: var(--background); transition: transform 1500ms var(--ease-sheet); }
-.spl.out { transform: translateY(-100vh); }
+.spl { will-change: transform; position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; padding: 0 40px; background: var(--background); }
 .spl h2 { font-size: clamp(40px, 7vw, 96px); line-height: 1; font-weight: 500; letter-spacing: -0.035em; }
 .spl h2 span { display: block; color: var(--muted-foreground); }
-@keyframes blk { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-@keyframes avi { 0% { opacity: 0; filter: blur(5px); transform: scale(0.6); } 60% { opacity: 1; filter: blur(0); } 100% { opacity: 1; transform: none; } }
 
 @media (prefers-reduced-motion: reduce) {
   .spl { display: none; }
-  .cv, .stk { transition: none; }
+  .cv { transition: none; }
   .cd:hover .cv { transform: none !important; }
   .pop, .mm, .ti { transition: opacity 150ms ease; }
   @starting-style { .pop, .mm, .ti { transform: none; } }

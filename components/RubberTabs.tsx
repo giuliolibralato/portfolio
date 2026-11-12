@@ -1,10 +1,11 @@
 "use client";
 
-import { motion } from "motion/react";
-import { useLayoutEffect, useRef, useState } from "react";
+import { animate, motion, useMotionTemplate, useMotionValue } from "motion/react";
+import { useLayoutEffect, useRef } from "react";
 
 // React Bits "Rubber Segment": the thumb's leading edge moves fast and the trailing edge
-// catches up, so it stretches toward the target and settles.
+// catches up, so it stretches toward the target and settles. Each edge is a clip-path inset,
+// so the thumb never triggers layout while it moves.
 export function RubberTabs<T extends string>({
   items,
   value,
@@ -20,32 +21,37 @@ export function RubberTabs<T extends string>({
 }) {
   const wrap = useRef<HTMLDivElement>(null);
   const refs = useRef<Record<string, HTMLButtonElement | null>>({});
-  const [box, setBox] = useState({ left: 3, right: 3 });
-  const prev = useRef(value);
+  const lv = useMotionValue(3);
+  const rv = useMotionValue(3);
+  const clip = useMotionTemplate`inset(3px ${rv}px 3px ${lv}px round 999px)`;
+  const prev = useRef<T | null>(null);
 
   useLayoutEffect(() => {
     const el = refs.current[value];
     const w = wrap.current;
     if (!el || !w) return;
-    setBox({ left: el.offsetLeft, right: w.clientWidth - el.offsetLeft - el.offsetWidth });
+    const l = el.offsetLeft;
+    const r = w.clientWidth - el.offsetLeft - el.offsetWidth;
+    if (prev.current === null || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      lv.set(l); rv.set(r);
+    } else {
+      const forward = items.indexOf(value) > items.indexOf(prev.current);
+      const fast = { type: "spring" as const, stiffness: 700, damping: 45 };
+      const slow = { type: "spring" as const, stiffness: 320, damping: 32 };
+      animate(lv, l, forward ? slow : fast);
+      animate(rv, r, forward ? fast : slow);
+    }
+    prev.current = value;
     el.scrollIntoView?.({ inline: "nearest", block: "nearest" });
-  }, [value, items.length]);
-
-  const forward = items.indexOf(value) > items.indexOf(prev.current);
-  prev.current = value;
-  const fast = { type: "spring" as const, stiffness: 700, damping: 45 };
-  const slow = { type: "spring" as const, stiffness: 320, damping: 32 };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, items.join(",")]);
 
   return (
     <div className="tabs">
       <div ref={wrap} role="tablist" aria-label={label} className="tablist" style={{ position: "relative" }}>
-        <motion.i
-          aria-hidden="true"
-          initial={false}
-          animate={box}
-          transition={{ left: forward ? slow : fast, right: forward ? fast : slow }}
-          style={{ position: "absolute", top: 3, bottom: 3, borderRadius: 999, background: "var(--background)", boxShadow: "0 1px 2px var(--shadow)" }}
-        />
+        <span aria-hidden="true" style={{ position: "absolute", inset: 0, filter: "drop-shadow(0 1px 1px var(--shadow))", pointerEvents: "none" }}>
+          <motion.i style={{ position: "absolute", inset: 0, background: "var(--background)", clipPath: clip }} />
+        </span>
         {items.map((it) => (
           <button
             key={it}

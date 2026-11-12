@@ -6,9 +6,9 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 const mono = DM_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-dm-mono" });
 
 export const metadata: Metadata = {
-  title: "Giulio Libralato · Product Designer",
+  title: "Giulio Libralato — Product Designer",
   description: "Product designer in Lima, Peru. B2B tools, AI workflows, web and mobile. Open to full-time roles and freelance projects.",
-  openGraph: { title: "Giulio Libralato · Product Designer", description: "B2B tools, AI workflows, web and mobile.", type: "website" },
+  openGraph: { title: "Giulio Libralato — Product Designer", description: "B2B tools, AI workflows, web and mobile.", type: "website" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -40,7 +40,7 @@ export function CardSwap({ pieces, front, onFront }: { pieces: Piece[]; front: n
     }
     busy.current = true;
     const tl = gsap.timeline({ onComplete: () => { busy.current = false; } });
-    tl.to(el, { y: "+=420", duration: 0.45, ease: "power2.in" });
+    tl.to(el, { y: "+=420", duration: 0.4, ease: "power3.inOut" });
     tl.add(() => {
       order.current = [...rest, first];
       onFront(order.current[0]);

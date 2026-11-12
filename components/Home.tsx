@@ -1,9 +1,9 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, MotionConfig, motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { CardSwap } from "./CardSwap";
-import { Cursor, CursorMode, modeFor } from "./Cursor";
+import { Cursor } from "./Cursor";
 import { Arrow, Chevron, Close, Copy, Download, Globe, Menu, Moon, Pin, PointerIcon, Sel, Sun, Up } from "./Icons";
 import { RubberTabs } from "./RubberTabs";
 import { T } from "@/lib/i18n";
@@ -36,18 +36,25 @@ export default function Home() {
   const [picker, setPicker] = useState(false);
   const [copied, setCopied] = useState(false);
   const [cursor, setCursor] = useState("#007AFF");
-  const [mode, setMode] = useState<CursorMode>("arrow");
-  const [hoverLabel, setHoverLabel] = useState<string | null>(null);
-  const [cursorOn, setCursorOn] = useState(false);
   const [time, setTime] = useState("");
   const [active, setActive] = useState<string>("intro");
-  const cur = useRef<HTMLDivElement>(null);
+  const pickerRef = useRef<HTMLDivElement>(null);
+
+  // cursor picker closes on Escape or a click outside it
+  useEffect(() => {
+    if (!picker) return;
+    const key = (e: KeyboardEvent) => { if (e.key === "Escape") setPicker(false); };
+    const down = (e: PointerEvent) => { if (!pickerRef.current?.contains(e.target as Node)) setPicker(false); };
+    document.addEventListener("keydown", key);
+    document.addEventListener("pointerdown", down);
+    return () => { document.removeEventListener("keydown", key); document.removeEventListener("pointerdown", down); };
+  }, [picker]);
 
   // entrance (Billy): cover holds, then slides up as the content cascades in
   useEffect(() => {
     if (reduce) { setPhase("done"); return; }
-    const a = setTimeout(() => setPhase("out"), 1100);
-    const b = setTimeout(() => setPhase("done"), 2650);
+    const a = setTimeout(() => setPhase("out"), 900);
+    const b = setTimeout(() => setPhase("done"), 2100);
     return () => { clearTimeout(a); clearTimeout(b); };
   }, [reduce]);
 
@@ -89,33 +96,26 @@ export default function Home() {
 
   const toggleLang = () => setLang((l) => { const n = l === "es" ? "en" : "es"; localStorage.setItem("lang", n); return n; });
   const toggleDark = () => setDark((d) => { localStorage.setItem("theme", d ? "light" : "dark"); return !d; });
-  const pickCursor = (c: string) => { setCursor(c); localStorage.setItem("cursor", c); };
+  const pickCursor = (c: string) => { setCursor(c); localStorage.setItem("cursor", c); setPicker(false); };
   const copyEmail = () => {
     navigator.clipboard?.writeText(EMAIL).catch(() => {});
     setCopied(true);
     setTimeout(() => setCopied(false), 1600);
   };
 
-  const onMove = (e: React.PointerEvent) => {
-    if (e.pointerType !== "mouse") return;
-    if (cur.current) cur.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-    const m = modeFor(e.target);
-    if (m !== mode) setMode(m);
-    if (!cursorOn) setCursorOn(true);
-  };
 
   const es = lang === "es";
   const t = T[lang];
   const visitor = t.visitor;
-  const label = hoverLabel === "view" ? t.view : hoverLabel === "visit" ? t.visit : visitor;
   const show = phase === "in" ? "hidden" : "show";
   const tabs = ALL_TABS.filter((t) => t === "visual" || (TABS.find((x) => x[0] === t)?.[1].length ?? 0) > 0);
   const cards = (TABS.find((x) => x[0] === tab)?.[1] ?? []).map((k) => ({ key: k, ...PROJECTS[k], ...(es ? T.es.projects[k] : {}) }));
   const count = (t: string) => (t === "visual" ? PIECES.length : TABS.find((x) => x[0] === t)?.[1].length ?? 0);
 
   return (
-    <div className="has-cursor" onPointerMove={onMove} onPointerLeave={() => setCursorOn(false)}>
-      <Cursor ref={cur} color={cursor} label={label} mode={mode} visible={cursorOn && phase !== "in"} />
+    <MotionConfig reducedMotion="user">
+    <div className="has-cursor">
+      <Cursor color={cursor} labels={{ visitor, view: t.view, visit: t.visit }} enabled={phase !== "in"} />
 
       {/* cover */}
       {phase !== "done" && (
@@ -124,7 +124,7 @@ export default function Home() {
           aria-hidden="true"
           initial={false}
           animate={{ y: phase === "out" ? "-100vh" : 0 }}
-          transition={{ duration: 1.5, ease: SHEET }}
+          transition={{ duration: 1.2, ease: SHEET }}
         >
           <motion.h2 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: DRAWER }}>
             giulio libralato
@@ -150,7 +150,7 @@ export default function Home() {
               </a>
             ))}
           </nav>
-          <div style={{ marginTop: "auto", position: "relative", display: "flex", flexDirection: "column", gap: 8, alignItems: "flex-start" }}>
+          <div ref={pickerRef} style={{ marginTop: "auto", position: "relative", display: "flex", flexDirection: "column", gap: 8, alignItems: "flex-start" }}>
             <AnimatePresence>
               {picker && (
                 <motion.div
@@ -228,7 +228,7 @@ export default function Home() {
             {/* intro */}
             <motion.section id="intro" style={{ maxWidth: 600 }} initial="hidden" animate={show} transition={{ staggerChildren: 0.09, delayChildren: 0.4 }}>
               <motion.div className="avw" style={{ width: 76, height: 76, margin: "28px 0 40px 8px" }}
-                variants={{ hidden: { opacity: 0, scale: 0.8 }, show: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: DRAWER } } }}>
+                variants={{ hidden: { opacity: 0, scale: 0.94 }, show: { opacity: 1, scale: 1, transition: { duration: 0.45, ease: DRAWER } } }}>
                 <img src={`${BASE}/giulio.jpg`} alt="" width={76} height={76} style={{ display: "block", width: 76, height: 76, borderRadius: 12, objectFit: "cover", objectPosition: "50% 20%", background: "var(--muted)" }} />
                 <Sel label="img" badge="76 × 76" style={{ inset: -8 }} />
               </motion.div>
@@ -244,8 +244,8 @@ export default function Home() {
                     <button key={k} type="button" role="tab" className="at" aria-selected={aud === k} onClick={() => setAud(k)}>{t.audiences[k]}</button>
                   ))}
                 </div>
-                <AnimatePresence mode="wait">
-                  <motion.div key={aud} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
+                <AnimatePresence mode="popLayout" initial={false}>
+                  <motion.div key={aud} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, transition: { duration: 0.1 } }} transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
                     style={{ display: "flex", flexDirection: "column", gap: 8, lineHeight: "24px", minHeight: 80 }}>
                     <p>{t.intro[aud][0]}</p>
                     <p>{t.intro[aud][1]}</p>
@@ -268,10 +268,10 @@ export default function Home() {
                           initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.97 }} transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
                           style={{ transformOrigin: "top left", width: 248, padding: 6, display: "flex", flexDirection: "column", gap: 2, border: "1px solid var(--border)", borderRadius: 14, background: "var(--background)", boxShadow: "0 16px 40px -16px var(--shadow), 0 2px 6px -2px var(--shadow)" }}>
                           <span className="muted" style={{ padding: "8px 10px 6px", fontSize: 12, lineHeight: "16px" }}>{t.downloadCv}</span>
-                          {t.cvMenu.map(([l, c]) => (
-                            <a key={c} className="cr" href="#resume" role="menuitem" onClick={() => setResume(false)} style={{ display: "flex", alignItems: "center", gap: 12, padding: 10, borderRadius: 10 }}>
+                          {t.cvMenu.map(([l, c, f, y]) => (
+                            <a key={c} className="cr" href={`${BASE}/giulio-libralato-cv-${f}.pdf`} download role="menuitem" onClick={() => setResume(false)} style={{ display: "flex", alignItems: "center", gap: 12, padding: 10, borderRadius: 10 }}>
                               <span className="mono muted" style={{ width: 32, height: 32, display: "grid", placeItems: "center", borderRadius: 8, background: "var(--muted)", fontSize: 11 }}>{c}</span>
-                              <span style={{ flex: 1, display: "flex", flexDirection: "column" }}><span style={{ fontWeight: 500 }}>{l}</span><span className="muted" style={{ fontSize: 12, lineHeight: "16px" }}>PDF · 2026</span></span>
+                              <span style={{ flex: 1, display: "flex", flexDirection: "column" }}><span style={{ fontWeight: 500 }}>{l}</span><span className="muted" style={{ fontSize: 12, lineHeight: "16px" }}>PDF · {y}</span></span>
                               <span className="muted"><Download /></span>
                             </a>
                           ))}
@@ -302,7 +302,7 @@ export default function Home() {
                 <motion.div key={tab} className="grid" initial="hidden" animate={show} transition={{ staggerChildren: 0.09 }}>
                   {cards.map((c) => (
                     <motion.a key={c.key} variants={block} href={c.href || "#work"} target={c.href ? "_blank" : undefined} rel="noopener" className="cd"
-                      onMouseEnter={() => setHoverLabel(c.href ? "visit" : "view")} onMouseLeave={() => setHoverLabel(null)}>
+                      data-label={c.href ? "visit" : "view"}>
                       <div className="cw">
                         <div className="cover">
                           {c.phone ? (
@@ -333,7 +333,7 @@ export default function Home() {
                     <div style={{ display: "grid" }}>
                       {PIECES.map((p, i) => (
                         <a key={p.name} className="cr" href={p.href} target="_blank" rel="noopener"
-                          onMouseEnter={() => { setFront(i); setHoverLabel("visit"); }} onMouseLeave={() => setHoverLabel(null)} onFocus={() => setFront(i)}
+                          data-label="visit" onMouseEnter={() => setFront(i)} onFocus={() => setFront(i)}
                           style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24, padding: "14px 0", borderTop: "1px solid var(--border)", color: front === i ? "var(--foreground)" : "var(--muted-foreground)" }}>
                           <span style={{ fontWeight: 500 }}>{p.name}</span>
                           <span className="muted" style={{ display: "inline-flex", alignItems: "center", gap: 12 }}><span className="mono" style={{ fontSize: 12 }}>{p.year}</span><Arrow size={14} /></span>
@@ -371,8 +371,8 @@ export default function Home() {
                 <Row label={t.rows.languages}><p>{t.langs}</p></Row>
                 <Row label={t.rows.download}>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 8, maxWidth: 480 }}>
-                    {t.cvLangs.map((l) => (
-                      <a key={l} className="bs" href="#resume">
+                    {t.cvLangs.map((l, i) => (
+                      <a key={l} className="bs" href={`${BASE}/giulio-libralato-cv-${i ? "es" : "en"}.pdf`} download>
                         <span style={{ display: "flex", flexDirection: "column" }}><span style={{ fontWeight: 500 }}>{t.resume} · {l}</span><span className="small muted">PDF</span></span>
                         <span className="muted"><Download size={16} /></span>
                       </a>
@@ -440,14 +440,21 @@ export default function Home() {
         </div>
       </div>
     </div>
+    </MotionConfig>
   );
 }
 
 // React Bits "Warm Tooltip": a small label springs out next to the icon button.
+// once one tooltip has shown, moving to the next button shows it without animating
+let lastTip = 0;
+
 function IconButton({ label, onClick, children, size = 40 }: { label: string; onClick: () => void; children: React.ReactNode; size?: number }) {
   const [hover, setHover] = useState(false);
+  const warm = useRef(false);
   return (
-    <span style={{ position: "relative", display: "inline-flex" }} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+    <span style={{ position: "relative", display: "inline-flex" }}
+      onMouseEnter={() => { warm.current = Date.now() - lastTip < 400; setHover(true); }}
+      onMouseLeave={() => { lastTip = Date.now(); setHover(false); }}>
       <button type="button" className="sb" aria-label={label} onClick={onClick} style={{ width: size, height: size }}>
         <AnimatePresence mode="popLayout" initial={false}>
           <motion.span key={String((children as React.ReactElement)?.key ?? "i")} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.15 }} style={{ display: "grid" }}>
@@ -457,7 +464,7 @@ function IconButton({ label, onClick, children, size = 40 }: { label: string; on
       </button>
       <AnimatePresence>
         {hover && (
-          <motion.span role="tooltip" initial={{ opacity: 0, x: -4, scale: 0.96 }} animate={{ opacity: 1, x: 0, scale: 1 }} exit={{ opacity: 0, x: -4, scale: 0.96 }}
+          <motion.span role="tooltip" initial={warm.current ? false : { opacity: 0, x: -4, scale: 0.96 }} animate={{ opacity: 1, x: 0, scale: 1 }} exit={{ opacity: 0, transition: { duration: 0.1 } }}
             transition={{ type: "spring", stiffness: 520, damping: 32 }}
             style={{ position: "absolute", left: size + 8, top: "50%", marginTop: -13, height: 26, display: "flex", alignItems: "center", padding: "0 10px", borderRadius: 8, background: "var(--primary)", color: "var(--primary-foreground)", fontSize: 12, whiteSpace: "nowrap", pointerEvents: "none", transformOrigin: "left center", zIndex: 40 }}>
             {label}

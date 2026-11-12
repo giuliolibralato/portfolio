@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import { rise, view } from "./Figure";
+import { Notes, rise, view } from "./Figure";
 
 // Budgy's own look, kept dark like the app: a live split and the design system it runs on.
 
@@ -119,50 +119,30 @@ export function DesignSystem({ es }: { es: boolean }) {
   );
 }
 
-/* How the app is put together: five layers, each only talks to the one below */
+/* How the app is put together: five layers, each only talks to the one below, plus what comes from iOS */
 export function Architecture({ es }: { es: boolean }) {
-  const layers: [string, string, string][] = es
-    ? [["interfaz", "10 dominios · ~25 pantallas", "Vistas SwiftUI por dominio, NavigationStack con rutas tipadas y hojas nativas"],
-       ["design system", "tokens + 7 componentes", "Vidrio para controles, sólido para contenido; estilos de texto nativos"],
-       ["estado", "BudgetStore · AuthStore", "@Observable: cachean el mes activo y orquestan las escrituras"],
-       ["lógica", "BudgetMath · 12 tests", "Funciones puras: distribuible, disponible, saldos entre meses, tipo de cambio"],
-       ["datos", "Supabase · 10 tablas · 12 migraciones", "Postgres con seguridad por fila, login con correo y Google"]]
-    : [["interface", "10 domains · ~25 screens", "SwiftUI views per domain, NavigationStack with typed routes and native sheets"],
-       ["design system", "tokens + 7 components", "Glass for controls, solid for content; native text styles"],
-       ["state", "BudgetStore · AuthStore", "@Observable: cache the active month and run the writes"],
-       ["logic", "BudgetMath · 12 tests", "Pure functions: amount to split, left to spend, balances across months, exchange rate"],
-       ["data", "Supabase · 10 tables · 12 migrations", "Postgres with row-level security, sign-in with email and Google"]];
-  const native = es
-    ? ["Face ID al abrir", "notificaciones locales de cobros", "widget del disponible", "lectura de comprobantes en el teléfono (Vision)", "login con Google"]
-    : ["Face ID on open", "local alerts before charges", "left-to-spend widget", "on-device receipt reading (Vision)", "Google sign-in"];
-  return (
-    <figure className="frame-fig">
-      <motion.div className="frame budgy-arch" {...view} transition={{ staggerChildren: 0.06 }}>
-        <span className="mono pane-l">{es ? "arquitectura · cada capa solo habla con la de abajo" : "architecture · each layer only talks to the one below"}</span>
-        <ol className="arch">
-          {layers.map(([k, t, d]) => (
-            <motion.li key={k} variants={rise}><span className="mono">{k}</span><b>{t}</b><span className="small muted">{d}</span></motion.li>
-          ))}
-        </ol>
-        <motion.div variants={rise} className="arch-native"><span className="mono pane-l">{es ? "nativo de iOS" : "native iOS"}</span><div>{native.map((n) => <span key={n} className="tag small">{n}</span>)}</div></motion.div>
-      </motion.div>
-      <figcaption className="small muted">{es ? "La matemática no sabe de pantallas. Por eso la reescritura de React Native a SwiftUI cambió las dos capas de arriba y dejó intactas las de abajo." : "The math knows nothing about screens. That is why the rewrite from React Native to SwiftUI changed the top two layers and left the bottom ones untouched."}</figcaption>
-    </figure>
-  );
+  const items: [string, string, string][] = es
+    ? [["1 · interfaz", "10 dominios, ~25 pantallas", "Vistas SwiftUI por dominio, rutas tipadas y hojas nativas."],
+       ["2 · design system", "tokens y 7 componentes", "Vidrio para controles, sólido para contenido, estilos de texto nativos."],
+       ["3 · estado", "BudgetStore y AuthStore", "@Observable: guardan el mes activo y hacen las escrituras."],
+       ["4 · lógica", "BudgetMath, con 12 tests", "Funciones puras: distribuible, disponible, saldos y tipo de cambio."],
+       ["5 · datos", "Supabase, 10 tablas", "Postgres con seguridad por fila y 12 migraciones; login con correo y Google."],
+       ["nativo de iOS", "Face ID, avisos y widget", "Avisos locales de cobros, widget del disponible y lectura de comprobantes con Vision."]]
+    : [["1 · interface", "10 domains, ~25 screens", "SwiftUI views per domain, typed routes and native sheets."],
+       ["2 · design system", "tokens and 7 components", "Glass for controls, solid for content, native text styles."],
+       ["3 · state", "BudgetStore and AuthStore", "@Observable: hold the active month and run the writes."],
+       ["4 · logic", "BudgetMath, with 12 tests", "Pure functions: amount to split, left to spend, balances and exchange rate."],
+       ["5 · data", "Supabase, 10 tables", "Postgres with row-level security and 12 migrations; email and Google sign-in."],
+       ["native iOS", "Face ID, alerts and widget", "Local alerts before charges, a left-to-spend widget and receipt reading with Vision."]];
+  return <Notes label={es ? "arquitectura · cada capa solo habla con la de abajo" : "architecture · each layer only talks to the one below"} items={items}
+    caption={es ? "La matemática no sabe de pantallas. Por eso la reescritura de React Native a SwiftUI cambió las capas de arriba y dejó intactas las de abajo." : "The math knows nothing about screens. That is why the rewrite from React Native to SwiftUI changed the top layers and left the bottom ones untouched."} />;
 }
 
 /* Everything the app does, by domain */
 export function Features({ es }: { es: boolean }) {
   const f: [string, string][] = es
-    ? [["Inicio", "lo disponible, resumen del mes, anillos por categoría y movimientos"], ["Presupuesto", "sueldo en USD, tipo de cambio, impuesto, extras y distribución en %"], ["Gastos", "registro en tres toques, edición, filtros por cuenta, mes y rango"], ["Cuentas", "saldos en PEN o USD que se arrastran mes a mes"], ["Metas", "objetivo, aportes por mes y proyección de la fecha"], ["Deudas", "total, pagado y fecha límite"], ["Recurrentes", "cobros con día fijo, aviso antes y marcar como pagado"], ["Analíticas", "tendencia de 3, 6 o 12 meses y comparativa por categoría"], ["Nuevo mes", "copia las partidas y el tipo de cambio del mes anterior"]]
-    : [["Home", "left to spend, month summary, rings per category and recent moves"], ["Budget", "salary in USD, exchange rate, tax, extras and a split in %"], ["Expenses", "logging in three taps, editing, filters by account, month and range"], ["Accounts", "balances in PEN or USD carried month to month"], ["Goals", "target, contributions per month and a projected date"], ["Debts", "total, paid and due date"], ["Recurring", "charges on a fixed day, a heads-up before and mark as paid"], ["Analytics", "3, 6 or 12-month trend and comparison by category"], ["New month", "copies the lines and exchange rate from the month before"]];
-  return (
-    <figure className="frame-fig">
-      <motion.div className="frame budgy-feat" {...view} transition={{ staggerChildren: 0.04 }}>
-        <span className="mono pane-l">{es ? "lo que hace la app" : "what the app does"}</span>
-        <ul>{f.map(([a, b]) => <motion.li key={a} variants={rise}><b>{a}</b><span className="small muted">{b}</span></motion.li>)}</ul>
-      </motion.div>
-      <figcaption className="small muted">{es ? "Todo gira alrededor de una pregunta: cuánto puedo gastar todavía. Cada dominio alimenta ese número o lo explica." : "Everything turns around one question: how much can I still spend. Each domain feeds that number or explains it."}</figcaption>
-    </figure>
-  );
+    ? [["Inicio", "Lo disponible, resumen del mes, anillos por categoría y movimientos."], ["Presupuesto", "Sueldo en USD, tipo de cambio, impuesto, extras y distribución en %."], ["Gastos", "Registro en tres toques, edición y filtros por cuenta, mes y rango."], ["Cuentas", "Saldos en PEN o USD que se arrastran mes a mes."], ["Metas", "Objetivo, aportes por mes y proyección de la fecha."], ["Deudas", "Total, pagado y fecha límite."], ["Recurrentes", "Cobros con día fijo, aviso antes y marcar como pagado."], ["Analíticas", "Tendencia de 3, 6 o 12 meses y comparativa por categoría."], ["Nuevo mes", "Copia las partidas y el tipo de cambio del mes anterior."]]
+    : [["Home", "Left to spend, month summary, rings per category and recent moves."], ["Budget", "Salary in USD, exchange rate, tax, extras and a split in %."], ["Expenses", "Logging in three taps, editing and filters by account, month and range."], ["Accounts", "Balances in PEN or USD carried month to month."], ["Goals", "Target, contributions per month and a projected date."], ["Debts", "Total, paid and due date."], ["Recurring", "Charges on a fixed day, a heads-up before and mark as paid."], ["Analytics", "3, 6 or 12-month trend and comparison by category."], ["New month", "Copies the lines and exchange rate from the month before."]];
+  return <Notes label={es ? "lo que hace la app" : "what the app does"} items={f.map(([a, b]) => ["", a, b])}
+    caption={es ? "Todo gira alrededor de una pregunta: cuánto puedo gastar todavía. Cada dominio alimenta ese número o lo explica." : "Everything turns around one question: how much can I still spend. Each domain feeds that number or explains it."} />;
 }

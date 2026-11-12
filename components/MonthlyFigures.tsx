@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { rise, view } from "./Figure";
+import { Notes, rise, view } from "./Figure";
 
 // Where Monthly Budget's design comes from: the pattern in the app, the kind of tool it resembles, and why it fits.
 
@@ -17,24 +17,9 @@ const REFS: Ref[] = [
 ];
 
 export function MonthlyRefs({ es }: { es: boolean }) {
-  return (
-    <figure className="frame-fig">
-      <motion.div className="frame mb-refs" {...view} transition={{ staggerChildren: 0.05 }}>
-        <span className="mono pane-l">{es ? "patrón en la app · se parece a · por qué encaja" : "pattern in the app · resembles · why it fits"}</span>
-        <ul>
-          {REFS.map(([pe, pi, like, we, wi, where]) => (
-            <motion.li key={pe} variants={rise}>
-              <span className="mb-where mono">{where}</span>
-              <b>{es ? pe : pi}</b>
-              <span className="mb-like">{like}</span>
-              <span className="small muted">{es ? we : wi}</span>
-            </motion.li>
-          ))}
-        </ul>
-      </motion.div>
-      <figcaption className="small muted">{es ? "Estudié referentes en Mobbin mientras construía. No quedó registro de qué pantallas exactas, así que aquí van los patrones a los que se parece cada parte." : "I studied references on Mobbin while building. There is no record of the exact screens, so these are the patterns each part resembles."}</figcaption>
-    </figure>
-  );
+  const items: [string, string, string][] = REFS.map(([pe, pi, like, we, wi, where]) => [where, es ? pe : pi, `${es ? "Como en" : "Like"} ${like}: ${es ? we : wi}.`]);
+  return <Notes label={es ? "de dónde sale cada patrón" : "where each pattern comes from"} items={items}
+    caption={es ? "Estudié referentes en Mobbin mientras construía. No quedó registro de qué pantallas exactas, así que aquí van los patrones a los que se parece cada parte." : "I studied references on Mobbin while building. There is no record of the exact screens, so these are the patterns each part resembles."} />;
 }
 
 const TAGS = ["#8a37c2", "#b85708", "#0c7c90", "#b52a6d", "#1a8a4c", "#2f5fd0", "#9a6a00", "#555a66"];

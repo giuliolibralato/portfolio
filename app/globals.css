@@ -325,15 +325,6 @@ button, select { font: inherit; color: inherit; }
 .ds-layers .solid { background: #0D1626; }
 .ds-comps { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 8px; } .ds-comps li { display: grid; } .ds-comps b { font-size: 12px; }
 @media (max-width: 760px) { .frame.budgy-ds { grid-template-columns: minmax(0,1fr); } }
-.budgy-arch, .budgy-feat { display: block; }
-.arch { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 6px; }
-.arch li { display: grid; grid-template-columns: 120px minmax(0, 1.1fr) minmax(0, 2fr); gap: 12px; align-items: baseline; padding: 12px 14px; border-radius: 12px; background: var(--background); box-shadow: inset 0 0 0 1px var(--border, rgba(127,127,127,.18)); }
-.arch li > .mono { font-size: 12px; opacity: .7; }
-.arch-native { margin-top: 14px; } .arch-native > div { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.budgy-feat ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 20px; }
-.budgy-feat li { display: grid; gap: 2px; }
-@container (max-width: 640px) { .arch li { grid-template-columns: minmax(0, 1fr); gap: 2px; } .budgy-feat ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-
 /* Camino de Vida design style: always on the site's warm ground */
 .frame.cdv-sys { background: #F0EEE9; color: #2A2A2A; grid-template-columns: 1fr 1fr 1.15fr; align-items: start; gap: 24px; font-family: Inter, var(--font-sans, sans-serif); }
 .cdv-sys .pane-l { color: #6C6C6C; }
@@ -352,11 +343,6 @@ button, select { font: inherit; color: inherit; }
 @container (max-width: 760px) { .frame.cdv-sys { grid-template-columns: minmax(0, 1fr); } }
 
 /* Monthly Budget: references and its light tool system */
-.mb-refs { display: block; }
-.mb-refs ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 6px; }
-.mb-refs li { display: grid; grid-template-columns: 120px minmax(0, 1.3fr) 150px minmax(0, 1.4fr); gap: 12px; align-items: baseline; padding: 11px 14px; border-radius: 12px; background: var(--background); box-shadow: inset 0 0 0 1px rgba(127,127,127,.18); }
-.mb-where { font-size: 11px; opacity: .65; } .mb-like { font-weight: 600; }
-@container (max-width: 680px) { .mb-refs li { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
 .frame.mb-sys { background: #fff; color: #1f2024; grid-template-columns: 1fr 1fr 1fr; align-items: start; gap: 24px; font-family: Inter, var(--font-sans, sans-serif); }
 .mb-sys .pane-l { color: #7a7c85; }
 .mb-acc { display: flex; align-items: center; gap: 10px; font-size: 12.5px; color: #46484f; } .mb-acc i { width: 22px; height: 22px; border-radius: 6px; flex: none; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
@@ -364,3 +350,12 @@ button, select { font: inherit; color: inherit; }
 .mb-pills span, .mb-tags span { font-size: 12px; padding: 3px 9px; border-radius: 6px; font-weight: 500; }
 .mb-type { display: grid; gap: 6px; } .mb-type div { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; } .mb-type .mono { font-size: 11px; color: #7a7c85; }
 @container (max-width: 760px) { .frame.mb-sys { grid-template-columns: minmax(0, 1fr); } }
+
+/* Notes: the one pattern for explaining several things at once */
+.notes-frame { display: block; }
+.notes { list-style: none; padding: 0; margin: 14px 0 0; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 24px 28px; }
+.notes li { display: grid; gap: 4px; align-content: start; }
+.note-k { font-size: 11px; opacity: .6; }
+.notes b { font-weight: 600; line-height: 1.35; }
+@container (max-width: 760px) { .notes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@container (max-width: 480px) { .notes { grid-template-columns: minmax(0, 1fr); } }

@@ -79,3 +79,24 @@ export function FilmFig({ src, caption }: { src: string; caption: string }) {
     </figure>
   );
 }
+
+/* Short explanations in a grid: a small kicker, a bold line and one plain line. No boxes, no table. */
+export function Notes({ label, items, caption, cols = 3 }: { label: string; items: [string, string, string][]; caption: string; cols?: number }) {
+  return (
+    <figure className="frame-fig">
+      <motion.div className="frame notes-frame" {...view} transition={{ staggerChildren: 0.05 }}>
+        <span className="mono pane-l">{label}</span>
+        <ul className="notes" style={{ ["--n" as string]: cols }}>
+          {items.map(([k, t, d]) => (
+            <motion.li key={k + t} variants={rise}>
+              {k && <span className="mono note-k">{k}</span>}
+              <b>{t}</b>
+              <span className="small muted">{d}</span>
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
+      <figcaption className="small muted">{caption}</figcaption>
+    </figure>
+  );
+}

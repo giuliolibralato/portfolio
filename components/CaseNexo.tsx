@@ -12,8 +12,8 @@ function content(lang: Lang): CaseContent {
   const cover = <img className="cover-shot" src={`${IMG}/hero.webp`} alt={es ? "El hero de nexosummit.pe: fecha, sede, modalidad y precio desde el primer vistazo" : "The nexosummit.pe hero: date, venue, format and price at first glance"} />;
 
   const enasei = (
-    <Frame className="rows" caption={es ? "Primero rediseñé el sitio de ENASEI en su propia dirección: el cliente quería mantenerla mientras se definía la marca nueva." : "First I redesigned the ENASEI site in its own direction: the client wanted to keep it while the new brand was being defined."}>
-      <Pane label={es ? "enasei · rediseño en su dirección" : "enasei · redesign in its own direction"}><Img src="enasei.webp" alt={es ? "Sitio de ENASEI: hero con la ciudad, ejes temáticos, speakers, programa y sponsors" : "ENASEI site: city hero, themes, speakers, programme and sponsors"} /></Pane>
+    <Frame className="rows" caption={es ? "La landing de ENASEI 2025, hecha antes de que yo entrara: foto genérica de la ciudad, mucho texto y una grilla larga de sponsors." : "The ENASEI 2025 landing, made before I joined: a stock city photo, dense text and a long sponsor grid."}>
+      <Pane label={es ? "antes · landing de enasei 2025" : "before · the enasei 2025 landing"}><Img src="enasei.webp" alt={es ? "Landing de ENASEI 2025: hero con la ciudad, ejes temáticos, speakers, programa y sponsors" : "ENASEI 2025 landing: city hero, themes, speakers, programme and sponsors"} /></Pane>
     </Frame>
   );
 
@@ -65,15 +65,15 @@ function content(lang: Lang): CaseContent {
   );
 
   const order = <Steps items={es
-    ? [["ENASEI", "rediseño en su dirección"], ["Transición", "ENASEI ahora es Nexo"], ["Referentes", "3 opciones, se combinaron 2"], ["Sistema", "tokens y tipografías"], ["Wireframes", "5 páginas, PRD + Figma Make"], ["Build", "WordPress y plugins propios"]]
-    : [["ENASEI", "redesign in its direction"], ["Transition", "ENASEI is now Nexo"], ["References", "3 options, 2 combined"], ["System", "tokens and type"], ["Wireframes", "5 pages, PRD + Figma Make"], ["Build", "WordPress and my own plugins"]]} />;
+    ? [["Antes", "la landing de ENASEI 2025"], ["Transición", "rediseño en la línea de ENASEI"], ["Referentes", "3 opciones, se combinaron 2"], ["Sistema", "tokens y tipografías"], ["Wireframes", "5 páginas, PRD + Figma Make"], ["Build", "WordPress y plugins propios"]]
+    : [["Before", "the ENASEI 2025 landing"], ["Transition", "redesign in ENASEI's look"], ["References", "3 options, 2 combined"], ["System", "tokens and type"], ["Wireframes", "5 pages, PRD + Figma Make"], ["Build", "WordPress and my own plugins"]]} />;
 
   const tools: [string, string?][] = [["Figma", "figma"], ["Figma Make", "figma"], ["WordPress", "wordpress"], ["Elementor", "elementor"], ["WooCommerce", "woocommerce"], ["Mercado Pago", "mercadopago"], ["Claude Code", "claude"], ["Claude", "claude"]];
 
   if (!es) return {
     project: "Nexo Summit — case study",
     subtitle: "from ENASEI to Nexo Summit, in one site",
-    tldr: "ENASEI, the Peruvian real-estate sector's yearly conference, became Nexo Summit after its guilds merged into CODIP. As a freelancer I designed and built the move: a refresh of the ENASEI site, a landing that tells people the event changed its name, and the new site, {{from the design system to ticket sales}}: five pages in WordPress and my own plugins for speakers, agenda and tickets with Mercado Pago.",
+    tldr: "ENASEI, the Peruvian real-estate sector's yearly conference, became Nexo Summit after its guilds merged into CODIP. As a freelancer I designed and built the move: a redesign of the ENASEI landing that tells people the event changed its name, kept in ENASEI's look as the client asked, and the new site, {{from the design system to ticket sales}}: five pages in WordPress and my own plugins for speakers, agenda and tickets with Mercado Pago.",
     meta: [
       ["client", "CODIP · Confederation of Real Estate Developers of Peru"],
       ["role", "Freelance product designer and developer: design system, UX/UI, WordPress build, SEO and plugins"],
@@ -118,7 +118,7 @@ function content(lang: Lang): CaseContent {
   return {
     project: "Nexo Summit — caso de estudio",
     subtitle: "de ENASEI a Nexo Summit, en un solo sitio",
-    tldr: "ENASEI, la conferencia anual del sector inmobiliario peruano, pasó a llamarse Nexo Summit tras la fusión de sus gremios en CODIP. Como freelance diseñé y construí el cambio: un rediseño del sitio de ENASEI, una landing que cuenta que el evento cambió de nombre y el sitio nuevo, {{del design system a la venta de entradas}}: cinco páginas en WordPress y plugins propios de speakers, agenda y entradas con Mercado Pago.",
+    tldr: "ENASEI, la conferencia anual del sector inmobiliario peruano, pasó a llamarse Nexo Summit tras la fusión de sus gremios en CODIP. Como freelance diseñé y construí el cambio: un rediseño de la landing de ENASEI que cuenta que el evento cambió de nombre, en la línea de ENASEI como pidió el cliente, y el sitio nuevo, {{del design system a la venta de entradas}}: cinco páginas en WordPress y plugins propios de speakers, agenda y entradas con Mercado Pago.",
     meta: [
       ["cliente", "CODIP · Confederación de Desarrolladores Inmobiliarios del Perú"],
       ["rol", "Diseñador de producto y desarrollador freelance: design system, UX/UI, desarrollo en WordPress, SEO y plugins"],

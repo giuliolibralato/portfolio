@@ -17,7 +17,7 @@ function content(lang: Lang): CaseContent {
     : [["Income", "salary in dollars + extras"], ["− Tax", "on the salary only"], ["= To split", "what I share out in %"], ["− Set aside", "savings and upcoming charges"], ["= Left to spend", "what I can still spend"]]} />;
 
   const split = (
-    <Frame className="cols-phones" caption={es ? "Escribo un porcentaje y la app muestra el monto: se acabó la regla de tres. Cada número sale de una fórmula a la vista." : "I type a percentage and the app shows the amount: no more rule of three. Every number comes from a formula in plain sight."}>
+    <Frame className="cols-phones" caption={es ? "Escribo un porcentaje o un monto y la app calcula el otro: se acabó la regla de tres. Cada número sale de una fórmula a la vista." : "I type a percentage or an amount and the app works out the other: no more rule of three. Every number comes from a formula in plain sight."}>
       <Pane label={es ? "ingreso" : "income"}><Phone src="income.webp" alt={es ? "Sueldo en dólares, tipo de cambio e impuesto, con el bruto y el neto calculados" : "Salary in dollars, exchange rate and tax, with gross and net worked out"} /></Pane>
       <Pane accent label={es ? "distribución" : "split"}><Phone src="distribution.webp" alt={es ? "Distribución por categoría en porcentaje y en soles, con el total asignado al 100%" : "Split by category in percent and in soles, with 100% assigned"} /></Pane>
       <Pane label={es ? "partidas" : "lines"}><Phone src="rings.webp" alt={es ? "Anillos por categoría: gastado contra presupuestado" : "A ring per category: spent against budgeted"} /></Pane>
@@ -65,14 +65,14 @@ function content(lang: Lang): CaseContent {
       ["team", "Me, with Claude Code"],
       ["timeline", "June–July 2026"],
       ["scope", "iOS app (SwiftUI) with a Supabase backend"],
-      ["status", "Running on my iPhone; not on the App Store"],
+      ["status", "Works; retired when our household budget moved to Monthly Budget"],
     ],
     chips: ["passion project", "designed and built", "ios"], okChip: 1,
     cover,
     tools: [["Claude Code", "claude"], ["SwiftUI", "swift"], ["Xcode", "xcode"], ["Supabase", "supabase"]],
     challenge: {
-      intro: "The sheet worked, but only on a laptop, and only if I did the math right every month:",
-      list: ["a rule of three for every line to turn a percentage into an amount", "the tax applied to the salary but not to freelance extras, easy to get wrong", "no quick answer to how much is left, and no reminder before a subscription charge"],
+      intro: "The sheet did its job, but it had become a chore:",
+      list: ["the spreadsheet had grown huge, one tab after another, month after month", "I wanted amounts and percentages side by side: change the amount and the percentage updates, and the other way round. In Excel that meant formulas and tables I had to keep fixing", "I wanted it on my phone, interactive, and working like the apps I already knew", "I wanted everything in one place, under my own account: income, budget, expenses, accounts, goals and debts"],
       end: "The goal wasn't more features than the sheet. It was {{the same logic, always right, in my pocket}}.",
       fig: formula,
     },
@@ -84,7 +84,7 @@ function content(lang: Lang): CaseContent {
     },
     decisionsLead: build,
     decisions: [
-      { t: "a percentage in, an amount out", because: "the sheet's real job was the rule of three. Each line takes a percentage up to four decimals or a fixed amount, and the other is worked out.", ruled: "fixed amounts only. They break every month the exchange rate moves.", fig: <>{split}{demo}</> },
+      { t: "amount and percentage, always in sync", because: "the sheet's real job was the rule of three. Each line takes a percentage up to four decimals or a fixed amount, and the other updates at once, in both directions.", ruled: "fixed amounts only. They break every month the exchange rate moves.", fig: <>{split}{demo}</> },
       { t: "one number on the home: what's left", because: "every category has a type, free to spend, saved or set aside, and only the first counts. Money kept for a future charge never looks spendable.", ruled: "a plain on/off switch per category. It said what didn't count, not why.", fig: oneNumber },
       { t: "the math in one place, under test", because: "if the home and the budget screen ever disagreed, I'd stop trusting both. Twelve tests cover the split, the left-to-spend and the balances across months." },
       { t: "rebuild it native instead of patching it", because: "in React Native, Liquid Glass came through a bridge and sheets had bugs. The data and the math were already separate from the UI, so the rewrite took two days, not weeks.", ruled: "staying cross-platform. I only need iOS, and native gave me glass, sheets and Dynamic Type for free." },
@@ -95,7 +95,7 @@ function content(lang: Lang): CaseContent {
       items: ["Twelve unit tests on the financial logic, run on every change to it.", "The real thing on my iPhone, checked against the sheet it replaced.", "Every number on screen traced back to a formula in the PRD."],
       extra: size,
     },
-    results: [["observed", "{{It replaced the sheet for my own budget.}} The rebuild kept every rule of the first version and added receipts, a widget and alerts when what's left runs low."], ["measured", "Nothing to measure: it has one user, me. It isn't on the App Store, and the free signing expires every seven days."]],
+    results: [["observed", "{{It replaced the sheet and it works.}} The rebuild kept every rule of the first version and added receipts, a widget and alerts when what's left runs low."], ["next", "I was about to get married, and a budget for one wasn't enough. Our household budget moved to {{Monthly Budget}}, another platform I built, and Budgy was retired with what it taught me."], ["measured", "Nothing to measure: it has one user, me. It isn't on the App Store, and the free signing expires every seven days."]],
     learn: ["As my first vibecoded app, it taught me that {{the design decisions stay mine}}: the AI writes the code fast, but what counts as money left, and what the screen shows first, I had to decide and write down.", "{{Writing the rules before the screens made the AI faster, not slower.}} A PRD with formulas left Claude Code nothing to guess about money.", "Keeping the math out of the UI is what made a full rewrite cheap. The second version cost days because the first one was split right."],
     legal: "A personal project. All data on screen is fictional, made up for these screenshots.",
   };
@@ -110,14 +110,14 @@ function content(lang: Lang): CaseContent {
       ["equipo", "Yo, con Claude Code"],
       ["duración", "junio–julio 2026"],
       ["alcance", "App de iOS (SwiftUI) con backend en Supabase"],
-      ["estado", "Corriendo en mi iPhone; no está en el App Store"],
+      ["estado", "Funciona; la dejé cuando el presupuesto de la casa pasó a Monthly Budget"],
     ],
     chips: ["proyecto personal", "diseñada y construida", "ios"], okChip: 1,
     cover,
     tools: [["Claude Code", "claude"], ["SwiftUI", "swift"], ["Xcode", "xcode"], ["Supabase", "supabase"]],
     challenge: {
-      intro: "La hoja funcionaba, pero solo en la laptop y solo si hacía bien las cuentas cada mes:",
-      list: ["una regla de tres por partida para pasar de porcentaje a monto", "el impuesto va sobre el sueldo pero no sobre los extras del freelo, fácil de equivocar", "ninguna respuesta rápida a cuánto me queda, ni aviso antes de que cobre una suscripción"],
+      intro: "La hoja cumplía, pero se había vuelto una carga:",
+      list: ["el Excel se había vuelto enorme, una pestaña tras otra, mes tras mes", "quería montos y porcentajes lado a lado: si muevo el monto, el porcentaje se actualiza, y al revés. En Excel eso era tedioso, con fórmulas y tablas que había que arreglar", "quería tenerlo en el celular, de forma interactiva y como las apps que ya conocía", "quería todo en un solo lugar, con mi cuenta: ingresos, presupuesto, gastos, cuentas, metas y deudas"],
       end: "La meta no era tener más funciones que la hoja. Era {{la misma lógica, siempre bien, en el bolsillo}}.",
       fig: formula,
     },
@@ -129,7 +129,7 @@ function content(lang: Lang): CaseContent {
     },
     decisionsLead: build,
     decisions: [
-      { t: "entra un porcentaje, sale un monto", because: "el trabajo real de la hoja era la regla de tres. Cada partida acepta un porcentaje de hasta cuatro decimales o un monto fijo, y la app calcula el otro.", ruled: "solo montos fijos. Se rompen cada mes que se mueve el tipo de cambio.", fig: <>{split}{demo}</> },
+      { t: "monto y porcentaje, siempre sincronizados", because: "el trabajo real de la hoja era la regla de tres. Cada partida acepta un porcentaje de hasta cuatro decimales o un monto fijo, y el otro se actualiza al instante, en las dos direcciones.", ruled: "solo montos fijos. Se rompen cada mes que se mueve el tipo de cambio.", fig: <>{split}{demo}</> },
       { t: "un solo número en el inicio: lo disponible", because: "cada categoría tiene un tipo, disponible, ahorrado o apartado, y solo la primera cuenta. La plata guardada para un cobro futuro nunca parece gastable.", ruled: "un interruptor de encendido y apagado por categoría. Decía qué no contaba, pero no por qué.", fig: oneNumber },
       { t: "la matemática en un solo lugar, con tests", because: "si el inicio y el presupuesto alguna vez no coincidieran, dejaría de confiar en los dos. Doce tests cubren la distribución, lo disponible y los saldos entre meses." },
       { t: "reescribirla nativa en vez de parcharla", because: "en React Native, Liquid Glass llegaba por un puente y las hojas tenían bugs. Los datos y la matemática ya estaban separados de la interfaz, así que la reescritura tomó dos días, no semanas.", ruled: "seguir multiplataforma. Solo necesito iOS, y lo nativo me daba vidrio, hojas y Dynamic Type sin esfuerzo." },
@@ -140,7 +140,7 @@ function content(lang: Lang): CaseContent {
       items: ["Doce tests unitarios sobre la lógica financiera, que corren con cada cambio en ella.", "La app real en mi iPhone, contrastada con la hoja que reemplazó.", "Cada número en pantalla rastreado hasta una fórmula del PRD."],
       extra: size,
     },
-    results: [["observado", "{{Reemplazó a la hoja para mi propio presupuesto.}} La reescritura conservó todas las reglas de la primera versión y sumó comprobantes, un widget y alertas cuando lo disponible se acaba."], ["medido", "Nada que medir: tiene un solo usuario, yo. No está en el App Store y la firma gratuita vence cada siete días."]],
+    results: [["observado", "{{Reemplazó a la hoja y funciona.}} La reescritura conservó todas las reglas de la primera versión y sumó comprobantes, un widget y alertas cuando lo disponible se acaba."], ["después", "Estaba próximo a casarme y un presupuesto para uno ya no alcanzaba. El presupuesto de la casa pasó a {{Monthly Budget}}, otra plataforma que construí, y Budgy quedó atrás con lo que me enseñó."], ["medido", "Nada que medir: tiene un solo usuario, yo. No está en el App Store y la firma gratuita vence cada siete días."]],
     learn: ["Como mi primera app hecha con vibecoding, me enseñó que {{las decisiones de diseño siguen siendo mías}}: la IA escribe el código rápido, pero qué cuenta como plata disponible y qué muestra primero la pantalla tuve que decidirlo y escribirlo yo.", "{{Escribir las reglas antes que las pantallas hizo a la IA más rápida, no más lenta.}} Un PRD con fórmulas no le dejó a Claude Code nada que adivinar sobre el dinero.", "Tener la matemática fuera de la interfaz es lo que abarató la reescritura completa. La segunda versión costó días porque la primera estaba bien separada."],
     legal: "Proyecto personal. Todos los datos en pantalla son ficticios, inventados para estas capturas.",
   };

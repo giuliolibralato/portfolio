@@ -25,7 +25,7 @@ export function SplitDemo({ es }: { es: boolean }) {
   return (
     <figure className="frame-fig">
       <motion.div className="frame budgy-demo" {...view} variants={rise}>
-        <span className="mono pane-l">{es ? "pruébalo · mueve los porcentajes" : "try it · move the percentages"}</span>
+        <span className="mono pane-l">{es ? "pruébalo · mueve el porcentaje o escribe el monto" : "try it · move the percentage or type the amount"}</span>
         <div className="bd-card">
           <div className="bd-total"><span>{es ? "Total distribuible" : "Total to split"}</span><b>{money(TOTAL)}</b></div>
           <div className="bd-bar" aria-hidden>
@@ -35,14 +35,14 @@ export function SplitDemo({ es }: { es: boolean }) {
           {LINES.map((l) => (
             <label key={l.id} className="bd-row">
               <span className="bd-name"><i style={{ background: l.c }} />{es ? l.es : l.en}</span>
-              <input type="range" min={0} max={60} step={1} value={pct[l.id]} onChange={(e) => setPct({ ...pct, [l.id]: +e.target.value })} style={{ accentColor: l.c }} aria-label={`${es ? l.es : l.en} %`} />
-              <span className="bd-pct">{pct[l.id]}%</span>
-              <span className="bd-amt">{money((TOTAL * pct[l.id]) / 100)}</span>
+              <input type="range" min={0} max={60} step={0.5} value={pct[l.id]} onChange={(e) => setPct({ ...pct, [l.id]: +e.target.value })} style={{ accentColor: l.c }} aria-label={`${es ? l.es : l.en} %`} />
+              <span className="bd-pct">{+pct[l.id].toFixed(2)}%</span>
+              <span className="bd-amt">S/.<input type="number" inputMode="decimal" min={0} step={10} value={Math.round(TOTAL * pct[l.id]) / 100} onChange={(e) => setPct({ ...pct, [l.id]: Math.max(0, (+e.target.value / TOTAL) * 100) })} aria-label={`${es ? l.es : l.en} ${es ? "monto" : "amount"}`} /></span>
             </label>
           ))}
         </div>
       </motion.div>
-      <figcaption className="small muted">{es ? "La misma lógica que la app, con datos ficticios: el porcentaje entra, el monto sale, y el total avisa si te pasas." : "The same logic as the app, with fictional data: the percentage goes in, the amount comes out, and the total warns you if you go over."}</figcaption>
+      <figcaption className="small muted">{es ? "La misma lógica que la app, con datos ficticios: si cambias el porcentaje se actualiza el monto, y al revés. El total avisa si te pasas." : "The same logic as the app, with fictional data: change the percentage and the amount follows, or the other way round. The total warns you if you go over."}</figcaption>
     </figure>
   );
 }

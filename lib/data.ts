@@ -11,12 +11,12 @@ export type Project = {
 };
 
 export const EMAIL = "giuliolibralatooliva@gmail.com";
-export const WHATSAPP = "https://wa.me/51983203160";
+export const WHATSAPP = "https://wa.me/+51983203160";
 export const LINKEDIN = "https://www.linkedin.com/in/giuliolibralato/";
 export const GITHUB = "https://github.com/giuliolibralato";
 export const BEHANCE = "https://www.behance.net/giuliolibralatooliva";
 
-export const NAV = ["intro", "work", "experience", "references", "resume", "contact"] as const;
+export const NAV = ["intro", "work", "experience", "resume", "references", "contact"] as const;
 
 export const INTRO: Record<Audience, [string, string]> = {
   anyone: [

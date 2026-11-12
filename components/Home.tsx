@@ -2,6 +2,7 @@
 
 import { AnimatePresence, MotionConfig, motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { CardSwap } from "./CardSwap";
 import { Cursor } from "./Cursor";
 import { Arrow, Chevron, Close, Copy, Download, Globe, Menu, Moon, Pin, PointerIcon, Sel, Sun, Up } from "./Icons";
@@ -82,11 +83,6 @@ export default function Home() {
     if (c) setCursor(c);
     setTime(new Date().toLocaleTimeString("en-US", { timeZone: "America/Lima", hour: "numeric", minute: "2-digit" }).toLowerCase());
   }, []);
-  const themeReady = useRef(false);
-  useEffect(() => {
-    if (!themeReady.current) { themeReady.current = true; return; } // the head script already set it
-    document.documentElement.dataset.theme = dark ? "dark" : "light";
-  }, [dark]);
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
@@ -95,7 +91,26 @@ export default function Home() {
   }, [cursor]);
 
   const toggleLang = () => setLang((l) => { const n = l === "es" ? "en" : "es"; localStorage.setItem("lang", n); return n; });
-  const toggleDark = () => setDark((d) => { localStorage.setItem("theme", d ? "light" : "dark"); return !d; });
+  // Magic UI "Animated Theme Toggler": the new theme grows as a circle from the button (View Transitions)
+  const toggleDark = (e: React.MouseEvent<HTMLElement>) => {
+    const next = !dark;
+    const apply = () => {
+      document.documentElement.dataset.theme = next ? "dark" : "light";
+      localStorage.setItem("theme", next ? "dark" : "light");
+      flushSync(() => setDark(next));
+    };
+    if (!document.startViewTransition || reduce || document.hidden) { apply(); return; }
+    const b = e.currentTarget.getBoundingClientRect();
+    const x = b.left + b.width / 2;
+    const y = b.top + b.height / 2;
+    const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    document.startViewTransition(apply).ready.then(() => {
+      document.documentElement.animate(
+        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] },
+        { duration: 500, easing: "cubic-bezier(0.33, 0, 0.2, 1)", pseudoElement: "::view-transition-new(root)" },
+      );
+    });
+  };
   const pickCursor = (c: string) => { setCursor(c); localStorage.setItem("cursor", c); setPicker(false); };
   const copyEmail = () => {
     navigator.clipboard?.writeText(EMAIL).catch(() => {});
@@ -294,7 +309,7 @@ export default function Home() {
             {/* work */}
             <motion.section id="work" style={{ marginTop: 56 }} initial="hidden" animate={show} transition={{ staggerChildren: 0.09, delayChildren: 0.9 }}>
               <motion.div variants={block}>
-                <RubberTabs items={tabs} value={tab} onChange={(t) => { setTab(t); setFront(0); }} label="work type"
+                <RubberTabs labelsKey={lang} items={tabs} value={tab} onChange={(t) => { setTab(t); setFront(0); }} label="work type"
                   render={(x) => <>{t.tabs[x] ?? x}<span className="count mono">{count(x)}</span></>} />
               </motion.div>
 
@@ -411,7 +426,7 @@ export default function Home() {
                     <h2 className="h2" style={{ maxWidth: 360 }}>{t.contactTitle}</h2>
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                    <ContactRow k="whatsapp" v="+51 983 203 160" href={WHATSAPP} />
+                    <ContactRow k="whatsapp" v={t.writeMe} href={WHATSAPP} />
                     <button type="button" className="crow" onClick={copyEmail} aria-label="copy email">
                       <span style={{ display: "flex", alignItems: "center", gap: 16 }}><span className="mono muted" style={{ fontSize: 12, width: 90 }}>email</span><span>{copied ? t.copied : EMAIL}</span></span>
                       <span className="muted"><Copy /></span><Sel label="button" />
@@ -448,7 +463,7 @@ export default function Home() {
 // once one tooltip has shown, moving to the next button shows it without animating
 let lastTip = 0;
 
-function IconButton({ label, onClick, children, size = 40 }: { label: string; onClick: () => void; children: React.ReactNode; size?: number }) {
+function IconButton({ label, onClick, children, size = 40 }: { label: string; onClick: (e: React.MouseEvent<HTMLButtonElement>) => void; children: React.ReactNode; size?: number }) {
   const [hover, setHover] = useState(false);
   const warm = useRef(false);
   return (

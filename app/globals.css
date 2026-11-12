@@ -329,3 +329,20 @@ button, select { font: inherit; color: inherit; }
 .budgy-feat ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 20px; }
 .budgy-feat li { display: grid; gap: 2px; }
 @container (max-width: 640px) { .arch li { grid-template-columns: minmax(0, 1fr); gap: 2px; } .budgy-feat ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Camino de Vida design style: always on the site's warm ground */
+.frame.cdv-sys { background: #F0EEE9; color: #2A2A2A; grid-template-columns: 1fr 1fr 1.15fr; align-items: start; gap: 24px; font-family: Inter, var(--font-sans, sans-serif); }
+.cdv-sys .pane-l { color: #6C6C6C; }
+.cs-col { display: grid; gap: 10px; }
+.cs-sw { display: grid; grid-template-columns: 30px 1fr auto; column-gap: 10px; align-items: center; font-size: 13px; }
+.cs-sw i { grid-row: span 2; width: 30px; height: 30px; border-radius: 7px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+.cs-sw .mono { font-size: 11px; color: #6C6C6C; } .cs-use { grid-column: 2 / -1; font-size: 12px; color: #6C6C6C; }
+.cs-inv { background: #2A2A2A; border-radius: 10px; padding: 10px 12px; display: grid; gap: 4px; }
+.cs-inv .mono { font-size: 11px; color: rgba(255,255,255,.62); } .cs-inv div { display: flex; gap: 16px; } .cs-inv i { font-style: normal; font-weight: 600; font-size: 20px; }
+.cs-rule { margin: 0; font-size: 13px; color: #404040; }
+.cs-d1, .cs-d2 { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; letter-spacing: -0.03em; font-weight: 500; line-height: 1; }
+.cs-d1 { font-size: clamp(26px, 4.4cqi, 40px); } .cs-d2 { font-size: clamp(20px, 3.2cqi, 28px); }
+.cs-d1 .mono, .cs-d2 .mono { font-size: 11px; letter-spacing: 0; color: #6C6C6C; white-space: nowrap; }
+.cs-hs { display: flex; align-items: baseline; gap: 14px; font-weight: 600; letter-spacing: -0.02em; }
+.cs-note { font-size: 12px; color: #6C6C6C; }
+@container (max-width: 760px) { .frame.cdv-sys { grid-template-columns: minmax(0, 1fr); } }

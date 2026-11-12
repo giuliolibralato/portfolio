@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { CaseLayout, type CaseContent } from "./CaseLayout";
 import { CoverVideo } from "./CoverVideo";
 import { Crop, FilmFig, Frame, Pane, Steps, imgBase, rise } from "./Figure";
+import { CdvSystem } from "./CdvSystem";
 import type { Lang } from "@/lib/data";
 
 const IMG = imgBase("cdv");
@@ -77,6 +78,8 @@ function content(lang: Lang): CaseContent {
     </Frame>
   );
 
+  const system = <CdvSystem es={es} />;
+
   const wires = (
     <Frame className="rows" caption={es ? "Wireframes de las páginas de la estructura nueva: home, siguiente paso, campus y horarios, conoce cdv y bautismo." : "Wireframes of the new structure's pages: home, siguiente paso, campus y horarios, conoce cdv and bautismo."}>
       <Pane label={es ? "wireframes" : "wireframes"}><Img src="wireframes.webp" alt={es ? "Cinco wireframes de página completa" : "Five full-page wireframes"} /></Pane>
@@ -90,9 +93,9 @@ function content(lang: Lang): CaseContent {
   if (!es) return {
     project: "Camino de Vida — case study",
     subtitle: "a website ordered around the first visit",
-    tldr: "Camino de Vida is a church in Lima with campuses in Surco, Lince and Orlando. Its website had grown section by section: ministries were three levels deep inside “Leadership”, and where and when to go wasn't in the menu. As a volunteer on the communications team I {{rebuilt the structure around someone's first visit}}, using Google Analytics, the church's own priorities and a tree test, and redesigned the home.",
+    tldr: "Camino de Vida is a church in Lima with campuses in Surco, Lince and Orlando. Its website had grown section by section: ministries were three levels deep inside “Leadership”, and where and when to go wasn't in the menu. As a volunteer on the communications team I {{rebuilt the structure around someone's first visit}}, using Google Analytics, the church's own priorities and a tree test, designed its design system from zero and redesigned the home.",
     meta: [
-      ["role", "Volunteer product designer: information architecture, home and new pages"],
+      ["role", "Volunteer product designer: information architecture, design system, home and new pages"],
       ["team", "The church's communications team and me"],
       ["timeline", "2025–2026"],
       ["scope", "Sitemap, home and five page wireframes"],
@@ -108,7 +111,7 @@ function content(lang: Lang): CaseContent {
       end: "Most people arrive with one question: {{where and when can I go, and is there something for me or my kids?}}",
       fig: beforeAfter,
     },
-    role: "{{I led the information architecture and designed the home and the new pages}}: the map of the current site, the proposal, the tree test and the wireframes. The communications team decided what mattered most and reviewed every version.",
+    role: "{{I led the information architecture and designed the design system, the home and the new pages}}: the map of the current site, the proposal, the tree test, the wireframes and every token and type style. The communications team decided what mattered most and reviewed every version.",
     research: {
       items: ["A map of the current site, item by item, to see where things really lived.", "Google Analytics, backed by Hotjar heatmaps and recordings: which pages people reached, and what they scrolled to and clicked under the banner.", "Conversations with the communications team and the church about what matters most to someone new.", "A tree test of the new menu on UXtweak."],
       extraTitle: "the order of the work",
@@ -119,6 +122,7 @@ function content(lang: Lang): CaseContent {
       { t: "ministries by who they're for, then by name", because: "“Teens | GetUp” tells a parent what it is; “GetUp cdv” only tells a regular. Ministries moved out of Leadership into Conoce CDV, one level down.", ruled: "keeping the internal names alone. They are the church's identity, so they stayed, after the audience.", fig: <>{menuFilm}{sitemap}</> },
       { t: "from twelve sections to six", because: "my first proposal had twelve top-level sections with clean URLs and redirects. After the tree test and the team's review, six were enough, and a phone menu can show six.", ruled: "the twelve-section proposal. Every section was justified, but together they were too many doors." },
       { t: "one typeface, so the content does the talking", because: "each ministry already brings its own logo and campaign art. A single sans, Inter, keeps the site calm around them and reads well on a phone.", ruled: "pairing Inter with a serif italic and a color per ministry. It looked lively in the moodboard, but it competed with the ministries' own art.", fig: type },
+      { t: "a neutral design system, built from zero", because: "the site had no system, so I designed one: text colors by emphasis, grounds for light and dark, and a single Inter scale from display to the smallest heading, on desktop and mobile. Each token is named for its use, so the team can pick by purpose. Headings in lowercase keep the voice close, like the church talks.", ruled: "a brand color per section. Neutral tokens let each ministry's campaign carry the color instead.", fig: system },
     ],
     decisionsTail: wires,
     validation: {
@@ -132,9 +136,9 @@ function content(lang: Lang): CaseContent {
   return {
     project: "Camino de Vida — caso de estudio",
     subtitle: "una web ordenada para quien llega por primera vez",
-    tldr: "Camino de Vida es una iglesia en Lima con campus en Surco, Lince y Orlando. Su web había crecido sección por sección: los ministerios estaban tres niveles abajo dentro de “Liderazgo”, y dónde y cuándo ir no estaba en el menú. Como voluntario del equipo de comunicaciones {{reordené la estructura alrededor de la primera visita}}, con Google Analytics, las prioridades de la iglesia y un tree test, y rediseñé la home.",
+    tldr: "Camino de Vida es una iglesia en Lima con campus en Surco, Lince y Orlando. Su web había crecido sección por sección: los ministerios estaban tres niveles abajo dentro de “Liderazgo”, y dónde y cuándo ir no estaba en el menú. Como voluntario del equipo de comunicaciones {{reordené la estructura alrededor de la primera visita}}, con Google Analytics, las prioridades de la iglesia y un tree test, diseñé su design system desde cero y rediseñé la home.",
     meta: [
-      ["rol", "Diseñador de producto voluntario: arquitectura de información, home y páginas nuevas"],
+      ["rol", "Diseñador de producto voluntario: arquitectura de información, design system, home y páginas nuevas"],
       ["equipo", "El equipo de comunicaciones de la iglesia y yo"],
       ["duración", "2025–2026"],
       ["alcance", "Sitemap, home y wireframes de cinco páginas"],
@@ -150,7 +154,7 @@ function content(lang: Lang): CaseContent {
       end: "La mayoría llega con una pregunta: {{¿dónde y cuándo puedo ir, y hay algo para mí o para mis hijos?}}",
       fig: beforeAfter,
     },
-    role: "{{Lideré la arquitectura de información y diseñé la home y las páginas nuevas}}: el mapa del sitio actual, la propuesta, el tree test y los wireframes. El equipo de comunicaciones decidió qué era lo más importante y revisó cada versión.",
+    role: "{{Lideré la arquitectura de información y diseñé el design system, la home y las páginas nuevas}}: el mapa del sitio actual, la propuesta, el tree test, los wireframes y cada token y estilo tipográfico. El equipo de comunicaciones decidió qué era lo más importante y revisó cada versión.",
     research: {
       items: ["Un mapa del sitio actual, ítem por ítem, para ver dónde vivía cada cosa.", "Google Analytics, con mapas de calor y grabaciones de Hotjar como apoyo: a qué páginas llegaba la gente y qué tocaba debajo del banner.", "Conversaciones con el equipo de comunicaciones y la iglesia sobre qué es lo más importante para alguien nuevo.", "Un tree test del menú nuevo en UXtweak."],
       extraTitle: "el orden del trabajo",
@@ -161,6 +165,7 @@ function content(lang: Lang): CaseContent {
       { t: "ministerios por para quién son, y luego por nombre", because: "“Adolescentes | GetUp” le dice a un papá qué es; “GetUp cdv” solo se lo dice a quien ya va. Los ministerios salieron de Liderazgo a Conoce CDV, un nivel abajo.", ruled: "dejar solo los nombres internos. Son la identidad de la iglesia, así que se quedaron, después de la audiencia.", fig: <>{menuFilm}{sitemap}</> },
       { t: "de doce secciones a seis", because: "mi primera propuesta tenía doce secciones con URLs limpias y redirecciones. Tras el tree test y la revisión del equipo, seis alcanzaban, y un menú de teléfono puede mostrar seis.", ruled: "la propuesta de doce secciones. Cada una estaba justificada, pero juntas eran demasiadas puertas." },
       { t: "una sola tipografía, para que hable el contenido", because: "cada ministerio ya trae su propio logo y arte de campaña. Una sola sans, Inter, deja la web tranquila alrededor y se lee bien en el teléfono.", ruled: "combinar Inter con una serif itálica y un color por ministerio. Se veía vivo en el moodboard, pero competía con el arte de cada ministerio.", fig: type },
+      { t: "un design system neutro, hecho desde cero", because: "la web no tenía sistema, así que diseñé uno: colores de texto por énfasis, fondos para claro y oscuro, y una sola escala de Inter desde el display hasta el heading más pequeño, en desktop y mobile. Cada token se nombra por su uso, así el equipo elige por propósito. Los headings en minúscula mantienen una voz cercana, como habla la iglesia.", ruled: "un color de marca por sección. Los tokens neutros dejan que la campaña de cada ministerio ponga el color.", fig: system },
     ],
     decisionsTail: wires,
     validation: {

@@ -8,6 +8,7 @@ export type Project = {
   year: string;
   href?: string;
   phone?: boolean;
+  cover?: { video: string; poster: string }; // looping video for the card cover
 };
 
 export const EMAIL = "giuliolibralatooliva@gmail.com";
@@ -40,7 +41,7 @@ export const AUDIENCES: [Audience, string][] = [
 ];
 
 export const PROJECTS: Record<string, Project> = {
-  beacon: { title: "one sidebar for 60 destinations", desc: "B2B prospecting platform · 5-day sprint", type: "case study", year: "2026" },
+  beacon: { title: "one sidebar for 60 destinations", desc: "B2B prospecting platform · 5-day sprint", type: "case study", year: "2026", href: "/work/beacon/", cover: { video: "/cases/beacon/cover", poster: "/cases/beacon/cover-poster.webp" } },
   keyway: { title: "332 legal fields in 4 steps", desc: "Listing flow for a home-selling product", type: "case study", year: "2026" },
   cdv: { title: "11 mixed items into 12 clear sections", desc: "Information architecture for cdv.pe", type: "case study", year: "2026" },
   digito: { title: "gamified timesheets for a PM platform", desc: "SaaS redesign for Dígito · Product Design course", type: "case study", year: "2025", href: "https://www.figma.com/proto/sBBTvq1mUKGzu4n07rMyiH?node-id=72247-64147&t=8lnjHKkBJD2JNIop-6" },

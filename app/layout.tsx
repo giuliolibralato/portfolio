@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { DM_Mono, Geist } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
-const mono = DM_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-dm-mono" });
 
 export const metadata: Metadata = {
   title: "Giulio Libralato — Product Designer",
@@ -13,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geist.variable} ${mono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={geist.variable} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

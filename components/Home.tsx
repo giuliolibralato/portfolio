@@ -1,15 +1,16 @@
 "use client";
 
-import { AnimatePresence, MotionConfig, motion, useReducedMotion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
-import { flushSync } from "react-dom";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
+import { useEffect, useState } from "react";
 import { CardSwap } from "./CardSwap";
+import { CoverVideo } from "./CoverVideo";
 import { Cursor } from "./Cursor";
-import { Arrow, Chevron, Close, Copy, Download, Globe, Menu, Moon, Pin, PointerIcon, Sel, Sun, Up } from "./Icons";
+import { Arrow, Chevron, Copy, Download, Pin, Sel, Up } from "./Icons";
 import { RubberTabs } from "./RubberTabs";
+import { Shell, useSite } from "./Shell";
 import { T } from "@/lib/i18n";
 import {
-  AUDIENCES, Audience, BEHANCE, CURSOR_COLORS, EMAIL, EXPERIENCE, GITHUB, LINKEDIN, Lang, NAV,
+  AUDIENCES, Audience, BEHANCE, EMAIL, EXPERIENCE, GITHUB, LINKEDIN, NAV,
   PIECES, PROJECTS, REFERENCES, TABS, WHATSAPP,
 } from "@/lib/data";
 
@@ -25,31 +26,15 @@ const block = {
 };
 
 export default function Home() {
-  const reduce = useReducedMotion();
+  const site = useSite();
+  const { lang, cursor, reduce } = site;
   const [phase, setPhase] = useState<"in" | "out" | "done">("in");
-  const [dark, setDark] = useState(false);
-  const [lang, setLang] = useState<Lang>("en");
   const [aud, setAud] = useState<Audience>("anyone");
   const [tab, setTab] = useState("selected");
   const [front, setFront] = useState(0);
-  const [menu, setMenu] = useState(false);
   const [resume, setResume] = useState(false);
-  const [picker, setPicker] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [cursor, setCursor] = useState("#007AFF");
   const [time, setTime] = useState("");
-  const [active, setActive] = useState<string>("intro");
-  const pickerRef = useRef<HTMLDivElement>(null);
-
-  // cursor picker closes on Escape or a click outside it
-  useEffect(() => {
-    if (!picker) return;
-    const key = (e: KeyboardEvent) => { if (e.key === "Escape") setPicker(false); };
-    const down = (e: PointerEvent) => { if (!pickerRef.current?.contains(e.target as Node)) setPicker(false); };
-    document.addEventListener("keydown", key);
-    document.addEventListener("pointerdown", down);
-    return () => { document.removeEventListener("keydown", key); document.removeEventListener("pointerdown", down); };
-  }, [picker]);
 
   // entrance (Billy): cover holds, then slides up as the content cascades in
   useEffect(() => {
@@ -59,59 +44,10 @@ export default function Home() {
     return () => { clearTimeout(a); clearTimeout(b); };
   }, [reduce]);
 
-  // scroll spy: the rail marks the section in view
   useEffect(() => {
-    const els = NAV.map((n) => document.getElementById(n)).filter(Boolean) as HTMLElement[];
-    const io = new IntersectionObserver(
-      (entries) => {
-        const vis = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (vis[0]) setActive(vis[0].target.id);
-      },
-      { rootMargin: "-35% 0px -55% 0px" },
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, [phase]);
-
-  // theme follows the system first, then the toggle
-  useEffect(() => {
-    setDark(document.documentElement.dataset.theme === "dark");
-    const l = localStorage.getItem("lang");
-    if (l === "es" || l === "en") setLang(l);
-    else if (navigator.language?.toLowerCase().startsWith("es")) setLang("es");
-    const c = localStorage.getItem("cursor");
-    if (c) setCursor(c);
     setTime(new Date().toLocaleTimeString("en-US", { timeZone: "America/Lima", hour: "numeric", minute: "2-digit" }).toLowerCase());
   }, []);
-  useEffect(() => {
-    document.documentElement.lang = lang;
-  }, [lang]);
-  useEffect(() => {
-    document.documentElement.style.setProperty("--cursor", cursor);
-  }, [cursor]);
 
-  const toggleLang = () => setLang((l) => { const n = l === "es" ? "en" : "es"; localStorage.setItem("lang", n); return n; });
-  // Magic UI "Animated Theme Toggler": the new theme grows as a circle from the button (View Transitions)
-  const toggleDark = (e: React.MouseEvent<HTMLElement>) => {
-    const next = !dark;
-    const apply = () => {
-      document.documentElement.dataset.theme = next ? "dark" : "light";
-      localStorage.setItem("theme", next ? "dark" : "light");
-      flushSync(() => setDark(next));
-    };
-    if (!document.startViewTransition || reduce || document.hidden) { apply(); return; }
-    const b = e.currentTarget.getBoundingClientRect();
-    const x = b.left + b.width / 2;
-    const y = b.top + b.height / 2;
-    const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-    document.startViewTransition(apply).ready.then(() => {
-      document.documentElement.animate(
-        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] },
-        { duration: 800, easing: "cubic-bezier(0.45, 0, 0.25, 1)", pseudoElement: "::view-transition-new(root)" },
-      );
-    });
-  };
-  const pickCursor = (c: string) => { setCursor(c); localStorage.setItem("cursor", c); setPicker(false); };
   const copyEmail = () => {
     navigator.clipboard?.writeText(EMAIL).catch(() => {});
     setCopied(true);
@@ -150,95 +86,7 @@ export default function Home() {
         </motion.div>
       )}
 
-      <div className="app">
-        {/* rail */}
-        <motion.aside className="rail" initial={{ opacity: 0 }} animate={{ opacity: phase === "in" ? 0 : 1 }} transition={{ duration: 1, ease: SHEET, delay: 0.75 }}>
-          <a href="#intro" style={{ fontWeight: 500 }}>giulio libralato</a>
-          <nav aria-label="sections">
-            {NAV.map((n) => (
-              <a key={n} href={`#${n}`} className="nl" aria-current={active === n ? "true" : undefined} style={{ position: "relative", paddingLeft: 14 }}>
-                {active === n && (
-                  <motion.i layoutId="nav-dot" aria-hidden="true" transition={{ type: "spring", stiffness: 520, damping: 38 }}
-                    style={{ position: "absolute", left: 0, top: "50%", width: 6, height: 6, marginTop: -3, borderRadius: 999, background: "var(--brand)" }} />
-                )}
-                <motion.span animate={{ x: active === n ? 2 : 0 }} transition={{ type: "spring", stiffness: 520, damping: 38 }} style={{ display: "inline-block" }}>{t.nav[n]}</motion.span>
-              </a>
-            ))}
-          </nav>
-          <div ref={pickerRef} style={{ marginTop: "auto", position: "relative", display: "flex", flexDirection: "column", gap: 8, alignItems: "flex-start" }}>
-            <AnimatePresence>
-              {picker && (
-                <motion.div
-                  role="dialog"
-                  aria-label={t.cursorTitle}
-                  initial={{ opacity: 0, scale: 0.97 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.97 }}
-                  transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
-                  style={{ transformOrigin: "bottom left", position: "absolute", left: 56, bottom: 0, zIndex: 30, width: 304, padding: 16, display: "flex", flexDirection: "column", gap: 16, border: "1px solid var(--border)", borderRadius: 16, background: "var(--background)", boxShadow: "0 16px 40px -16px var(--shadow), 0 2px 6px -2px var(--shadow)" }}
-                >
-                  <div style={{ position: "relative", paddingRight: 32 }}>
-                    <div style={{ fontWeight: 500 }}>{t.cursorTitle}</div>
-                    <div className="small muted" style={{ whiteSpace: "nowrap" }}>{t.cursorHint}</div>
-                    <button type="button" aria-label="close" onClick={() => setPicker(false)} className="lk" style={{ position: "absolute", top: -6, right: -6, width: 28, height: 28, display: "grid", placeItems: "center" }}>
-                      <Close size={14} />
-                    </button>
-                  </div>
-                  <div style={{ position: "relative", height: 72, borderRadius: 12, background: "var(--muted)" }}>
-                    <span style={{ position: "absolute", left: 28, top: 14 }}><PointerIcon color={cursor} size={20} /></span>
-                    <span className="tag-cur" style={{ position: "absolute", left: 48, top: 38, padding: "2px 7px", borderRadius: 4, background: cursor, color: "#fff", fontSize: 12, lineHeight: "16px", fontWeight: 500 }}>{visitor}</span>
-                  </div>
-                  <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    {CURSOR_COLORS.map(([name, hex]) => (
-                      <button key={name} type="button" className="sw" aria-label={name} title={name} aria-pressed={cursor === hex} onClick={() => pickCursor(hex)}
-                        style={{ background: hex, boxShadow: cursor === hex ? `0 0 0 2px var(--background), 0 0 0 4px ${hex}` : "none" }} />
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-            <IconButton label={t.cursorTitle} onClick={() => setPicker((p) => !p)}>
-              <PointerIcon color={cursor} />
-            </IconButton>
-            <IconButton label={dark ? t.themeToLight : t.themeToDark} onClick={toggleDark}>
-              {dark ? <Moon key="m" /> : <Sun key="s" />}
-            </IconButton>
-            <IconButton label={t.langLabel} onClick={toggleLang}>
-              <Globe />
-            </IconButton>
-          </div>
-        </motion.aside>
-
-        <div className="content">
-          <motion.header className="mtop" initial={{ opacity: 0 }} animate={{ opacity: phase === "in" ? 0 : 1 }} transition={{ duration: 1, ease: SHEET, delay: 0.75 }}>
-            <a href="#intro" style={{ fontWeight: 500 }}>giulio libralato</a>
-            <button type="button" aria-label={t.menu} aria-expanded={menu} onClick={() => setMenu(true)} className="lk" style={{ width: 44, height: 44, display: "grid", placeItems: "center", color: "var(--foreground)" }}>
-              <Menu />
-            </button>
-          </motion.header>
-
-          <AnimatePresence>
-            {menu && (
-              <motion.div role="dialog" aria-modal="true" aria-label="menu"
-                initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }} transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-                style={{ position: "fixed", inset: 0, zIndex: 50, display: "flex", flexDirection: "column", padding: "0 16px 32px", background: "var(--background)" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: 56 }}>
-                  <a href="#intro" onClick={() => setMenu(false)} style={{ fontWeight: 500 }}>giulio libralato</a>
-                  <button type="button" aria-label="close menu" onClick={() => setMenu(false)} className="lk" style={{ width: 44, height: 44, display: "grid", placeItems: "center", color: "var(--foreground)" }}><Close /></button>
-                </div>
-                <motion.nav aria-label="sections" style={{ display: "flex", flexDirection: "column", marginTop: 32 }} initial="hidden" animate="show" transition={{ staggerChildren: 0.05 }}>
-                  {NAV.map((n) => (
-                    <motion.a key={n} href={`#${n}`} onClick={() => setMenu(false)} variants={block} className="nl" style={{ padding: "10px 0", fontSize: 28, lineHeight: "36px", fontWeight: 500 }}>{t.nav[n]}</motion.a>
-                  ))}
-                </motion.nav>
-                <div style={{ marginTop: "auto", display: "flex", gap: 8 }}>
-                  <IconButton label="theme" onClick={toggleDark} size={44}>{dark ? <Moon key="m" /> : <Sun key="s" />}</IconButton>
-                  <IconButton label={t.langLabel} onClick={toggleLang} size={44}><Globe /></IconButton>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
+      <Shell site={site} nav={NAV.map((n) => ({ id: n, label: t.nav[n] }))} brandHref="#intro" shown={phase !== "in"}>
           <main className="inner">
             {/* intro */}
             <motion.section id="intro" style={{ maxWidth: 600 }} initial="hidden" animate={show} transition={{ staggerChildren: 0.09, delayChildren: 0.4 }}>
@@ -316,11 +164,13 @@ export default function Home() {
               {tab !== "visual" ? (
                 <motion.div key={tab} className="grid" initial="hidden" animate={show} transition={{ staggerChildren: 0.09 }}>
                   {cards.map((c) => (
-                    <motion.a key={c.key} variants={block} href={c.href || "#work"} target={c.href ? "_blank" : undefined} rel="noopener" className="cd"
-                      data-label={c.href ? "visit" : "view"}>
+                    <motion.a key={c.key} variants={block} href={c.href?.startsWith("/") ? `${BASE}${c.href}` : c.href || "#work"} target={c.href && !c.href.startsWith("/") ? "_blank" : undefined} rel="noopener" className="cd"
+                      data-label={c.href && !c.href.startsWith("/") ? "visit" : "view"}>
                       <div className="cw">
-                        <div className="cover">
-                          {c.phone ? (
+                        <div className={c.cover ? "cover film-cover" : "cover"}>
+                          {c.cover ? (
+                            <CoverVideo src={`${BASE}${c.cover.video}`} poster={`${BASE}${c.cover.poster}`} label={c.title} />
+                          ) : c.phone ? (
                             <div className="cv phone"><i className="bar" style={{ width: "50%", height: 8 }} /><i className="bar" style={{ height: 44, borderRadius: 8 }} /><i className="bar" /><i className="bar" style={{ width: "70%" }} /><i className="bar" style={{ height: 44, borderRadius: 8 }} /></div>
                           ) : (
                             <div className="cv win">
@@ -368,7 +218,7 @@ export default function Home() {
               <SectionHead title={t.experience} link={t.fullHistory} href={LINKEDIN} />
               {EXPERIENCE.map((e0, i) => ({ ...e0, ...t.exp[i] })).map((e) => (
                 <div key={e.co} className="xrow">
-                  <span className="mono muted" style={{ fontSize: 12, lineHeight: "22px", whiteSpace: "nowrap" }}>{e.y}</span>
+                  <span className="label mono" style={{ whiteSpace: "nowrap" }}>{e.y}</span>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4, maxWidth: 600 }}>
                     <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "4px 10px" }}><b style={{ fontWeight: 500 }}>{e.co}</b><span className="small muted">{e.role}</span></div>
                     <p className="muted">{e.p}</p>
@@ -428,7 +278,7 @@ export default function Home() {
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     <ContactRow k="whatsapp" v={t.writeMe} href={WHATSAPP} />
                     <button type="button" className="crow" onClick={copyEmail} aria-label="copy email">
-                      <span style={{ display: "flex", alignItems: "center", gap: 16 }}><span className="mono muted" style={{ fontSize: 12, width: 90 }}>email</span><span>{copied ? t.copied : EMAIL}</span></span>
+                      <span style={{ display: "flex", alignItems: "center", gap: 16 }}><span className="label" style={{ width: 90 }}>email</span><span>{copied ? t.copied : EMAIL}</span></span>
                       <span className="muted"><Copy /></span><Sel label="button" />
                     </button>
                     <ContactRow k="linkedin" v="giulio libralato" href={LINKEDIN} />
@@ -452,41 +302,9 @@ export default function Home() {
               </div>
             </footer>
           </main>
-        </div>
-      </div>
+      </Shell>
     </div>
     </MotionConfig>
-  );
-}
-
-// React Bits "Warm Tooltip": a small label springs out next to the icon button.
-// once one tooltip has shown, moving to the next button shows it without animating
-let lastTip = 0;
-
-function IconButton({ label, onClick, children, size = 40 }: { label: string; onClick: (e: React.MouseEvent<HTMLButtonElement>) => void; children: React.ReactNode; size?: number }) {
-  const [hover, setHover] = useState(false);
-  const warm = useRef(false);
-  return (
-    <span style={{ position: "relative", display: "inline-flex" }}
-      onMouseEnter={() => { warm.current = Date.now() - lastTip < 400; setHover(true); }}
-      onMouseLeave={() => { lastTip = Date.now(); setHover(false); }}>
-      <button type="button" className="sb" aria-label={label} onClick={onClick} style={{ width: size, height: size }}>
-        <AnimatePresence mode="popLayout" initial={false}>
-          <motion.span key={String((children as React.ReactElement)?.key ?? "i")} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.15 }} style={{ display: "grid" }}>
-            {children}
-          </motion.span>
-        </AnimatePresence>
-      </button>
-      <AnimatePresence>
-        {hover && (
-          <motion.span role="tooltip" initial={warm.current ? false : { opacity: 0, x: -4, scale: 0.96 }} animate={{ opacity: 1, x: 0, scale: 1 }} exit={{ opacity: 0, transition: { duration: 0.1 } }}
-            transition={{ type: "spring", stiffness: 520, damping: 32 }}
-            style={{ position: "absolute", left: size + 8, top: "50%", marginTop: -13, height: 26, display: "flex", alignItems: "center", padding: "0 10px", borderRadius: 8, background: "var(--primary)", color: "var(--primary-foreground)", fontSize: 12, whiteSpace: "nowrap", pointerEvents: "none", transformOrigin: "left center", zIndex: 40 }}>
-            {label}
-          </motion.span>
-        )}
-      </AnimatePresence>
-    </span>
   );
 }
 
@@ -513,7 +331,7 @@ function SectionHead({ title, link, href }: { title: string; link: string; href:
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="xrow">
-      <span className="mono muted" style={{ fontSize: 12, lineHeight: "22px" }}>{label}</span>
+      <span className="label">{label}</span>
       {children}
     </div>
   );
@@ -522,7 +340,7 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
 function ContactRow({ k, v, href }: { k: string; v: string; href: string }) {
   return (
     <a className="crow" href={href} target="_blank" rel="noopener">
-      <span style={{ display: "flex", alignItems: "center", gap: 16 }}><span className="mono muted" style={{ fontSize: 12, width: 90 }}>{k}</span><span>{v}</span></span>
+      <span style={{ display: "flex", alignItems: "center", gap: 16 }}><span className="label" style={{ width: 90 }}>{k}</span><span>{v}</span></span>
       <span className="muted"><Arrow size={14} /></span>
       <Sel label="link" />
     </a>

@@ -4,6 +4,7 @@ const isPages = process.env.GITHUB_ACTIONS === "true";
 
 const config: NextConfig = {
   output: "export",
+  trailingSlash: true,
   basePath: isPages ? "/portfolio" : "",
   images: { unoptimized: true },
   env: { NEXT_PUBLIC_BASE_PATH: isPages ? "/portfolio" : "" },

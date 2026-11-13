@@ -105,8 +105,9 @@ export function CaseLayout({ content }: { content: (lang: Lang) => CaseContent }
                 </div>
                 <RubberTabs items={["tldr", "full"] as Mode[]} value={mode} onChange={pickMode} label="case length" labelsKey={lang} render={(m) => l.mode[m]} />
               </motion.div>
-              <motion.h1 variants={rise} className="case-title">{c.project}</motion.h1>
-              <motion.p variants={rise} className="case-sub">{c.subtitle}</motion.p>
+              {/* the client names the case; the claim is the title */}
+              <motion.p variants={rise} className="case-client">{name}</motion.p>
+              <motion.h1 variants={rise} className="case-title">{c.subtitle}</motion.h1>
               <motion.p variants={rise} className="lead">{rich(c.tldr)}</motion.p>
               <motion.div variants={rise} className="meta">
                 {c.meta.map(([k, v, note]) => (

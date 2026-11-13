@@ -90,7 +90,7 @@ export const T = {
       cdv: { title: "una web para la primera visita", desc: "Arquitectura de información y home de Camino de Vida" },
       digito: { title: "que registrar horas sea lo fácil", desc: "Rediseño de un SaaS de gestión de proyectos · proyecto de curso" },
       cinepolis: { title: "UX research para Cinépolis", desc: "Caso de UX research y UI · curso de UX/UI" },
-      brightpath: { title: "BrightPath", desc: "Prueba técnica para Diseñador UX/UI en Designli" },
+      brightpath: { title: "una prueba de diseño que terminó en contratación", desc: "Prueba de Designli: flujos de app y una landing para profesionales de IT" },
       cdvweb: { title: "Camino de Vida", desc: "Sitio web de la iglesia · cdv.pe" },
       cdvmusica: { title: "un solo lugar para la música y sus equipos", desc: "Web del ministerio de música: catálogo, canciones con acordes y recursos" },
       nexo: { title: "de ENASEI a un nombre nuevo", desc: "Sitio de conferencia, del design system a la venta de entradas" },

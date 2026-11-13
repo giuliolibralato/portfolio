@@ -49,7 +49,7 @@ export const PROJECTS: Record<string, Project> = {
   cdv: { tags: ["website"], client: "Camino de Vida", title: "a site for the first visit", desc: "Information architecture and home for Camino de Vida", type: "case study", year: "2026", href: "/work/cdv/", cover: { video: "/cases/cdv/cover", poster: "/cases/cdv/cover-poster.webp" } },
   digito: { client: "Dígito", title: "making the timesheet the easy part", desc: "Project-management SaaS redesign · course project", type: "case study", year: "2025", href: "/work/digito/", image: "/cases/digito/cover.webp" },
   cinepolis: { title: "Cinépolis UX research", desc: "UX research and UI case · UX/UI course", type: "case study", year: "2023", href: "https://www.figma.com/proto/PxyIyigICANcLSaEwWBZf8/Cin%C3%A9polis-%7C-Proyecto-UX---UI?node-id=1-3&p=f&starting-point-node-id=1%3A3" },
-  brightpath: { title: "BrightPath", desc: "Technical test for UX/UI Designer position at Designli", type: "design challenge", year: "2025", href: "https://www.figma.com/design/hDQVOnULGRqM5pmxR0A6io/Design-Test---Giulio-Libralato?node-id=2946-1483" },
+  brightpath: { client: "BrightPath", tags: ["app", "website"], title: "a design test that led to a hire", desc: "Designli design test: app flows and a landing for IT professionals", type: "case study", year: "2025", href: "/work/brightpath/", image: "/cases/brightpath/cover.webp" },
   cdvweb: { title: "Camino de Vida", desc: "Church website · cdv.pe", type: "website", year: "2026", href: "https://cdv.pe" },
   cdvmusica: { client: "CDV Música", tags: ["website"], title: "one home for the music and its teams", desc: "Music ministry site: catalog, songs with chords and resources", type: "case study", year: "2026", href: "/work/cdvmusica/", image: "/cases/cdvmusica/cover.webp" },
   nexo: { client: "Nexo Summit", tags: ["website"], title: "from ENASEI to a new name", desc: "Conference site, from design system to ticket sales", type: "case study", year: "2026", href: "/work/nexo/", image: "/cases/nexo/hero.webp" },
@@ -64,7 +64,7 @@ export const TABS: [string, string[]][] = [
   ["selected", ["beacon", "keyway", "cdv", "nexo", "budgy"]],
   ["cases", ["beacon", "keyway", "cdv", "nexo", "budgy", "monthly", "cdvmusica", "wedding", "digito", "brightpath", "cinepolis"]],
   ["websites", ["cdv", "nexo", "monthly", "cdvmusica", "lessin", "wedding"]],
-  ["apps", ["budgy", "firstlancer"]],
+  ["apps", ["budgy", "brightpath", "firstlancer"]],
   ["passion projects", ["budgy", "monthly", "wedding"]],
 ];
 

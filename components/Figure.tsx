@@ -100,3 +100,19 @@ export function Notes({ label, items, caption, cols = 3 }: { label: string; item
     </figure>
   );
 }
+
+/* A live Figma prototype, loaded only when it scrolls near; a link stays below for when embeds are blocked */
+export function Proto({ src, href, label, caption, ratio = "16 / 10", open }: { src: string; href: string; label: string; caption: string; ratio?: string; open: string }) {
+  return (
+    <figure className="frame-fig">
+      <div className="frame proto-frame">
+        <span className="mono pane-l">{label}</span>
+        <div className="proto" style={{ aspectRatio: ratio }}>
+          <iframe src={src} title={label} loading="lazy" allowFullScreen />
+        </div>
+        <a className="proto-link small" href={href} target="_blank" rel="noopener noreferrer">{open} ↗</a>
+      </div>
+      <figcaption className="small muted">{caption}</figcaption>
+    </figure>
+  );
+}

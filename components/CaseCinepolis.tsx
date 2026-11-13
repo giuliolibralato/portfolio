@@ -49,7 +49,7 @@ function content(lang: Lang): CaseContent {
     meta: [
       ["type", "Course project · UX/UI"],
       ["role", "UX researcher and designer, solo"],
-      ["team", "Me"],
+      ["team", "Just me"],
       ["timeline", "2023"],
       ["scope", "Research, information architecture, flows, wireframes and visual direction"],
       ["status", "Concept up to wireframes and style guide"],
@@ -87,11 +87,11 @@ function content(lang: Lang): CaseContent {
   return {
     project: "Cinépolis — caso de estudio",
     subtitle: "rápida, pero sin personalidad: investigación para la web de un cine",
-    tldr: "Cinépolis llegó al Perú en 2023 con una web rápida y funcional pero difícil de querer: cartelera por todos lados, poca guía al comprar y nada que la hiciera sentir como un cine. Trabajando solo, {{audité la web, la encuesté y la probé con 10 personas, y rediseñé su arquitectura de información}}, y luego probé el árbol nuevo contra el anterior. Comprar entradas se volvió más directo; una tarea empeoró, y eso me enseñó más que la que mejoró.",
+    tldr: "Cinépolis llegó al Perú en 2023 con una web rápida y funcional pero difícil de querer: cartelera por todos lados, poca guía al comprar y nada que la hiciera sentir como un cine. Trabajando solo, {{audité la web, encuesté a usuarios, la probé con 10 personas y rediseñé su arquitectura de información}}; luego comparé el árbol nuevo contra el anterior. Comprar entradas se volvió más directo; una tarea empeoró, y eso me enseñó más que la que mejoró.",
     meta: [
       ["tipo", "Proyecto de curso · UX/UI"],
       ["rol", "Investigador y diseñador UX, en solitario"],
-      ["equipo", "Yo"],
+      ["equipo", "Solo yo"],
       ["duración", "2023"],
       ["alcance", "Investigación, arquitectura de información, flujos, wireframes y dirección visual"],
       ["estado", "Concepto hasta wireframes y guía de estilo"],

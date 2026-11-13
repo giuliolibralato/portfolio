@@ -21,6 +21,8 @@
 * { box-sizing: border-box; }
 ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 html, body { margin: 0; }
+html, body { overflow-x: clip; } /* the selection frames' handles stick out 5px past the phone edge */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 html { scroll-behavior: smooth; scroll-padding-top: 48px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
@@ -172,11 +174,11 @@ button, select { font: inherit; color: inherit; }
 
 /* Responsive (container) */
 @container (max-width: 1023px) {
-  .inner { padding: 64px 16px 48px; }
+  .inner { padding: 24px 16px 48px; }
 }
 @media (max-width: 1023px) {
   .rail { display: none; }
-  .mtop { display: flex; justify-content: space-between; align-items: center; height: 56px; padding: 0 16px; }
+  .mtop { display: flex; justify-content: space-between; align-items: center; height: 56px; padding: 0 16px; position: sticky; top: 0; z-index: 20; background: var(--background); }
 }
 @container (max-width: 767px) {
   .grid, .refs { grid-template-columns: minmax(0, 1fr) !important; row-gap: 40px; }
@@ -184,7 +186,11 @@ button, select { font: inherit; color: inherit; }
   .lrow { width: auto; white-space: normal; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--border); }
   .lrow > * { display: flex; align-items: center; min-height: 44px; border-bottom: 1px solid var(--border); }
   .lrow > :last-child { grid-column: 1 / -1; justify-content: space-between; }
+  .lrow > :nth-last-child(3) { grid-column: span 2; } /* 5 links in 3 columns: let row 2 close its border */
   .lrow .dot { display: none; }
+  .cd h3.one { white-space: normal; }
+  .cd p.one { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .frame-fig > figcaption { text-align: left; }
 }
 
 /* Case study (DESIGN.md §7: Darina's column inside Billy's rail, Charles's index and TL;DR) */

@@ -90,7 +90,7 @@ export default function Home() {
           <main className="inner">
             {/* intro */}
             <motion.section id="intro" style={{ maxWidth: 600 }} initial="hidden" animate={show} transition={{ staggerChildren: 0.09, delayChildren: 0.4 }}>
-              <motion.div className="avw" style={{ width: 76, height: 76, margin: "28px 0 40px 8px" }}
+              <motion.div className="avw" style={{ width: 76, height: 76, margin: "28px 0 40px" }}
                 variants={{ hidden: { opacity: 0, scale: 0.94 }, show: { opacity: 1, scale: 1, transition: { duration: 0.45, ease: DRAWER } } }}>
                 <img src={`${BASE}/giulio.jpg`} alt="" width={76} height={76} style={{ display: "block", width: 76, height: 76, borderRadius: 12, objectFit: "cover", objectPosition: "50% 20%", background: "var(--muted)" }} />
                 <Sel label="img" badge="76 × 76" style={{ inset: -8 }} />
@@ -148,7 +148,7 @@ export default function Home() {
                 <span className="dot muted" aria-hidden="true">·</span>
                 <LinkItem href={WHATSAPP} label="whatsapp" />
                 <span className="dot muted" aria-hidden="true">·</span>
-                <button type="button" className="lk lnk" onClick={copyEmail} aria-label="copy email" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                <button type="button" className="lk lnk" onClick={copyEmail} aria-label={`copy email ${EMAIL}`} style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
                   {copied ? t.copied : EMAIL}<Copy /><Sel label="email" />
                 </button>
               </motion.div>
@@ -156,6 +156,7 @@ export default function Home() {
 
             {/* work */}
             <motion.section id="work" style={{ marginTop: 56 }} initial="hidden" animate={show} transition={{ staggerChildren: 0.09, delayChildren: 0.9 }}>
+              <h2 className="sr-only">{t.nav.work}</h2>
               <motion.div variants={block}>
                 <RubberTabs labelsKey={lang} items={tabs} value={tab} onChange={(t) => { setTab(t); setFront(0); }} label="work type"
                   render={(x) => <>{t.tabs[x] ?? x}<span className="count mono">{count(x)}</span></>} />
@@ -280,7 +281,7 @@ export default function Home() {
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     <ContactRow k="whatsapp" v={t.writeMe} href={WHATSAPP} />
-                    <button type="button" className="crow" onClick={copyEmail} aria-label="copy email">
+                    <button type="button" className="crow" onClick={copyEmail} aria-label={`copy email ${EMAIL}`}>
                       <span style={{ display: "flex", alignItems: "center", gap: 16 }}><span className="label" style={{ width: 90 }}>email</span><span>{copied ? t.copied : EMAIL}</span></span>
                       <span className="muted"><Copy /></span><Sel label="button" />
                     </button>

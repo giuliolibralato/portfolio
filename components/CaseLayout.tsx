@@ -8,7 +8,11 @@ import { Cursor } from "./Cursor";
 import { rise } from "./Figure";
 import { Arrow } from "./Icons";
 import { T } from "@/lib/i18n";
-import type { Lang } from "@/lib/data";
+import { PROJECTS, type Lang } from "@/lib/data";
+import { usePathname } from "next/navigation";
+
+// case pages in the order the data lists them, so every case can point to the next one
+const CASES = Object.values(PROJECTS).filter((p) => p.href?.startsWith("/work/"));
 
 // One page for every case: the same sections in the same order (ROADMAP.md, portfolio-checker),
 // a tl;dr / full switch, and the figures each case passes in next to the decision they support.
@@ -41,16 +45,14 @@ export type CaseContent = {
   legal: string;
 };
 
-const L: Record<Lang, { h: Record<(typeof SECTIONS)[number], string>; nav: Record<(typeof SECTIONS)[number], string>; ruled: string; next: string; work: string; mode: Record<Mode, string> }> = {
+const L: Record<Lang, { h: Record<(typeof SECTIONS)[number], string>; ruled: string; next: string; nextCase: string; work: string; mode: Record<Mode, string> }> = {
   en: {
-    h: { challenge: "the problem", role: "my role", research: "research", decisions: "key decisions", validation: "validation", results: "results", learnings: "what i learned" },
-    nav: { challenge: "challenge", role: "my role", research: "research", decisions: "decisions", validation: "validation", results: "results", learnings: "learnings" },
-    ruled: "ruled out", next: "back to all work", work: "work", mode: { tldr: "tl;dr", full: "full case" },
+    h: { challenge: "the problem", role: "my role", research: "research", decisions: "key decisions", validation: "validation", results: "results", learnings: "what I learned" },
+    ruled: "ruled out", next: "back to all work", nextCase: "next case", work: "work", mode: { tldr: "tl;dr", full: "full case" },
   },
   es: {
     h: { challenge: "el problema", role: "mi rol", research: "investigación", decisions: "decisiones clave", validation: "validación", results: "resultados", learnings: "lo que aprendí" },
-    nav: { challenge: "problema", role: "mi rol", research: "investigación", decisions: "decisiones", validation: "validación", results: "resultados", learnings: "aprendizajes" },
-    ruled: "descartado", next: "volver a todo el trabajo", work: "trabajo", mode: { tldr: "tl;dr", full: "caso completo" },
+    ruled: "descartado", next: "volver a todo el trabajo", nextCase: "siguiente caso", work: "trabajo", mode: { tldr: "tl;dr", full: "caso completo" },
   },
 };
 
@@ -78,9 +80,15 @@ export function CaseLayout({ content }: { content: (lang: Lang) => CaseContent }
 
   const c = content(lang);
   const l = L[lang];
+  const path = usePathname().replace(BASE, "");
+  const i = CASES.findIndex((p) => p.href === path);
+  const nxt = CASES[(i + 1) % CASES.length];
+  const name = c.project.split(" — ")[0];
+  // Next sets the title once from metadata (English); keep it in the reader's language after it loads
+  useEffect(() => { const t = `${name}: ${c.subtitle} — Giulio Libralato`; document.title = t; const id = setTimeout(() => { document.title = t; }, 300); return () => clearTimeout(id); }, [name, c.subtitle]);
   const t = T[lang];
   const full = mode === "full";
-  const nav = SECTIONS.filter((id) => full || TLDR_SECTIONS.has(id)).map((id) => ({ id, label: l.nav[id] }));
+  const nav = SECTIONS.filter((id) => full || TLDR_SECTIONS.has(id)).map((id) => ({ id, label: l.h[id] }));
   const decisions = full ? c.decisions : c.decisions.slice(0, 3);
   const footnote = c.meta.some((m) => m[2]);
 
@@ -184,7 +192,10 @@ export function CaseLayout({ content }: { content: (lang: Lang) => CaseContent }
               </section>
 
               <p id="legal" className="small muted legal">{footnote && <sup className="fn">1</sup>}{c.legal}</p>
-              <a href={`${BASE}/#work`} className="bl">← {l.next}</a>
+              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 12 }}>
+                <a href={`${BASE}/#work`} className="bl">← {l.next}</a>
+                {i >= 0 && <a href={`${BASE}${nxt.href ?? ""}`} className="bl">{l.nextCase}: {nxt.client ?? nxt.title} →</a>}
+              </div>
             </div>
           </main>
         </Shell>

@@ -10,7 +10,7 @@ export const T = {
     audiences: { anyone: "for anyone", recruiters: "recruiters", leads: "design leads" } as Record<Audience, string>,
     intro: {
       anyone: [
-        "I design B2B tools and AI workflows for web and mobile. Lately I've been exploring ways to simplify the small details that make platforms and apps hard to use.",
+        "Product designer with 5 years designing B2B tools, AI workflows and personal-finance products for web and mobile, for U.S. and Latin American clients. Lately I've been simplifying the small details that make platforms and apps hard to use.",
         "I love taking on new challenges, and I prototype in code when a picture isn't enough.",
       ],
       recruiters: [
@@ -70,7 +70,7 @@ export const T = {
     audiences: { anyone: "para todos", recruiters: "reclutadores", leads: "líderes de diseño" } as Record<Audience, string>,
     intro: {
       anyone: [
-        "Diseño herramientas B2B y flujos con IA para web y mobile. Últimamente exploro cómo simplificar los pequeños detalles que hacen difíciles las plataformas y apps.",
+        "Diseñador de producto con 5 años creando herramientas B2B, flujos con IA y productos de finanzas personales para web y mobile, con clientes de EE. UU. y Latinoamérica. Últimamente simplifico los pequeños detalles que hacen difíciles las plataformas y apps.",
         "Me encantan los retos nuevos y prototipo en código cuando una imagen no alcanza.",
       ],
       recruiters: [

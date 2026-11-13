@@ -95,7 +95,7 @@ function content(lang: Lang): CaseContent {
   if (!es) return {
     project: "Nexo Summit — case study",
     subtitle: "from ENASEI to Nexo Summit, in one site",
-    tldr: "ENASEI, the Peruvian real-estate sector's yearly conference, became Nexo Summit after its guilds merged into CODIP. As a freelancer I designed and built the change, {{from the design system to ticket sales}}: discovery, UX writing, tokens, wireframes in Figma Make, five pages in WordPress and my own plugins for speakers, agenda, FAQ and tickets with Mercado Pago. It launched on 6 July with ticket sales open, and I kept it running through the event in September.",
+    tldr: "ENASEI, the Peruvian real-estate conference, became Nexo Summit. As a freelancer I {{designed and built the change end to end}}: UX writing, a design system, five WordPress pages and my own plugins for speakers, agenda and ticket sales with Mercado Pago. It launched on 6 July with sales open and ran until the event in September.",
     meta: [
       ["client", "CODIP · Confederation of Real Estate Developers of Peru"],
       ["role", "Freelance product designer and developer: UX/UI in Figma, build in WordPress and Elementor, SEO and plugins"],
@@ -144,7 +144,7 @@ function content(lang: Lang): CaseContent {
   return {
     project: "Nexo Summit — caso de estudio",
     subtitle: "de ENASEI a Nexo Summit, en un solo sitio",
-    tldr: "ENASEI, la conferencia anual del sector inmobiliario peruano, pasó a llamarse Nexo Summit tras la fusión de sus gremios en CODIP. Como freelance diseñé y construí el cambio, {{del design system a la venta de entradas}}: discovery, UX writing, tokens, wireframes en Figma Make, cinco páginas en WordPress y plugins propios de speakers, agenda, preguntas frecuentes y entradas con Mercado Pago. Se lanzó el 6 de julio con la venta abierta y lo sostuve hasta el evento en septiembre.",
+    tldr: "ENASEI, la conferencia del sector inmobiliario peruano, pasó a llamarse Nexo Summit. Como freelance {{diseñé y construí el cambio de punta a punta}}: UX writing, un design system, cinco páginas en WordPress y plugins propios de speakers, agenda y venta de entradas con Mercado Pago. Se lanzó el 6 de julio con la venta abierta y funcionó hasta el evento en septiembre.",
     meta: [
       ["cliente", "CODIP · Confederación de Desarrolladores Inmobiliarios del Perú"],
       ["rol", "Diseñador de producto y desarrollador freelance: UX/UI en Figma, desarrollo en WordPress y Elementor, SEO y plugins"],

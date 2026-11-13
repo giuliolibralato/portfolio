@@ -101,7 +101,7 @@ function content(lang: Lang): CaseContent {
       items: ["The clickable prototype walked end to end, from the property type to signing, in the client's sprint review.", "An audit of the new design against the current questionnaire: every question the new flow didn't ask, cross-checked against 129 tickets and decisions."],
       extra: audit,
     },
-    results: [["observed", "{{The client approved the prototype}}, and the audit became the restoration list the team works from: each question comes back, or is removed on purpose with a ticket."], ["measured", "Nothing yet. It hadn't launched when I left Designli, so I have no completion or drop-off numbers."]],
+    results: [["observed", "{{The client approved the prototype}}, and the audit became the restoration list the team works from: each question comes back, or is removed on purpose with a ticket."], ["measured", "Nothing yet. It hadn't launched when I left Designli, so I have no completion or drop-off numbers."], ["next", "Have five sellers complete Act 1 in the prototype, timed, and ask whether the listing card felt like progress or decoration."]],
     learn: ["{{Write the restoration list as “everything comes back”}} and strike things off on purpose. Things get lost by omission, not by decision.", "Static frames couldn't tell us if the listing card felt like company or decoration. Only filling in fields and watching it fill could."],
     legal: "A Designli project. Client names, brand, colors and data have been changed. Screens are from a prototype with fictional data. All rights belong to Designli and its client.",
   };
@@ -144,7 +144,7 @@ function content(lang: Lang): CaseContent {
       items: ["El prototipo clicable recorrido de punta a punta, del tipo de propiedad a la firma, en el sprint review del cliente.", "Una auditoría del diseño nuevo contra el cuestionario actual: cada pregunta que el flujo nuevo no hacía, cruzada con 129 tickets y decisiones."],
       extra: audit,
     },
-    results: [["observado", "{{El cliente aprobó el prototipo}}, y la auditoría pasó a ser la lista de restauración con la que trabaja el equipo: cada pregunta vuelve, o sale a propósito con un ticket."], ["medido", "Nada aún. No se había lanzado cuando dejé Designli, así que no tengo números de finalización o abandono."]],
+    results: [["observado", "{{El cliente aprobó el prototipo}}, y la auditoría pasó a ser la lista de restauración con la que trabaja el equipo: cada pregunta vuelve, o sale a propósito con un ticket."], ["medido", "Nada aún. No se había lanzado cuando dejé Designli, así que no tengo números de finalización o abandono."], ["siguiente", "Que cinco vendedores completen el acto 1 en el prototipo, con tiempo medido, y preguntarles si la tarjeta del aviso se sintió como avance o como adorno."]],
     learn: ["{{Escribir la lista como “todo vuelve”}} y tachar a propósito. Las cosas se pierden por omisión, no por decisión.", "Los frames no podían decirnos si la tarjeta se sentía como compañía o como adorno. Solo llenar campos y verla llenarse podía."],
     legal: "Proyecto de Designli. Se cambiaron los nombres, la marca, los colores y los datos del cliente. Las pantallas son de un prototipo con datos ficticios. Todos los derechos pertenecen a Designli y su cliente.",
   };

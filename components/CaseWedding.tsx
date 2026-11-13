@@ -83,7 +83,7 @@ function content(lang: Lang): CaseContent {
       ["team", "Me, with Claude Code; my fiancée deciding with me"],
       ["timeline", "September–October 2026"],
       ["scope", "Bilingual website, gift list and an admin panel for the couple"],
-      ["status", "Used before, during and after the wedding"],
+      ["status", "Used before, during and after the wedding; still online as a keepsake"],
     ],
     chips: ["passion project", "website", "used"], okChip: 2,
     cover,
@@ -94,7 +94,7 @@ function content(lang: Lang): CaseContent {
       end: "It had to {{feel like our invitation and save us from answering every question twice}}, on a phone, in the week before the wedding.",
       fig: refs,
     },
-    role: "{{I designed and built it}}: the concept from our invitations, 16 screens and the design system in a canvas, the handoff document, and the build with Claude Code. My fiancée and I decided the content together.",
+    role: "{{I designed and built it}}: the concept from our invitations, 16 screens and the design system in a canvas, the handoff document, and the build with Claude Code. I know how to make websites, and a site made it easier to put all the information guests needed in one place. The look started from a site that won us over; I handled the whole visual line and my fiancée corrected the content, and we decided it together.",
     research: {
       items: ["Our printed invitations, as the brand to carry over.", "Katherine Marchand's editorial style for type, and the Framer templates Wedding Day, Wandr and Fleur for section rhythm.", "The questions guests were already asking us, which became the FAQ and the order of the home."],
       extraTitle: "the order of the work",
@@ -103,17 +103,17 @@ function content(lang: Lang): CaseContent {
     decisions: [
       { t: "the invitation, carried to the screen", because: "wine, cream and red with riso grain, huge editorial headlines and our own illustrations. Guests had the printed invitation in their hands; the site had to feel like the same object.", ruled: "a wedding template. It would have looked like everyone else's and not like our invitation.", fig: look },
       { t: "mobile first, because the link lives in WhatsApp", because: "every section works at 375 px, the link shows its own preview image, and modals become sheets from the bottom on a phone.", fig: mobile },
-      { t: "two doors: guests and visitors", because: "the link gets forwarded. Guests enter with a code that is checked on the server; visitors see our story, the livestream and gifts, but not the venue or the schedule.", fig: gate },
+      { t: "two doors: guests and visitors", because: "the link gets forwarded. Guests enter with a code that is checked on the server; visitors see our story, the livestream and gifts, but not the venue or the schedule. Visitors can still leave a message, give and add the date to their calendar.", fig: gate },
       { t: "answer the questions before they're asked", because: "the day hour by hour, what to wear and what to avoid, adults only, no alcohol, no parking, and an FAQ of eleven questions. Add to calendar, the livestream and photo uploads turn on by Lima time.", fig: answers },
-      { t: "gifts without a payment gateway", because: "a list with packages, fixed amounts and a free contribution. Guests copy the account, give, and leave a message; the couple confirms in an admin panel. Bank details live in the database and never in the code.", fig: gifts },
-      { t: "design closed before building, then a 1:1 build", because: "16 screens and a 27-component system were finished first, with a handoff that said what wins in a clash. That let the build go from base to admin in two days.", fig: handoff },
+      { t: "gifts without a payment gateway", because: "a list with packages, fixed amounts and a free contribution. Guests copy the account, give, and leave a message; the couple confirms in an admin panel. Bank details live in the database and never in the code. A payment gateway would have meant managing the payments myself; paying straight to our account was simpler.", fig: gifts },
+      { t: "design closed before building, then a 1:1 build", because: "16 screens and a 27-component system were finished first, with a handoff that said what wins in a clash. That let the build go from base to admin in two days. The only thing that changed afterwards was the split between guests and visitors; the hard part was the content, and the inspiration and the design mattered a lot.", fig: handoff },
     ],
     validation: {
       items: ["Visual tests with Playwright at 1440 and 390 px, and an end-to-end test of the admin.", "Concurrency handled in the database for gift packages, so two guests can't take the last one.", "Real use: guests and visitors before, during and after the wedding."],
       extra: numbers,
     },
-    results: [["observed", "{{Guests used it as the invitation's second half}}: they gave, left 16 messages and recommended songs, and contributions peaked on the wedding day."], ["measured", "11 contributions, 8 confirmed (73%), 55% of them free contributions; 16 messages and 3 songs."]],
-    learn: ["{{People preferred to give freely over choosing from a catalog.}} Next time the free contribution leads, and the list is shorter.", "Messages beat contributions. A wedding site is also a guest book, and that deserves its own place, not a step after paying."],
+    results: [["observed", "{{Guests used it as the invitation's second half}}: they gave, left 16 messages and recommended songs, and contributions peaked on the wedding day. It went out through a WhatsApp channel made for everyone invited; guests liked it and found everything easily, and people who couldn't come left a message and watched the wedding on YouTube. A few still asked the time and the dress code without opening it. Some people we didn't expect wrote or sent gifts, even some who weren't invited. The schedule worked, and the livestream ran on YouTube."], ["measured", "11 contributions, 8 confirmed (73%), 55% of them free contributions; 16 messages and 3 songs."]],
+    learn: ["{{People preferred to give freely over choosing from a catalog.}} Next time the free contribution leads, and the list is shorter.", "Messages beat contributions. A wedding site is also a guest book, and that deserves its own place, not a step after paying.", "{{Start earlier and with more time.}} Closing the design first helped a lot; I would still begin sooner."],
     legal,
   };
 
@@ -127,7 +127,7 @@ function content(lang: Lang): CaseContent {
       ["equipo", "Yo, con Claude Code; mi prometida decidiendo conmigo"],
       ["duración", "septiembre–octubre 2026"],
       ["alcance", "Web bilingüe, lista de regalos y un panel para los novios"],
-      ["estado", "Usada antes, durante y después de la boda"],
+      ["estado", "Usada antes, durante y después de la boda; sigue en línea como recuerdo"],
     ],
     chips: ["proyecto personal", "sitio web", "usada"], okChip: 2,
     cover,
@@ -138,7 +138,7 @@ function content(lang: Lang): CaseContent {
       end: "Tenía que {{sentirse como nuestra invitación y ahorrarnos responder cada pregunta dos veces}}, en el celular, en la semana antes de la boda.",
       fig: refs,
     },
-    role: "{{La diseñé y la construí}}: el concepto desde nuestras invitaciones, 16 pantallas y el design system en un canvas, el documento de handoff y la construcción con Claude Code. Mi prometida y yo decidimos juntos el contenido.",
+    role: "{{La diseñé y la construí}}: el concepto desde nuestras invitaciones, 16 pantallas y el design system en un canvas, el documento de handoff y la construcción con Claude Code. Sé hacer webs, y un sitio hacía más fácil poner en un solo lugar toda la información que los invitados necesitaban. El look partió de una web que nos conquistó; yo me encargué de toda la línea visual y mi prometida corrigió el contenido, y lo decidimos juntos.",
     research: {
       items: ["Nuestras invitaciones impresas, como la marca a llevar.", "El estilo editorial de Katherine Marchand para la tipografía, y las plantillas de Framer Wedding Day, Wandr y Fleur para el ritmo de las secciones.", "Las preguntas que los invitados ya nos hacían, que se volvieron el FAQ y el orden de la home."],
       extraTitle: "el orden del trabajo",
@@ -147,17 +147,17 @@ function content(lang: Lang): CaseContent {
     decisions: [
       { t: "la invitación, llevada a la pantalla", because: "vino, crema y rojo con grano riso, titulares editoriales enormes e ilustraciones propias. Los invitados tenían la invitación impresa en la mano; la web tenía que sentirse como el mismo objeto.", ruled: "una plantilla de bodas. Se habría parecido a todas y no a nuestra invitación.", fig: look },
       { t: "mobile primero, porque el link vive en WhatsApp", because: "cada sección funciona a 375 px, el link muestra su propia imagen de vista previa y los modales pasan a ser hojas desde abajo en el celular.", fig: mobile },
-      { t: "dos puertas: invitados y visitantes", because: "el link se reenvía. Los invitados entran con un código que se valida en el servidor; los visitantes ven nuestra historia, la transmisión y los regalos, pero no el lugar ni los horarios.", fig: gate },
+      { t: "dos puertas: invitados y visitantes", because: "el link se reenvía. Los invitados entran con un código que se valida en el servidor; los visitantes ven nuestra historia, la transmisión y los regalos, pero no el lugar ni los horarios. Aun así pueden dejar un mensaje, regalar y agendar la fecha en su calendario.", fig: gate },
       { t: "responder las preguntas antes de que lleguen", because: "el día hora por hora, qué ponerse y qué evitar, solo adultos, sin alcohol, sin estacionamiento, y un FAQ de once preguntas. Añadir al calendario, la transmisión y subir fotos se activan según la hora de Lima.", fig: answers },
-      { t: "regalos sin pasarela de pagos", because: "una lista con paquetes, montos fijos y aporte libre. El invitado copia la cuenta, regala y deja un mensaje; los novios confirman en un panel. Las cuentas viven en la base de datos y nunca en el código.", fig: gifts },
-      { t: "diseño cerrado antes de construir, y luego una construcción 1:1", because: "16 pantallas y un sistema de 27 componentes se terminaron primero, con un handoff que decía qué manda en un choque. Así la construcción fue de la base al panel en dos días.", fig: handoff },
+      { t: "regalos sin pasarela de pagos", because: "una lista con paquetes, montos fijos y aporte libre. El invitado copia la cuenta, regala y deja un mensaje; los novios confirman en un panel. Las cuentas viven en la base de datos y nunca en el código. Una pasarela de pagos habría significado gestionar yo los pagos; pasar directo a nuestra cuenta era más simple.", fig: gifts },
+      { t: "diseño cerrado antes de construir, y luego una construcción 1:1", because: "16 pantallas y un sistema de 27 componentes se terminaron primero, con un handoff que decía qué manda en un choque. Así la construcción fue de la base al panel en dos días. Lo único que cambió después fue la separación entre invitados y visitantes; lo difícil fue el contenido, y la inspiración y el diseño importaron mucho.", fig: handoff },
     ],
     validation: {
       items: ["Tests visuales con Playwright a 1440 y 390 px, y una prueba de punta a punta del panel.", "Concurrencia resuelta en la base de datos para los paquetes de regalo, para que dos invitados no tomen el último.", "Uso real: invitados y visitantes antes, durante y después de la boda."],
       extra: numbers,
     },
-    results: [["observado", "{{Los invitados la usaron como la segunda mitad de la invitación}}: regalaron, dejaron 16 mensajes, recomendaron canciones, y los aportes tuvieron su pico el día de la boda."], ["medido", "11 aportes, 8 confirmados (73%), 55% de ellos libres; 16 mensajes y 3 canciones."]],
-    learn: ["{{La gente prefirió aportar libre antes que elegir de un catálogo.}} La próxima vez el aporte libre va primero y la lista es más corta.", "Los mensajes superaron a los aportes. Una web de boda también es un libro de firmas, y eso merece su propio lugar, no un paso después de pagar."],
+    results: [["observado", "{{Los invitados la usaron como la segunda mitad de la invitación}}: regalaron, dejaron 16 mensajes, recomendaron canciones, y los aportes tuvieron su pico el día de la boda. Salió por un canal de WhatsApp creado para todos los invitados; les gustó y encontraron todo con facilidad, y quien no pudo ir dejó un mensaje y vio la boda por YouTube. Algunos igual preguntaron la hora y el dress code sin abrirla. Nos sorprendieron personas que no esperábamos que escribieran o enviaran regalos, hasta algunas que no estaban invitadas. Los horarios sirvieron, y la transmisión fue por YouTube."], ["medido", "11 aportes, 8 confirmados (73%), 55% de ellos libres; 16 mensajes y 3 canciones."]],
+    learn: ["{{La gente prefirió aportar libre antes que elegir de un catálogo.}} La próxima vez el aporte libre va primero y la lista es más corta.", "Los mensajes superaron a los aportes. Una web de boda también es un libro de firmas, y eso merece su propio lugar, no un paso después de pagar.", "{{Empezar antes y con más tiempo.}} Cerrar primero el diseño ayudó un montón; igual empezaría antes."],
     legal,
   };
 }

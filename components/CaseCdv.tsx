@@ -3,32 +3,12 @@
 import { motion } from "motion/react";
 import { CaseLayout, type CaseContent } from "./CaseLayout";
 import { CoverVideo } from "./CoverVideo";
-import { Crop, FilmFig, Frame, Pane, Steps, imgBase, rise } from "./Figure";
+import { Crop, FilmFig, Frame, Pane, Steps, Tree, imgBase, rise, type TreeNode as Node } from "./Figure";
 import { CdvSystem } from "./CdvSystem";
 import type { Lang } from "@/lib/data";
 
 const IMG = imgBase("cdv");
 const Img = ({ src, alt, className }: { src: string; alt: string; className?: string }) => <Crop src={`${IMG}/${src}`} alt={alt} className={className} />;
-
-// A sitemap as a nested list. Strings starting with "!" are the problem spots (before) or the new doors (after).
-type Node = string | [string, Node[]];
-function Tree({ nodes, depth = 0 }: { nodes: Node[]; depth?: number }) {
-  return (
-    <ul className={depth ? "tree sub" : "tree"}>
-      {nodes.map((n) => {
-        const [label, kids] = typeof n === "string" ? [n, null] : n;
-        const hot = label.startsWith("!");
-        const text = hot ? label.slice(1) : label;
-        return (
-          <li key={text} className={depth === 0 ? "top" : undefined}>
-            <span className={hot ? "hot" : undefined}>{text}</span>
-            {kids && <Tree nodes={kids} depth={depth + 1} />}
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
 
 const BEFORE: Node[] = [
   ["Acerca de CDV", ["En qué creemos", "Nuestro ADN", ["Liderazgo", [["!Ministerios", ["!Kids cdv", "!GetUp cdv", "!Central cdv", "!Punto cdv", "!Ellas cdv"]], "Pastores fundadores", "Equipo pastoral"]], "Casa Gracia cdv", "Refugio Gracia cdv", "IDL", "Familias", "!2024"]],

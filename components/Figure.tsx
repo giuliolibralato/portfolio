@@ -116,3 +116,24 @@ export function Proto({ src, href, label, caption, ratio = "16 / 10", open }: { 
     </figure>
   );
 }
+
+// A sitemap as a nested list. Strings starting with "!" are the problem spots (before) or the new doors (after).
+export type TreeNode = string | [string, TreeNode[]];
+export function Tree({ nodes, depth = 0 }: { nodes: TreeNode[]; depth?: number }) {
+  return (
+    <ul className={depth ? "tree sub" : "tree"}>
+      {nodes.map((n, i) => {
+        const [label, kids] = typeof n === "string" ? [n, null] : n;
+        const hot = label.startsWith("!");
+        const text = hot ? label.slice(1) : label;
+        return (
+          <li key={text + i} className={depth === 0 ? "top" : undefined}>
+            <span className={hot ? "hot" : undefined}>{text}</span>
+            {kids && <Tree nodes={kids} depth={depth + 1} />}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+

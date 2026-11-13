@@ -2,6 +2,7 @@
 
 import { CaseLayout, type CaseContent } from "./CaseLayout";
 import { Crop, Frame, Metrics, Pane, Steps, imgBase } from "./Figure";
+import { Audit, Benchmark, Flows, IATrees, Journey, Principles, Priority, StyleGuide, TreeTest, Voice } from "./CinepolisFigures";
 import type { Lang } from "@/lib/data";
 
 const IMG = imgBase("cinepolis");
@@ -17,18 +18,8 @@ function content(lang: Lang): CaseContent {
     </Frame>
   );
 
-  const audit = (
-    <Frame className="cols-2" caption={es ? "Primero, una auditoría con leyes de UX y las 10 heurísticas de Nielsen. Miller, Postel y Von Restorff no se cumplían: demasiadas opciones a la vez y nada que guiara la mirada." : "First, an audit against UX laws and Nielsen's 10 heuristics. Miller, Postel and Von Restorff weren't met: too many choices at once and nothing to guide the eye."}>
-      <Pane label={es ? "leyes de UX" : "UX laws"}><Img src="laws.webp" alt={es ? "Leyes de Miller, Postel, pico final, usabilidad estética, Von Restorff y Doherty con su resultado" : "Miller, Postel, peak-end, aesthetic usability, Von Restorff and Doherty with their result"} /></Pane>
-      <Pane label={es ? "heurísticas" : "heuristics"}><Img src="heuristics.webp" alt={es ? "Heurísticas de Nielsen evaluadas sobre la web" : "Nielsen heuristics evaluated on the site"} /></Pane>
-    </Frame>
-  );
-
-  const benchmark = (
-    <Frame className="rows" caption={es ? "Benchmark con Cineplanet, Cinemark y Movietime: vocabulario, usabilidad y diseño de cada uno." : "Benchmark against Cineplanet, Cinemark and Movietime: vocabulary, usability and design for each."}>
-      <Pane label={es ? "benchmark" : "benchmark"}><Img src="benchmark.webp" alt={es ? "Comparación de Cineplanet, Cinemark y Movietime" : "Comparison of Cineplanet, Cinemark and Movietime"} /></Pane>
-    </Frame>
-  );
+  const audit = <Audit es={es} />;
+  const benchmark = <Benchmark es={es} />;
 
   const survey = (
     <Metrics label={es ? "encuesta · 10 personas" : "survey · 10 people"}
@@ -38,40 +29,18 @@ function content(lang: Lang): CaseContent {
       caption={es ? "Diez personas de 18 a 39 años, que navegaron la web y simularon una compra. El 80% dijo que lo más útil era la cartelera, y las 10 pidieron funciones que otras cadenas ya tienen." : "Ten people aged 18 to 39, who browsed the site and simulated a purchase. 80% said the listings were the most useful part, and all 10 asked for features other chains already have."} />
   );
 
-  const journey = (
-    <Frame className="cols-2" caption={es ? "El journey de un cinéfilo, de buscar la película a pagar, y la matriz de deseabilidad y factibilidad para ordenar las ideas." : "A moviegoer's journey, from finding the film to paying, and the desirability-feasibility matrix to rank the ideas."}>
-      <Pane label={es ? "journey map" : "journey map"}><Img src="journey.webp" alt={es ? "Journey map con tareas, emociones, observaciones y canal" : "Journey map with tasks, emotions, observations and channel"} /></Pane>
-      <Pane label={es ? "matriz de priorización" : "priority matrix"}><Img src="matrix.webp" alt={es ? "Matriz de deseabilidad y factibilidad con las ideas priorizadas" : "Desirability and feasibility matrix with the prioritized ideas"} /></Pane>
-    </Frame>
-  );
+  const journey = <><Journey es={es} /><Priority es={es} /></>;
+  const ia = <IATrees es={es} />;
+  const test = <TreeTest es={es} />;
 
-  const ia = (
-    <Frame className="cols-2" caption={es ? "De una arquitectura sin un orden claro a una que agrupa por lo que la gente viene a hacer: películas, cines con cada sede, promociones, club, ventas empresariales y eventos." : "From an architecture with no clear order to one grouped by what people come to do: films, cinemas with each venue, promotions, club, corporate sales and events."}>
-      <Pane label={es ? "arquitectura actual" : "current architecture"}><Img src="ia-before.webp" alt={es ? "Árbol del sitio actual" : "Current site tree"} /></Pane>
-      <Pane accent label={es ? "arquitectura nueva" : "new architecture"}><Img src="ia-after.webp" alt={es ? "Árbol del sitio propuesto" : "Proposed site tree"} /></Pane>
+  const wires = (
+    <Frame className="cols-2" caption={es ? "Wireframes de la home y la vista de película: buscador por fecha, película, formato y hora arriba; en la película, cada cine se despliega con sus formatos y horarios." : "Wireframes of the home and the film page: a finder by date, film, format and time on top; on the film page, each cinema expands with its formats and showtimes."}>
+      <Pane label={es ? "inicio" : "home"}><Img src="wf-home.webp" alt={es ? "Wireframe de la home: hero con la película, filtro, cartelera semanal, preventa y promociones" : "Home wireframe: film hero, finder, weekly listings, presale and promotions"} /></Pane>
+      <Pane label={es ? "vista de película" : "film page"}><Img src="wf-film.webp" alt={es ? "Wireframe de la película: tráiler, ficha, y cines desplegables con formato y horarios" : "Film wireframe: trailer, details, and expandable cinemas with format and showtimes"} /></Pane>
     </Frame>
   );
-
-  const test = (
-    <Frame className="cols-2" caption={es ? "El mismo tree test, con 10 personas, en las dos arquitecturas. Comprar entradas mejoró; buscar dónde alquilar una sala empeoró, porque la nueva sección Eventos confundió." : "The same tree test, with 10 people, on both architectures. Buying tickets improved; finding where to rent a theater got worse, because the new Events section confused people."}>
-      <Pane accent label={es ? "tarea 1 · comprar entradas" : "task 1 · buy tickets"}><Img src="test-t1.webp" alt={es ? "Resultados de la tarea 1 en la arquitectura actual y la nueva" : "Task 1 results on the current and new architecture"} /></Pane>
-      <Pane label={es ? "tarea 2 · alquilar una sala" : "task 2 · rent a theater"}><Img src="test-t2.webp" alt={es ? "Resultados de la tarea 2 en la arquitectura actual y la nueva" : "Task 2 results on the current and new architecture"} /></Pane>
-    </Frame>
-  );
-
-  const flows = (
-    <Frame className="cols-2" caption={es ? "El flujo de compra paso a paso y los wireframes de la home y la ficha de la película." : "The purchase flow step by step and wireframes of the home and the film page."}>
-      <Pane label={es ? "user flow" : "user flow"}><Img src="userflow.webp" alt={es ? "User flow para comprar entradas" : "User flow to buy tickets"} /></Pane>
-      <Pane label={es ? "wireframes" : "wireframes"}><Img src="wireframes.webp" alt={es ? "Wireframes de la home y la ficha de película" : "Wireframes of the home and the film page"} /></Pane>
-    </Frame>
-  );
-
-  const surface = (
-    <Frame className="cols-2" caption={es ? "Para la capa visual: un mapa de voz para sonar cercano e inspirador, y principios de diseño minimalistas sobre Bootstrap, con la fotografía de cada película como protagonista." : "For the visual layer: a voice map to sound close and inspiring, and minimal design principles on Bootstrap, with each film's photography as the star."}>
-      <Pane label={es ? "voz" : "voice"}><Img src="voice.webp" alt={es ? "Mapa de voz: concepto, personalidad, vocabulario, gramática y puntuación" : "Voice map: concept, personality, vocabulary, grammar and punctuation"} /></Pane>
-      <Pane label={es ? "principios de diseño" : "design principles"}><Img src="principles.webp" alt={es ? "Principios de diseño: geometría, iconografía, fotografía, estilo y estructura" : "Design principles: geometry, iconography, photography, style and structure"} /></Pane>
-    </Frame>
-  );
+  const flows = <><Flows es={es} />{wires}</>;
+  const surface = <><Voice es={es} /><StyleGuide es={es} /><Principles es={es} /></>;
 
   const order = <Steps items={es
     ? [["Analizar", "leyes de UX y heurísticas"], ["Investigar", "benchmark y encuesta a 10"], ["Definir", "journey, Lean UX y tree test"], ["Idear", "nueva arquitectura y su test"], ["Esqueleto y superficie", "flujos, wireframes y estilo"]]
@@ -110,8 +79,8 @@ function content(lang: Lang): CaseContent {
       { t: "start from the journey, then prioritize", because: "the journey showed where the moviegoer gets lost, and a desirability-feasibility matrix ranked the ideas before designing anything.", fig: journey },
       { t: "group the site by what people come to do", because: "the tree test showed the current site had no clear order. The new architecture puts films, cinemas with each venue, promotions, club, corporate sales and events at the top level.", ruled: "a 180-degree rebuild. Everything in the new tree already existed on the site except a page per cinema, so the change could be gradual.", fig: ia },
       { t: "test the new tree against the old one", because: "the same two tasks, with 10 people, on both versions. A new structure is only better if people find things faster in it.", fig: test },
-      { t: "a purchase with steps you can see", because: "the flow and wireframes make the path from film to seat to payment explicit, the moment where 3 of 10 people had trouble.", fig: flows },
-      { t: "a voice and a look for an experience brand", because: "90% found the site effective but with no personality. A voice map and minimal principles let the films' own photography carry the emotion.", fig: surface },
+      { t: "a purchase with steps you can see", because: "the flows and wireframes make the path from film to seat to payment explicit, where 3 of 10 people had trouble. On the film page, each cinema opens with its own formats and showtimes.", fig: flows },
+      { t: "a voice and a look for an experience brand", because: "90% found the site effective but with no personality. A voice matrix, a content style guide and minimal principles let the films' own photography carry the emotion.", fig: surface },
     ],
     validation: {
       items: ["Two rounds of tree testing in Optimal Workshop, 10 participants each, with the same two tasks.", "Survey answers used to shape the new architecture before testing it.", "No usability test of the wireframes: the case ended at the structure and style."],
@@ -152,8 +121,8 @@ function content(lang: Lang): CaseContent {
       { t: "partir del journey, y luego priorizar", because: "el journey mostró dónde se pierde el cinéfilo, y una matriz de deseabilidad y factibilidad ordenó las ideas antes de diseñar nada.", fig: journey },
       { t: "agrupar la web por lo que la gente viene a hacer", because: "el tree test mostró que el sitio actual no tenía un orden claro. La nueva arquitectura pone en el primer nivel películas, cines con cada sede, promociones, club, ventas empresariales y eventos.", ruled: "rehacerla en 180 grados. Todo lo del árbol nuevo ya existía en la web, salvo una página por cine, así que el cambio podía ser gradual.", fig: ia },
       { t: "probar el árbol nuevo contra el anterior", because: "las mismas dos tareas, con 10 personas, en las dos versiones. Una estructura nueva solo es mejor si la gente encuentra las cosas más rápido.", fig: test },
-      { t: "una compra con pasos a la vista", because: "el flujo y los wireframes hacen explícito el camino de la película al asiento y al pago, justo donde 3 de 10 personas tuvieron problemas.", fig: flows },
-      { t: "una voz y un look para una marca de experiencias", because: "el 90% veía la web efectiva pero sin personalidad. Un mapa de voz y principios minimalistas dejan que la fotografía de cada película ponga la emoción.", fig: surface },
+      { t: "una compra con pasos a la vista", because: "los flujos y los wireframes hacen explícito el camino de la película al asiento y al pago, justo donde 3 de 10 personas tuvieron problemas. En la ficha, cada cine se despliega con sus formatos y horarios.", fig: flows },
+      { t: "una voz y un look para una marca de experiencias", because: "el 90% veía la web efectiva pero sin personalidad. Una matriz de voz, una guía de estilo de contenido y principios minimalistas dejan que la fotografía de cada película ponga la emoción.", fig: surface },
     ],
     validation: {
       items: ["Dos rondas de tree testing en Optimal Workshop, con 10 participantes cada una y las mismas dos tareas.", "Las respuestas de la encuesta sirvieron para plantear la nueva arquitectura antes de probarla.", "Sin prueba de usabilidad de los wireframes: el caso terminó en la estructura y el estilo."],

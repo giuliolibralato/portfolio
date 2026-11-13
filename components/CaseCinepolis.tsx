@@ -10,7 +10,7 @@ const Img = ({ src, alt }: { src: string; alt: string }) => <Crop src={`${IMG}/$
 
 function content(lang: Lang): CaseContent {
   const es = lang === "es";
-  const cover = <img className="cover-shot" src={`${IMG}/cover.webp`} alt={es ? "La nueva arquitectura de información de cinepolis.com.pe" : "The new information architecture for cinepolis.com.pe"} />;
+  const cover = <img className="cover-fill" src={`${IMG}/cover.webp`} alt="Cinépolis" />;
 
   const before = (
     <Frame className="rows" caption={es ? "La web en 2023, en desktop y mobile: rápida y funcional, pero con una cartelera que lo ocupaba todo y un camino de compra con poca guía." : "The site in 2023, on desktop and mobile: fast and functional, but with listings that took over everything and a purchase path with little guidance."}>
@@ -55,7 +55,7 @@ function content(lang: Lang): CaseContent {
       ["status", "Concept up to wireframes and style guide"],
     ],
     chips: ["case study", "ux research", "course"], okChip: 1,
-    cover,
+    cover, coverFilm: true,
     tools: [["Figma", "figma"], ["Optimal Workshop"]],
     challenge: {
       intro: "The site did its basic job, but people didn't enjoy using it:",
@@ -97,7 +97,7 @@ function content(lang: Lang): CaseContent {
       ["estado", "Concepto hasta wireframes y guía de estilo"],
     ],
     chips: ["caso de estudio", "ux research", "curso"], okChip: 1,
-    cover,
+    cover, coverFilm: true,
     tools: [["Figma", "figma"], ["Optimal Workshop"]],
     challenge: {
       intro: "La web cumplía lo básico, pero la gente no disfrutaba usarla:",

@@ -1,5 +1,6 @@
 "use client";
 
+import { CoverVideo } from "./CoverVideo";
 import { CaseLayout, type CaseContent } from "./CaseLayout";
 import { Crop, Frame, Metrics, Notes, Pane, Steps, imgBase } from "./Figure";
 import type { Lang } from "@/lib/data";
@@ -10,7 +11,7 @@ const PROTO = "https://www.figma.com/proto/sBBTvq1mUKGzu4n07rMyiH?node-id=72108-
 
 function content(lang: Lang): CaseContent {
   const es = lang === "es";
-  const cover = <img className="cover-shot" src={`${IMG}/cover.webp`} alt={es ? "Home de Dígito: tareas, proyectos activos con progreso y el registro rápido de horas con la racha" : "Dígito home: tasks, active projects with progress and the quick hour log with the streak"} />;
+  const cover = <CoverVideo src={`${IMG}/cover`} poster={`${IMG}/cover-poster.webp`} label={es ? "Registrar horas en Dígito: el panel se abre, se llena y celebra la racha" : "Logging hours in Dígito: the panel opens, fills in and celebrates the streak"} />;
 
   const problem = (
     <Notes cols={3} label={es ? "discovery · definición del problema" : "discovery · problem definition"} caption={es ? "La frase que guió todo salió de las entrevistas: la gente no rechaza la herramienta, rechaza la complejidad." : "The line that guided everything came from the interviews: people don't reject the tool, they reject the complexity."}
@@ -75,7 +76,7 @@ function content(lang: Lang): CaseContent {
       ["status", "Clickable prototype; not built"],
     ],
     chips: ["case study", "course", "prototype"], okChip: 2,
-    cover,
+    cover, coverFilm: true,
     site: { href: PROTO, label: "see the prototype" },
     tools: [["Figma", "figma"]],
     challenge: {
@@ -119,7 +120,7 @@ function content(lang: Lang): CaseContent {
       ["estado", "Prototipo clicable; no se construyó"],
     ],
     chips: ["caso de estudio", "curso", "prototipo"], okChip: 2,
-    cover,
+    cover, coverFilm: true,
     site: { href: PROTO, label: "ver el prototipo" },
     tools: [["Figma", "figma"]],
     challenge: {

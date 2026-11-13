@@ -167,11 +167,11 @@ export default function Home() {
                     <motion.a key={c.key} variants={block} href={c.href?.startsWith("/") ? `${BASE}${c.href}` : c.href || "#work"} target={c.href && !c.href.startsWith("/") ? "_blank" : undefined} rel="noopener" className="cd"
                       data-label={c.href && !c.href.startsWith("/") ? "visit" : "view"}>
                       <div className="cw">
-                        <div className={c.cover ? "cover film-cover" : "cover"}>
+                        <div className={c.cover || c.fill ? "cover film-cover" : "cover"}>
                           {c.cover ? (
                             <CoverVideo src={`${BASE}${c.cover.video}`} poster={`${BASE}${c.cover.poster}`} label={c.title} />
                           ) : c.image ? (
-                            <img className="cover-shot" src={`${BASE}${c.image}`} alt="" loading="lazy" decoding="async" />
+                            <img className={c.fill ? "cover-fill" : "cover-shot"} src={`${BASE}${c.image}`} alt="" loading="lazy" decoding="async" />
                           ) : c.phone ? (
                             <div className="cv phone"><i className="bar" style={{ width: "50%", height: 8 }} /><i className="bar" style={{ height: 44, borderRadius: 8 }} /><i className="bar" /><i className="bar" style={{ width: "70%" }} /><i className="bar" style={{ height: 44, borderRadius: 8 }} /></div>
                           ) : (

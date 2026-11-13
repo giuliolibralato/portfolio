@@ -1,5 +1,6 @@
 "use client";
 
+import { CoverVideo } from "./CoverVideo";
 import { CaseLayout, type CaseContent } from "./CaseLayout";
 import { Crop, Frame, Notes, Pane, Steps, imgBase } from "./Figure";
 import type { Lang } from "@/lib/data";
@@ -9,7 +10,7 @@ const Img = ({ src, alt }: { src: string; alt: string }) => <Crop src={`${IMG}/$
 
 function content(lang: Lang): CaseContent {
   const es = lang === "es";
-  const cover = <img className="cover-shot" src={`${IMG}/cover.webp`} alt={es ? "Home de cdvmusica.com: un video en loop de un piano, caminodevida música y el último lanzamiento" : "cdvmusica.com home: a looping piano video, caminodevida música and the latest release"} />;
+  const cover = <CoverVideo src={`${IMG}/cover`} poster={`${IMG}/cover-poster.webp`} label={es ? "El home de cdvmusica.com y el álbum que se abre desde su portada" : "The cdvmusica.com home and the album opening out of its cover"} />;
 
   const beforeAfter = (
     <Frame className="cols-2" caption={es ? "Antes, cada sección tenía su propio estilo: un hero amarillo, un collage, una franja azul y bloques negros. Ahora todo vive sobre el mismo fondo cálido y el color lo pone el arte de cada lanzamiento." : "Before, each section had its own style: a yellow hero, a collage, a blue band and black blocks. Now everything sits on the same warm ground and the color comes from each release's art."}>
@@ -71,7 +72,7 @@ function content(lang: Lang): CaseContent {
       ["status", "Live at cdvmusica.com"],
     ],
     chips: ["case study", "website", "live"], okChip: 2,
-    cover,
+    cover, coverFilm: true,
     site: { href: "https://cdvmusica.com", label: "see the site" },
     tools: [["Figma", "figma"], ["WordPress", "wordpress"], ["Elementor", "elementor"]],
     challenge: {
@@ -114,7 +115,7 @@ function content(lang: Lang): CaseContent {
       ["estado", "En vivo en cdvmusica.com"],
     ],
     chips: ["caso de estudio", "sitio web", "en vivo"], okChip: 2,
-    cover,
+    cover, coverFilm: true,
     site: { href: "https://cdvmusica.com", label: "ver la web" },
     tools: [["Figma", "figma"], ["WordPress", "wordpress"], ["Elementor", "elementor"]],
     challenge: {

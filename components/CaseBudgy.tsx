@@ -1,5 +1,6 @@
 "use client";
 
+import { CoverVideo } from "./CoverVideo";
 import { CaseLayout, type CaseContent } from "./CaseLayout";
 import { Frame, Metrics, Pane, Steps, imgBase } from "./Figure";
 import { Architecture, DesignSystem, Features, SplitDemo } from "./BudgyFigures";
@@ -10,7 +11,7 @@ const Phone = ({ src, alt }: { src: string; alt: string }) => <img className="cr
 
 function content(lang: Lang): CaseContent {
   const es = lang === "es";
-  const cover = <img className="cover-shot" src={`${IMG}/cover.webp`} alt={es ? "Budgy en tres pantallas: la distribución del mes, el inicio con lo disponible y un gasto nuevo" : "Budgy on three screens: the month's split, the home with what's left and a new expense"} />;
+  const cover = <CoverVideo src={`${IMG}/cover`} poster={`${IMG}/cover-poster.webp`} label={es ? "Budgy en tres teléfonos: la distribución del mes se llena categoría por categoría" : "Budgy on three phones: the month's split fills category by category"} />;
 
   const formula = <Steps items={es
     ? [["Ingreso", "sueldo en dólares + extras"], ["− Impuesto", "solo sobre el sueldo"], ["= Distribuible", "lo que reparto en %"], ["− Reservado", "ahorro y cobros futuros"], ["= Disponible", "lo que aún puedo gastar"]]
@@ -68,7 +69,7 @@ function content(lang: Lang): CaseContent {
       ["status", "Works; retired when our household budget moved to Monthly Budget"],
     ],
     chips: ["passion project", "designed and built", "ios"], okChip: 1,
-    cover,
+    cover, coverFilm: true,
     tools: [["Claude Code", "claude"], ["SwiftUI", "swift"], ["Xcode", "xcode"], ["Supabase", "supabase"]],
     challenge: {
       intro: "The sheet did its job, but it had become a chore:",
@@ -113,7 +114,7 @@ function content(lang: Lang): CaseContent {
       ["estado", "Funciona; la dejé cuando el presupuesto de la casa pasó a Monthly Budget"],
     ],
     chips: ["proyecto personal", "diseñada y construida", "ios"], okChip: 1,
-    cover,
+    cover, coverFilm: true,
     tools: [["Claude Code", "claude"], ["SwiftUI", "swift"], ["Xcode", "xcode"], ["Supabase", "supabase"]],
     challenge: {
       intro: "La hoja cumplía, pero se había vuelto una carga:",

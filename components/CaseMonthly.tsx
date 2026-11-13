@@ -1,5 +1,6 @@
 "use client";
 
+import { CoverVideo } from "./CoverVideo";
 import { CaseLayout, type CaseContent } from "./CaseLayout";
 import { Crop, Frame, Metrics, Pane, Steps, imgBase } from "./Figure";
 import { MonthlyRefs, MonthlySystem } from "./MonthlyFigures";
@@ -10,7 +11,7 @@ const Img = ({ src, alt }: { src: string; alt: string }) => <Crop src={`${IMG}/$
 
 function content(lang: Lang): CaseContent {
   const es = lang === "es";
-  const cover = <img className="cover-shot" src={`${IMG}/budget.webp`} alt={es ? "El presupuesto del mes: ingreso neto, diezmo, disponible, asignado y la tabla de gastos por categoría" : "The month's budget: net income, tithe, available, assigned and the expense table by category"} />;
+  const cover = <CoverVideo src={`${IMG}/cover`} poster={`${IMG}/cover-poster.webp`} label={es ? "El presupuesto del mes se arma fila por fila y Supermercado pasa a pagado" : "The month's budget builds row by row and Groceries turns paid"} />;
 
   const flow = <Steps items={es
     ? [["Ingresos", "dos sueldos, en dólares y en soles"], ["Descuentos", "impuesto y diezmo, solos"], ["Reparto", "gastos por categoría"], ["Día de pago", "los pasos para mover la plata"], ["Supermercado", "plan, lista y precios"]]
@@ -80,7 +81,7 @@ function content(lang: Lang): CaseContent {
       ["status", "In use for our household budget"],
     ],
     chips: ["passion project", "in use", "web app"], okChip: 1,
-    cover,
+    cover, coverFilm: true,
     tools: [["Claude Code", "claude"], ["Claude", "claude"], ["Supabase", "supabase"], ["Mobbin"]],
     challenge: {
       intro: "A household budget isn't a personal one with a bigger number:",
@@ -127,7 +128,7 @@ function content(lang: Lang): CaseContent {
       ["estado", "En uso para el presupuesto de la casa"],
     ],
     chips: ["proyecto personal", "en uso", "app web"], okChip: 1,
-    cover,
+    cover, coverFilm: true,
     tools: [["Claude Code", "claude"], ["Claude", "claude"], ["Supabase", "supabase"], ["Mobbin"]],
     challenge: {
       intro: "Un presupuesto del hogar no es uno personal con un número más grande:",

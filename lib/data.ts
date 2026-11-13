@@ -9,6 +9,7 @@ export type Project = {
   href?: string;
   phone?: boolean;
   cover?: { video: string; poster: string }; // looping video for the card cover
+  fill?: boolean; // image is a full-bleed brand cover, not a screenshot in the frame
   tags?: string[]; // extra type tags after the main one
   client?: string; // shown before the title on the card: “client — title”
   image?: string; // a still from the case, sitting in the card's grey frame
@@ -47,17 +48,17 @@ export const PROJECTS: Record<string, Project> = {
   beacon: { client: "Beacon", title: "one sidebar for 60 destinations", desc: "B2B prospecting platform · 5-day sprint", type: "case study", year: "2026", href: "/work/beacon/", cover: { video: "/cases/beacon/cover", poster: "/cases/beacon/cover-poster.webp" } },
   keyway: { client: "Keyway", title: "332 legal fields in 4 acts", desc: "Listing flow for a home-selling product", type: "case study", year: "2026", href: "/work/keyway/", cover: { video: "/cases/keyway/cover", poster: "/cases/keyway/cover-poster.webp" } },
   cdv: { tags: ["website"], client: "Camino de Vida", title: "a site for the first visit", desc: "Information architecture and home for Camino de Vida", type: "case study", year: "2026", href: "/work/cdv/", cover: { video: "/cases/cdv/cover", poster: "/cases/cdv/cover-poster.webp" } },
-  digito: { client: "Dígito", title: "making the timesheet the easy part", desc: "Project-management SaaS redesign · course project", type: "case study", year: "2025", href: "/work/digito/", image: "/cases/digito/cover.webp" },
-  cinepolis: { client: "Cinépolis", title: "research for a cinema website", desc: "UX research and information architecture · course project", type: "case study", year: "2023", href: "/work/cinepolis/", image: "/cases/cinepolis/cover.webp" },
+  digito: { client: "Dígito", title: "making the timesheet the easy part", desc: "Project-management SaaS redesign · course project", type: "case study", year: "2025", href: "/work/digito/", image: "/cases/digito/cover.webp", cover: { video: "/cases/digito/cover", poster: "/cases/digito/cover-poster.webp" } },
+  cinepolis: { client: "Cinépolis", title: "research for a cinema website", desc: "UX research and information architecture · course project", type: "case study", year: "2023", href: "/work/cinepolis/", image: "/cases/cinepolis/cover.webp", fill: true },
   brightpath: { client: "BrightPath", tags: ["app", "website"], title: "a design test that led to a hire", desc: "Designli design test: app flows and a landing for IT professionals", type: "case study", year: "2025", href: "/work/brightpath/", image: "/cases/brightpath/cover.webp" },
   cdvweb: { title: "Camino de Vida", desc: "Church website · cdv.pe", type: "website", year: "2026", href: "https://cdv.pe" },
-  cdvmusica: { client: "CDV Música", tags: ["website"], title: "one home for the music and its teams", desc: "Music ministry site: catalog, songs with chords and resources", type: "case study", year: "2026", href: "/work/cdvmusica/", image: "/cases/cdvmusica/cover.webp" },
+  cdvmusica: { client: "CDV Música", tags: ["website"], title: "one home for the music and its teams", desc: "Music ministry site: catalog, songs with chords and resources", type: "case study", year: "2026", href: "/work/cdvmusica/", image: "/cases/cdvmusica/cover.webp", cover: { video: "/cases/cdvmusica/cover", poster: "/cases/cdvmusica/cover-poster.webp" } },
   nexo: { client: "Nexo Summit", tags: ["website"], title: "from ENASEI to a new name", desc: "Conference site, from design system to ticket sales", type: "case study", year: "2026", href: "/work/nexo/", image: "/cases/nexo/hero.webp" },
   lessin: { title: "Lessin", desc: "Ed-tech website and design system · in Figma", type: "website", year: "2023", href: "https://www.figma.com/design/aMI8KBC7X9fAnlAEOBCdHL/Lessin---Plataforma-Web?node-id=121-2&p=f" },
   wedding: { client: "Our wedding", tags: ["website", "passion project"], title: "an invitation you can open from WhatsApp", desc: "Wedding site from the printed invitation: gifts, two doors, real numbers", type: "case study", year: "2026", href: "/work/wedding/", image: "/cases/wedding/cover.webp" },
   firstlancer: { title: "Firstlancer", desc: "iOS app design · case on Behance", type: "app", year: "2022", phone: true, href: "https://www.behance.net/gallery/156666141/Firstlancer-App" },
-  budgy: { client: "Budgy", tags: ["app", "passion project"], title: "a budget that answers one question", desc: "Personal finance app for iOS, designed and built", type: "case study", year: "2026", href: "/work/budgy/", image: "/cases/budgy/cover.webp" },
-  monthly: { client: "Monthly Budget", tags: ["website", "passion project"], title: "a household budget for two", desc: "Shared budget, meal plan and grocery prices, designed and built", type: "case study", year: "2026", href: "/work/monthly/", image: "/cases/monthly/budget.webp" },
+  budgy: { client: "Budgy", tags: ["app", "passion project"], title: "a budget that answers one question", desc: "Personal finance app for iOS, designed and built", type: "case study", year: "2026", href: "/work/budgy/", image: "/cases/budgy/cover.webp", cover: { video: "/cases/budgy/cover", poster: "/cases/budgy/cover-poster.webp" } },
+  monthly: { client: "Monthly Budget", tags: ["website", "passion project"], title: "a household budget for two", desc: "Shared budget, meal plan and grocery prices, designed and built", type: "case study", year: "2026", href: "/work/monthly/", image: "/cases/monthly/budget.webp", cover: { video: "/cases/monthly/cover", poster: "/cases/monthly/cover-poster.webp" } },
 };
 
 export const TABS: [string, string[]][] = [

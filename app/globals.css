@@ -119,6 +119,7 @@ button, select { font: inherit; color: inherit; }
 .hero-cover.film-cover, .tour-fig .film-cover { aspect-ratio: 16 / 9; }
 #decisions .tour-fig { margin-top: 32px; }
 .cover-film, .cover-film video { display: block; width: 100%; height: 100%; }
+.cover-fill { display: block; width: 100%; height: 100%; object-fit: cover; }
 .cover-film video { object-fit: cover; transition: transform 300ms var(--ease-out); }
 @media (hover: hover) and (pointer: fine) { .cd:hover .cover-film video { transform: scale(1.02); } }
 .cv.phone { width: 38%; height: 88%; border-radius: 18px 18px 0 0; padding: 16px 12px; display: flex; flex-direction: column; gap: 8px; }

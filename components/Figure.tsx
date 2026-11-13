@@ -10,7 +10,7 @@ export const rise = {
   hidden: { opacity: 0, y: 8 },
   show: { opacity: 1, y: 0, transition: { duration: 0.38, ease: [0.32, 0.72, 0, 1] as const } },
 };
-export const view = { initial: "hidden", whileInView: "show", viewport: { once: true, amount: 0.3 } } as const;
+export const view = { initial: "hidden", whileInView: "show", viewport: { once: true, amount: 0.12 } } as const;
 
 export function Frame({ caption, children, className = "" }: { caption: string; children: React.ReactNode; className?: string }) {
   return (

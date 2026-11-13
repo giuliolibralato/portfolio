@@ -1,8 +1,8 @@
 "use client";
 
 import { CaseLayout, type CaseContent } from "./CaseLayout";
-import { Crop, Frame, Metrics, Pane, Steps, imgBase } from "./Figure";
-import { Audit, Benchmark, Flows, IATrees, Journey, Principles, Priority, StyleGuide, TreeTest, Voice } from "./CinepolisFigures";
+import { Crop, Frame, Pane, Steps, imgBase } from "./Figure";
+import { Audit, Benchmark, Flows, IATrees, Journey, Principles, Priority, StyleGuide, Survey, TreeTest, Voice } from "./CinepolisFigures";
 import type { Lang } from "@/lib/data";
 
 const IMG = imgBase("cinepolis");
@@ -21,13 +21,7 @@ function content(lang: Lang): CaseContent {
   const audit = <Audit es={es} />;
   const benchmark = <Benchmark es={es} />;
 
-  const survey = (
-    <Metrics label={es ? "encuesta · 10 personas" : "survey · 10 people"}
-      items={es
-        ? [["9/10", "sienten la web veloz"], ["90%", "la ven efectiva pero sin personalidad"], ["3/10", "tuvieron problemas al comprar, por falta de guía"]]
-        : [["9/10", "find the site fast"], ["90%", "see it as effective but with no personality"], ["3/10", "had trouble buying, for lack of guidance"]]}
-      caption={es ? "Diez personas de 18 a 39 años, que navegaron la web y simularon una compra. El 80% dijo que lo más útil era la cartelera, y las 10 pidieron funciones que otras cadenas ya tienen." : "Ten people aged 18 to 39, who browsed the site and simulated a purchase. 80% said the listings were the most useful part, and all 10 asked for features other chains already have."} />
-  );
+  const survey = <Survey es={es} />;
 
   const journey = <><Journey es={es} /><Priority es={es} /></>;
   const ia = <IATrees es={es} />;

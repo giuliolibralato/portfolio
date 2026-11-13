@@ -89,7 +89,7 @@ export const T = {
       keyway: { title: "332 campos legales en 4 actos", desc: "Flujo de publicación para un producto de venta de casas" },
       cdv: { title: "una web para la primera visita", desc: "Arquitectura de información y home de Camino de Vida" },
       digito: { title: "que registrar horas sea lo fácil", desc: "Rediseño de un SaaS de gestión de proyectos · proyecto de curso" },
-      cinepolis: { title: "UX research para Cinépolis", desc: "Caso de UX research y UI · curso de UX/UI" },
+      cinepolis: { title: "investigación para la web de un cine", desc: "UX research y arquitectura de información · proyecto de curso" },
       brightpath: { title: "una prueba de diseño que terminó en contratación", desc: "Prueba de Designli: flujos de app y una landing para profesionales de IT" },
       cdvweb: { title: "Camino de Vida", desc: "Sitio web de la iglesia · cdv.pe" },
       cdvmusica: { title: "un solo lugar para la música y sus equipos", desc: "Web del ministerio de música: catálogo, canciones con acordes y recursos" },

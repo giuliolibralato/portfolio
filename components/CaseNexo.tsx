@@ -3,6 +3,10 @@
 import { CaseLayout, type CaseContent } from "./CaseLayout";
 import { Crop, Frame, Pane, Steps, imgBase } from "./Figure";
 import type { Lang } from "@/lib/data";
+import { Bebas_Neue, DM_Sans } from "next/font/google";
+
+const bebas = Bebas_Neue({ subsets: ["latin"], weight: "400", variable: "--font-bebas" });
+const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dmsans" });
 
 const IMG = imgBase("nexo");
 const Img = ({ src, alt, className }: { src: string; alt: string; className?: string }) => <Crop src={`${IMG}/${src}`} alt={alt} className={className} />;
@@ -81,9 +85,33 @@ function content(lang: Lang): CaseContent {
   );
 
   const system = (
-    <Frame className="rows" caption={es ? "El sistema salió del manual de marca y de los referentes: color por proporción de superficie, Bebas Neue solo para titulares y DM Sans para todo lo demás, en tokens para shadcn." : "The system came from the brand manual and the references: color by share of surface, Bebas Neue only for headlines and DM Sans for everything else, as tokens for shadcn."}>
-      <Pane label={es ? "design system" : "design system"}><Img src="system.webp" alt={es ? "Colores por superficie (60% cream y blanco, 20% coral, 12% navy, 8% secundarios) y la escala tipográfica" : "Color by surface (60% cream and white, 20% coral, 12% navy, 8% secondary) and the type scale"} /></Pane>
-    </Frame>
+    <figure className="frame-fig">
+      <div className={`frame nx-sys ${bebas.variable} ${dmSans.variable}`}>
+        <div className="nx-col">
+          <span className="mono pane-l">{es ? "color por superficie" : "color by surface"}</span>
+          <div className="nx-bar">
+            <i style={{ flex: 60, background: "#F5F0E8", color: "#010532" }}>60% · {es ? "crema y blanco" : "cream and white"}</i>
+            <i style={{ flex: 20, background: "#EE4E22" }}>20%</i>
+            <i style={{ flex: 12, background: "#010532" }}>12%</i>
+            <i style={{ flex: 8, background: "#2663C4" }}>8%</i>
+          </div>
+          <div className="nx-sw">
+            {[["#010532", "Navy", es ? "hero y secciones oscuras" : "hero and dark sections"], ["#EE4E22", "Coral", es ? "CTAs y acentos" : "CTAs and accents"], ["#F5F0E8", "Cream", es ? "respiro" : "breathing room"], ["#2663C4", "Royal", es ? "detalle" : "detail"]].map(([h, n, u]) => (
+              <div key={h}><i style={{ background: h }} /><b>{n}</b><span className="mono">{h}</span><span>{u}</span></div>
+            ))}
+          </div>
+          <p className="small">{es ? "Los secundarios no pasan del 8% de la superficie. El coral solo marca lo que se toca o lo que hay que ver primero." : "Secondary colors stay under 8% of the surface. Coral only marks what you tap or what you should see first."}</p>
+        </div>
+        <div className="nx-col">
+          <span className="mono pane-l">{es ? "tipografía" : "type"}</span>
+          <div className="nx-display">NEXO SUMMIT <em>2026</em></div>
+          {[["Bebas Neue · H1 96", es ? "Solo titulares, siempre en mayúsculas" : "Headlines only, always uppercase", "nx-t1"], ["DM Sans · 24", es ? "El encuentro inmobiliario del Perú" : "Peru's real-estate summit", "nx-t2"], ["DM Sans · 16", es ? "Cuerpo con interlineado 1.65, sin tracking." : "Body at 1.65 line height, no tracking.", "nx-t3"], ["DM Sans · label 12", es ? "9 y 10 de septiembre · Lima" : "9 and 10 September · Lima", "nx-t4"]].map(([k, v, c]) => (
+            <div key={k} className="nx-row"><span className="mono">{k}</span><span className={c}>{v}</span></div>
+          ))}
+        </div>
+      </div>
+      <figcaption className="small muted">{es ? "El sistema salió del manual de marca y de los referentes: color por proporción de superficie, Bebas Neue solo para titulares y DM Sans para todo lo demás, en tokens para shadcn." : "The system came from the brand manual and the references: color by share of surface, Bebas Neue only for headlines and DM Sans for everything else, as tokens for shadcn."}</figcaption>
+    </figure>
   );
 
   const order = <Steps items={es

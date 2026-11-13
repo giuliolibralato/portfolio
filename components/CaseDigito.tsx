@@ -13,9 +13,10 @@ function content(lang: Lang): CaseContent {
   const cover = <img className="cover-shot" src={`${IMG}/cover.webp`} alt={es ? "Home de Dígito: tareas, proyectos activos con progreso y el registro rápido de horas con la racha" : "Dígito home: tasks, active projects with progress and the quick hour log with the streak"} />;
 
   const problem = (
-    <Frame className="rows" caption={es ? "La frase que guió todo salió de las entrevistas: la gente no rechaza la herramienta, rechaza la complejidad." : "The line that guided everything came from the interviews: people don't reject the tool, they reject the complexity."}>
-      <Pane label={es ? "definición del problema" : "problem definition"}><Img src="problem.webp" alt={es ? "Fricciones principales, insight clave y oportunidad" : "Main frictions, key insight and opportunity"} /></Pane>
-    </Frame>
+    <Notes cols={3} label={es ? "discovery · definición del problema" : "discovery · problem definition"} caption={es ? "La frase que guió todo salió de las entrevistas: la gente no rechaza la herramienta, rechaza la complejidad." : "The line that guided everything came from the interviews: people don't reject the tool, they reject the complexity."}
+      items={es
+        ? [["fricciones", "Lo que frenaba el uso", "Interfaz compleja, procesos distintos entre equipos, registro de horas poco práctico, flujos largos con demasiados campos y sin ver avance, riesgos ni carga."], ["insight clave", "“Las personas no rechazan la herramienta, rechazan la complejidad”", "La baja adopción afecta cómo planifican, colaboran y hacen seguimiento."], ["oportunidad", "Valor inmediato", "Redefinir algunos puntos de la experiencia para dar valor desde el primer día, generar adherencia y optimizar el trabajo diario."]]
+        : [["frictions", "What held people back", "A complex interface, different processes per team, impractical hour logging, long forms with too many fields, and no view of progress, risks or workload."], ["key insight", "“People don't reject the tool, they reject the complexity”", "Low adoption hurts how they plan, collaborate and follow up."], ["opportunity", "Value from day one", "Rethink a few points of the experience to deliver value right away, build adherence and streamline daily work."]]} />
   );
 
   const research = (

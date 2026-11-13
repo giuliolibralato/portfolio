@@ -18,9 +18,10 @@ function content(lang: Lang): CaseContent {
   const cover = <img className="cover-shot" src={`${IMG}/cover.webp`} alt={es ? "Hero de la web de BrightPath: Unlock your potential one skill at a time, con la app en un teléfono" : "BrightPath website hero: Unlock your potential one skill at a time, with the app on a phone"} />;
 
   const context = (
-    <Frame className="rows" caption={es ? "El punto de partida que daba la prueba: una app de cursos para un público amplio, con tres dolores claros." : "The starting point the test gave: a course app for a broad audience, with three clear pains."}>
-      <Pane label={es ? "contexto de la prueba" : "test context"}><Img src="context.webp" alt={es ? "BrightPath: audiencia de 18 a 45, perfiles, dolores y competidores Udemy y Coursera" : "BrightPath: audience 18 to 45, profiles, pains and competitors Udemy and Coursera"} /></Pane>
-    </Frame>
+    <Notes cols={3} label={es ? "contexto de la prueba · app iOS de cursos, edtech" : "test context · iOS course app, edtech"} caption={es ? "El punto de partida que daba la prueba: cursos de programación a yoga, para un público amplio, con tres dolores claros." : "The starting point the test gave: courses from coding to yoga, for a broad audience, with three clear pains."}
+      items={es
+        ? [["audiencia · 18 a 45 años", "Tres perfiles", "Profesionales que quieren crecer; aficionados a la música, el bienestar o el deporte; y universitarios que buscan aprender a su ritmo."], ["dolores", "Ruido, búsqueda y motivación", "Interfaces recargadas, cuesta encontrar cursos buenos y relevantes, y es difícil mantenerse motivado."], ["competidores", "Udemy y Coursera", "El estándar con el que se compara cualquier catálogo de cursos: búsqueda, precios y ratings."]]
+        : [["audience · 18 to 45", "Three profiles", "Professionals who want to upskill; hobbyists into music, wellness or sport; and students looking for flexible learning."], ["pains", "Clutter, search and motivation", "Crowded interfaces, hard-to-find relevant courses, and trouble staying motivated."], ["competitors", "Udemy and Coursera", "The bar any course catalog gets compared to: search, pricing and ratings."]]} />
   );
 
   const brief = (

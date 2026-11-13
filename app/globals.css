@@ -456,3 +456,16 @@ button, select { font: inherit; color: inherit; }
 .cj-curve i { position: absolute; left: 50%; top: calc(var(--y) * 26px + 3px); width: 13px; height: 13px; margin-left: -6.5px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #c9d4f2; }
 .cj-curve em { position: absolute; left: 50%; bottom: -2px; transform: translateX(-50%); font-style: normal; font-size: 9px; font-weight: 700; color: #fff; background: var(--cb); border-radius: 3px; padding: 0 4px; display: none; }
 .cj-curve .m1 i { background: #16a34a; } .cj-curve .m0 i { background: #eab308; } .cj-curve .m-1 i { background: #dc2626; }
+
+/* Nexo design system, on its own white */
+.frame.nx-sys { background: #fff; color: #010532; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; font-family: var(--font-dmsans), Inter, sans-serif; box-shadow: 0 0 0 1px #e8eaf2; }
+.nx-col { display: grid; gap: 12px; } .nx-sys .pane-l { color: #4B5563; } .nx-sys p { margin: 0; color: #4B5563; }
+.nx-bar { display: flex; height: 64px; border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px #e5e7eb; }
+.nx-bar i { font-style: normal; color: #fff; font-size: 11px; font-weight: 500; display: flex; align-items: flex-end; padding: 8px; }
+.nx-sw { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.nx-sw div { display: grid; grid-template-columns: 26px 1fr; column-gap: 8px; font-size: 12px; } .nx-sw i { grid-row: span 3; width: 26px; height: 26px; border-radius: 6px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.1); }
+.nx-sw .mono { font-size: 10.5px; color: #6b7280; } .nx-sw span:last-child { color: #4B5563; }
+.nx-display { font-family: var(--font-bebas), Impact, sans-serif; font-size: clamp(40px, 7cqi, 72px); line-height: .95; letter-spacing: .01em; } .nx-display em { font-style: normal; color: #EE4E22; }
+.nx-row { display: grid; grid-template-columns: 130px 1fr; gap: 10px; align-items: baseline; border-top: 1px solid #e5e7eb; padding-top: 8px; } .nx-row .mono { font-size: 10.5px; color: #9CA3AF; }
+.nx-t1 { font-family: var(--font-bebas), Impact, sans-serif; font-size: 26px; } .nx-t2 { font-size: 18px; } .nx-t3 { font-size: 14px; color: #4B5563; } .nx-t4 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #4B5563; }
+@container (max-width: 700px) { .frame.nx-sys { grid-template-columns: minmax(0,1fr); } }

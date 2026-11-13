@@ -11,7 +11,7 @@ const Phone = ({ src, alt }: { src: string; alt: string }) => <img className="cr
 
 function content(lang: Lang): CaseContent {
   const es = lang === "es";
-  const cover = <CoverVideo src={`${IMG}/cover`} poster={`${IMG}/cover-poster.webp`} label={es ? "Budgy en tres teléfonos: la distribución del mes se llena categoría por categoría" : "Budgy on three phones: the month's split fills category by category"} />;
+  const cover = <CoverVideo src={`${IMG}/cover`} poster={`${IMG}/cover-poster.webp`} label={es ? "Budgy en tres pantallas que suben a su lugar: la distribución del mes, el inicio y un gasto nuevo" : "Budgy on three screens rising into place: the month's split, the home and a new expense"} />;
 
   const formula = <Steps items={es
     ? [["Ingreso", "sueldo en dólares + extras"], ["− Impuesto", "solo sobre el sueldo"], ["= Distribuible", "lo que reparto en %"], ["− Reservado", "ahorro y cobros futuros"], ["= Disponible", "lo que aún puedo gastar"]]

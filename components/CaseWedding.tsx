@@ -94,7 +94,7 @@ function content(lang: Lang): CaseContent {
       end: "It had to {{feel like our invitation and save us from answering every question twice}}, on a phone, in the week before the wedding.",
       fig: refs,
     },
-    role: "{{I designed and built it}}: the concept from our invitations, 16 screens and the design system in a canvas, the handoff document, and the build with Claude Code. I know how to make websites, and a site made it easier to put all the information guests needed in one place. The look started from a site that won us over; I handled the whole visual line and my fiancée corrected the content, and we decided it together.",
+    role: "{{I designed and built it}}: the concept from our invitations, 16 screens and the design system in a canvas, the handoff document, and the build with Claude Code. I know how to make websites, and a site made it easier to put all the information guests needed in one place. The look started from Katherine Marchand's website; I handled the whole visual line and my fiancée corrected the content, and we decided it together.",
     research: {
       items: ["Our printed invitations, as the brand to carry over.", "Katherine Marchand's editorial style for type, and the Framer templates Wedding Day, Wandr and Fleur for section rhythm.", "The questions guests were already asking us, which became the FAQ and the order of the home."],
       extraTitle: "the order of the work",
@@ -138,7 +138,7 @@ function content(lang: Lang): CaseContent {
       end: "Tenía que {{sentirse como nuestra invitación y ahorrarnos responder cada pregunta dos veces}}, en el celular, en la semana antes de la boda.",
       fig: refs,
     },
-    role: "{{La diseñé y la construí}}: el concepto desde nuestras invitaciones, 16 pantallas y el design system en un canvas, el documento de handoff y la construcción con Claude Code. Sé hacer webs, y un sitio hacía más fácil poner en un solo lugar toda la información que los invitados necesitaban. El look partió de una web que nos conquistó; yo me encargué de toda la línea visual y mi prometida corrigió el contenido, y lo decidimos juntos.",
+    role: "{{La diseñé y la construí}}: el concepto desde nuestras invitaciones, 16 pantallas y el design system en un canvas, el documento de handoff y la construcción con Claude Code. Sé hacer webs, y un sitio hacía más fácil poner en un solo lugar toda la información que los invitados necesitaban. El look partió de la web de Katherine Marchand; yo me encargué de toda la línea visual y mi prometida corrigió el contenido, y lo decidimos juntos.",
     research: {
       items: ["Nuestras invitaciones impresas, como la marca a llevar.", "El estilo editorial de Katherine Marchand para la tipografía, y las plantillas de Framer Wedding Day, Wandr y Fleur para el ritmo de las secciones.", "Las preguntas que los invitados ya nos hacían, que se volvieron el FAQ y el orden de la home."],
       extraTitle: "el orden del trabajo",

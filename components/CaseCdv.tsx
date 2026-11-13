@@ -28,8 +28,7 @@ const AFTER: Node[] = [
 
 function content(lang: Lang): CaseContent {
   const es = lang === "es";
-  const cover = <CoverVideo src={`${IMG}/cover`} poster={`${IMG}/cover-poster.webp`} label={es ? "Una primera visita: bienvenido a casa, los cuatro accesos debajo del banner, y Bautismo se abre en su página" : "A first visit: bienvenido a casa, the four doors under the banner, and Bautismo opens into its page"} />;
-  const menuFilm = <FilmFig src={`${IMG}/menu`} caption={es ? "El menú viejo, tres niveles abajo, se reordena: cada etiqueta va a donde la buscaría alguien nuevo y dice primero para quién es." : "The old menu, three levels deep, reorders: each label goes where someone new would look for it, and says first who it is for."} />;
+  const cover = <CoverVideo src={`${IMG}/cover`} poster={`${IMG}/cover-poster.webp`} label={es ? "La home anterior se vuelve la nueva: el banner se acomoda y los botones crecen hasta ser los cuatro accesos" : "The previous home turns into the new one: the banner settles and the buttons grow into the four doors"} />;
 
   const sitemap = (
     <Frame className="cols-nav" caption={es ? "Antes, los ministerios estaban tres niveles abajo, dentro de Liderazgo, y con nombres que solo conoce quien ya va. Después, cada uno dice primero para quién es." : "Before, ministries sat three levels down inside Leadership, under names only regulars know. After, each one says first who it is for."}>
@@ -38,12 +37,7 @@ function content(lang: Lang): CaseContent {
     </Frame>
   );
 
-  const beforeAfter = (
-    <Frame className="cols-2" caption={es ? "Antes, el primer bloque era una campaña de grupos pequeños y los accesos eran botones chicos bajo el banner. Ahora los cuatro accesos tienen el peso de lo que la gente busca." : "Before, the first block was a small-groups campaign and the doors were small buttons under the banner. Now the four doors weigh as much as what people come looking for."}>
-      <Pane label={es ? "antes" : "before"}><Img src="old.webp" alt={es ? "La home anterior: banner con palmera, botones pequeños y un bloque de grupos pequeños" : "The previous home: a palm-tree banner, small buttons and a small-groups block"} /></Pane>
-      <Pane accent label={es ? "después" : "after"}><Img src="new.webp" alt={es ? "La home nueva: bienvenido a casa, el banner y cuatro accesos" : "The new home: bienvenido a casa, the banner and four doors"} /></Pane>
-    </Frame>
-  );
+  const beforeAfter = <FilmFig src={`${IMG}/home`} caption={es ? "La home anterior se vuelve la nueva en una sola toma: la franja y la campaña salen, el banner se acomoda y los cuatro botones chicos crecen hasta ser los cuatro accesos." : "The previous home turns into the new one in a single take: the strip and the campaign leave, the banner settles and the four small buttons grow into the four doors."} />;
 
   const doors = (
     <Frame className="rows" caption={es ? "Debajo del banner, lo que la gente buscaba: dónde y cuándo, cómo crecer, grupos pequeños y bautismo." : "Under the banner, what people were looking for: where and when, how to grow, small groups and baptism."}>
@@ -99,7 +93,7 @@ function content(lang: Lang): CaseContent {
     },
     decisions: [
       { t: "what people look for goes right under the banner", because: "Google Analytics and Hotjar showed people hunting below the banner, and the church named the same things: campuses and times, growing, small groups and baptism. They became four doors.", fig: doors },
-      { t: "ministries by who they're for, then by name", because: "“Teens | GetUp” tells a parent what it is; “GetUp cdv” only tells a regular. Ministries moved out of Leadership into Conoce CDV, one level down.", ruled: "keeping the internal names alone. They are the church's identity, so they stayed, after the audience.", fig: <>{menuFilm}{sitemap}</> },
+      { t: "ministries by who they're for, then by name", because: "“Teens | GetUp” tells a parent what it is; “GetUp cdv” only tells a regular. Ministries moved out of Leadership into Conoce CDV, one level down.", ruled: "keeping the internal names alone. They are the church's identity, so they stayed, after the audience.", fig: sitemap },
       { t: "from twelve sections to six", because: "my first proposal had twelve top-level sections with clean URLs and redirects. After the tree test and the team's review, six were enough, and a phone menu can show six.", ruled: "the twelve-section proposal. Every section was justified, but together they were too many doors." },
       { t: "one typeface, so the content does the talking", because: "each ministry already brings its own logo and campaign art. A single sans, Inter, keeps the site calm around them and reads well on a phone.", ruled: "pairing Inter with a serif italic and a color per ministry. It looked lively in the moodboard, but it competed with the ministries' own art.", fig: type },
       { t: "a neutral design system, built from zero", because: "the site had no system, so I designed one: text colors by emphasis, grounds for light and dark, and a single Inter scale from display to the smallest heading, on desktop and mobile. Each token is named for its use, so the team can pick by purpose. Headings in lowercase keep the voice close, like the church talks.", ruled: "a brand color per section. Neutral tokens let each ministry's campaign carry the color instead.", fig: system },
@@ -142,7 +136,7 @@ function content(lang: Lang): CaseContent {
     },
     decisions: [
       { t: "lo que la gente busca va justo debajo del banner", because: "Google Analytics y Hotjar mostraron a la gente buscando debajo del banner, y la iglesia nombró lo mismo: campus y horarios, crecer, grupos pequeños y bautismo. Se volvieron cuatro accesos.", fig: doors },
-      { t: "ministerios por para quién son, y luego por nombre", because: "“Adolescentes | GetUp” le dice a un papá qué es; “GetUp cdv” solo se lo dice a quien ya va. Los ministerios salieron de Liderazgo a Conoce CDV, un nivel abajo.", ruled: "dejar solo los nombres internos. Son la identidad de la iglesia, así que se quedaron, después de la audiencia.", fig: <>{menuFilm}{sitemap}</> },
+      { t: "ministerios por para quién son, y luego por nombre", because: "“Adolescentes | GetUp” le dice a un papá qué es; “GetUp cdv” solo se lo dice a quien ya va. Los ministerios salieron de Liderazgo a Conoce CDV, un nivel abajo.", ruled: "dejar solo los nombres internos. Son la identidad de la iglesia, así que se quedaron, después de la audiencia.", fig: sitemap },
       { t: "de doce secciones a seis", because: "mi primera propuesta tenía doce secciones con URLs limpias y redirecciones. Tras el tree test y la revisión del equipo, seis alcanzaban, y un menú de teléfono puede mostrar seis.", ruled: "la propuesta de doce secciones. Cada una estaba justificada, pero juntas eran demasiadas puertas." },
       { t: "una sola tipografía, para que hable el contenido", because: "cada ministerio ya trae su propio logo y arte de campaña. Una sola sans, Inter, deja la web tranquila alrededor y se lee bien en el teléfono.", ruled: "combinar Inter con una serif itálica y un color por ministerio. Se veía vivo en el moodboard, pero competía con el arte de cada ministerio.", fig: type },
       { t: "un design system neutro, hecho desde cero", because: "la web no tenía sistema, así que diseñé uno: colores de texto por énfasis, fondos para claro y oscuro, y una sola escala de Inter desde el display hasta el heading más pequeño, en desktop y mobile. Cada token se nombra por su uso, así el equipo elige por propósito. Los headings en minúscula mantienen una voz cercana, como habla la iglesia.", ruled: "un color de marca por sección. Los tokens neutros dejan que la campaña de cada ministerio ponga el color.", fig: system },

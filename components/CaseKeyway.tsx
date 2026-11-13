@@ -10,8 +10,8 @@ const Img = ({ src, alt, className }: { src: string; alt: string; className?: st
 
 function content(lang: Lang): CaseContent {
   const es = lang === "es";
-  const cover = <CoverVideo src={`${IMG}/cover`} poster={`${IMG}/cover-poster.webp`} label={es ? "La tarjeta del aviso se arma con cada respuesta: la dirección, los datos públicos y la primera foto" : "The listing card assembles from each answer: the address, public records and the first photo"} />;
-  const actsFilm = <FilmFig src={`${IMG}/acts`} caption={es ? "El cuestionario tal como era, una columna de 332 campos, se parte en los cuatro actos." : "The questionnaire as it was, one column of 332 fields, breaks into the four acts."} />;
+  const cover = <CoverVideo src={`${IMG}/cover`} poster={`${IMG}/cover-poster.webp`} label={es ? "Una columna larga de campos se reparte en los cuatro actos del flujo" : "One long column of fields drops into the flow's four acts"} />;
+  const actsFilm = <FilmFig src={`${IMG}/acts`} caption={es ? "El cuestionario como una sola columna larga (aquí con las etiquetas reales de los campos) se reparte en los cuatro actos, y el acto 1 se abre en su primer paso." : "The questionnaire as one long column (shown with the real field labels) drops into the four acts, and act 1 opens into its first step."} />;
 
   const questionnaire = (
     <Metrics

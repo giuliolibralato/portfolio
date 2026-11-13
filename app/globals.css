@@ -476,3 +476,10 @@ button, select { font: inherit; color: inherit; }
 .nx-row { display: grid; grid-template-columns: 130px 1fr; gap: 10px; align-items: baseline; border-top: 1px solid #e5e7eb; padding-top: 8px; } .nx-row .mono { font-size: 10.5px; color: #9CA3AF; }
 .nx-t1 { font-family: var(--font-bebas), Impact, sans-serif; font-size: 26px; } .nx-t2 { font-size: 18px; } .nx-t3 { font-size: 14px; color: #4B5563; } .nx-t4 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #4B5563; }
 @container (max-width: 700px) { .frame.nx-sys { grid-template-columns: minmax(0,1fr); } }
+
+/* Lightbox: figures and films open large in the case pages */
+.case-inner :is(img.crop, img.cover-shot, video) { cursor: zoom-in; }
+.lb { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 56px 16px 16px; background: rgb(2 6 23 / 0.84); cursor: zoom-out; }
+.lb img, .lb video { max-width: min(96vw, 1800px); max-height: calc(100vh - 80px); width: auto; height: auto; border-radius: 10px; background: var(--background); cursor: default; box-shadow: 0 24px 64px -16px rgb(0 0 0 / 0.6); }
+.lb-x { position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px; color: #fff; background: rgb(255 255 255 / 0.12); transition: background 150ms; }
+@media (hover: hover) and (pointer: fine) { .lb-x:hover { background: rgb(255 255 255 / 0.22); } }

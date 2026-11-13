@@ -7,6 +7,7 @@ import { Shell, useSite } from "./Shell";
 import { Cursor } from "./Cursor";
 import { rise } from "./Figure";
 import { Arrow } from "./Icons";
+import { useLightbox } from "./Lightbox";
 import { T } from "@/lib/i18n";
 import { PROJECTS, type Lang } from "@/lib/data";
 import { usePathname } from "next/navigation";
@@ -80,6 +81,7 @@ export function CaseLayout({ content }: { content: (lang: Lang) => CaseContent }
 
   const c = content(lang);
   const l = L[lang];
+  const lb = useLightbox(lang === "es" ? "imagen ampliada" : "enlarged image", lang === "es" ? "cerrar" : "close");
   const path = usePathname().replace(BASE, "");
   const i = CASES.findIndex((p) => p.href === path);
   const nxt = CASES[(i + 1) % CASES.length];
@@ -97,7 +99,7 @@ export function CaseLayout({ content }: { content: (lang: Lang) => CaseContent }
       <div className="has-cursor">
         <Cursor color={site.cursor} labels={{ visitor: t.visitor, view: t.view, visit: t.visit }} enabled />
         <Shell site={site} nav={nav} brandHref={`${BASE}/`} back={{ href: `${BASE}/#work`, label: l.work }}>
-          <main className="inner case-inner">
+          <main className="inner case-inner" {...lb.props}>
             <motion.header className="case-head" initial="hidden" animate="show" transition={{ staggerChildren: 0.09, delayChildren: 0.05 }}>
               <motion.div variants={rise} className="case-bar">
                 <div className="chips-row">
@@ -199,6 +201,7 @@ export function CaseLayout({ content }: { content: (lang: Lang) => CaseContent }
               </div>
             </div>
           </main>
+          {lb.modal}
         </Shell>
       </div>
     </MotionConfig>

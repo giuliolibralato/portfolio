@@ -10,16 +10,16 @@ export const T = {
     audiences: { anyone: "for anyone", recruiters: "recruiters", leads: "design leads" } as Record<Audience, string>,
     intro: {
       anyone: [
-        "Product designer with 5 years designing B2B tools, AI workflows and personal-finance products for web and mobile, for U.S. and Latin American clients. Lately I've been simplifying the small details that make platforms and apps hard to use.",
-        "I love taking on new challenges, and I prototype in code when a picture isn't enough.",
+        "I design digital products: B2B tools, AI workflows and personal-finance apps. My favorite part is taking something tangled and making it easy to use.",
+        "And when a picture isn't enough, I prototype it in code to see if it really works.",
       ],
       recruiters: [
         "Product designer with 5 years designing web and mobile products for U.S. and Latin American clients in healthcare, real estate, telecom, insurance and SaaS.",
-        "Available now and open to relocation. Fluent in English (C1), native in Spanish.",
+        "I can start now and I'm open to relocating. Fluent in English (C1), native in Spanish.",
       ],
       leads: [
-        "I lead work from discovery workshops to user flows, prototypes and design system contributions, and I present the why behind each decision directly to clients.",
-        "I use AI (Claude Code, Figma Make, Mobbin MCP) to reach a testable prototype faster.",
+        "I work from the first discovery workshops to flows, prototypes and design system, and I walk clients through the why behind each decision.",
+        "I use AI (Claude Code, Figma Make, Mobbin MCP) to get to something testable faster.",
       ],
     } as Record<Audience, [string, string]>,
     tabs: { selected: "selected", cases: "cases", websites: "websites", apps: "apps", "passion projects": "passion projects", visual: "visual" } as Record<string, string>,
@@ -46,7 +46,7 @@ export const T = {
     cvMenu: [["English", "EN", "en", "2026"], ["Español", "ES", "es", "2026"]],
     references: "references",
     readAll: "read all on linkedin",
-    contactTitle: "Have a project in mind, or a role I’d fit? Let’s talk.",
+    contactTitle: "Got a project in mind, or a role I’d fit? Write to me.",
     copied: "copied to clipboard",
     writeMe: "let’s talk!",
     city: "lima, peru",
@@ -70,16 +70,16 @@ export const T = {
     audiences: { anyone: "para todos", recruiters: "reclutadores", leads: "líderes de diseño" } as Record<Audience, string>,
     intro: {
       anyone: [
-        "Diseñador de producto con 5 años creando herramientas B2B, flujos con IA y productos de finanzas personales para web y mobile, con clientes de EE. UU. y Latinoamérica. Últimamente simplifico los pequeños detalles que hacen difíciles las plataformas y apps.",
-        "Me encantan los retos nuevos y prototipo en código cuando una imagen no alcanza.",
+        "Diseño productos digitales: herramientas B2B, flujos con IA y apps de finanzas personales. Lo que más disfruto es agarrar algo enredado y dejarlo fácil de usar.",
+        "Y cuando una imagen no alcanza, lo prototipo en código para ver si de verdad funciona.",
       ],
       recruiters: [
         "Diseñador de producto con 5 años diseñando productos web y móviles para clientes de EE. UU. y Latinoamérica en salud, bienes raíces, telecom, seguros y SaaS.",
-        "Disponibilidad inmediata y para reubicación. Inglés avanzado (C1), español nativo.",
+        "Puedo empezar ya y estoy abierto a mudarme. Inglés avanzado (C1), español nativo.",
       ],
       leads: [
-        "Lidero el trabajo desde workshops de discovery hasta user flows, prototipos y contribuciones al design system, y presento el porqué de cada decisión al cliente.",
-        "Uso IA (Claude Code, Figma Make, Mobbin MCP) para llegar antes a un prototipo testeable.",
+        "Acompaño el trabajo desde los primeros workshops de discovery hasta flujos, prototipos y design system, y le cuento al cliente el porqué de cada decisión.",
+        "Uso IA (Claude Code, Figma Make, Mobbin MCP) para llegar más rápido a algo que se pueda probar.",
       ],
     } as Record<Audience, [string, string]>,
     tabs: { selected: "destacados", cases: "casos", websites: "sitios web", apps: "apps", "passion projects": "proyectos personales", visual: "visual" } as Record<string, string>,
@@ -121,7 +121,7 @@ export const T = {
     cvMenu: [["Inglés", "EN", "en", "2026"], ["Español", "ES", "es", "2026"]],
     references: "referencias",
     readAll: "leer todas en linkedin",
-    contactTitle: "¿Tienes un proyecto en mente o un rol en el que encaje? Hablemos.",
+    contactTitle: "¿Tienes un proyecto en mente o un rol donde encaje? Escríbeme.",
     copied: "copiado",
     writeMe: "¡escríbeme!",
     city: "lima, perú",

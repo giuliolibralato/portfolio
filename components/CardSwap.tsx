@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 // React Bits "Card Swap" (GSAP): the front card drops away and returns to the back of the stack
 // while the others move forward. Autoplays, pauses on hover, advances on click.
 type Piece = { name: string; year: string; art: string };
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const slot = (i: number) => ({ y: -i * 14, scale: 1 - i * 0.06, zIndex: 10 - i });
 
@@ -84,7 +85,7 @@ export function CardSwap({ pieces, front, onFront }: { pieces: Piece[]; front: n
           aria-label={`next piece, now showing ${p.name}`}
           onClick={swap}
         >
-          <span className="muted small" style={{ display: "grid", placeItems: "center" }}>{p.art}</span>
+          <img src={`${BASE}${p.art}`} alt={p.name} loading="lazy" decoding="async" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", minHeight: 0 }} />
           <span style={{ display: "flex", justifyContent: "space-between", padding: "12px 16px", background: "var(--background)" }}>
             <span style={{ fontWeight: 500 }}>{p.name}</span>
             <span className="small muted">{p.year}</span>

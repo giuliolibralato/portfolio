@@ -70,10 +70,10 @@ export const TABS: [string, string[]][] = [
 ];
 
 export const PIECES = [
-  { name: "Avanza Internacional", year: "2022", art: "Avanza · logo", href: "https://www.behance.net/gallery/147727383/AVANZA-Internacional" },
-  { name: "DL Group", year: "2022", art: "DL Group · branding", href: "https://www.behance.net/gallery/149637333/BRANDING-DL-GROUP" },
-  { name: "Fotomontaje Publicitario II", year: "2025", art: "Fotomontaje Publicitario II", href: "https://www.behance.net/gallery/226440389/Fotomontaje-Publicitario-II" },
-  { name: "VOLT x Real Madrid", year: "2025", art: "VOLT x Real Madrid", href: "https://www.behance.net/gallery/226440183/VOLT-Fotomontaje-Publicitario" },
+  { name: "Avanza Internacional", year: "2022", art: "/visual/avanza.webp", href: "https://www.behance.net/gallery/147727383/AVANZA-Internacional" },
+  { name: "DL Group", year: "2022", art: "/visual/dl-group.webp", href: "https://www.behance.net/gallery/149637333/BRANDING-DL-GROUP" },
+  { name: "Fotomontaje Publicitario II", year: "2025", art: "/visual/fotomontaje-2.webp", href: "https://www.behance.net/gallery/226440389/Fotomontaje-Publicitario-II" },
+  { name: "VOLT x Real Madrid", year: "2025", art: "/visual/volt.webp", href: "https://www.behance.net/gallery/226440183/VOLT-Fotomontaje-Publicitario" },
 ];
 
 export const EXPERIENCE = [

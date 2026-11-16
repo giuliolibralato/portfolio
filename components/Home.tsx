@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { CardSwap } from "./CardSwap";
 import { CoverVideo } from "./CoverVideo";
 import { Cursor } from "./Cursor";
+import { LangModal } from "./LangModal";
 import { Arrow, Chevron, Copy, Download, Pin, Sel, Up } from "./Icons";
 import { RubberTabs } from "./RubberTabs";
 import { Shell, useSite } from "./Shell";
@@ -66,6 +67,7 @@ export default function Home() {
   return (
     <MotionConfig reducedMotion="user">
     <div className="has-cursor">
+      <LangModal open={phase === "done" && !site.asked} lang={lang} onChoose={site.chooseLang} />
       <Cursor color={cursor} labels={{ visitor, view: t.view, visit: t.visit }} enabled={phase !== "in"} />
 
       {/* cover */}

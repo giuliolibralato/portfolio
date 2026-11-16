@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://giuliolibralato.github.io"),
   title: "Giulio Libralato — Product Designer",
   description: "Product designer in Lima, Peru. B2B tools, AI workflows, web and mobile. Open to full-time roles and freelance projects.",
-  openGraph: { title: "Giulio Libralato — Product Designer", description: "B2B tools, AI workflows, web and mobile.", type: "website", images: [{ url: "/portfolio/og.png", width: 1200, height: 630 }] },
+  openGraph: { title: "Giulio Libralato — Product Designer", description: "B2B tools, AI workflows, web and mobile.", type: "website", images: [{ url: "/portfolio/og.png", width: 2400, height: 1260 }] },
   twitter: { card: "summary_large_image", images: ["/portfolio/og.png"] },
 };
 

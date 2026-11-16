@@ -30,7 +30,7 @@ export const INTRO: Record<Audience, [string, string]> = {
   ],
   recruiters: [
     "Product designer with 5 years designing web and mobile products for U.S. and Latin American clients in healthcare, real estate, telecom, insurance and SaaS.",
-    "Available now and open to relocation. Fluent in English (C1), native in Spanish.",
+    "Available now. Fluent in English (C1), native in Spanish.",
   ],
   leads: [
     "I lead work from discovery workshops to user flows, prototypes and design system contributions, and I present the why behind each decision directly to clients.",

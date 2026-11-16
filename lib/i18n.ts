@@ -15,7 +15,7 @@ export const T = {
       ],
       recruiters: [
         "Product designer with 5 years designing web and mobile products for U.S. and Latin American clients in healthcare, real estate, telecom, insurance and SaaS.",
-        "I can start now and I'm open to relocating. Fluent in English (C1), native in Spanish.",
+        "I can start right away. Fluent in English (C1), native in Spanish.",
       ],
       leads: [
         "I work from the first discovery workshops to flows, prototypes and design system, and I walk clients through the why behind each decision.",
@@ -75,7 +75,7 @@ export const T = {
       ],
       recruiters: [
         "Diseñador de producto con 5 años diseñando productos web y móviles para clientes de EE. UU. y Latinoamérica en salud, bienes raíces, telecom, seguros y SaaS.",
-        "Puedo empezar ya y estoy abierto a mudarme. Inglés avanzado (C1), español nativo.",
+        "Disponibilidad inmediata. Inglés avanzado (C1), español nativo.",
       ],
       leads: [
         "Acompaño el trabajo desde los primeros workshops de discovery hasta flujos, prototipos y design system, y le cuento al cliente el porqué de cada decisión.",

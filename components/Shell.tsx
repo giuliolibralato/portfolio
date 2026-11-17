@@ -19,16 +19,12 @@ export function useSite() {
   const [dark, setDark] = useState(false);
   const [lang, setLang] = useState<Lang>("en");
   const [cursor, setCursor] = useState("#007AFF");
-  const [asked, setAsked] = useState(true); // false only on a first visit, until a language is chosen
 
   useEffect(() => {
     setDark(document.documentElement.dataset.theme === "dark");
     const l = localStorage.getItem("lang");
     if (l === "es" || l === "en") setLang(l);
-    else {
-      if (navigator.language?.toLowerCase().startsWith("es")) setLang("es");
-      setAsked(false);
-    }
+    else if (navigator.language?.toLowerCase().startsWith("es")) setLang("es");
     const c = localStorage.getItem("cursor");
     if (c) setCursor(c);
   }, []);
@@ -36,7 +32,6 @@ export function useSite() {
   useEffect(() => { document.documentElement.style.setProperty("--cursor", cursor); }, [cursor]);
 
   const toggleLang = () => setLang((l) => { const n = l === "es" ? "en" : "es"; localStorage.setItem("lang", n); return n; });
-  const chooseLang = (l: Lang) => { setLang(l); setAsked(true); try { localStorage.setItem("lang", l); } catch {} };
   // Magic UI "Animated Theme Toggler": the new theme grows as a circle from the button (View Transitions)
   const toggleDark = (e: React.MouseEvent<HTMLElement>) => {
     const next = !dark;
@@ -59,7 +54,7 @@ export function useSite() {
   };
   const pickCursor = (c: string) => { setCursor(c); localStorage.setItem("cursor", c); };
 
-  return { lang, asked, chooseLang, dark, cursor, reduce, toggleLang, toggleDark, pickCursor };
+  return { lang, dark, cursor, reduce, toggleLang, toggleDark, pickCursor };
 }
 export type Site = ReturnType<typeof useSite>;
 

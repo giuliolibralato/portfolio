@@ -29,6 +29,17 @@ export function useSite() {
     if (c) setCursor(c);
   }, []);
   useEffect(() => { document.documentElement.lang = lang; }, [lang]);
+  // Follow the system theme live, until the visitor picks one with the toggle
+  useEffect(() => {
+    const mq = matchMedia("(prefers-color-scheme: dark)");
+    const on = () => {
+      try { if (localStorage.getItem("theme")) return; } catch {}
+      document.documentElement.dataset.theme = mq.matches ? "dark" : "light";
+      setDark(mq.matches);
+    };
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
   useEffect(() => { document.documentElement.style.setProperty("--cursor", cursor); }, [cursor]);
 
   const toggleLang = () => setLang((l) => { const n = l === "es" ? "en" : "es"; localStorage.setItem("lang", n); return n; });
